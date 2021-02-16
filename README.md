@@ -47,8 +47,8 @@ An interface that updates the classes it's implemented in.
 - *Azure Devops :* https://dev.azure.com/ECAM3BE/Groupe4  
 
 ### **2.3. Schematics :**  
-- *Interface mockup :*
-![](Mockup Bovelo Itération 1.png)
+- *Interface mockup :*  
+![](Mockup.png)
 
 
 ## **3. Old links :**  
