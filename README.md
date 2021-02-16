@@ -48,7 +48,7 @@ An interface that updates the classes it's implemented in.
 
 ### **2.3. Schematics :**  
 - *Interface mockup :*  
-![](Mockup.png)
+![](Mockupv2.png)
 
 
 ## **3. Old links :**  
