@@ -2,5 +2,5 @@
 bin
 obj
 test.txt
-Bovelo-project.csproj
+# Bovelo-project.csproj
 Program.cs
