@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Code"
+    "\\Code",
+    "\\Code\\Classes"
   ],
-  "SelectedNode": "\\Code\\MainHome.resx",
+  "SelectedNode": "\\Code\\Classes\\Bike.cs",
   "PreviewInSolutionExplorer": false
 }
