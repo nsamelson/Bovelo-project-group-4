@@ -1,17 +1,17 @@
 ﻿
 namespace Bovelo
 {
-    partial class MainHome
+    partial class Citybike
     {
         /// <summary>
-        /// Variable nécessaire au concepteur.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Nettoyage des ressources utilisées.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true si les ressources managées doivent être supprimées ; sinon, false.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -21,15 +21,15 @@ namespace Bovelo
             base.Dispose(disposing);
         }
 
-        #region Code généré par le Concepteur Windows Form
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas
-        /// le contenu de cette méthode avec l'éditeur de code.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainHome));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Citybike));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -37,11 +37,10 @@ namespace Bovelo
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -57,8 +56,7 @@ namespace Bovelo
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 70);
-            this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.TabIndex = 1;
             // 
             // button7
             // 
@@ -96,7 +94,6 @@ namespace Bovelo
             this.button1.TabIndex = 2;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -107,7 +104,6 @@ namespace Bovelo
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -118,63 +114,30 @@ namespace Bovelo
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // button4
+            // pictureBox2
             // 
-            this.button4.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button4.Location = new System.Drawing.Point(354, 111);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(224, 121);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Adventure Bike   ( 1000 $)";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(254, 180);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(138, 86);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
-            // button5
-            // 
-            this.button5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(91, 111);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(224, 121);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "City Bike   ( 800 $)";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(604, 111);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(211, 121);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Explorer Bike   ( 1100 $)";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // MainHome
+            // Citybike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.panel1);
-            this.Name = "MainHome";
+            this.Name = "Citybike";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "V1.0";
+            this.Text = "Citybike";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,15 +145,12 @@ namespace Bovelo
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
-

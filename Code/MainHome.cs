@@ -37,5 +37,12 @@ namespace Bovelo
             login.Show();// Showing the Login window
             this.Hide();// Hiding the MainHome Window
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Explorerbike explorerbike = new Explorerbike();// create new window
+            explorerbike.Show();// Showing the Explorer bike window
+            this.Hide();// Hiding the MainHome Window
+        }
     }
 }

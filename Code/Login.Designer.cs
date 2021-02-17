@@ -52,6 +52,7 @@ namespace Bovelo
             this.signup.TabIndex = 1;
             this.signup.Text = "Sign-up";
             this.signup.UseVisualStyleBackColor = true;
+            this.signup.Click += new System.EventHandler(this.signup_Click);
             // 
             // signin
             // 

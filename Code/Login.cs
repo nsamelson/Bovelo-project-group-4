@@ -56,5 +56,12 @@ namespace Bovelo
         {
 
         }
+
+        private void signup_Click(object sender, EventArgs e)
+        {
+            Signup signup = new Signup();// create new window
+            signup.Show();// Showing the Sign-up window
+            this.Hide();// Hiding the Login Window
+        }
     }
 }

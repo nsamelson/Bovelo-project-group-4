@@ -37,9 +37,12 @@ namespace Bovelo
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -96,6 +99,7 @@ namespace Bovelo
             this.button1.TabIndex = 2;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // pictureBox1
             // 
@@ -117,26 +121,45 @@ namespace Bovelo
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
-            // dataGridView1
+            // Column5
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(76, 164);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(258, 64);
-            this.dataGridView1.TabIndex = 2;
+            this.Column5.HeaderText = "Estimated Shipping time";
+            this.Column5.Name = "Column5";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Quantity :";
+            this.Column4.Name = "Column4";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Color :";
+            this.Column3.Name = "Column3";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Size :";
+            this.Column2.Name = "Column2";
             // 
             // Column1
             // 
             this.Column1.HeaderText = "Bike :";
             this.Column1.Name = "Column1";
             // 
-            // Column2
+            // dataGridView1
             // 
-            this.Column2.HeaderText = "Size :";
-            this.Column2.Name = "Column2";
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3,
+            this.Column4,
+            this.Column5});
+            this.dataGridView1.Location = new System.Drawing.Point(76, 164);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(548, 63);
+            this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Cart
             // 
@@ -166,8 +189,11 @@ namespace Bovelo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
