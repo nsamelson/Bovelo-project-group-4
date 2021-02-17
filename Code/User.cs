@@ -7,11 +7,9 @@ namespace Bovelo
 {
     class User
     {
-        public string Login =" ";
-        public string Password= " ";
+        private string Login =" ";
+        private string Password= " ";
         private bool IsAdmin = false;
-
-        Dictionary<Bike, int>  Cart;
-        
+        public Dictionary<Bike, int>  Cart;
     }
 }
