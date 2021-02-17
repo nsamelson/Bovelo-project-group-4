@@ -7,7 +7,7 @@ namespace Bovelo
         public int TotalPrice = 0;
         public bool  isBuilt = false;
         
-        private string _Type = " ";
+        private string BikeType = " ";
         private string _Color = " ";
         private int _Size = 0;  
 
