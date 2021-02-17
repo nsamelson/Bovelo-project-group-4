@@ -1,12 +1,9 @@
 namespace Bovelo 
 {
-    class Catalog
+    abstract class Catalog
     {
     
-    void addToCart(Bike Bike_to_add,int Quantity){
-        
-    }
-
+        //void addToCart(Bike Bike_to_add,int Quantity){}
 
     }
 }
