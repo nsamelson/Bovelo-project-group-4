@@ -1,0 +1,6 @@
+.vscode
+bin
+obj
+test.txt
+Bovelo-project.csproj
+Program.cs
