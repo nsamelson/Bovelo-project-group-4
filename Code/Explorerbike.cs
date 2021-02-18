@@ -15,6 +15,26 @@ namespace Bovelo
         public Explorerbike()
         {
             InitializeComponent();
+
+            // test Cart 
+            // Create a list of parts.
+            List<String> article = new List<String>();
+
+            // Add parts to the list.
+            article.Add("explorer");
+            article.Add( "26" );
+            article.Add( "Blue");
+
+
+            // Write out the parts in the list. This will call the overridden ToString method
+            // in the Part class.
+            Console.WriteLine();
+            foreach (String elem in article)
+            {
+                Console.WriteLine(elem);
+            }
+
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -71,6 +91,11 @@ namespace Bovelo
             Cart cart = new Cart();// create new window
             cart.Show();// Showing the Cart window
             this.Hide();// Hiding the Explorerbike Window
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
