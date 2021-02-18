@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\Code",
-    "\\Code\\Classes",
-    "\\Code\\Properties"
+    "\\Code\\Classes"
   ],
-  "SelectedNode": "\\Code\\Login.cs",
+  "SelectedNode": "\\Code\\Classes\\Bike.cs",
   "PreviewInSolutionExplorer": false
 }

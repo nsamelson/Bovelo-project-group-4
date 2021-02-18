@@ -10,26 +10,11 @@ using System.Windows.Forms;
 
 namespace Bovelo
 {
-    public partial class Cart : Form
+    public partial class Citybike : Form
     {
-        public Cart()
+        public Citybike()
         {
             InitializeComponent();
-        }
-
-        private void Cart_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -43,7 +28,7 @@ namespace Bovelo
         {
             Cart cart = new Cart();// create new window
             cart.Show();// Showing the Cart window
-            this.Hide();// Hiding the MainHome Window
+            this.Hide();// Hiding the Citybike Window
         }
     }
 }
