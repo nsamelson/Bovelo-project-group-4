@@ -17,8 +17,8 @@ namespace Bovelo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new MainHome());
-            Application.Run(new Login());
-            //Application.Run(new Explorerbike());
+            //Application.Run(new Login());
+            Application.Run(new Explorerbike());
         }
     }
 }
