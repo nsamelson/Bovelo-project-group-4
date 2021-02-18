@@ -24,11 +24,12 @@ namespace Bovelo
             article.Add("explorer");
             article.Add( "26" );
             article.Add( "Blue");
-
+            
+            
 
             // Write out the parts in the list. This will call the overridden ToString method
             // in the Part class.
-            Console.WriteLine();
+            Console.WriteLine("test");
             foreach (String elem in article)
             {
                 Console.WriteLine(elem);
@@ -39,7 +40,8 @@ namespace Bovelo
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // size textbox
+            
         }
 
 
@@ -95,7 +97,21 @@ namespace Bovelo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
+            // test 
+            // add to cart 
+            string size = comboBox1.Text; // recover size
+            Console.WriteLine(size);
+            decimal quantitydcm = numericUpDown1.Value; // recover quantity
+            string quantity = quantitydcm.ToString(); // cast decimal to string
+            Console.WriteLine(quantity);
+            List<String> articlebp = new List<String>();
+            articlebp.Add(size);
+            articlebp.Add(quantity);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            //quantity text box
         }
     }
 }
