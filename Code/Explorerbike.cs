@@ -72,5 +72,25 @@ namespace Bovelo
             cart.Show();// Showing the Cart window
             this.Hide();// Hiding the Explorerbike Window
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Decimal B = this.numericUpDown1.Value * 800;
+            this.label6.Text = B.ToString();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+            Cart cart = new Cart();// create new window
+            cart.row = new string[] { "Explorer", comboBox1.Text.ToString(), "Black", numericUpDown1.Value.ToString(), "2 jours" };
+            cart.Show();// Showing the Main Home window
+            this.Hide();// Hiding the Explorerbike Window
+        }
     }
 }

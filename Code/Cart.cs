@@ -12,6 +12,7 @@ namespace Bovelo
 {
     public partial class Cart : Form
     {
+        public string[] row;
         public Cart()
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace Bovelo
 
         private void Cart_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.Rows.Insert(0, row);
         }
 
         private void button1_Click(object sender, EventArgs e)
