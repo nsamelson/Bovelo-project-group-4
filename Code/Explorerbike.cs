@@ -88,9 +88,28 @@ namespace Bovelo
         {
             
             Cart cart = new Cart();// create new window
-            cart.row = new string[] { "Explorer", comboBox1.Text.ToString(), "Black", numericUpDown1.Value.ToString(), "2 jours" };
+            cart.row = new string[] { "Explorer", comboBox1.Text.ToString(), label8.Text.ToString(), numericUpDown1.Value.ToString(), "2 jours" };
             cart.Show();// Showing the Main Home window
             this.Hide();// Hiding the Explorerbike Window
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ColorDialog color =  new ColorDialog();
+            color.ShowDialog();
+            textBox1.BackColor = color.Color;
+            label8.Text = color.Color.Name;
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
