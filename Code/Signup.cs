@@ -12,15 +12,11 @@ namespace Bovelo
 {
     public partial class Signup : Form
     {
-        private App appTest = new App();
+        private App app = new App();
         public Signup(App app)
         {
-            this.appTest = app;
+            this.app = app;
             InitializeComponent();
-            foreach (User user in appTest.userList)
-            {
-                Console.WriteLine(user.login + " " + user.password);
-            }
         }
 
 
@@ -40,7 +36,7 @@ namespace Bovelo
             //Form login = Application.OpenForms["login"];
 
             this.Hide();
-            var login = new Login(appTest);// create new window
+            var login = new Login(app);// create new window
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
 
@@ -54,31 +50,16 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
 
-            bool isExisting = appTest.userList.Any(login => login.login == username.Text);
-            
-            /*foreach(User user in appTest.userList)
-            {
-
-                
-                if(user.login.ToString() == username.Text.ToString())
-                {
-                    isExisting = true;
-                    Console.WriteLine("user is not existing");
-                }
-                else { }
-                
-                Console.WriteLine(user.login + user.password);
-            }*/
-
+            bool isExisting = app.userList.Any(login => login.login == username.Text);
             if(!isExisting)
             {
                 if (comboBox1.Text == "Client")
                 {
-                    appTest.addNewUser(new User(username.Text, password.Text));
+                    app.addNewUser(new User(username.Text, password.Text));
                 }
                 else if (comboBox1.Text == "Admin")
                 {
-                    appTest.addNewAdmin(new User(username.Text, password.Text));
+                    app.addNewAdmin(new User(username.Text, password.Text));
                 }
                 MessageBox.Show("The user was created!");
             }
@@ -92,6 +73,11 @@ namespace Bovelo
         }
 
         private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -12,16 +12,13 @@ namespace Bovelo
 {
     public partial class Login : Form
     {
-        private App appTest = new App();
+        private App app = new App();
         
         public Login(App app)
         {
-            this.appTest = app;
+            this.app = app;
             InitializeComponent();
-            foreach (User user in appTest.userList)
-            {
-                Console.WriteLine(user.login + " " + user.password);
-            }
+
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -31,33 +28,19 @@ namespace Bovelo
 
         private void signin_Click(object sender, EventArgs e) // signin button
         {
-            int idUser = 0;
-           foreach (User user in appTest.userList)
-            {
-                if (username.Text == user.login && password.Text == user.password)
-                {
 
-                    Console.WriteLine(user.login + " " + user.password);
-                    this.Hide();
-                    MainHome mh = new MainHome();// create new window
-                    mh.FormClosed += (s, args) => this.Close();
-                    mh.Show();// Showing the Sign-up window
-                }
-                idUser++;
-            }
-           /*
-           if(username.Text=="bovelo" && password.Text=="bovelo") // check the password 
+            bool isExisting = app.userList.Any(login => login.login == username.Text && login.password == password.Text);
+            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
+            else
             {
-                MainHome mh = new MainHome();// create new window
-                mh.Show();// Showing the Login window
-                this.Hide();// Hiding the MainHome Window
+                int index = app.userList.FindIndex(a => a.login == username.Text);
+                this.Hide();
+                MainHome mh = new MainHome(app, index);// create new window
+                mh.FormClosed += (s, args) => this.Close();
+                mh.Show();// Showing the Sign-up window
             }
-           else
-            {
-                MessageBox.Show("The User name or password you entered is incorrect,try again !");
-            }
-           */
             
+          
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -83,7 +66,7 @@ namespace Bovelo
         private void signup_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var signup = new Signup(appTest);// create new window
+            var signup = new Signup(app);// create new window
             signup.FormClosed += (s, args) => this.Close();
             signup.Show();// Showing the Sign-up window
 

@@ -38,9 +38,9 @@ namespace Bovelo
 
         private void button7_Click(object sender, EventArgs e)
         {
-            MainHome mh = new MainHome();// create new window
-            mh.Show();// Showing the Main Home window
-            this.Hide();// Hiding the Explorerbike Window
+            //MainHome mh = new MainHome();// create new window
+            /*mh.Show();// Showing the Main Home window
+            this.Hide();// Hiding the Explorerbike Window*/
         }
 
         private void button2_Click(object sender, EventArgs e)
