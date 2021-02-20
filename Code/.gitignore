@@ -3,7 +3,6 @@ bin
 obj
 test.txt
 Program.cs
-Program
 .vs
 .suo
 slnx.sqlite

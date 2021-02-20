@@ -12,7 +12,9 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        public MainHome()
+        private App app = new App();
+        public int userIndex;
+        public MainHome(App app, int idx)
         {
             InitializeComponent();
         }
@@ -33,9 +35,10 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Login login = new Login();// create new window
+            this.Hide();
+            var login = new Login(app);// create new window
+            login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
-            this.Hide();// Hiding the MainHome Window
         }
 
 
@@ -53,14 +56,21 @@ namespace Bovelo
 
             Button Bt = (Button)sender;
 
-            if (Convert.ToString(Bt.Tag) == "City")//ou autre
+            switch (Convert.ToString(Bt.Tag))
             {
-                Citybike citybike = new Citybike();
-                //Explorerbike explorerbike = new Explorerbike();
-                //explorerbike.Show();
-
-                citybike.Show();
-                // ou bordure rouge ou ce que tu veux
+                case "City" :
+                
+                    Citybike citybike = new Citybike();
+                    citybike.Show();
+                    break;
+               /* case "Adventure" :
+                    Adventure adventure = new Adventure();
+                    adventure.Show();
+                    break;*/
+                case "Explorer" :
+                    Explorerbike explorerbike = new Explorerbike();
+                    explorerbike.Show();
+                    break; 
             }
 
             this.Hide();// Hiding the MainHome Window

@@ -116,10 +116,11 @@ namespace Bovelo
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(224, 121);
             this.button4.TabIndex = 1;
+            this.button4.Tag = "Adventure";
             this.button4.Text = "Adventure Bike   ( 1000 $)";
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.button_Click);
             // 
             // City
             // 
@@ -145,10 +146,11 @@ namespace Bovelo
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(211, 121);
             this.button6.TabIndex = 3;
+            this.button6.Tag = "Explorer";
             this.button6.Text = "Explorer Bike   ( 1100 $)";
             this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.button6.Click += new System.EventHandler(this.button_Click);
             // 
             // MainHome
             // 
@@ -162,6 +164,7 @@ namespace Bovelo
             this.Name = "MainHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "V1.0";
+            this.Click += new System.EventHandler(this.button_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

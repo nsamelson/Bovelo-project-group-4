@@ -19,9 +19,9 @@ namespace Bovelo
             app.InitializeBikeModel();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainHome());
+            Application.Run(new MainHome(app,1));
             //Application.Run(new Login());
-            Application.Run(new Explorerbike());
+            //Application.Run(new Explorerbike());
             /*app.addNewAdmin(new User("admin1", "admin1"));
             app.addNewUser(new User("user1", "user1"));
             app.userList[0].addToCart(new Bike("Adventure", "red", 28), 3);

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Bovelo
 {
-    class Item
+    class Item //: Bike
     {
         public int quantity ;
         // public int quantity{ get => _quantity; set => _quantity=value;}
