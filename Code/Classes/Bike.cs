@@ -10,7 +10,7 @@ namespace Bovelo
     class Bike
     {
          public DateTime TotalTime = DateTime.Now;
-         public int TotalPrice = 0;
+         public int Price = 0;
          public bool  isBuilt = false;
          //private List<_BikeType> BikeTypesList = new List<_BikeType>();
 
@@ -28,6 +28,12 @@ namespace Bovelo
             _BikeType = Type;
             _BikeColor = Color;
             _BikeSize = Size;
+        }
+
+        public Bike(string Type, int Price)
+        {
+            this.Type = Type;
+            this.Price = Price;
         }
 
         /*        public void addBikeType()
@@ -60,19 +66,15 @@ namespace Bovelo
                     }
                     conn.Close();
                     label1.Text = "Done";
-                }*/
-
-       
-
+                }*
         /*        public void addBikeType()
                 {
                     BikeTypesList.Add(new _BikeType() City);
                     BikeTypesList.Add(new _BikeType() Explorer);
                     BikeTypesList.Add(new _BikeType() Adventrue);
-
                 }
         */
-        public void InsertBikeDB()
+        public void SeeBikeDB()
         {
             //string connStr = "server=localhost;user=root;database=bovelo;port=3306;password=root"; 
             string connStr = "server=193.191.240.67;user=USER1;database=Bovelo;port=63304;password=USER1";
@@ -125,7 +127,6 @@ namespace Bovelo
             cmd.Dispose();
             conn.Close();
         }
-
     }
 
 }
