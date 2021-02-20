@@ -7,10 +7,10 @@ using MySql.Data.MySqlClient;
 
 namespace Bovelo
 {
-    class App 
+    public class App 
     {
-        public List<User> userList;
-        public List<Bike> BikeModel = new List<Bike>();
+        internal List<User> userList;
+        internal List<Bike> BikeModel = new List<Bike>();
 
         public void InitializeBikeModel()
         {
@@ -48,11 +48,11 @@ namespace Bovelo
         {
             this.userList = new List<User>();
         }
-        public void addNewUser(User user)
+        internal void addNewUser(User user)
         {
             userList.Add(user);
         }
-        public void addNewAdmin(User user)
+        internal void addNewAdmin(User user)
         {
             user.isAdmin = true;
             userList.Add(user);
