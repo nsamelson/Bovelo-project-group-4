@@ -14,12 +14,15 @@ namespace Bovelo
         
         static void Main(string[] args)
         {
+
+            //un panel ou autre contenur tu peux mettre this par exemple
+            app.InitializeBikeModel();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainHome());
+            Application.Run(new MainHome());
             //Application.Run(new Login());
-            //Application.Run(new Explorerbike());
-            app.addNewAdmin(new User("admin1", "admin1"));
+            Application.Run(new Explorerbike());
+            /*app.addNewAdmin(new User("admin1", "admin1"));
             app.addNewUser(new User("user1", "user1"));
             app.userList[0].addToCart(new Bike("Adventure", "red", 28), 3);
             app.userList[0].addToCart(new Bike("City", "blue", 26), 15);
@@ -51,7 +54,7 @@ namespace Bovelo
                 Console.WriteLine(z);
             }
 
-
-        }
+         */
+         }
     }
 }

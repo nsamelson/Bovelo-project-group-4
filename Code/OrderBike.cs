@@ -35,7 +35,7 @@ namespace Bovelo
             string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
             MySqlConnection conn = new MySqlConnection(connStr);
             //conn.ConnectionString = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
-            try
+/*            try
             {
                 Console.WriteLine("Connecting to MySQL...");
 
@@ -59,6 +59,7 @@ namespace Bovelo
 
             }
             conn.Close();
+            */
         }
     }
 }

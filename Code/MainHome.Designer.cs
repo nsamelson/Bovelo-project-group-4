@@ -37,7 +37,7 @@ namespace Bovelo
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.City = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -121,19 +121,20 @@ namespace Bovelo
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // City
             // 
-            this.button5.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(91, 111);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(224, 121);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "City Bike   ( 800 $)";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.City.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.City.Image = ((System.Drawing.Image)(resources.GetObject("City.Image")));
+            this.City.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.City.Location = new System.Drawing.Point(91, 111);
+            this.City.Name = "City";
+            this.City.Size = new System.Drawing.Size(224, 121);
+            this.City.TabIndex = 2;
+            this.City.Tag = "City";
+            this.City.Text = "City Bike   ( 800 $)";
+            this.City.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.City.UseVisualStyleBackColor = true;
+            this.City.Click += new System.EventHandler(this.button_Click);
             // 
             // button6
             // 
@@ -155,7 +156,7 @@ namespace Bovelo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.City);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.panel1);
             this.Name = "MainHome";
@@ -175,7 +176,7 @@ namespace Bovelo
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button City;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
     }

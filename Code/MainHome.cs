@@ -38,12 +38,7 @@ namespace Bovelo
             this.Hide();// Hiding the MainHome Window
         }
 
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Explorerbike explorerbike = new Explorerbike();// create new window
-            explorerbike.Show();// Showing the Explorer bike window
-            this.Hide();// Hiding the MainHome Window
-        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -52,17 +47,39 @@ namespace Bovelo
             this.Hide();// Hiding the MainHome Window
         }
 
+
+        private void button_Click(object sender, EventArgs e)
+        {
+
+            Button Bt = (Button)sender;
+
+            if (Convert.ToString(Bt.Tag) == "City")//ou autre
+            {
+                Citybike citybike = new Citybike();
+                //Explorerbike explorerbike = new Explorerbike();
+                //explorerbike.Show();
+
+                citybike.Show();
+                // ou bordure rouge ou ce que tu veux
+            }
+
+            this.Hide();// Hiding the MainHome Window
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            this.Hide();// Hiding the MainHome Window
+        }
+
         private void button5_Click(object sender, EventArgs e)
         {
-            Citybike citybike = new Citybike();// create new window
-            citybike.Show();// Showing the Citybike window
             this.Hide();// Hiding the MainHome Window
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Adventurebike adventurebike = new Adventurebike();// create new window
-            adventurebike.Show();// Showing the Adventurebike window
+
             this.Hide();// Hiding the MainHome Window
         }
     }
