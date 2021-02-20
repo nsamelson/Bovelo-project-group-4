@@ -12,9 +12,16 @@ namespace Bovelo
 {
     public partial class Login : Form
     {
-        public Login()
+        private App appTest = new App();
+        
+        public Login(App app)
         {
+            this.appTest = app;
             InitializeComponent();
+            foreach (User user in appTest.userList)
+            {
+                Console.WriteLine(user.login + " " + user.password);
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -24,6 +31,21 @@ namespace Bovelo
 
         private void signin_Click(object sender, EventArgs e) // signin button
         {
+            int idUser = 0;
+           foreach (User user in appTest.userList)
+            {
+                if (username.Text == user.login && password.Text == user.password)
+                {
+
+                    Console.WriteLine(user.login + " " + user.password);
+                    this.Hide();
+                    MainHome mh = new MainHome();// create new window
+                    mh.FormClosed += (s, args) => this.Close();
+                    mh.Show();// Showing the Sign-up window
+                }
+                idUser++;
+            }
+           /*
            if(username.Text=="bovelo" && password.Text=="bovelo") // check the password 
             {
                 MainHome mh = new MainHome();// create new window
@@ -34,6 +56,7 @@ namespace Bovelo
             {
                 MessageBox.Show("The User name or password you entered is incorrect,try again !");
             }
+           */
             
         }
 
@@ -59,9 +82,11 @@ namespace Bovelo
 
         private void signup_Click(object sender, EventArgs e)
         {
-            Signup signup = new Signup();// create new window
+            this.Hide();
+            var signup = new Signup(appTest);// create new window
+            signup.FormClosed += (s, args) => this.Close();
             signup.Show();// Showing the Sign-up window
-            this.Hide();// Hiding the Login Window
+
         }
     }
 }

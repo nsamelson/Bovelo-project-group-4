@@ -11,18 +11,21 @@ namespace Bovelo
     class User
     {
         public string login;
-        private string password;
+        private string _password;
+        public string password { get => _password; }
         public bool isAdmin = false;
 
         public List<Item> cart = new List<Item>();
         public User(string login, string password)
         {
             this.login = login;
-            this.password = password;
+            this._password = password;
 
         }
         public void setOrderBike()
         {
+            var orderList = getCartList();
+            OrderBike newOrder = new OrderBike();
 
         }
         public void getBikeInvoice()

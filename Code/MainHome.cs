@@ -33,8 +33,8 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Login login = new Login();// create new window
-            login.Show();// Showing the Login window
+            //Login login = new Login(appTest);// create new window
+            //login.Show();// Showing the Login window
             this.Hide();// Hiding the MainHome Window
         }
 

@@ -105,6 +105,7 @@ namespace Bovelo
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(119, 20);
             this.password.TabIndex = 10;
+            this.password.TextChanged += new System.EventHandler(this.password_TextChanged);
             // 
             // username
             // 
@@ -112,13 +113,14 @@ namespace Bovelo
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(119, 20);
             this.username.TabIndex = 9;
+            this.username.TextChanged += new System.EventHandler(this.username_TextChanged);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Client",
-            "Builder"});
+            "Admin"});
             this.comboBox1.Location = new System.Drawing.Point(359, 153);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
