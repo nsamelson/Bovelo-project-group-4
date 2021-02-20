@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.19.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\MySql.Data.DLL</HintPath>
+      <HintPath>C:\Users\nisam\Downloads\MySql.Data.DLL</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,6 +68,13 @@
     <Compile Include="Citybike.Designer.cs">
       <DependentUpon>Citybike.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\App.cs" />
+    <Compile Include="Classes\Bike.cs" />
+    <Compile Include="Classes\BikePart.cs" />
+    <Compile Include="Classes\Catalog.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\Storage.cs" />
+    <Compile Include="Classes\User.cs" />
     <Compile Include="Explorerbike.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +92,12 @@
     </Compile>
     <Compile Include="MainHome.Designer.cs">
       <DependentUpon>MainHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Order.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Order.Designer.cs">
+      <DependentUpon>Order.cs</DependentUpon>
     </Compile>
     <Compile Include="OrderBike.cs" />
     <Compile Include="Program.cs" />
@@ -113,6 +126,9 @@
     <EmbeddedResource Include="MainHome.resx">
       <DependentUpon>MainHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Order.resx">
+      <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -125,6 +141,7 @@
     <EmbeddedResource Include="Signup.resx">
       <DependentUpon>Signup.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include=".gitignore" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

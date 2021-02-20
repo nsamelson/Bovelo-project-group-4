@@ -1,5 +1,4 @@
 using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,27 +9,27 @@ namespace Bovelo
 {
     class Bike
     {
-        /* public DateTime TotalTime = DateTime.Now;
+         public DateTime TotalTime = DateTime.Now;
          public int TotalPrice = 0;
          public bool  isBuilt = false;
-         private List<_BikeType> BikeTypesList = new List<_BikeType>();
+         //private List<_BikeType> BikeTypesList = new List<_BikeType>();
 
          private string _BikeType = " ";
          private string _BikeColor = " ";
          private int _BikeSize = 0;  
          //private BikePart[] Parts = new BikePart[]{};
-         */
-        /*public string Type{ get => _Type; set => _Type=value;}
-        public string Color{ get => _Color; set => _Color=value;}
-        public int Size{ get => _Size; set => _Size =value;}
+         
+        public string Type{ get => _BikeType; set => _BikeType = value;}
+        public string Color{ get => _BikeColor; set => _BikeColor = value;}
+        public int Size{ get => _BikeSize; set => _BikeSize = value;}
 
         public Bike(string Type,string Color,int Size)
-        {   
-            _Type=Type;
-            _Color=Color;
-            _Size=Size;
+        {
+            _BikeType = Type;
+            _BikeColor = Color;
+            _BikeSize = Size;
         }
-*/
+
         /*        public void addBikeType()
                 {
                     BikeTypesList.Add(new _BikeType() City);
@@ -63,12 +62,7 @@ namespace Bovelo
                     label1.Text = "Done";
                 }*/
 
-        public Bike(string Type, string Color, int Size)
-        {
-            _Type = Type;
-            _Color = Color;
-            _Size = Size;
-        }
+       
 
         /*        public void addBikeType()
                 {
