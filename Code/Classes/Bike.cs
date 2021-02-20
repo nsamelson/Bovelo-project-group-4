@@ -118,11 +118,10 @@ namespace Bovelo
             MySqlConnection conn = new MySqlConnection(connStr);
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
-            string query = "INSERT INTO Bikes (Bikes_Id,Bike_Type,Price,Bike_total_time) VALUES (" + id + ", " + type + ", " + price + ", " + time + ")";
+            string query = "INSERT INTO Bikes (Bikes_Id,Bike_Type,Price,Bike_total_time) VALUES (" + id + ", '" + type + "', " + price + ", '" + time + "')";
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            int result = cmd.ExecuteNonQuery();
+            MySqlDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("Bike added into DB");
-            Console.WriteLine(result);
             cmd.Dispose();
             conn.Close();
         }
