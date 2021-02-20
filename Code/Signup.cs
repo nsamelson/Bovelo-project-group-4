@@ -12,10 +12,13 @@ namespace Bovelo
 {
     public partial class Signup : Form
     {
-        public Signup()
+        private App app = new App();
+        public Signup(App app)
         {
+            this.app = app;
             InitializeComponent();
         }
+
 
         private void label3_Click(object sender, EventArgs e)
         {
@@ -29,9 +32,14 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Login login = new Login();// create new window
+
+            //Form login = Application.OpenForms["login"];
+
+            this.Hide();
+            var login = new Login(app);// create new window
+            login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
-            this.Hide();// Hiding the MainHome Window
+
         }
 
         private void Signup_Load(object sender, EventArgs e)
@@ -40,6 +48,36 @@ namespace Bovelo
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+            bool isExisting = app.userList.Any(login => login.login == username.Text);
+            if(!isExisting)
+            {
+                if (comboBox1.Text == "Client")
+                {
+                    app.addNewUser(new User(username.Text, password.Text));
+                }
+                else if (comboBox1.Text == "Admin")
+                {
+                    app.addNewAdmin(new User(username.Text, password.Text));
+                }
+                MessageBox.Show("The user was created!");
+            }
+            else { MessageBox.Show("The Username is already in use!"); }
+            
+        }
+
+        private void password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

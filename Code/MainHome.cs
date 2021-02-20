@@ -12,7 +12,9 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        public MainHome()
+        private App app = new App();
+        public int userIndex;
+        public MainHome(App app, int idx)
         {
             InitializeComponent();
         }
@@ -33,9 +35,10 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Login login = new Login();// create new window
+            this.Hide();
+            var login = new Login(app);// create new window
+            login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
-            this.Hide();// Hiding the MainHome Window
         }
 
 

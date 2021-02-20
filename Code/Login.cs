@@ -12,9 +12,13 @@ namespace Bovelo
 {
     public partial class Login : Form
     {
-        public Login()
+        private App app = new App();
+        
+        public Login(App app)
         {
+            this.app = app;
             InitializeComponent();
+
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -24,17 +28,19 @@ namespace Bovelo
 
         private void signin_Click(object sender, EventArgs e) // signin button
         {
-           if(username.Text=="bovelo" && password.Text=="bovelo") // check the password 
+
+            bool isExisting = app.userList.Any(login => login.login == username.Text && login.password == password.Text);
+            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
+            else
             {
-                MainHome mh = new MainHome();// create new window
-                mh.Show();// Showing the Login window
-                this.Hide();// Hiding the MainHome Window
-            }
-           else
-            {
-                MessageBox.Show("The User name or password you entered is incorrect,try again !");
+                int index = app.userList.FindIndex(a => a.login == username.Text);
+                this.Hide();
+                MainHome mh = new MainHome(app, index);// create new window
+                mh.FormClosed += (s, args) => this.Close();
+                mh.Show();// Showing the Sign-up window
             }
             
+          
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,9 +65,11 @@ namespace Bovelo
 
         private void signup_Click(object sender, EventArgs e)
         {
-            Signup signup = new Signup();// create new window
+            this.Hide();
+            var signup = new Signup(app);// create new window
+            signup.FormClosed += (s, args) => this.Close();
             signup.Show();// Showing the Sign-up window
-            this.Hide();// Hiding the Login Window
+
         }
     }
 }
