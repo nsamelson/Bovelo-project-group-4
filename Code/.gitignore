@@ -2,8 +2,8 @@
 bin
 obj
 test.txt
-# Bovelo-project.csproj
 Program.cs
+Program
 .vs
 .suo
 slnx.sqlite
