@@ -65,7 +65,27 @@ namespace Bovelo
         }
         internal void sendUserListToDB(User user) //SEND NEW USER INSIDE DATABASE
         {
-            Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
+            //Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
+
+            string connStr = "server=193.191.240.67;user=USER1;database=Bovelo;port=63304;password=USER1";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL...");
+            conn.Open();
+            string query = "";
+            if(user.isAdmin)
+            {
+                 query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', '" + user.password + "','Admin')";
+            }
+            else
+            {
+                query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', '" + user.password + "','Client')";
+            }
+            
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            Console.WriteLine("User added to DB");
+            cmd.Dispose();
+            conn.Close();
         }
         public void InitializeBikeModel()
         {
