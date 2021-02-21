@@ -93,11 +93,11 @@
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="Explorerbike.cs">
+    <Compile Include="ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Explorerbike.Designer.cs">
-      <DependentUpon>Explorerbike.cs</DependentUpon>
+    <Compile Include="ShowBike.Designer.cs">
+      <DependentUpon>ShowBike.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -135,8 +135,8 @@
     <EmbeddedResource Include="Citybike.resx">
       <DependentUpon>Citybike.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Explorerbike.resx">
-      <DependentUpon>Explorerbike.cs</DependentUpon>
+    <EmbeddedResource Include="ShowBike.resx">
+      <DependentUpon>ShowBike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

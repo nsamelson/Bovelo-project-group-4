@@ -13,10 +13,11 @@ namespace Bovelo
     public partial class MainHome : Form
     {
         private App app = new App();
-        public int userIndex;
-        public MainHome(App app, int idx)
+        private User _currentUser = new User(" "," "); 
+        internal MainHome(User incomingUser)
         {
             InitializeComponent();
+            _currentUser = incomingUser;
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -45,7 +46,7 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();// create new window
+            Cart cart = new Cart(ref _currentUser);// create new window
             cart.Show();// Showing the Cart window
             this.Hide();// Hiding the MainHome Window
         }
@@ -60,15 +61,15 @@ namespace Bovelo
             {
                 case "City" :
                 
-                    Citybike citybike = new Citybike();
+                    ShowBike citybike = new ShowBike("City",ref _currentUser);
                     citybike.Show();
                     break;
-               /* case "Adventure" :
-                    Adventure adventure = new Adventure();
+                case "Adventure" :
+                    ShowBike adventure = new ShowBike("Adventure",ref _currentUser);
                     adventure.Show();
-                    break;*/
+                    break;
                 case "Explorer" :
-                    Explorerbike explorerbike = new Explorerbike();
+                    ShowBike explorerbike = new ShowBike("Explorer",ref _currentUser);
                     explorerbike.Show();
                     break; 
             }
@@ -91,6 +92,11 @@ namespace Bovelo
         {
 
             this.Hide();// Hiding the MainHome Window
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

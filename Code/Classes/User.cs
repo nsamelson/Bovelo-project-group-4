@@ -14,7 +14,7 @@ namespace Bovelo
         private string _password;
         public string password { get => _password; }
         public bool isAdmin = false;
-
+        //public Cart cart_show;
         public List<Item> cart = new List<Item>();
         public User(string login, string password)
         {
@@ -25,7 +25,7 @@ namespace Bovelo
         public void setOrderBike()
         {
             var orderList = getCartList();
-            OrderBike newOrder = new OrderBike();
+            OrderBike newOrder = new OrderBike(this);
 
         }
         public void getBikeInvoice()

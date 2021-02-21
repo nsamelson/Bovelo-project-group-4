@@ -12,6 +12,61 @@ namespace Bovelo
         internal List<User> userList;
         internal List<Bike> BikeModel = new List<Bike>();
 
+        public App()
+        {
+            this.userList = getUserListFromDB();
+        }
+        internal void addNewUser(User user)
+        {
+            userList.Add(user);
+        }
+        internal void addNewAdmin(User user)
+        {
+            user.isAdmin = true;
+            userList.Add(user);
+        }
+        internal List<User> getUserListFromDB() //GET USERS REGISTERED INSIDE DATABASE 
+        {
+            var userFromDB = new List<User>();
+            userFromDB.Add(new User("user1", "user1"));
+
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL...");
+            conn.Open();
+            string sql = "SELECT * FROM Users;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                string login = Convert.ToString(rdr[1]);
+                string password = Convert.ToString(rdr[2]);
+                if (rdr[3].ToString() == "Admin")
+                {
+                    var user = new User(login, password);
+                    user.isAdmin = true;
+                    userFromDB.Add(user);
+                }
+                else
+                {
+                    userFromDB.Add(new User(login, password));
+                }
+
+
+            }
+            rdr.Close();
+            conn.Close();
+
+
+
+
+            return userFromDB;
+        }
+        internal void sendUserListToDB(User user) //SEND NEW USER INSIDE DATABASE
+        {
+            Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
+        }
         public void InitializeBikeModel()
         {
             int i = 0;
@@ -42,20 +97,6 @@ namespace Bovelo
             }
             rdr.Close();
             conn.Close();
-        }
-
-        public App()
-        {
-            this.userList = new List<User>();
-        }
-        internal void addNewUser(User user)
-        {
-            userList.Add(user);
-        }
-        internal void addNewAdmin(User user)
-        {
-            user.isAdmin = true;
-            userList.Add(user);
         }
 
     }
