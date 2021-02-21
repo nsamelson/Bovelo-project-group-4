@@ -114,13 +114,13 @@ namespace Bovelo
             conn.Close();
         }
 
-        public void InsertBiketoDB(int id, string type, int price, string time)
+        public void InsertBiketoDB(string type, int price, string time)
         {
             string connStr = "server=193.191.240.67;user=USER1;database=Bovelo;port=63304;password=USER1";
             MySqlConnection conn = new MySqlConnection(connStr);
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
-            string query = "INSERT INTO Bikes (Bikes_Id,Bike_Type,Price,Bike_total_time) VALUES (" + id + ", '" + type + "', " + price + ", '" + time + "')";
+            string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("Bike added into DB");
