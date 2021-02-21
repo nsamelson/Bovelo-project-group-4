@@ -63,7 +63,7 @@ namespace Bovelo
 
             return userFromDB;
         }
-        internal void sendUserListToDB(User user) //SEND NEW USER INSIDE DATABASE
+        internal void sendUserToDB(User user) //SEND NEW USER INSIDE DATABASE
         {
             //Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
 

@@ -16,6 +16,7 @@ namespace Bovelo
         public Signup(App app)
         {
             this.app = app;
+            
             InitializeComponent();
         }
 
@@ -62,7 +63,7 @@ namespace Bovelo
                     app.addNewAdmin(new User(username.Text, password.Text));
                 }
                 MessageBox.Show("The user was created!");
-                app.sendUserListToDB(app.userList[app.userList.Count - 1]);
+                app.sendUserToDB(app.userList[app.userList.Count - 1]);
             }
             else if (username.Text == "" || password.Text == "") 
             { MessageBox.Show("Please select a valid username and password!"); }
