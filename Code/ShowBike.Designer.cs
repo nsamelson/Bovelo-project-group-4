@@ -1,7 +1,7 @@
 ﻿
 namespace Bovelo
 {
-    partial class Explorerbike
+    partial class ShowBike
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Bovelo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Explorerbike));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowBike));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -55,6 +55,7 @@ namespace Bovelo
             this.label7 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +70,7 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "Explorer";
+            this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 70);
             this.panel1.TabIndex = 1;
             // 
@@ -91,6 +92,7 @@ namespace Bovelo
             this.button3.TabIndex = 4;
             this.button3.Text = "Orders";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -111,6 +113,7 @@ namespace Bovelo
             this.button1.TabIndex = 2;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -126,11 +129,11 @@ namespace Bovelo
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "26\"",
-            "28\""});
-            this.comboBox1.Location = new System.Drawing.Point(484, 154);
+            "26",
+            "28"});
+            this.comboBox1.Location = new System.Drawing.Point(480, 154);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(57, 21);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -283,6 +286,7 @@ namespace Bovelo
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 28;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label7
             // 
@@ -314,11 +318,22 @@ namespace Bovelo
             this.label8.Text = "Choose a color";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
-            // Explorerbike
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(509, 155);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 15);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "\"";
+            // 
+            // ShowBike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.label7);
@@ -338,7 +353,7 @@ namespace Bovelo
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "Explorerbike";
+            this.Name = "ShowBike";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Explorerbike";
             this.Load += new System.EventHandler(this.Explorerbike_Load);
@@ -376,5 +391,6 @@ namespace Bovelo
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }

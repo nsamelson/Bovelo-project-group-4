@@ -33,11 +33,11 @@ namespace Bovelo
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
             else
             {
-                int index = app.userList.FindIndex(a => a.login == username.Text);
+/*                int index = app.userList.FindIndex(a => a.login == username.Text);
                 this.Hide();
                 MainHome mh = new MainHome(app, index);// create new window
                 mh.FormClosed += (s, args) => this.Close();
-                mh.Show();// Showing the Sign-up window
+                mh.Show();// Showing the Sign-up window*/
             }
             
           

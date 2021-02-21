@@ -26,9 +26,9 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();// create new window
+            /*Cart cart = new Cart();// create new window
             cart.Show();// Showing the Cart window
-            this.Hide();// Hiding the Citybike Window
+            this.Hide();// Hiding the Citybike Window*/
         }
     }
 }

@@ -10,10 +10,14 @@ using System.Windows.Forms;
 
 namespace Bovelo
 {
-    public partial class Explorerbike : Form
+    public partial class ShowBike : Form
     {
-        public Explorerbike()
+        public string TypeOfBike;
+        private User _currentUser=new User(" ", " ");
+        internal ShowBike(string TypeBike, User current_user)
         {
+            TypeOfBike = TypeBike;
+            User _currentUser = current_user; 
             InitializeComponent();
         }
 
@@ -64,12 +68,16 @@ namespace Bovelo
             /*MainHome mh = new MainHome();// create new window
             mh.Show();// Showing the Main Home window
             this.Hide();// Hiding the Explorerbike Window*/
+            this.Hide();
+            var MainHome = new MainHome(_currentUser);// create new window
+            MainHome.FormClosed += (s, args) => this.Close();
+            MainHome.Show();// Showing the Login window
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();// create new window
-            cart.Show();// Showing the Cart window
+            Cart cart = new Cart(_currentUser);// create new window
+            cart.Show() ;// Showing the Cart window
             this.Hide();// Hiding the Explorerbike Window
         }
 
@@ -86,11 +94,22 @@ namespace Bovelo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            
-            Cart cart = new Cart();// create new window
-            cart.row = new string[] { panel1.Name.ToString(), comboBox1.Text.ToString(), label8.Text.ToString(), numericUpDown1.Value.ToString(), DateTime.Now.ToString() };
-            cart.Show();// Showing the Main Home window
-            this.Hide();// Hiding the Explorerbike Window
+            string i = comboBox1.Text;
+            int _i = Convert.ToInt32(i);
+            Bike BikeToAdd = new Bike(TypeOfBike, label8.Text.ToString(), _i);
+
+            _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
+
+            foreach (Item elem in _currentUser.cart)
+            {
+                Console.WriteLine(elem.bike.Type + " " + elem.quantity);
+            }
+
+            //Cart cart = new Cart();// create new window
+            //cart.row = new string[] { panel1.Name.ToString(), comboBox1.Text.ToString(), label8.Text.ToString(), numericUpDown1.Value.ToString(), DateTime.Now.ToString() };
+            //cart.Show();// Showing the Main Home window
+
+            //this.Hide();// Hiding the Explorerbike Window
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -108,6 +127,26 @@ namespace Bovelo
         }
 
         private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
         {
 
         }

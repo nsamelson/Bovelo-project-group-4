@@ -15,15 +15,17 @@ namespace Bovelo
         public int Quantity;
         public string ShippingTime;
         public List<string> maListe = new List<string>();
+        public User _currentUser = new User(" "," ");
 
-        public OrderBike()
+        public OrderBike(User incomingUser)
         {
-            
+            _currentUser = incomingUser;
+
         }
         public void addOrderBike()
         {
             //int i;
-            Cart c = new Cart();
+            Cart c = new Cart(_currentUser);
             this.BikeType = this.maListe[0];
             this.BikeSize = this.maListe[1];
             this.BikeColor = this.maListe[2];

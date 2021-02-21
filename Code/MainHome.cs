@@ -12,11 +12,11 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        private App app = new App();
-        public int userIndex;
-        public MainHome(App app, int idx)
+        private User _currentUser = new User(" "," "); 
+        internal MainHome(User incomingUser)
         {
             InitializeComponent();
+            _currentUser = incomingUser;
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -35,17 +35,17 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
+/*            this.Hide();
             var login = new Login(app);// create new window
             login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
+            login.Show();// Showing the Login window*/
         }
 
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();// create new window
+            Cart cart = new Cart(_currentUser);// create new window
             cart.Show();// Showing the Cart window
             this.Hide();// Hiding the MainHome Window
         }
@@ -60,15 +60,15 @@ namespace Bovelo
             {
                 case "City" :
                 
-                    Citybike citybike = new Citybike();
+                    ShowBike citybike = new ShowBike("City",_currentUser);
                     citybike.Show();
                     break;
-               /* case "Adventure" :
-                    Adventure adventure = new Adventure();
+                case "Adventure" :
+                    ShowBike adventure = new ShowBike("Adventure", _currentUser);
                     adventure.Show();
-                    break;*/
+                    break;
                 case "Explorer" :
-                    Explorerbike explorerbike = new Explorerbike();
+                    ShowBike explorerbike = new ShowBike("Explorer", _currentUser);
                     explorerbike.Show();
                     break; 
             }
