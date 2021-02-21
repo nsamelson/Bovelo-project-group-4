@@ -12,6 +12,7 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
+        private App app = new App();
         private User _currentUser = new User(" "," "); 
         internal MainHome(User incomingUser)
         {
@@ -35,10 +36,10 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-/*            this.Hide();
+            this.Hide();
             var login = new Login(app);// create new window
             login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window*/
+            login.Show();// Showing the Login window
         }
 
 
