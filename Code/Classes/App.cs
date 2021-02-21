@@ -67,7 +67,7 @@ namespace Bovelo
         {
             //Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
 
-            string connStr = "server=193.191.240.67;user=USER1;database=Bovelo;port=63304;password=USER1";
+            string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
             MySqlConnection conn = new MySqlConnection(connStr);
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
