@@ -29,6 +29,38 @@ namespace Bovelo
         {
             var userFromDB = new List<User>();
             userFromDB.Add(new User("user1", "user1"));
+
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL...");
+            conn.Open();
+            string sql = "SELECT * FROM Users;";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                string login = Convert.ToString(rdr[1]);
+                string password = Convert.ToString(rdr[2]);
+                if (rdr[3].ToString() == "Admin")
+                {
+                    var user = new User(login, password);
+                    user.isAdmin = true;
+                    userFromDB.Add(user);
+                }
+                else
+                {
+                    userFromDB.Add(new User(login, password));
+                }
+
+
+            }
+            rdr.Close();
+            conn.Close();
+
+
+
+
             return userFromDB;
         }
         internal void sendUserListToDB(User user) //SEND NEW USER INSIDE DATABASE
