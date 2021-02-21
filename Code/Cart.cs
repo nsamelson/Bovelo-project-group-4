@@ -16,7 +16,7 @@ namespace Bovelo
         public string[] row;
         private User _currentUser = new User(" "," ");
       
-        internal Cart(User incomingUser)
+        internal Cart(ref User incomingUser)
         {
             _currentUser = incomingUser;
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
+                i++;
             }
         }
 
@@ -54,8 +55,8 @@ namespace Bovelo
         private void button7_Click(object sender, EventArgs e)
         {
             //MainHome mh = new MainHome();// create new window
-            /*mh.Show();// Showing the Main Home window
-            this.Hide();// Hiding the Explorerbike Window*/
+            /*mh.Show();// Showing the Main Home window*/
+            this.Hide();// Hiding the Explorerbike Window
             var MainHome = new MainHome(_currentUser);// create new window
             MainHome.FormClosed += (s, args) => this.Close();
             MainHome.Show();// Showing the Login window

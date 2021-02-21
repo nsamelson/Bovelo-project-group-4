@@ -12,6 +12,7 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
+        private App app = new App();
         private User _currentUser = new User(" "," "); 
         internal MainHome(User incomingUser)
         {
@@ -35,17 +36,17 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-/*            this.Hide();
+            this.Hide();
             var login = new Login(app);// create new window
             login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window*/
+            login.Show();// Showing the Login window
         }
 
 
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart(_currentUser);// create new window
+            Cart cart = new Cart(ref _currentUser);// create new window
             cart.Show();// Showing the Cart window
             this.Hide();// Hiding the MainHome Window
         }
@@ -60,15 +61,15 @@ namespace Bovelo
             {
                 case "City" :
                 
-                    ShowBike citybike = new ShowBike("City",_currentUser);
+                    ShowBike citybike = new ShowBike("City",ref _currentUser);
                     citybike.Show();
                     break;
                 case "Adventure" :
-                    ShowBike adventure = new ShowBike("Adventure", _currentUser);
+                    ShowBike adventure = new ShowBike("Adventure",ref _currentUser);
                     adventure.Show();
                     break;
                 case "Explorer" :
-                    ShowBike explorerbike = new ShowBike("Explorer", _currentUser);
+                    ShowBike explorerbike = new ShowBike("Explorer",ref _currentUser);
                     explorerbike.Show();
                     break; 
             }
@@ -91,6 +92,11 @@ namespace Bovelo
         {
 
             this.Hide();// Hiding the MainHome Window
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

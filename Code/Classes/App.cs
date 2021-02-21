@@ -12,6 +12,29 @@ namespace Bovelo
         internal List<User> userList;
         internal List<Bike> BikeModel = new List<Bike>();
 
+        public App()
+        {
+            this.userList = getUserListFromDB();
+        }
+        internal void addNewUser(User user)
+        {
+            userList.Add(user);
+        }
+        internal void addNewAdmin(User user)
+        {
+            user.isAdmin = true;
+            userList.Add(user);
+        }
+        internal List<User> getUserListFromDB() //GET USERS REGISTERED INSIDE DATABASE 
+        {
+            var userFromDB = new List<User>();
+            userFromDB.Add(new User("user1", "user1"));
+            return userFromDB;
+        }
+        internal void sendUserListToDB(User user) //SEND NEW USER INSIDE DATABASE
+        {
+            Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
+        }
         public void InitializeBikeModel()
         {
             int i = 0;
@@ -42,20 +65,6 @@ namespace Bovelo
             }
             rdr.Close();
             conn.Close();
-        }
-
-        public App()
-        {
-            this.userList = new List<User>();
-        }
-        internal void addNewUser(User user)
-        {
-            userList.Add(user);
-        }
-        internal void addNewAdmin(User user)
-        {
-            user.isAdmin = true;
-            userList.Add(user);
         }
 
     }

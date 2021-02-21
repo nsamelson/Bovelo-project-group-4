@@ -25,7 +25,7 @@ namespace Bovelo
         public void addOrderBike()
         {
             //int i;
-            Cart c = new Cart(_currentUser);
+            Cart c = new Cart(ref _currentUser);
             this.BikeType = this.maListe[0];
             this.BikeSize = this.maListe[1];
             this.BikeColor = this.maListe[2];

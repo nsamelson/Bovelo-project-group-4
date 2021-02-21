@@ -51,7 +51,7 @@ namespace Bovelo
         {
 
             bool isExisting = app.userList.Any(login => login.login == username.Text);
-            if(!isExisting)
+            if(!isExisting && username.Text!="" && password.Text !="")
             {
                 if (comboBox1.Text == "Client")
                 {
@@ -62,7 +62,10 @@ namespace Bovelo
                     app.addNewAdmin(new User(username.Text, password.Text));
                 }
                 MessageBox.Show("The user was created!");
+                app.sendUserListToDB(app.userList[app.userList.Count - 1]);
             }
+            else if (username.Text == "" || password.Text == "") 
+            { MessageBox.Show("Please select a valid username and password!"); }
             else { MessageBox.Show("The Username is already in use!"); }
             
         }
