@@ -19,6 +19,7 @@ namespace Bovelo
             app.InitializeBikeModel();
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
+
             Application.Run(new MainHome(app,1));
             //Application.Run(new Login());
             //Application.Run(new Explorerbike());
