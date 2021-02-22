@@ -40,7 +40,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[2].Value = elem[2].ToString();
                 dataGridView1.Rows[i].Cells[3].Value = elem[3].ToString();
                 dataGridView1.Rows[i].Cells[4].Value = elem[4].ToString();
-                dataGridView1.Rows[i].Cells[5].Value = elem[5].ToString();
+                dataGridView1.Rows[i].Cells[5].Value = (Int32.Parse(elem[5])* Int32.Parse(elem[3])).ToString();
 
                 i++;
             }
