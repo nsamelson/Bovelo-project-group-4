@@ -93,6 +93,7 @@ namespace Bovelo
                 bikeInfo.Add(item.bike.Color);
                 bikeInfo.Add(item.bike.Size.ToString());
                 bikeInfo.Add(item.quantity.ToString());
+                bikeInfo.Add(item.bike.Price.ToString());
                 cartAsList.Add(bikeInfo);
             }
 

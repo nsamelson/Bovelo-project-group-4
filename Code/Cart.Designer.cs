@@ -36,13 +36,14 @@ namespace Bovelo
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -122,16 +123,37 @@ namespace Bovelo
             this.Column2,
             this.Column3,
             this.Column4,
-            this.Column5});
+            this.Column5,
+            this.Price});
             this.dataGridView1.Location = new System.Drawing.Point(76, 164);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(600, 131);
+            this.dataGridView1.Size = new System.Drawing.Size(646, 150);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(674, 374);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(139, 37);
+            this.button4.TabIndex = 3;
+            this.button4.Text = "Confirm order";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(508, 374);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(123, 37);
+            this.button5.TabIndex = 4;
+            this.button5.Text = "Empty Cart";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Column1
             // 
-            this.Column1.HeaderText = "Bike :";
+            this.Column1.HeaderText = "Bike";
             this.Column1.Name = "Column1";
             // 
             // Column2
@@ -154,25 +176,10 @@ namespace Bovelo
             this.Column5.HeaderText = "Estimated Shipping time";
             this.Column5.Name = "Column5";
             // 
-            // button4
+            // Price
             // 
-            this.button4.Location = new System.Drawing.Point(674, 374);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(139, 37);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Confirm order";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(508, 374);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(123, 37);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "Empty Cart";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
             // 
             // Cart
             // 
@@ -204,11 +211,12 @@ namespace Bovelo
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
 }

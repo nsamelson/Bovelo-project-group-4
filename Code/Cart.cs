@@ -39,6 +39,8 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
                 dataGridView1.Rows[i].Cells[4].Value = elem.bike.TotalTime.ToString();
+                dataGridView1.Rows[i].Cells[5].Value = ((elem.bike.Price) * (elem.quantity)).ToString();
+                Console.WriteLine(elem.bike.Price);
                 i++;
             }
         }
