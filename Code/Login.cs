@@ -14,9 +14,8 @@ namespace Bovelo
     {
         private App app = new App();
         
-        public Login(App app)
+        public Login()
         {
-            this.app = app;
             InitializeComponent();
 
         }
@@ -66,9 +65,14 @@ namespace Bovelo
         private void signup_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var signup = new Signup(app);// create new window
+            var signup = new Signup();// create new window
             signup.FormClosed += (s, args) => this.Close();
             signup.Show();// Showing the Sign-up window
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -13,7 +13,7 @@ namespace Bovelo
     public partial class MainHome : Form
     {
         private App app = new App();
-        private User _currentUser; 
+        private User _currentUser = new User(" "," "); 
         internal MainHome(User incomingUser)
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var login = new Login(app);// create new window
+            var login = new Login();// create new window
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
         }
@@ -46,9 +46,11 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart(ref _currentUser);// create new window
-            cart.Show();// Showing the Cart window
             this.Hide();// Hiding the MainHome Window
+            Cart cart = new Cart(ref _currentUser);// create new window
+            cart.FormClosed += (s, args) => this.Close();
+            cart.Show();// Showing the Cart window
+            
         }
 
 
@@ -101,9 +103,11 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Order order = new Order(ref _currentUser);// create new window
-            order.Show();// Showing the Order window
             this.Hide();// Hiding the Explorer Bike Window
+            Order order = new Order(ref _currentUser);// create new window
+            order.FormClosed += (s, args) => this.Close();
+            order.Show();// Showing the Order window
+            
         }
     }
 }

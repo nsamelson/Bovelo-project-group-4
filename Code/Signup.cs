@@ -13,19 +13,14 @@ namespace Bovelo
     public partial class Signup : Form
     {
         private App app = new App();
-        public Signup(App app)
+        public Signup()
         {
-            this.app = app;
-            
             InitializeComponent();
         }
-
-
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -37,7 +32,7 @@ namespace Bovelo
             //Form login = Application.OpenForms["login"];
 
             this.Hide();
-            var login = new Login(app);// create new window
+            var login = new Login();// create new window
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
 
@@ -82,6 +77,11 @@ namespace Bovelo
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }
