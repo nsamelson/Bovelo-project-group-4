@@ -14,7 +14,7 @@ namespace Bovelo
     {
         
         public string[] row;
-        private User _currentUser = new User(" "," ");
+        private User _currentUser = new User(" "," ",0);
       
         internal Cart(ref User incomingUser)
         {

@@ -12,7 +12,7 @@ namespace Bovelo
 {
     public partial class Order : Form
     {
-        private User _currentUser = new User(" ", " ");
+        private User _currentUser = new User(" ", " ", 0);
         internal Order(ref User incomingUser)
         {
             _currentUser = incomingUser;

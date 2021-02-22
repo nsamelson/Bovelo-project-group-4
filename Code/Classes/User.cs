@@ -14,8 +14,16 @@ namespace Bovelo
         private string _password;
         public string password { get => _password; }
         public bool isAdmin = false;
+        public int idUser;
         //public Cart cart_show;
         public List<Item> cart = new List<Item>();
+        public User(string login, string password,int idUser)
+        {
+            this.login = login;
+            this._password = password;
+            this.idUser = idUser;
+
+        }
         public User(string login, string password)
         {
             this.login = login;

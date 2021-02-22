@@ -11,7 +11,7 @@ namespace Bovelo
         //public string BikeColor;
         //public string ShippingTime;
 
-        public User _currentUser = new User(" ", " ");
+        public User _currentUser;
 
         public OrderBike(User incomingUser)
         {
@@ -29,7 +29,7 @@ namespace Bovelo
                 conn.Open();
                 foreach(Item elem in _currentUser.cart)
                 {
-                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "'); ";
+                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "', '"+ 1000 + "', '" + _currentUser.idUser+ "'); ";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     rdr.Close();

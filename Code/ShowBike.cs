@@ -15,7 +15,7 @@ namespace Bovelo
     {
         public string TypeOfBike;
         public string path = Directory.GetCurrentDirectory();// recup the position in repositories
-        private User _currentUser=new User(" ", " ");
+        private User _currentUser=new User(" ", " ", 0);
         internal ShowBike(string TypeBike,ref User current_user)
         {
             TypeOfBike = TypeBike;
