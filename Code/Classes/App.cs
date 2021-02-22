@@ -107,7 +107,7 @@ namespace Bovelo
                 string Types = Convert.ToString(rdr[1]);
                 int Prices = Convert.ToInt32(rdr[2]);
 
-                Bike myBike = new Bike(Types, Prices);
+                Bike myBike = new Bike(Types,"black",26 ,Prices);
                 bikeList.Add(myBike);
 
                 Console.WriteLine(bikeList[i].Type + " " + bikeList[i].Price);

@@ -24,18 +24,19 @@ namespace Bovelo
         public string Color{ get => _BikeColor; set => _BikeColor = value;}
         public int Size{ get => _BikeSize; set => _BikeSize = value;}
 
-        public Bike(string Type,string Color,int Size)
+        public Bike(string Type,string Color,int Size,int price)
         {
             _BikeType = Type;
             _BikeColor = Color;
             _BikeSize = Size;
+            this.Price = price;
         }
 
-        public Bike(string Type, int Price)
+        /*public Bike(string Type, int Price)
         {
             this.Type = Type;
             this.Price = Price;
-        }
+        }*/
 
 
         /*        public void addBikeType()

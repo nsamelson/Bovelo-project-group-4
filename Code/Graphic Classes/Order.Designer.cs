@@ -108,9 +108,9 @@ namespace Bovelo
             this.Column4,
             this.Column5,
             this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 134);
+            this.dataGridView1.Location = new System.Drawing.Point(30, 117);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(646, 134);
+            this.dataGridView1.Size = new System.Drawing.Size(646, 286);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 

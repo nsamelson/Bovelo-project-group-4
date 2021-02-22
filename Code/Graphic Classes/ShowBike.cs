@@ -22,7 +22,6 @@ namespace Bovelo
             TypeOfBike = TypeBike;
             _currentUser = current_user; 
             InitializeComponent();
-
             // display the first bykeview at the first time
             pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
             button5.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilicone.jpg");// assign to bykeimg an image
@@ -32,7 +31,18 @@ namespace Bovelo
             button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
         }
 
-       
+       public int getBikePrice()
+        {
+            int price = 0;
+            foreach (var bike in app.BikeModel)
+            {
+                if (bike.Type == TypeOfBike)
+                {
+                    price = bike.Price;
+                }
+            }
+            return price;
+        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -99,15 +109,8 @@ namespace Bovelo
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            int price = 0;
-            foreach (var bike in app.BikeModel)
-            {
-                if (bike.Type == TypeOfBike)
-                {
-                    price = bike.Price;
-                }
-            }
-            Decimal B = this.numericUpDown1.Value * price;
+            
+            Decimal B = this.numericUpDown1.Value * getBikePrice();
             this.label6.Text = B.ToString();
         }
 
@@ -115,7 +118,7 @@ namespace Bovelo
         {
             string i = comboBox1.Text;
             int _i = Convert.ToInt32(i);
-            Bike BikeToAdd = new Bike(TypeOfBike, label8.Text.ToString(), _i);
+            Bike BikeToAdd = new Bike(TypeOfBike, label8.Text.ToString(), _i, getBikePrice());
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
  
 
