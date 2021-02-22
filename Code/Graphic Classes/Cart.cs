@@ -25,6 +25,7 @@ namespace Bovelo
 
         private void Cart_Load(object sender, EventArgs e)
         {
+            int totalPrice = 0;
             int i = 0;
             while (i< _currentUser.cart.Count)
             {
@@ -42,6 +43,7 @@ namespace Bovelo
                         price = bike.Price;
                     }
                 }
+                totalPrice += price * elem.quantity;
                 Console.WriteLine(elem.bike.Type + " " + elem.quantity);
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
@@ -52,6 +54,8 @@ namespace Bovelo
                 Console.WriteLine(price);
                 i++;
             }
+            Decimal B = totalPrice;
+            this.labelPrice.Text = B.ToString() + "€";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -86,6 +90,7 @@ namespace Bovelo
             o.addOrderBike();
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
+            this.labelPrice.Text = "0€";
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -110,6 +115,17 @@ namespace Bovelo
         {
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
+            this.labelPrice.Text = "0€";
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
