@@ -7,19 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Bovelo
 {
     public partial class ShowBike : Form
     {
         public string TypeOfBike;
+        public string path = Directory.GetCurrentDirectory();// recup the position in repositories
         private User _currentUser=new User(" ", " ");
         internal ShowBike(string TypeBike,ref User current_user)
         {
             TypeOfBike = TypeBike;
             _currentUser = current_user; 
             InitializeComponent();
+
+            // display the first bykeview at the first time
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
+            button5.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilicone.jpg");// assign to bykeimg an image
+            button6.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
+            button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
+            button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
+            button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
         }
+
+       
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -29,7 +41,7 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)
         {
-            label3.ImageIndex = 0;// affiche l'image 0
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image and displaying into picturebox
         }
 
 
@@ -40,22 +52,22 @@ namespace Bovelo
 
         private void button6_Click(object sender, EventArgs e)
         {
-            label3.ImageIndex = 1;// affiche l'image 1
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisv1.jpg");// assign to bykeimg an image and displaying into picturebox
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            label3.ImageIndex = 2;// affiche l'image 2
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonv1.jpg");// assign to bykeimg an image and displaying into picturebox
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            label3.ImageIndex = 3;// affiche l'image 3
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleurv1.jpg");// assign to bykeimg an image and displaying into picturebox
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            label3.ImageIndex = 4;// affiche l'image 4
+            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_rouev1.jpg");// assign to bykeimg an image and displaying into picturebox
         }
 
         private void Explorerbike_Load(object sender, EventArgs e)
@@ -146,6 +158,11 @@ namespace Bovelo
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

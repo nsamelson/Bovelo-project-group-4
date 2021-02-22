@@ -29,7 +29,6 @@ namespace Bovelo
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowBike));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button7 = new System.Windows.Forms.Button();
@@ -42,7 +41,6 @@ namespace Bovelo
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.imageListexplorer = new System.Windows.Forms.ImageList(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -56,8 +54,10 @@ namespace Bovelo
             this.button11 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -177,16 +177,6 @@ namespace Bovelo
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // imageListexplorer
-            // 
-            this.imageListexplorer.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListexplorer.ImageStream")));
-            this.imageListexplorer.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListexplorer.Images.SetKeyName(0, "explorer_profilv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(1, "explorer_biaisv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(2, "explorer_guidonv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(3, "explorer_derailleurv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(4, "explorer_rouev1.jpg");
-            // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -255,7 +245,6 @@ namespace Bovelo
             // label3
             // 
             this.label3.ImageIndex = 0;
-            this.label3.ImageList = this.imageListexplorer;
             this.label3.Location = new System.Drawing.Point(85, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(256, 256);
@@ -328,11 +317,21 @@ namespace Bovelo
             this.label9.TabIndex = 32;
             this.label9.Text = "\"";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(78, 102);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(263, 256);
+            this.pictureBox1.TabIndex = 33;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // ShowBike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.button11);
@@ -360,6 +359,7 @@ namespace Bovelo
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,7 +378,6 @@ namespace Bovelo
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.ImageList imageListexplorer;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
@@ -392,5 +391,6 @@ namespace Bovelo
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
