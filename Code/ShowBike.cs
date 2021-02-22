@@ -29,7 +29,9 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)
         {
+
             label3.ImageIndex = 0;// affiche l'image 0
+            Console.WriteLine(TypeOfBike);
         }
 
 

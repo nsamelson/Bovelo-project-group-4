@@ -181,11 +181,16 @@ namespace Bovelo
             // 
             this.imageListexplorer.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListexplorer.ImageStream")));
             this.imageListexplorer.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListexplorer.Images.SetKeyName(0, "explorer_profilv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(1, "explorer_biaisv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(2, "explorer_guidonv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(3, "explorer_derailleurv1.jpg");
-            this.imageListexplorer.Images.SetKeyName(4, "explorer_rouev1.jpg");
+            this.imageListexplorer.Images.SetKeyName(0, "");
+            this.imageListexplorer.Images.SetKeyName(1, "");
+            this.imageListexplorer.Images.SetKeyName(2, "");
+            this.imageListexplorer.Images.SetKeyName(3, "");
+            this.imageListexplorer.Images.SetKeyName(4, "");
+            this.imageListexplorer.Images.SetKeyName(5, "adventure_biaisv1.jpg");
+            this.imageListexplorer.Images.SetKeyName(6, "adventure_derailleurv1.jpg");
+            this.imageListexplorer.Images.SetKeyName(7, "adventure_guidonv1.jpg");
+            this.imageListexplorer.Images.SetKeyName(8, "adventure_profilv1.jpg");
+            this.imageListexplorer.Images.SetKeyName(9, "adventure_rouev1.jpg");
             // 
             // button5
             // 

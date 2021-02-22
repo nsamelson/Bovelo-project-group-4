@@ -68,23 +68,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adventurebike.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Adventurebike.Designer.cs">
-      <DependentUpon>Adventurebike.cs</DependentUpon>
-    </Compile>
     <Compile Include="Cart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Citybike.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Citybike.Designer.cs">
-      <DependentUpon>Citybike.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\Bike.cs" />
@@ -126,14 +114,8 @@
     <Compile Include="Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Adventurebike.resx">
-      <DependentUpon>Adventurebike.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Citybike.resx">
-      <DependentUpon>Citybike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
