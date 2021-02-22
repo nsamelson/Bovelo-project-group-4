@@ -98,5 +98,12 @@ namespace Bovelo
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Order order = new Order(ref _currentUser);// create new window
+            order.Show();// Showing the Order window
+            this.Hide();// Hiding the Explorer Bike Window
+        }
     }
 }
