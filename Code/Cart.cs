@@ -38,6 +38,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
+                dataGridView1.Rows[i].Cells[4].Value = elem.bike.TotalTime.ToString();
                 i++;
             }
         }
@@ -73,19 +74,20 @@ namespace Bovelo
         {
             int i;
             OrderBike o = new OrderBike(_currentUser);
-
-            dataGridView1.Rows[0].Cells[0].Value.ToString();
-            o.maListe.Add(dataGridView1.Rows[0].Cells[0].Value.ToString());
-            o.maListe.Add(dataGridView1.Rows[0].Cells[1].Value.ToString());
-            o.maListe.Add(dataGridView1.Rows[0].Cells[2].Value.ToString());
-            o.maListe.Add(dataGridView1.Rows[0].Cells[3].Value.ToString());
-            o.maListe.Add(dataGridView1.Rows[0].Cells[4].Value.ToString());
-            for (i = 0; i <= o.maListe.Count-1 ; i++)
+            o.CartLine = new List<string>();
+            o.Cart = new List<List<string>>();
+            foreach (DataGridViewRow row in dataGridView1.Rows)
             {
-                label2.Text += o.maListe[i] + "/";
+                foreach (DataGridViewCell cell in row.Cells)
+                {
+                    o.CartLine.Add(cell.Value.ToString());
+
+                }
+                o.Cart.Add(o.CartLine);
+                label3.Text = o.Cart.Count.ToString();
             }
-            
-            o.addOrderBike();
+
+            //o.addOrderBike();
 
             //for (int i = 0; i <= dataGridView1.Rows.Count; i++)
             //{
@@ -100,7 +102,7 @@ namespace Bovelo
 
 
 
-            label3.Text = o.maListe[0];
+           
 
 
         }

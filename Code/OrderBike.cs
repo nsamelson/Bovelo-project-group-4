@@ -14,7 +14,8 @@ namespace Bovelo
         public string BikeColor;
         public int Quantity;
         public string ShippingTime;
-        public List<string> maListe = new List<string>();
+        public List<string> CartLine ;
+        public List<List<string>> Cart;
         public User _currentUser = new User(" "," ");
 
         public OrderBike(User incomingUser)
@@ -24,15 +25,8 @@ namespace Bovelo
         }
         public void addOrderBike()
         {
-            //int i;
-            Cart c = new Cart(ref _currentUser);
-            this.BikeType = this.maListe[0];
-            this.BikeSize = this.maListe[1];
-            this.BikeColor = this.maListe[2];
-            this.Quantity = int.Parse(this.maListe[3]);
-            this.ShippingTime = this.maListe[4];
 
-            //BikeType = c.maListe[0];
+
 
             string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
             MySqlConnection conn = new MySqlConnection(connStr);
