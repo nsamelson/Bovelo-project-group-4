@@ -75,6 +75,7 @@ namespace Bovelo
             this.button3.TabIndex = 4;
             this.button3.Text = "Orders";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -167,7 +168,7 @@ namespace Bovelo
             this.Controls.Add(this.panel1);
             this.Name = "MainHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "V1.0";
+            this.Text = "Bovelo 1.0";
             this.Click += new System.EventHandler(this.button_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
