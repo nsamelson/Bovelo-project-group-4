@@ -10,11 +10,12 @@ namespace Bovelo
     public class App 
     {
         internal List<User> userList;
-        internal List<Bike> BikeModel = new List<Bike>();
+        internal List<Bike> BikeModel;
 
         public App()
         {
             this.userList = getUserListFromDB();
+            this.BikeModel = getBikeModel();
         }
         internal void addNewUser(User user)
         {
@@ -88,8 +89,9 @@ namespace Bovelo
             cmd.Dispose();
             conn.Close();
         }
-        public void InitializeBikeModel()
+        internal List<Bike> getBikeModel()
         {
+            List<Bike> bikeList = new List<Bike>();
             int i = 0;
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -106,18 +108,15 @@ namespace Bovelo
                 int Prices = Convert.ToInt32(rdr[2]);
 
                 Bike myBike = new Bike(Types, Prices);
-                BikeModel.Add(myBike);
+                bikeList.Add(myBike);
 
-                Console.WriteLine(BikeModel[i].Type + " " + BikeModel[i].Price);
+                Console.WriteLine(bikeList[i].Type + " " + bikeList[i].Price);
                 i++;
 
-                /*
-                Console.WriteLine("TYPE: " + rdr[1]);
-                Console.WriteLine("PRICE: " + rdr[2] + " €");
-                Console.WriteLine("TIME TO BUILD: " + rdr[3]);*/
             }
             rdr.Close();
             conn.Close();
+            return bikeList;
         }
 
     }

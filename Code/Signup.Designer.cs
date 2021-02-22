@@ -62,6 +62,7 @@ namespace Bovelo
             this.label4.Size = new System.Drawing.Size(61, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Bovelo";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 

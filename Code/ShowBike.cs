@@ -16,6 +16,7 @@ namespace Bovelo
         public string TypeOfBike;
         public string path = Directory.GetCurrentDirectory();// recup the position in repositories
         private User _currentUser=new User(" ", " ", 0);
+        private App app = new App();
         internal ShowBike(string TypeBike,ref User current_user)
         {
             TypeOfBike = TypeBike;
@@ -77,9 +78,6 @@ namespace Bovelo
 
         private void button7_Click(object sender, EventArgs e)
         {
-            /*MainHome mh = new MainHome();// create new window
-            mh.Show();// Showing the Main Home window
-            this.Hide();// Hiding the Explorerbike Window*/
             this.Hide();
             var MainHome = new MainHome(_currentUser);// create new window
             MainHome.FormClosed += (s, args) => this.Close();
@@ -88,9 +86,10 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();// Hiding the MainHome Window
             Cart cart = new Cart(ref _currentUser);// create new window
-            cart.Show() ;// Showing the Cart window
-            this.Close();// Hiding the Explorerbike Window
+            cart.FormClosed += (s, args) => this.Close();
+            cart.Show();// Showing the Cart window
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -100,7 +99,15 @@ namespace Bovelo
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            Decimal B = this.numericUpDown1.Value * 800;
+            int price = 0;
+            foreach (var bike in app.BikeModel)
+            {
+                if (bike.Type == TypeOfBike)
+                {
+                    price = bike.Price;
+                }
+            }
+            Decimal B = this.numericUpDown1.Value * price;
             this.label6.Text = B.ToString();
         }
 
@@ -142,14 +149,18 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();// Hiding the Explorer Bike Window
             Order order = new Order(ref _currentUser);// create new window
+            order.FormClosed += (s, args) => this.Close();
             order.Show();// Showing the Order window
-            this.Close();// Hiding the Explorer Bike Window
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var login = new Login();// create new window
+            login.FormClosed += (s, args) => this.Close();
+            login.Show();// Showing the Login window
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

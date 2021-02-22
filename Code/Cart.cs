@@ -45,7 +45,10 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            var login = new Login();// create new window
+            login.FormClosed += (s, args) => this.Close();
+            login.Show();// Showing the Login window
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -55,8 +58,6 @@ namespace Bovelo
 
         private void button7_Click(object sender, EventArgs e)
         {
-            //MainHome mh = new MainHome();// create new window
-            /*mh.Show();// Showing the Main Home window*/
             this.Hide();// Hiding the Explorerbike Window
             var MainHome = new MainHome(_currentUser);// create new window
             MainHome.FormClosed += (s, args) => this.Close();
@@ -65,9 +66,7 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Cart cart = new Cart(_currentUser);// create new window
-            //_currentUser.cart.Show();// Showing the Cart window
-            this.Hide();// Hiding the MainHome Window
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -83,9 +82,10 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Order order = new Order(ref _currentUser);// create new window
+            order.FormClosed += (s, args) => this.Close();
             order.Show();// Showing the Order window
-            this.Close();// Hiding the Explorer Bike Window
         }
     }
 }

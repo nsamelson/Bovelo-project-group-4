@@ -12,7 +12,6 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        private App app = new App();
         private User _currentUser = new User(" "," "); 
         internal MainHome(User incomingUser)
         {
@@ -58,25 +57,26 @@ namespace Bovelo
         {
 
             Button Bt = (Button)sender;
-
+            this.Hide();// Hiding the MainHome Window
             switch (Convert.ToString(Bt.Tag))
             {
-                case "City" :
-                
-                    ShowBike citybike = new ShowBike("City",ref _currentUser);
+                case "City":
+
+                    ShowBike citybike = new ShowBike("City", ref _currentUser);
+                    citybike.FormClosed += (s, args) => this.Close();
                     citybike.Show();
                     break;
-                case "Adventure" :
-                    ShowBike adventure = new ShowBike("Adventure",ref _currentUser);
+                case "Adventure":
+                    ShowBike adventure = new ShowBike("Adventure", ref _currentUser);
+                    adventure.FormClosed += (s, args) => this.Close();
                     adventure.Show();
                     break;
-                case "Explorer" :
-                    ShowBike explorerbike = new ShowBike("Explorer",ref _currentUser);
+                case "Explorer":
+                    ShowBike explorerbike = new ShowBike("Explorer", ref _currentUser);
+                    explorerbike.FormClosed += (s, args) => this.Close();
                     explorerbike.Show();
-                    break; 
+                    break;
             }
-
-            this.Hide();// Hiding the MainHome Window
         }
 
         private void button6_Click(object sender, EventArgs e)
