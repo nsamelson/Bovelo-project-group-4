@@ -110,7 +110,7 @@ namespace Bovelo
             this.Column6});
             this.dataGridView1.Location = new System.Drawing.Point(30, 134);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(646, 52);
+            this.dataGridView1.Size = new System.Drawing.Size(646, 134);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -154,6 +154,7 @@ namespace Bovelo
             this.Name = "Order";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order";
+            this.Load += new System.EventHandler(this.Order_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

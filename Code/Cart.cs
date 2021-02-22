@@ -73,6 +73,8 @@ namespace Bovelo
         {
             OrderBike o = new OrderBike(_currentUser);
             o.addOrderBike();
+            dataGridView1.Rows.Clear();
+            _currentUser.emptyCart();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -86,6 +88,17 @@ namespace Bovelo
             Order order = new Order(ref _currentUser);// create new window
             order.FormClosed += (s, args) => this.Close();
             order.Show();// Showing the Order window
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            _currentUser.emptyCart();
         }
     }
 }
