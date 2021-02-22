@@ -37,7 +37,7 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var login = new Login(app);// create new window
+            var login = new Login();// create new window
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
         }
