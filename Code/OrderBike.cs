@@ -25,37 +25,39 @@ namespace Bovelo
         }
         public void addOrderBike()
         {
-
-
-
-            string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            //conn.ConnectionString = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
-/*            try
+            Cart c = new Cart(ref _currentUser);
+            int i = 0;
+            foreach (List<string> element in Cart)
             {
-                Console.WriteLine("Connecting to MySQL...");
+                this.BikeType = element[0];
+                this.BikeSize = element[1];
+                this.BikeColor = element[2];
+                this.Quantity = int.Parse(element[3]);
+                this.ShippingTime = element[4];
+                Console.WriteLine(element);
 
-                conn.Open();
-                string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time) VALUES('"+this.BikeType+ "','" + this.BikeSize + "', '" + this.BikeColor + "'," + this.Quantity + ",  '" + this.ShippingTime + "'); ";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                //cmd.Connection = conn;
-                //cmd.Parameters.Add(new MySqlParameter("@BikeType", BikeType));
-                MySqlDataReader rdr = cmd.ExecuteReader();
+                string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
+                MySqlConnection conn = new MySqlConnection(connStr);
+                try
+                {
+                    Console.WriteLine("Connecting to MySQL...");
+                    conn.Open();
+                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time) VALUES('" + this.BikeType + "','" + this.BikeSize + "', '" + this.BikeColor + "'," + this.Quantity + ",  '" + this.ShippingTime + "'); ";
+                    MySqlCommand cmd = new MySqlCommand(sql, conn);
+                    MySqlDataReader rdr = cmd.ExecuteReader();
 
+                    //while (rdr.Read())
+                    //{
+                    //}
+                    rdr.Close();
+                }
+                catch (Exception ex)
+                {
 
-
-                //while (rdr.Read())
-                //{
-
-                //}
-                rdr.Close();
+                }
+                conn.Close();
             }
-            catch (Exception ex)
-            {
 
-            }
-            conn.Close();
-            */
         }
     }
 }

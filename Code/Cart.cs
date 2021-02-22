@@ -87,7 +87,8 @@ namespace Bovelo
                 label3.Text = o.Cart.Count.ToString();
             }
 
-            //o.addOrderBike();
+            o.addOrderBike();
+            dataGridView1.Rows.Clear();
 
             //for (int i = 0; i <= dataGridView1.Rows.Count; i++)
             //{
