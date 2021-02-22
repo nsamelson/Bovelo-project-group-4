@@ -72,40 +72,8 @@ namespace Bovelo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            int i;
             OrderBike o = new OrderBike(_currentUser);
-            o.CartLine = new List<string>();
-            o.Cart = new List<List<string>>();
-            foreach (DataGridViewRow row in dataGridView1.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    o.CartLine.Add(cell.Value.ToString());
-
-                }
-                o.Cart.Add(o.CartLine);
-                label3.Text = o.Cart.Count.ToString();
-            }
-
             o.addOrderBike();
-            dataGridView1.Rows.Clear();
-
-            //for (int i = 0; i <= dataGridView1.Rows.Count; i++)
-            //{
-            //label2.Text += dataGridView1.Rows[i].Cells[0].Value.ToString();
-
-            //}
-            //o.BikeType = dataGridView1.Rows[0].Cells[0].Value.ToString();
-            //o.BikeSize = dataGridView1.Rows[0].Cells[1].Value.ToString();
-            //o.BikeColor = dataGridView1.Rows[0].Cells[2].Value.ToString();
-            //o.Quantity = int.Parse(dataGridView1.Rows[0].Cells[3].ToString());
-            //o.DateTime = dataGridView1.Rows[0].Cells[4].Value.ToString();
-
-
-
-           
-
-
         }
 
         private void label2_Click(object sender, EventArgs e)

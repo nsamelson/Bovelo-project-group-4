@@ -1,22 +1,17 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 
 namespace Bovelo
 {
     class OrderBike
     {
-        public string BikeType;
-        public string BikeSize;
-        public string BikeColor;
-        public int Quantity;
-        public string ShippingTime;
-        public List<string> CartLine ;
-        public List<List<string>> Cart;
-        public User _currentUser = new User(" "," ");
+        //public string BikeType;
+        //public string BikeSize;
+        //public string BikeColor;
+        //public string ShippingTime;
+
+        public User _currentUser = new User(" ", " ");
 
         public OrderBike(User incomingUser)
         {
@@ -26,38 +21,28 @@ namespace Bovelo
         public void addOrderBike()
         {
             Cart c = new Cart(ref _currentUser);
-            int i = 0;
-            foreach (List<string> element in Cart)
+            string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";          
+            MySqlConnection conn = new MySqlConnection(connStr);           
+            try            
             {
-                this.BikeType = element[0];
-                this.BikeSize = element[1];
-                this.BikeColor = element[2];
-                this.Quantity = int.Parse(element[3]);
-                this.ShippingTime = element[4];
-                Console.WriteLine(element);
-
-                string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";
-                MySqlConnection conn = new MySqlConnection(connStr);
-                try
+                Console.WriteLine("Connecting to MySQL...");
+                conn.Open();
+                foreach(Item elem in _currentUser.cart)
                 {
-                    Console.WriteLine("Connecting to MySQL...");
-                    conn.Open();
-                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time) VALUES('" + this.BikeType + "','" + this.BikeSize + "', '" + this.BikeColor + "'," + this.Quantity + ",  '" + this.ShippingTime + "'); ";
+                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "'); ";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
-
-                    //while (rdr.Read())
-                    //{
-                    //}
                     rdr.Close();
-                }
-                catch (Exception ex)
-                {
-
-                }
-                conn.Close();
-            }
-
+                }          
+                //while (rdr.Read())               
+                //{               
+                //}                               
+            }           
+            catch (Exception ex)           
+            {
+                
+            }         
+            conn.Close();
         }
     }
 }
