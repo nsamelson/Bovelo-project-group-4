@@ -132,7 +132,9 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            Order order = new Order(ref _currentUser);// create new window
+            order.Show();// Showing the Order window
+            this.Close();// Hiding the Explorer Bike Window
         }
 
         private void button1_Click(object sender, EventArgs e)

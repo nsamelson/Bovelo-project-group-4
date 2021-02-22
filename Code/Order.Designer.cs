@@ -33,7 +33,6 @@ namespace Bovelo
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +51,6 @@ namespace Bovelo
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -68,6 +66,7 @@ namespace Bovelo
             this.button7.TabIndex = 5;
             this.button7.Text = "Catalogue";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button3
             // 
@@ -77,6 +76,7 @@ namespace Bovelo
             this.button3.TabIndex = 4;
             this.button3.Text = "Orders";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -86,16 +86,7 @@ namespace Bovelo
             this.button2.TabIndex = 3;
             this.button2.Text = "Cart";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(577, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(54, 55);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Profile/Login";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label1
             // 
@@ -176,7 +167,6 @@ namespace Bovelo
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
