@@ -37,6 +37,7 @@ namespace Bovelo
             this.Price = Price;
         }
 
+
         /*        public void addBikeType()
                 {
                     BikeTypesList.Add(new _BikeType() City);

@@ -15,7 +15,8 @@ namespace Bovelo
         
         public string[] row;
         private User _currentUser = new User(" "," ",0);
-      
+
+        private App app = new App();
         internal Cart(ref User incomingUser)
         {
             _currentUser = incomingUser;
@@ -33,14 +34,22 @@ namespace Bovelo
             i = 0;
             foreach (Item elem in _currentUser.cart)
             {
+                int price = 0;
+                foreach (var bike in app.BikeModel)
+                {
+                    if (bike.Type == elem.bike.Type)
+                    {
+                        price = bike.Price;
+                    }
+                }
                 Console.WriteLine(elem.bike.Type + " " + elem.quantity);
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
                 dataGridView1.Rows[i].Cells[4].Value = elem.bike.TotalTime.ToString();
-                dataGridView1.Rows[i].Cells[5].Value = ((elem.bike.Price) * (elem.quantity)).ToString();
-                Console.WriteLine(elem.bike.Price);
+                dataGridView1.Rows[i].Cells[5].Value = (price * elem.quantity).ToString();
+                Console.WriteLine(price);
                 i++;
             }
         }
