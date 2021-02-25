@@ -32,7 +32,7 @@ namespace Bovelo
                 conn.Open();
                 foreach(Item elem in _currentUser.cart)
                 {
-                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "', '"+ 1000 + "', '" + _currentUser.idUser+ "'); ";
+                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "', '"+ elem.bike.Price + "', '" + _currentUser.idUser+ "'); ";
                     MySqlCommand cmd = new MySqlCommand(sql, conn);
                     MySqlDataReader rdr = cmd.ExecuteReader();
                     rdr.Close();
