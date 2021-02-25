@@ -51,6 +51,17 @@ An interface that updates the classes it's implemented in.
 ![](Documents/Mockupv2.png)
 
 
+## **4. User stories :**
+
+- As a representative, I want to be able to login to access my account.
+- As a representative, I want to see the list of products on the homepage of the app in order to present it to the bicycle shop.
+- As a representative, I want to click on a product to get its details.
+- As a representative, I want to choose the color, quantity and size on a product to add it in the cart.
+- As a representative, I want to know the price of a product to show it to the bicycle shop.
+- As a representative, I want to be able to add, delete, or see a product in my cart to pass the order.
+- As a representative, I want to validate, cancel my cart to manage my cart.
+- As a representative, I would like to receive a summary of my order in order to be able to receive the information to collect it.
+
 ## **3. Old links :**  
 
 - *First Diagrams [old] :* https://lucid.app/lucidchart/2d7e6938-bb10-4799-b251-3f24b5d9584f/edit?page=0_0#?folder_id=home&browser=icon  
