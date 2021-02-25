@@ -1,7 +1,7 @@
 .vscode
 obj
 test.txt
-Program.cs
+#Program.cs
 .vs
 .suo
 slnx.sqlite
