@@ -28,7 +28,7 @@ namespace Bovelo
         private void signin_Click(object sender, EventArgs e) // signin button
         {
 
-            bool isExisting = app.userList.Any(login => login.login == username.Text && login.password == password.Text);
+            bool isExisting = app.userList.Any(login => login.login == username.Text);
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
             else
             {

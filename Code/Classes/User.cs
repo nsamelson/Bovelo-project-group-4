@@ -11,72 +11,33 @@ namespace Bovelo
 
     class User
     {
-        public string login;
-        private string _password;
-        public string password { get => _password; }
-        public bool isAdmin = false;
-        public int idUser;
-        //public Cart cart_show;
+        public string login; 
+        public Dictionary<string,bool> userType =new Dictionary<string, bool>();
+        
         public List<Item> cart = new List<Item>();
-        public List<List<string>> orderList;
-        public User(string login, string password,int idUser)
+
+        public User(string login)
         {
             this.login = login;
-            this._password = password;
-            this.idUser = idUser;
-            this.orderList = getOrderList();
+            userType.Add("Representative", true);
+            userType.Add("ProductionManager", false);
+            userType.Add("Assembler", false);
 
         }
-        public User(string login, string password)
-        {
-            this.login = login;
-            this._password = password;
 
-        }
-        public void setOrderBike()
+        public void setNewOrder(int clientId)
         {
-            var orderList = getCartList();
-            OrderBike newOrder = new OrderBike(this);
-
-        }
-        public List<List<string>> getOrderList()
-        {
-            List<List<string>> orderList = new List<List<string>>();
             
-
-            var userFromDB = new List<User>();
-
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL...");
-            conn.Open();
-            string sql = "SELECT * FROM Order_Bikes WHERE id_User =" + idUser + "; ";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
+            if (userType["Representative"]==true)
             {
-                List<string> bikeInfo = new List<string>();
-                string idOrder = Convert.ToString(rdr[0]);
-                string bikeType = Convert.ToString(rdr[1]);
-                string bikeSize = Convert.ToString(rdr[2]);
-                string bikeColor = Convert.ToString(rdr[3]);
-                string quantity = Convert.ToString(rdr[4]);
-                string shipping_time = Convert.ToString(rdr[5]);
-                string price = Convert.ToString(rdr[6]);
-                Console.WriteLine(rdr[0].ToString());
-                bikeInfo.Add(bikeType );
-                bikeInfo.Add(bikeSize);
-                bikeInfo.Add(bikeColor);
-                bikeInfo.Add(quantity);
-                bikeInfo.Add(shipping_time);
-                bikeInfo.Add(price);
-                orderList.Add(bikeInfo);
+                OrderBike newOrder = new OrderBike(clientId);
+                newOrder.addOrderBike(getCartList());
             }
-            rdr.Close();
-            conn.Close();
-
-
-            return orderList;
+        }
+        public List<List<string>> getOrderList(int clientId)
+        {
+            OrderBike ordersUser = new OrderBike(clientId);
+            return ordersUser.getOrderBike();
         }
         public void addToCart(Bike bike, int quantity)
         {

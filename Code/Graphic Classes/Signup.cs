@@ -45,24 +45,28 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            bool isExisting = app.userList.Any(login => login.login == username.Text);
+            //NEED TO MOVE IT IN ANOTHER CLASS
+            /*bool isExisting = app.userList.Any(login => login.login == username.Text);
             if(!isExisting && username.Text!="" && password.Text !="")
             {
-                if (comboBox1.Text == "Client")
+                if (comboBox1.Text == "Representative")
                 {
-                    app.addNewUser(new User(username.Text, password.Text));
+                    app.addNewUser(new User(username.Text),true,false,false);
                 }
-                else if (comboBox1.Text == "Admin")
+                else if (comboBox1.Text == "ProductionManager")
                 {
-                    app.addNewAdmin(new User(username.Text, password.Text));
+                    app.addNewUser(new User(username.Text),false,true,false);
+                }
+                else if (comboBox1.Text == "Assembler")
+                {
+                    app.addNewUser(new User(username.Text), false, false, true);
                 }
                 MessageBox.Show("The user was created!");
-                app.sendUserToDB(app.userList[app.userList.Count - 1]);
+                //app.sendUserToDB(app.userList[app.userList.Count - 1]);
             }
             else if (username.Text == "" || password.Text == "") 
             { MessageBox.Show("Please select a valid username and password!"); }
-            else { MessageBox.Show("The Username is already in use!"); }
+            else { MessageBox.Show("The Username is already in use!"); }*/
             
         }
 

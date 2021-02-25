@@ -15,7 +15,7 @@ namespace Bovelo
     {
         public string TypeOfBike;
         public string path = Directory.GetCurrentDirectory();// recup the position in repositories
-        private User _currentUser=new User(" ", " ", 0);
+        private User _currentUser=new User(" ");
         private App app = new App();
         internal ShowBike(string TypeBike,ref User current_user)
         {
@@ -34,7 +34,7 @@ namespace Bovelo
        public int getBikePrice()
         {
             int price = 0;
-            foreach (var bike in app.BikeModel)
+            foreach (var bike in app.bikeModel)
             {
                 if (bike.Type == TypeOfBike)
                 {

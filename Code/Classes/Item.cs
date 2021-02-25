@@ -5,10 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Bovelo
 {
-    class Item //: Bike
+    class Item //: Bike should maybe put it that way because of composition
     {
         public int quantity ;
-        // public int quantity{ get => _quantity; set => _quantity=value;}
         public Bike bike;
         public Item(Bike bike, int quantity)
         {

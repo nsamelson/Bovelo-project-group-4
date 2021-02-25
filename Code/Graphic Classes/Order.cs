@@ -12,15 +12,15 @@ namespace Bovelo
 {
     public partial class Order : Form
     {
-        private User _currentUser = new User(" ", " ", 0);
-        private List<List<string>> orderList;
+        private User _currentUser = new User(" ");
+        //private List<List<string>> orderList;
         private OrderBike order ;
         internal Order(ref User incomingUser)
         {
             _currentUser = incomingUser;
             InitializeComponent();
-            this.order = new OrderBike(incomingUser);
-            this.orderList = _currentUser.orderList;
+            //this.order = new OrderBike(incomingUser);
+            //this.orderList = _currentUser.orderList;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -29,8 +29,9 @@ namespace Bovelo
         }
         private void Order_Load(object sender, EventArgs e)
         {
+            int clientId = 0;
             int i = 0;
-            foreach (var elem in _currentUser.getOrderList())
+            foreach (var elem in _currentUser.getOrderList(clientId))
             {
 
                 dataGridView1.Rows.Add();

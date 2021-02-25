@@ -14,7 +14,7 @@ namespace Bovelo
     {
         
         public string[] row;
-        private User _currentUser = new User(" "," ",0);
+        private User _currentUser = new User(" ");
 
         private App app = new App();
         internal Cart(ref User incomingUser)
@@ -36,7 +36,7 @@ namespace Bovelo
             foreach (Item elem in _currentUser.cart)
             {
                 int price = 0;
-                foreach (var bike in app.BikeModel)
+                foreach (var bike in app.bikeModel)
                 {
                     if (bike.Type == elem.bike.Type)
                     {
@@ -86,8 +86,8 @@ namespace Bovelo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            OrderBike o = new OrderBike(_currentUser);
-            o.addOrderBike();
+            /*OrderBike o = new OrderBike(_currentUser);
+            o.addOrderBike();*/
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
             this.labelPrice.Text = "0€";

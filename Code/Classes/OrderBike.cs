@@ -8,62 +8,49 @@ namespace Bovelo
 {
     class OrderBike
     {
+        public List<List<string>> newOrderList;
+        public int clientId;
         //public string BikeType;
         //public string BikeSize;
         //public string BikeColor;
         //public string ShippingTime;
 
-        public User _currentUser;
-        
-
-        public OrderBike(User incomingUser)
-        {
-            _currentUser = incomingUser;
-
+        public OrderBike(int clientId)
+        {          
+            this.clientId = clientId;
         }
-        public void addOrderBike()
+        public void addOrderBike(List<List<string>> newOrder)
         {
-            Cart c = new Cart(ref _currentUser);
+            newOrderList = newOrder;
             string connStr = "server=193.191.240.67;user=testuser;database=Bovelo;port=63304;password=user_password";          
-            MySqlConnection conn = new MySqlConnection(connStr);           
-            try            
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL...");
+            conn.Open();
+            foreach (var elem in newOrderList)
             {
-                Console.WriteLine("Connecting to MySQL...");
-                conn.Open();
-                foreach(Item elem in _currentUser.cart)
-                {
-                    string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem.bike.Type + "','" + elem.bike.Size + "', '" + elem.bike.Color + "'," + elem.quantity + ",  '" + elem.bike.TotalTime + "', '"+ elem.bike.Price + "', '" + _currentUser.idUser+ "'); ";
-                    MySqlCommand cmd = new MySqlCommand(sql, conn);
-                    MySqlDataReader rdr = cmd.ExecuteReader();
-                    rdr.Close();
-                }          
-                //while (rdr.Read())               
-                //{               
-                //}                               
-            }           
-            catch (Exception ex)           
-            {
-                
-            }         
+                //need to change the table
+                string sql = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem[0] + "','" + elem[2] + "', '" + elem[1] + "'," + elem[3] + ",  '" + elem[0] + "', '" + elem[4] + "', '" + clientId + "'); ";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Close();
+            }                   
             conn.Close();
         }
-        /*public List<List<string>> getOrderList()
+        public List<List<string>> getOrderBike()
         {
             List<List<string>> orderList = new List<List<string>>();
-            List<string> bikeInfo = new List<string>();
 
-            var userFromDB = new List<User>();
-            //userFromDB.Add(new User("user1", "user1"));
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
-            string sql = "SELECT * FROM Order_Bikes WHERE id_User ="+ _currentUser.idUser+"; ";
+            string sql = "SELECT * FROM Order_Bikes WHERE id_User =" + clientId + "; ";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
+                List<string> bikeInfo = new List<string>();
                 string idOrder = Convert.ToString(rdr[0]);
                 string bikeType = Convert.ToString(rdr[1]);
                 string bikeSize = Convert.ToString(rdr[2]);
@@ -72,7 +59,12 @@ namespace Bovelo
                 string shipping_time = Convert.ToString(rdr[5]);
                 string price = Convert.ToString(rdr[6]);
                 Console.WriteLine(rdr[0].ToString());
-                bikeInfo.Add(bikeType+ bikeSize+ bikeColor+ quantity+ shipping_time+ price);
+                bikeInfo.Add(bikeType);
+                bikeInfo.Add(bikeSize);
+                bikeInfo.Add(bikeColor);
+                bikeInfo.Add(quantity);
+                bikeInfo.Add(shipping_time);
+                bikeInfo.Add(price);
                 orderList.Add(bikeInfo);
             }
             rdr.Close();
@@ -80,6 +72,6 @@ namespace Bovelo
 
 
             return orderList;
-        }*/
+        }
     }
 }

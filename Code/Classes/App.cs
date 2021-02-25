@@ -10,26 +10,69 @@ namespace Bovelo
     public class App 
     {
         internal List<User> userList;
-        internal List<Bike> BikeModel;
+        internal List<Bike> bikeModel;
+        internal List<OrderBike> orderBikeList; //takes all the orders from the DB
+        
+       
 
-        public App()
+        public App()//MOVE ALL CONNECTIONS TO DB INTO THIS CLASS 
         {
             this.userList = getUserListFromDB();
-            this.BikeModel = getBikeModel();
+            this.bikeModel = getBikeModelFromDB();
+            this.orderBikeList = getOrderBikeFromDB();
         }
-        internal void addNewUser(User user)
+        internal void sendOrderBikeToDB() 
         {
-            userList.Add(user);
+            //copy method from OrderBike class
+            //Will send 2 things to Database : Order details and Order client
         }
-        internal void addNewAdmin(User user)
+        internal List<OrderBike> getOrderBikeFromDB()
         {
-            user.isAdmin = true;
-            userList.Add(user);
+            var orderList = new List<OrderBike>();
+            //copy method from OrderBike class
+
+
+            return orderList;
+        }
+        internal List<List<string>> getFromDB(string DBTable) //is used to get anything from a database
+        {
+            var listFromDB = new List<List<string>>();
+
+
+
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL...");
+            conn.Open();
+            string sql = "SELECT * FROM "+DBTable+";";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+
+            }
+            rdr.Close();
+            conn.Close();
+            return listFromDB;
+        }
+        internal void sendToDB(string DBTable) //is used to send anything to the database
+        {
+
+        }
+        internal void addNewUser(User user,bool isRepresentative,bool isProductionManager,bool isAssmebler) 
+        {
+            user.userType["Representative"] = isRepresentative;
+            user.userType["ProductionManager"] = isProductionManager;
+            user.userType["Assmebler"] = isAssmebler;
+
+            //userList.Add(user);
+            sendUserToDB(user);
+            userList = getUserListFromDB(); //if latency problems, comment this line and uncomment "userList.Add(user)"
         }
         internal List<User> getUserListFromDB() //GET USERS REGISTERED INSIDE DATABASE 
         {
             var userFromDB = new List<User>();
-            //userFromDB.Add(new User("user1", "user1"));
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -43,53 +86,60 @@ namespace Bovelo
             {
                 int idUser = Convert.ToInt32(rdr[0]);
                 string login = Convert.ToString(rdr[1]);
-                string password = Convert.ToString(rdr[2]);
-                if (rdr[3].ToString() == "Admin")
+                string userType = Convert.ToString(rdr[2]);
+                if (userType == "Representative")
                 {
-                    var user = new User(login, password,idUser);
-                    user.isAdmin = true;
-                    userFromDB.Add(user);
+                    userFromDB.Add(new User(login));
+                    //addNewUser(new User(login), true, false, false); //do not uncomment this
                 }
-                else
+                else if (userType == "ProductionManager")
                 {
-                    userFromDB.Add(new User(login, password,idUser));
+                    User newUser = new User(login);
+                    newUser.userType["Representative"] = false;
+                    newUser.userType["ProductionManager"] = true;
+                    userFromDB.Add(newUser);
                 }
-
-
+                else if (userType == "Assembler")
+                {
+                    User newUser = new User(login);
+                    newUser.userType["Representative"] = false;
+                    newUser.userType["Assembler"] = true;
+                    userFromDB.Add(newUser);
+                }
             }
             rdr.Close();
             conn.Close();
-
-
-
-
             return userFromDB;
         }
         internal void sendUserToDB(User user) //SEND NEW USER INSIDE DATABASE
         {
-            //Console.WriteLine("New user : "+user.login +" password : "+ user.password +" is an admin : "+ user.isAdmin.ToString());
-
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
             MySqlConnection conn = new MySqlConnection(connStr);
             Console.WriteLine("Connecting to MySQL...");
             conn.Open();
             string query = "";
-            if(user.isAdmin)
+            //query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "','"user.userType"')"; //To change
+
+            if (user.userType["Representative"])
             {
-                 query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', '" + user.password + "','Admin')";
+                query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', 'Representative')";
             }
-            else
+            else if (user.userType["ProductionManager"])
             {
-                query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', '" + user.password + "','Client')";
+                query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', 'ProductionManager')";
             }
-            
+            else if (user.userType["Assembler"])
+            {
+                query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "', 'Assembler')";
+            }
+
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             Console.WriteLine("User added to DB");
             cmd.Dispose();
             conn.Close();
         }
-        internal List<Bike> getBikeModel()
+        internal List<Bike> getBikeModelFromDB()//MAYBE MOVE IT INSIDE BIKE CLASS
         {
             List<Bike> bikeList = new List<Bike>();
             int i = 0;
@@ -103,7 +153,6 @@ namespace Bovelo
 
             while (rdr.Read())
             {
-                //Bike myBike = new Bike((Convert.ToString(rdr[1]),Convert.ToInt32(rdr[2]));
                 string Types = Convert.ToString(rdr[1]);
                 int Prices = Convert.ToInt32(rdr[2]);
 

@@ -12,7 +12,7 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        private User _currentUser = new User(" "," "); 
+        private User _currentUser = new User(" "); 
         internal MainHome(User incomingUser)
         {
             InitializeComponent();
