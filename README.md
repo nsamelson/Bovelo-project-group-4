@@ -64,6 +64,13 @@ An interface that updates the classes it's implemented in.
 - As a representative, I want to validate, cancel my cart to manage my cart.
 - As a representative, I would like to receive a summary of my order in order to be able to receive the information to collect it.
 
+###  **3.2 Iteration 2 :**  
+
+- As a production manager, I want to be able to see all the orders to make a production planning.
+- As an assembler, I want to see the production planning in order to know what I have to do for the week.
+- As an assembler, I want to have access to the available bike parts in order to assemble the bikes.
+- As a representative, I want to receive an estimated delivery time in order to inform the bicycle shop when the order will be ready.
+
 ## **4. Old links :**  
 
 - *First Diagrams [old] :* https://lucid.app/lucidchart/2d7e6938-bb10-4799-b251-3f24b5d9584f/edit?page=0_0#?folder_id=home&browser=icon  
