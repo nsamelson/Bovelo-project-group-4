@@ -172,7 +172,7 @@ namespace Bovelo
             this.Controls.Add(this.username);
             this.Name = "Signup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Signup";
+            this.Text = "Bovelo V1.0";
             this.Load += new System.EventHandler(this.Signup_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

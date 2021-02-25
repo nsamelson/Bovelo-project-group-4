@@ -153,7 +153,7 @@ namespace Bovelo
             this.Controls.Add(this.panel1);
             this.Name = "Order";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Order";
+            this.Text = "Bovelo V1.0";
             this.Load += new System.EventHandler(this.Order_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

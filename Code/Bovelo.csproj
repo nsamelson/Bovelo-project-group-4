@@ -68,66 +68,69 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cart.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cart.Designer.cs">
-      <DependentUpon>Cart.cs</DependentUpon>
-    </Compile>
     <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\Bike.cs" />
     <Compile Include="Classes\BikePart.cs" />
     <Compile Include="Classes\Catalog.cs" />
     <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\OrderBike.cs" />
     <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\User.cs" />
-    <Compile Include="ShowBike.cs">
+    <Compile Include="Graphic Classes\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ShowBike.Designer.cs">
-      <DependentUpon>ShowBike.cs</DependentUpon>
+    <Compile Include="Graphic Classes\Cart.Designer.cs">
+      <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Graphic Classes\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Graphic Classes\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainHome.cs">
+    <Compile Include="Graphic Classes\MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainHome.Designer.cs">
+    <Compile Include="Graphic Classes\MainHome.Designer.cs">
       <DependentUpon>MainHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Order.cs">
+    <Compile Include="Graphic Classes\Order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Order.Designer.cs">
+    <Compile Include="Graphic Classes\Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
-    <Compile Include="OrderBike.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Signup.cs">
+    <Compile Include="Graphic Classes\ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Signup.Designer.cs">
+    <Compile Include="Graphic Classes\ShowBike.Designer.cs">
+      <DependentUpon>ShowBike.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic Classes\Signup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Cart.resx">
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Graphic Classes\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ShowBike.resx">
-      <DependentUpon>ShowBike.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Graphic Classes\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainHome.resx">
+    <EmbeddedResource Include="Graphic Classes\MainHome.resx">
       <DependentUpon>MainHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Order.resx">
+    <EmbeddedResource Include="Graphic Classes\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
+      <DependentUpon>ShowBike.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Signup.resx">
+      <DependentUpon>Signup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,10 +141,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Signup.resx">
-      <DependentUpon>Signup.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include=".gitignore" />
+    <None Include="bin\Debug\Pictures\City\city_derailleuricone.jpg~277ddd8242ce0c7e086e6530d3ba11567cfe6664" />
+    <None Include="bin\Debug\Pictures\City\city_derailleurv1.jpg~277ddd8242ce0c7e086e6530d3ba11567cfe6664" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -166,6 +168,77 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_guidonicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_profilaccueil.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_profilaccueil1.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_profilaccueil2.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_profilicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Adventure\Adventure_rouev1.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\City\city_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\City\city_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_guidonicone.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_profilaccueil.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_profilicone.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\City\City_rouev1.jpg" />
+    <Content Include="bin\Debug\Pictures\color\blanc.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\adventure_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\city_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_guidonicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_profilaccueil.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_profilicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\Explorer\Explorer_rouev1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_guidonicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_profilicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\adventure_rouev1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_guidonicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_profilicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\city_rouev1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_biaisicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_biaisv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_derailleuricone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_derailleurv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_guidonicone.png" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_guidonv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_profilv1.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_profil_accueil.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_profil_icone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_roueicone.jpg" />
+    <Content Include="bin\Debug\Pictures\tous\explorer_rouev1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -218,7 +218,7 @@ namespace Bovelo
             this.Controls.Add(this.panel1);
             this.Name = "Cart";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cart";
+            this.Text = "Bovelo V1.0";
             this.Load += new System.EventHandler(this.Cart_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
