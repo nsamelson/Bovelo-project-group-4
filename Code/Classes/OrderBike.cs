@@ -8,16 +8,20 @@ namespace Bovelo
 {
     class OrderBike
     {
-        public List<List<string>> newOrderList;
+        public List<List<string>> newOrderList; //to remove
         public int clientId;
-        //public string BikeType;
-        //public string BikeSize;
-        //public string BikeColor;
-        //public string ShippingTime;
+        public int orderId;
+        public string clientName;
+        public int orderPrice;
+        public DateTime orderDate;
+        public DateTime shippingDate;
+        public List<Item> orderDetail; // or a list of list of strings
 
-        public OrderBike(int clientId)
-        {          
-            this.clientId = clientId;
+
+        public OrderBike(string clientName)
+        {
+            this.clientName = clientName;
+            //this.clientId = clientId;
         }
         public void addOrderBike(List<List<string>> newOrder)
         {

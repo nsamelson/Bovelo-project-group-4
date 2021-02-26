@@ -12,7 +12,7 @@ namespace Bovelo
 {
     public partial class Order : Form
     {
-        private User _currentUser = new User(" ");
+        private User _currentUser = new User(" ", false, false, false);
         //private List<List<string>> orderList;
         private OrderBike order ;
         internal Order(ref User incomingUser)
@@ -31,7 +31,7 @@ namespace Bovelo
         {
             int clientId = 0;
             int i = 0;
-            foreach (var elem in _currentUser.getOrderList(clientId))
+            /*foreach (var elem in _currentUser.getOrderList(clientId))
             {
 
                 dataGridView1.Rows.Add();
@@ -44,7 +44,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[5].Value = (Int32.Parse(elem[5])* Int32.Parse(elem[3])).ToString();
 
                 i++;
-            }
+            }*/
         }
         private void button3_Click(object sender, EventArgs e)
         {
