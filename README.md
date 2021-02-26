@@ -48,6 +48,8 @@ An interface that updates the classes it's implemented in.
 
 ### **2.3. Schematics :**  
 - *Interface mockup :*  
+- *Mockup iteration 1 :* https://app.diagrams.net/#G1E008b_3q2edldHUvpJ3NwuaSqwDhu-G8
+- *Mockup iteration 2 :* https://app.diagrams.net/#G1Z4jrSf73k9zW0ssS0kXVY-IMI5MD1hKv
 ![](Documents/Mockupv2.png)
 
 
