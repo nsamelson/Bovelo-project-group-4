@@ -1,0 +1,10 @@
+.vscode
+obj
+test.txt
+Program.cs
+.vs
+.suo
+slnx.sqlite
+VSWorkspaceState.json
+bin
+#test
