@@ -16,16 +16,16 @@ namespace Bovelo
         
         public List<Item> cart = new List<Item>();
 
-        public User(string login)
+        public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
             this.login = login;
-            userType.Add("Representative", true);
-            userType.Add("ProductionManager", false);
-            userType.Add("Assembler", false);
+            userType.Add("Representative", isRepresentative);
+            userType.Add("ProductionManager", isProductionManager);
+            userType.Add("Assembler", isAssembler);
 
         }
 
-        public void setNewOrder(int clientId)
+        /*public void setNewOrder(int clientId)//Need to move in app
         {
             
             if (userType["Representative"]==true)
@@ -34,11 +34,12 @@ namespace Bovelo
                 newOrder.addOrderBike(getCartList());
             }
         }
-        public List<List<string>> getOrderList(int clientId)
+        public List<List<string>> getOrderList(int clientId)//Need to move in app
         {
+
             OrderBike ordersUser = new OrderBike(clientId);
             return ordersUser.getOrderBike();
-        }
+        }*/
         public void addToCart(Bike bike, int quantity)
         {
             cart.Add(new Item(bike, quantity));
