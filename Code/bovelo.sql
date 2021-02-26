@@ -26,4 +26,4 @@ INSERT INTO User_value VALUES(1,0,"Jean","Dupond","205556","motdepassenonsecuris
 INSERT INTO User_value VALUES(2,2,"Eric","Dubois","205557","motdepassenonsecurise");
 INSERT INTO User_value VALUES(3,1,"Camille","Duruisseau","205558","motdepassenonsecurise");
 INSERT INTO User_value VALUES(4,1,"Luc","Dufleuve","205559","motdepassenonsecurise");
-
+INSERT INTO User_value VALUES(4,1,"Luc","Dufleuve","205559","motdepassenonsecurise");
