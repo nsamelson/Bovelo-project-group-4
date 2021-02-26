@@ -7,7 +7,4 @@ Program.cs
 slnx.sqlite
 VSWorkspaceState.json
 bin
-#test
-packages
-App.config
-packages.config
+
