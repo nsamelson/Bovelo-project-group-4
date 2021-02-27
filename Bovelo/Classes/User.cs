@@ -9,7 +9,7 @@ using System.Reflection;
 namespace Bovelo
 {
 
-    class User
+    class User //user class, is representative, ProductionManager or Assembler. Contains a cart for the representative and methods with rights depending of its status
     {
         public string login; 
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
@@ -25,26 +25,11 @@ namespace Bovelo
 
         }
 
-        /*public void setNewOrder(int clientId)//Need to move in app
-        {
-            
-            if (userType["Representative"]==true)
-            {
-                OrderBike newOrder = new OrderBike(clientId);
-                newOrder.addOrderBike(getCartList());
-            }
-        }
-        public List<List<string>> getOrderList(int clientId)//Need to move in app
-        {
-
-            OrderBike ordersUser = new OrderBike(clientId);
-            return ordersUser.getOrderBike();
-        }*/
-        public void addToCart(Bike bike, int quantity)
+        public void addToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
         {
             cart.Add(new Item(bike, quantity));
         }
-        public List<List<string>> getCartList()
+        public List<List<string>> getCartList() //returns the cart into a list of list of string
         {
             var cartAsList = new List<List<string>>();
 
@@ -61,7 +46,7 @@ namespace Bovelo
 
             return cartAsList;
         }
-        public void incrementItem(int idList)
+        public void incrementItem(int idList) //increment the quantity of a bike in cart
         {
             if (cart[idList].quantity < 100)
             {
@@ -72,7 +57,7 @@ namespace Bovelo
                 Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.Type);
             }
         }
-        public void decrementItem(int idList)
+        public void decrementItem(int idList) //decrement the quantity of a bike in cart
         {
             if (cart[idList].quantity > 0)
             {
@@ -83,11 +68,11 @@ namespace Bovelo
                 Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.Type);
             }
         }
-        public void deleteItem(int idList)
+        public void deleteItem(int idList) //deletes an item from the cart
         {
             cart.RemoveAt(idList);
         }
-        public void emptyCart()
+        public void emptyCart() //empty the cart
         {
             cart.Clear();
         }
