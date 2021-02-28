@@ -90,12 +90,6 @@
     <Compile Include="Graphic Classes\ShowBike.Designer.cs">
       <DependentUpon>ShowBike.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Signup.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Graphic Classes\Signup.Designer.cs">
-      <DependentUpon>Signup.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Graphic Classes\Cart.resx">
@@ -112,9 +106,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Signup.resx">
-      <DependentUpon>Signup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

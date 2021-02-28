@@ -27,24 +27,23 @@ namespace Bovelo
 
         private void signin_Click(object sender, EventArgs e) // login button
         {
-            string userType = comboBox1.Text;
-
-            //TO CHANNGE
+            //NOT OPTIMAL
             //if Assembler : select which one (id, name)?
             //elif representative
             //elif Product manager
-           /* bool isExisting = app.userList.Any(login => login.login == username.Text);
-            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
+            string userType = comboBox1.Text;
+            string userName = textBox1.Text;
+            bool isExisting = app.userList.Any(login => login.login == userName);
+            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again or create a new user!"); }
             else
             {
-              int index = app.userList.FindIndex(a => a.login == username.Text);
+                int index = app.userList.FindIndex(a => a.login == userName);
+
                 this.Hide(); //hides the current form
-                MainHome mh = new MainHome(app.userList[index]);// create new window Form with the user passed in it
+                MainHome mh = new MainHome(app.userList[index]);// maybe send the userType with it
                 mh.FormClosed += (s, args) => this.Close(); // close the login Form
-                mh.Show();// Showing the Sign-up window
-            }*/
-            
-          
+                mh.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -52,30 +51,33 @@ namespace Bovelo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void username_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void password_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void signup_Click(object sender, EventArgs e)
         {
             //DONT NEED SIGNUP WINDOWS FORM, ONLY ENTER A NEW TYPE or maybe just a popup
-
-            this.Hide();
-            var signup = new Signup();// create new window
-            signup.FormClosed += (s, args) => this.Close();
-            signup.Show();// Showing the Sign-up window
-
+            string userName = textBox1.Text;
+            bool isExisting = app.userList.Any(login => login.login == userName);
+            if (!isExisting && userName != "")
+            {
+                if (comboBox1.Text == "Representative")
+                {
+                    app.setNewUser(new User(userName, true, false, false));
+                    MessageBox.Show("A new Representative was created!");
+                }
+                else if (comboBox1.Text == "ProductionManager")
+                {
+                    app.setNewUser(new User(userName,false,true,false));
+                    MessageBox.Show("A new Production Manager was created!");
+                }
+                else if (comboBox1.Text == "Assembler")
+                {
+                    app.setNewUser(new User(userName, false, false, true));
+                    MessageBox.Show("A new Assembler was created!");
+                }
+                else { MessageBox.Show("Please select a valid user Type"); }
+            }
+            else if (userName == "")
+            { MessageBox.Show("Please select a valid username "); }
+            else { MessageBox.Show("The Username is already in use!"); }
         }
 
         private void label4_Click(object sender, EventArgs e)
