@@ -25,9 +25,14 @@ namespace Bovelo
             // to complete
         }
 
-        private void signin_Click(object sender, EventArgs e) // signin button
+        private void signin_Click(object sender, EventArgs e) // login button
         {
+            string userType = comboBox1.Text;
 
+            //TO CHANNGE
+            //if Assembler : select which one (id, name)?
+            //elif representative
+            //elif Product manager
             bool isExisting = app.userList.Any(login => login.login == username.Text);
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
             else
@@ -64,6 +69,8 @@ namespace Bovelo
 
         private void signup_Click(object sender, EventArgs e)
         {
+            //DONT NEED SIGNUP WINDOWS FORM, ONLY ENTER A NEW TYPE or maybe just a popup
+
             this.Hide();
             var signup = new Signup();// create new window
             signup.FormClosed += (s, args) => this.Close();
@@ -72,6 +79,11 @@ namespace Bovelo
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
