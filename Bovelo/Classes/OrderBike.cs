@@ -24,14 +24,14 @@ namespace Bovelo
             this.orderId = id;
             this.totalPrice = getTotalPrice();
             this.orderDate = DateTime.Now;
-            this.shippingDate = DateTime.Now.AddDays(14);
+            this.shippingDate = DateTime.Today.AddDays(14);
         }
         public int getTotalPrice()
         {
             int totPrice = 0;
             foreach(var item in orderDetail)
             {
-                totalPrice += Int32.Parse(item[7]);
+                totPrice += Int32.Parse(item[4]);
             }
             return totPrice;
         }

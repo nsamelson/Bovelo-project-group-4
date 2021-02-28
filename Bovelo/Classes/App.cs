@@ -61,17 +61,16 @@ namespace Bovelo
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName) //is used to pass a new order  HAVE TO CHANGE
         {
             //It has to send 2 things to Database : Order details and Order client
-            //ORDER BIKES = [id,ClientName,totalPrice,OrderTime,ShippingTime]
-            //ORDER DETAILS = [id, orderBike_Id,ClientName,BikeType,BikeColor,BikeSize,quantity,price,orderTime]
             int orderId = orderBikeList.Last().orderId +1;
+            
             OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
-            string queryOB = "INSERT INTO Order_Bikes(ClientName,totalPrice,OrderTime,ShippingTime) VALUES('" + newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "', '" +newOrderBike.orderDate + "', " + newOrderBike.shippingDate + "'); ";
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('"+ newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "', '" + newOrderBike.orderDate.ToString() + "', '" + newOrderBike.shippingDate.ToString() + "'); ";
             sendToDB(queryOB);
- 
+
             foreach (var elem in newOrder)
             {
                 //needs to change the table
-                string queryOD = "INSERT INTO Order_Bikes (orderBike_Id,ClientName,BikeType,BikeColor,BikeSize,quantity,price,orderTime) VALUES('" + orderId.ToString() + "','" + clientName + "', '" + elem[0] + "'," + elem[1] + ",  '" + elem[2] + "', '" + elem[3] + "', '" + elem[4]+"', '"+ newOrderBike.orderDate+"'); ";
+                string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Quantity,Price,Customer_Name,Id_Order) VALUES('" + elem[0] + "', '" + elem[2] + "','" + elem[1] + "',  '" + elem[3] + "', '" + elem[4] + "', '" + newOrderBike.clientName + "', '" + orderId + "'); ";
                 sendToDB(queryOD);
             }
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
@@ -99,7 +98,7 @@ namespace Bovelo
             var orderDetailList = getFromDB("Order_Details");
             foreach (var row in orderList)
             {
-                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[1] == row[0])); //takes each lists with the same order_Id
+                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0])); //takes each lists with the same order_Id
                 orderBikeList.Add(new OrderBike(row[1], details,Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
             }
             return orderBikeList;

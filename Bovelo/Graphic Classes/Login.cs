@@ -33,7 +33,7 @@ namespace Bovelo
             //if Assembler : select which one (id, name)?
             //elif representative
             //elif Product manager
-            bool isExisting = app.userList.Any(login => login.login == username.Text);
+           /* bool isExisting = app.userList.Any(login => login.login == username.Text);
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again!"); }
             else
             {
@@ -42,7 +42,7 @@ namespace Bovelo
                 MainHome mh = new MainHome(app.userList[index]);// create new window Form with the user passed in it
                 mh.FormClosed += (s, args) => this.Close(); // close the login Form
                 mh.Show();// Showing the Sign-up window
-            }
+            }*/
             
           
         }
