@@ -9,10 +9,26 @@ namespace Bovelo
     {
         public int quantity ;
         public Bike bike;
+        public int price;
         public Item(Bike bike, int quantity)
         {
             this.quantity = quantity;
             this.bike = bike;
+            this.price = getPrice();
+        }
+        public void increment()
+        {
+            quantity++;
+            price = getPrice();
+        }
+        public void decrement()
+        {
+            quantity--;
+            price = getPrice();
+        }
+        public int getPrice()
+        {
+            return quantity * bike.Price;
         }
     }
 }

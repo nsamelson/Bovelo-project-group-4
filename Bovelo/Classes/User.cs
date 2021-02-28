@@ -40,7 +40,7 @@ namespace Bovelo
                 bikeInfo.Add(item.bike.Color);
                 bikeInfo.Add(item.bike.Size.ToString());
                 bikeInfo.Add(item.quantity.ToString());
-                bikeInfo.Add(item.bike.Price.ToString());
+                bikeInfo.Add(item.getPrice().ToString());
                 cartAsList.Add(bikeInfo);
             }
 
@@ -50,7 +50,7 @@ namespace Bovelo
         {
             if (cart[idList].quantity < 100)
             {
-                cart[idList].quantity++;
+                cart[idList].increment();
             }
             else
             {
@@ -61,7 +61,7 @@ namespace Bovelo
         {
             if (cart[idList].quantity > 0)
             {
-                cart[idList].quantity--;
+                cart[idList].decrement();
             }
             else
             {

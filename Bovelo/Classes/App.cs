@@ -58,16 +58,21 @@ namespace Bovelo
             conn.Close();
         }
 
-        internal void setNewOrderBike(List<List<string>> newOrder) //is used to pass a new order  HAVE TO CHANGE
+        internal void setNewOrderBike(List<List<string>> newOrder, string clientName) //is used to pass a new order  HAVE TO CHANGE
         {
             //It has to send 2 things to Database : Order details and Order client
-            int clientId = 0;
-            
+            //ORDER BIKES = [id,ClientName,totalPrice,OrderTime,ShippingTime]
+            //ORDER DETAILS = [id, orderBike_Id,ClientName,BikeType,BikeColor,BikeSize,quantity,price,orderTime]
+            int orderId = orderBikeList.Last().orderId +1;
+            OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
+            string queryOB = "INSERT INTO Order_Bikes(ClientName,totalPrice,OrderTime,ShippingTime) VALUES('" + newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "', '" +newOrderBike.orderDate + "', " + newOrderBike.shippingDate + "'); ";
+            sendToDB(queryOB);
+ 
             foreach (var elem in newOrder)
             {
                 //needs to change the table
-                string query = "INSERT INTO Order_Bikes (Bike_type,Bike_Size,Bike_Color,Quantity,Shipping_Time,Order_Price,id_User) VALUES('" + elem[0] + "','" + elem[2] + "', '" + elem[1] + "'," + elem[3] + ",  '" + elem[0] + "', '" + elem[4] + "', '" + clientId + "'); ";
-                sendToDB(query);
+                string queryOD = "INSERT INTO Order_Bikes (orderBike_Id,ClientName,BikeType,BikeColor,BikeSize,quantity,price,orderTime) VALUES('" + orderId.ToString() + "','" + clientName + "', '" + elem[0] + "'," + elem[1] + ",  '" + elem[2] + "', '" + elem[3] + "', '" + elem[4]+"', '"+ newOrderBike.orderDate+"'); ";
+                sendToDB(queryOD);
             }
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
 
@@ -95,7 +100,7 @@ namespace Bovelo
             foreach (var row in orderList)
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[1] == row[0])); //takes each lists with the same order_Id
-                orderBikeList.Add(new OrderBike(row[1], details));//row[1] is the column where the name of the client is put
+                orderBikeList.Add(new OrderBike(row[1], details,Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
             }
             return orderBikeList;
         }

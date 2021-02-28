@@ -31,19 +31,7 @@ namespace Bovelo
             _BikeSize = Size;
             this.Price = price;
         }
-        /*public void InsertBiketoDB(string type, int price, string time)//MAYBE MOVE IT IN APP
-        {
-            string connStr = "server=193.191.240.67;user=USER1;database=Bovelo;port=63304;password=USER1";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL...");
-            conn.Open();
-            string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            Console.WriteLine("Bike added into DB");
-            cmd.Dispose();
-            conn.Close();
-        }*/
+
     }
 
 }
