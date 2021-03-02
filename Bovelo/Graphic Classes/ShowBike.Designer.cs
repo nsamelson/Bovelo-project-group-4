@@ -134,7 +134,7 @@ namespace Bovelo
             "28"});
             this.comboBox1.Location = new System.Drawing.Point(480, 154);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(57, 21);
+            this.comboBox1.Size = new System.Drawing.Size(125, 21);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -152,7 +152,7 @@ namespace Bovelo
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(496, 223);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(41, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(109, 20);
             this.numericUpDown1.TabIndex = 18;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;

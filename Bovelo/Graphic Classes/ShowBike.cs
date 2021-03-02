@@ -139,10 +139,24 @@ namespace Bovelo
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ColorDialog color =  new ColorDialog();
-            color.ShowDialog();
-            textBox1.BackColor = color.Color;
-            label8.Text = color.Color.Name;
+            ColorDialog color = new ColorDialog();
+            color.CustomColors = new int[] { ToInt(Color.Black), ToInt(Color.Red), ToInt(Color.Blue) };
+            if (color.ShowDialog() == DialogResult.OK)
+            {
+                if (color.Color == Color.Black ||  color.Color == Color.Blue || color.Color == Color.Red)
+                {
+                    label8.Text = color.Color.Name;
+                    textBox1.BackColor = color.Color;
+                }
+                else
+                {
+                    MessageBox.Show(color.Color + "cannot be used " , "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            int ToInt(Color c)
+            {
+                return c.R + c.G * 0x100 + c.B * 0x10000;
+            }
 
         }
 
