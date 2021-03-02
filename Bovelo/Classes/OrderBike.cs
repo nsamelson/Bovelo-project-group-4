@@ -9,13 +9,13 @@ namespace Bovelo
     class OrderBike
     {
         public int orderId;
-
+        public bool isReadyToShip ;
         public string clientName;
         public int totalPrice;
         public DateTime orderDate;
         public DateTime shippingDate;
-        public List<List<string>> orderDetail; //Details of the order : [id, OrderBike_Id, Client_Name,Bike_Type,Bike_Color,Bike_Size,Quantity,Price,Order_Time]
-        public List<Bike> BikeList;
+        public List<List<string>> orderDetail; //Details of the order : [id,Client_Name,Bike_Type,Bike_Color,Bike_Size,Quantity,Price,Order_Time]
+        public List<Bike> bikeList;
 
         public OrderBike(string clientName, List<List<string>> orderDetail,int id)//needs to insert clientId
         {
@@ -25,7 +25,8 @@ namespace Bovelo
             this.totalPrice = getTotalPrice();
             this.orderDate = DateTime.Now;
             this.shippingDate = DateTime.Today.AddDays(14);
-            this.BikeList = getBikeList();
+            this.bikeList = getBikeList();
+            this.isReadyToShip = getOrderState();
         }
         public List<Bike> getBikeList()
         {
@@ -47,6 +48,14 @@ namespace Bovelo
                 totPrice += Int32.Parse(item[4]);
             }
             return totPrice;
+        }
+        public bool getOrderState()//needs to be tested
+        {
+            if (bikeList.TrueForAll(x => x.state["Closed"]))
+            {
+                return true;
+            }
+            else { return false; }
         }
         
     }
