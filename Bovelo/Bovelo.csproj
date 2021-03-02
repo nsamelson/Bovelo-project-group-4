@@ -56,6 +56,7 @@
     <Compile Include="Classes\App.cs" />
     <Compile Include="Classes\Bike.cs" />
     <Compile Include="Classes\BikePart.cs" />
+    <Compile Include="Classes\Planning.cs" />
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\OrderBike.cs" />
     <Compile Include="Classes\Storage.cs" />
