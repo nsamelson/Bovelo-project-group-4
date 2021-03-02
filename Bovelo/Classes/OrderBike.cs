@@ -15,7 +15,7 @@ namespace Bovelo
         public DateTime orderDate;
         public DateTime shippingDate;
         public List<List<string>> orderDetail; //Details of the order : [id, OrderBike_Id, Client_Name,Bike_Type,Bike_Color,Bike_Size,Quantity,Price,Order_Time]
-
+        public List<Bike> BikeList;
 
         public OrderBike(string clientName, List<List<string>> orderDetail,int id)//needs to insert clientId
         {
@@ -25,6 +25,19 @@ namespace Bovelo
             this.totalPrice = getTotalPrice();
             this.orderDate = DateTime.Now;
             this.shippingDate = DateTime.Today.AddDays(14);
+            this.BikeList = getBikeList();
+        }
+        public List<Bike> getBikeList()
+        {
+            var bikes = new List<Bike>();
+            foreach(var elem in orderDetail)
+            {
+                for(int i=0; i<Int32.Parse(elem[4]);i++)//quantity of this bike
+                {
+                    bikes.Add(new Bike(elem[1], elem[3], Int32.Parse(elem[2]), Int32.Parse(elem[5])));
+                }
+            }
+            return bikes;
         }
         public int getTotalPrice()
         {
