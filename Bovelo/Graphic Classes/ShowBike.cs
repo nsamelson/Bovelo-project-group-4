@@ -84,7 +84,18 @@ namespace Bovelo
 
         private void Explorerbike_Load(object sender, EventArgs e)
         {
-
+            if (radioButton1.Checked)
+            {
+                label8.Text = radioButton1.Text;
+            }
+            else if (radioButton2.Checked)
+            {
+                label8.Text = radioButton2.Text;
+            }
+            else if (radioButton3.Checked)
+            {
+                label8.Text = radioButton1.Text;
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -118,10 +129,24 @@ namespace Bovelo
         private void button4_Click(object sender, EventArgs e)
         {
             string i = comboBox1.Text;
+            if (radioButton1.Checked)
+            {
+                label8.Text = radioButton1.Text;
+            }
+            else if (radioButton2.Checked)
+            {
+                label8.Text = radioButton2.Text;
+            }
+            else if (radioButton3.Checked)
+            {
+                label8.Text = radioButton1.Text;
+            }
             int _i = Convert.ToInt32(i);
             Bike BikeToAdd = new Bike(TypeOfBike, label8.Text.ToString(), _i, getBikePrice());
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
- 
+
+
+
 
 
 
@@ -139,24 +164,8 @@ namespace Bovelo
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ColorDialog color = new ColorDialog();
-            color.CustomColors = new int[] { ToInt(Color.Black), ToInt(Color.Red), ToInt(Color.Blue) };
-            if (color.ShowDialog() == DialogResult.OK)
-            {
-                if (color.Color == Color.Black ||  color.Color == Color.Blue || color.Color == Color.Red)
-                {
-                    label8.Text = color.Color.Name;
-                    textBox1.BackColor = color.Color;
-                }
-                else
-                {
-                    MessageBox.Show(color.Color + "cannot be used " , "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            int ToInt(Color c)
-            {
-                return c.R + c.G * 0x100 + c.B * 0x10000;
-            }
+
+
 
         }
 
@@ -197,6 +206,16 @@ namespace Bovelo
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
         }

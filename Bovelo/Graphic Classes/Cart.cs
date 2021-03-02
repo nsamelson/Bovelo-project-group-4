@@ -36,6 +36,7 @@ namespace Bovelo
             foreach (Item elem in _currentUser.cart)
             {
                 int price = 0;
+                
                 foreach (var bike in app.bikeModel)
                 {
                     if (bike.Type == elem.bike.Type)
