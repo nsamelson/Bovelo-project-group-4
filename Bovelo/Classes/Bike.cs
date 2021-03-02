@@ -21,7 +21,7 @@ namespace Bovelo
         public string Color;
         public int Size;
 
-        public Bike(string Type,string Color,int Size,int price)
+        public Bike(string Type,string Color,int Size,int price)//need to move price in bikeModel and depends from the model from the DB
         {
             this.Type = Type;
             this.Color = Color;

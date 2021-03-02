@@ -25,6 +25,7 @@ namespace Bovelo
 
         }
 
+        //REPRESENTATIVE METHODS
         public void addToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
         {
             cart.Add(new Item(bike, quantity));
@@ -32,16 +33,18 @@ namespace Bovelo
         public List<List<string>> getCartList() //returns the cart into a list of list of string
         {
             var cartAsList = new List<List<string>>();
-
+            int i = 1;
             foreach (var item in cart)
             {
                 var bikeInfo = new List<string>();
+                bikeInfo.Add(i.ToString()); //I used this to have a corresponding list between orderBike when we pass orders from the cart and when we take from DB
                 bikeInfo.Add(item.bike.Type);
-                bikeInfo.Add(item.bike.Color);
                 bikeInfo.Add(item.bike.Size.ToString());
+                bikeInfo.Add(item.bike.Color);
                 bikeInfo.Add(item.quantity.ToString());
                 bikeInfo.Add(item.getPrice().ToString());
                 cartAsList.Add(bikeInfo);
+                i++;
             }
 
             return cartAsList;
@@ -76,11 +79,18 @@ namespace Bovelo
         {
             cart.Clear();
         }
-
-
         public void getTimeBeforeShipping() { }
-        public void getPlanning() { }
-        public void getBikePartInvoice() { }
-        public void setBikeState() { }
+
+
+        //ASSEMBLER METHODS
+        public void getPlanning() { }//already in app
+        public void getBikeParts() { }//location of the bikeParts
+        public void setBikeState() { }//Maybe better in the planning class
+
+        //PRODUCTION MANAGER METHODS
+        public void setNewPlanning() { } //Maybe in APP
+        public void getBikePartInvoice() { }//Maybe in app
+        public void addPartToCart() { } //and create a bikePart cart
+        
     }
 }

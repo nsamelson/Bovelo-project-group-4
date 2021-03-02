@@ -31,11 +31,18 @@ namespace Bovelo
         public List<Bike> getBikeList()
         {
             var bikes = new List<Bike>();
+            
             foreach(var elem in orderDetail)
             {
-                for(int i=0; i<Int32.Parse(elem[4]);i++)//quantity of this bike
+                string type = elem[1];
+                int size = Int32.Parse(elem[2]);
+                string color = elem[3];
+                int quantity = Int32.Parse(elem[4]);
+                int price = Int32.Parse(elem[5])/quantity;
+
+                for (int i = 0; i < quantity; i++)//quantity of this bike
                 {
-                    bikes.Add(new Bike(elem[1], elem[3], Int32.Parse(elem[2]), Int32.Parse(elem[5])));
+                    bikes.Add(new Bike(type,color,size,price));
                 }
             }
             return bikes;
@@ -45,7 +52,7 @@ namespace Bovelo
             int totPrice = 0;
             foreach(var item in orderDetail)
             {
-                totPrice += Int32.Parse(item[4]);
+                totPrice += Int32.Parse(item[5]);
             }
             return totPrice;
         }
