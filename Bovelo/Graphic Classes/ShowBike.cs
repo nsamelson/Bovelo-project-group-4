@@ -84,18 +84,7 @@ namespace Bovelo
 
         private void Explorerbike_Load(object sender, EventArgs e)
         {
-            if (radioButton1.Checked)
-            {
-                label8.Text = radioButton1.Text;
-            }
-            else if (radioButton2.Checked)
-            {
-                label8.Text = radioButton2.Text;
-            }
-            else if (radioButton3.Checked)
-            {
-                label8.Text = radioButton1.Text;
-            }
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -129,20 +118,21 @@ namespace Bovelo
         private void button4_Click(object sender, EventArgs e)
         {
             string i = comboBox1.Text;
+            string color = " ";
             if (radioButton1.Checked)
             {
-                label8.Text = radioButton1.Text;
+                color = radioButton1.Text;
             }
             else if (radioButton2.Checked)
             {
-                label8.Text = radioButton2.Text;
+                color = radioButton2.Text;
             }
             else if (radioButton3.Checked)
             {
-                label8.Text = radioButton1.Text;
+                color = radioButton1.Text;
             }
             int _i = Convert.ToInt32(i);
-            Bike BikeToAdd = new Bike(TypeOfBike, label8.Text.ToString(), _i, getBikePrice());
+            Bike BikeToAdd = new Bike(TypeOfBike, color, _i, getBikePrice());
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
 
 
@@ -216,6 +206,11 @@ namespace Bovelo
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
 
         }
