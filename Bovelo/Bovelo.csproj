@@ -59,7 +59,6 @@
     <Compile Include="Classes\Planning.cs" />
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\OrderBike.cs" />
-    <Compile Include="Classes\Storage.cs" />
     <Compile Include="Classes\User.cs" />
     <Compile Include="Graphic Classes\Cart.cs">
       <SubType>Form</SubType>
