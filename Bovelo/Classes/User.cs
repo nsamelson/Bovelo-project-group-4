@@ -14,8 +14,9 @@ namespace Bovelo
         public string login; 
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
         
-        public List<Item> cart = new List<Item>();
-
+        public List<Item> cart = new List<Item>();//cart of bikes used by representative
+        public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
+        //public List<BikePart> bikePartCart = new List<BikePart>(); //cart of bikePart used by production manager to order parts
         public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
             this.login = login;
@@ -24,6 +25,8 @@ namespace Bovelo
             userType.Add("Assembler", isAssembler);
 
         }
+        //Will generalize the functions : emptyCart();increment;decrement;deleteItem and maybe addtocart and getCart list
+
 
         //REPRESENTATIVE METHODS
         public void addToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
@@ -82,15 +85,43 @@ namespace Bovelo
         public void getTimeBeforeShipping() { }
 
 
+        //PRODUCTION MANAGER METHODS
+
+        
+        public List<List<string>> getPlanningCartList()
+        {
+            var planningAsList = new List<List<string>>();
+            int i = 0;
+            foreach(var item in planningCart)
+            {
+                var bikeInfo = new List<string>();
+                bikeInfo.Add(i.ToString()); //need an id, HAVE TO CHANGE
+                bikeInfo.Add(item.Type);
+                bikeInfo.Add(item.Size.ToString());
+                bikeInfo.Add(item.Color);
+                bikeInfo.Add(item.ToString());
+                planningAsList.Add(bikeInfo);
+                i++;
+            }
+
+
+            return planningAsList;
+        }
+        public void addToPlanningCart(Bike bike)//adds a bike from and order to the planning of the week
+        {
+            planningCart.Add(bike);
+        }
+        public void emptyPlanningCart()
+        {
+            planningCart.Clear();
+        }
+        public void getBikePartInvoice() { }//Maybe in app
+        public void addBikePartToCart() { } //and create a bikePart cart
+
         //ASSEMBLER METHODS
         public void getPlanning() { }//already in app
         public void getBikeParts() { }//location of the bikeParts
         public void setBikeState() { }//Maybe better in the planning class
 
-        //PRODUCTION MANAGER METHODS
-        public void setNewPlanning() { } //Maybe in APP
-        public void getBikePartInvoice() { }//Maybe in app
-        public void addPartToCart() { } //and create a bikePart cart
-        
     }
 }

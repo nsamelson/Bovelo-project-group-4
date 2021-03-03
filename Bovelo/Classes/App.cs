@@ -20,8 +20,7 @@ namespace Bovelo
             this.userList = getUserList();
             this.bikeModel = getBikeModelList();
             this.orderBikeList = getOrderBikeList();
-            this.planningList = getPlanningList();
-            //this.orderBikeList = new List<OrderBike>();
+            //this.planningList = getPlanningList();
         }
         
         //methods connecting to the DB
@@ -75,8 +74,6 @@ namespace Bovelo
             {
                 orderId = orderBikeList.Last().orderId + 1;
             }
-            
-            
             OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('"+ newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "', '" + newOrderBike.orderDate.ToString() + "', '" + newOrderBike.shippingDate.ToString() + "'); ";
             sendToDB(queryOB);
@@ -109,19 +106,30 @@ namespace Bovelo
             sendToDB(query);
             bikeModel = getBikeModelList();//At the end of set, put a get to update App class
         }
-        internal void setNewPlanning(Planning planning)//Arguments may change
+        internal void setNewPlanning(List<List<string>> planningCartList,string week)//NEED TO SET THE TABLES
         {
-            string query = "";
-            sendToDB(query);
+            Planning newPlanning = new Planning(planningCartList, week);
+            string queryP = "INSERT INTO Planning(Week_Name,Working_Hours) VALUES('"+newPlanning.weekId+"','"+newPlanning.workingHours+"');";
+            //sendToDB(queryP);
+            foreach(var bikesToBuild in newPlanning.planningDetails)
+            {
+                int Planning_Id = 0;
+                string type = bikesToBuild[1];
+                int size = Int32.Parse(bikesToBuild[2]);
+                string color = bikesToBuild[3];
+                string queryPD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Id_Planning) VALUES('" + type + "', '" + size + "','" + color + "',  '" + Planning_Id + "'); ";
+                //sendToDB(queryPD);
+            }
+
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
         //GET from the DB methods
-        internal List<Planning> getPlanningList()
+        internal List<Planning> getPlanningList()//COPY  getOrderBikeList() METHOD
         {
             List<Planning> plannings = new List<Planning>();
            /* List<List<string>> planningDB = getFromDB("");
             var planningDetails = getFromDB("");*/
-
+           
             return plannings;
 
         }

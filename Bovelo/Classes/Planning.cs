@@ -10,33 +10,51 @@ namespace Bovelo
     {
         public string weekId;
         public List<Bike> bikesToBuild= new List<Bike>();
-        public List<OrderBike> orderList;
+        public List<List<string>> planningDetails;
         public int workingHours;
-        public Planning(List<OrderBike> orders,string weekId)
+        public Planning(List<List<string>> planningDetails, string weekId)
         {
             this.weekId = weekId;
-            this.orderList = orders;
+            this.planningDetails = planningDetails;
             this.workingHours = 3 * 8 * 5;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
         }
-        public void setPlanning()//maybe put it in app
-        {
-            
-        }
-        public void setBikesToBuild()//NEED TO CHANGE
-        {
-            foreach(var order in orderList)
-            {
-                /*foreach (var bike in order.bikeList)
-                {
-                    bikesToBuild.Add(bike);
-                }*/
-            }
-        }
-        public void setBikeState()
+        public List<Bike> getBikesToBuild()
         {
 
+            var bikes = new List<Bike>();
+
+            foreach (var elem in planningDetails)
+            {
+                string type = elem[1];
+                int size = Int32.Parse(elem[2]);
+                string color = elem[3];
+                int quantity = Int32.Parse(elem[4]);
+                int price = Int32.Parse(elem[5]) / quantity;//dont need price
+                //NEED ID OF THE BIKE
+                for (int i = 0; i < quantity; i++)//quantity of this bike
+                {
+                    bikes.Add(new Bike(type, color, size, price));
+                }
+            }
+            return bikes;
         }
-        public void addToPlanning(int id) { }
-        public void removeFromPlanning(int id) { }
+
+
+        public void setBikeState(Bike bike,string state)//change the bike selected to a new state IT HAS TO CHANGE THE PLANNING DETAILS AND SEND IT INTO DB
+        {
+            bike.state[getBikeState(bike)] = false;// change the actual state to false
+            if (state == "New"|| state == "Active" || state == "Closed")
+            {
+                bike.state[state] = true;
+            }
+            else { }//error
+
+        }
+        public string getBikeState(Bike bike)//gets the actual state of selected bike (between New, Active and Closed)
+        {
+            var state = bike.state.FirstOrDefault(x=>x.Value==true).Key;
+            return state;
+        }
+
     }
 }
