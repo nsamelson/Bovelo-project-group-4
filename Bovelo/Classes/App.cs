@@ -13,7 +13,9 @@ namespace Bovelo
         internal List<Bike> bikeModel; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
-        
+         
+
+
 
         public App()
         {
@@ -56,7 +58,6 @@ namespace Bovelo
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            Console.WriteLine("Element added to DB");
             cmd.Dispose();
             conn.Close();
         }
@@ -74,21 +75,26 @@ namespace Bovelo
             {
                 orderId = orderBikeList.Last().orderId + 1;
             }
-            OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('"+ newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "', '" + newOrderBike.orderDate.ToString() + "', '" + newOrderBike.shippingDate.ToString() + "'); ";
-            sendToDB(queryOB);
 
-            foreach (var elem in newOrder)
-            {
-                //needs to change the table
-                string type = elem[1];
-                int size = Int32.Parse(elem[2]);
-                string color = elem[3];
-                int quantity = Int32.Parse(elem[4]);
-                int price = Int32.Parse(elem[5]);
-                string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Quantity,Price,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "',  '" + quantity + "', '" + price + "', '" + newOrderBike.clientName + "', '" + orderId + "'); ";
-                sendToDB(queryOD);
-            }
+
+            OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
+
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('"+ newOrderBike.clientName +"', '" + newOrderBike.totalPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
+            sendToDB(queryOB);
+            Console.WriteLine("New Order has been added to DB");
+
+            //foreach (var elem in newOrder)
+            //{
+            //    string type = elem[1];
+            //    int size = Int32.Parse(elem[2]);
+            //    string color = elem[3];
+            //    int quantity = Int32.Parse(elem[4]);
+            //    int price = Int32.Parse(elem[5]);
+            //    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Quantity,Price,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "',  '" + quantity + "', '" + price + "', '" + newOrderBike.clientName + "', '" + orderId + "'); ";
+            //    sendToDB(queryOD);
+            //    Console.WriteLine("New order détail has been added to DB");
+
+            //}
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
 
         }
@@ -152,7 +158,7 @@ namespace Bovelo
             foreach (var row in orderList)
             {
                 string login = row[1];
-                string userType = row[3];
+                string userType = row[2];
                 switch (userType)
                 {
                     case "Representative":

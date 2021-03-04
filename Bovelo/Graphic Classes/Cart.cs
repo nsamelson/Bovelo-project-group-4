@@ -89,6 +89,28 @@ namespace Bovelo
         {
             /*OrderBike o = new OrderBike(_currentUser);
             o.addOrderBike();*/
+
+
+            int i = 0;
+            int RowCount = dataGridView1.RowCount;
+            List<List<string>> newOrder = new List<List<string>>();
+            List<string> Data = new List<string>();
+            string client = textBox1.Text;
+            while(i < RowCount)
+            {
+                Data.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                Data.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
+                Data.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
+                Data.Add(dataGridView1.Rows[i].Cells[3].Value.ToString());
+                Data.Add(dataGridView1.Rows[i].Cells[5].Value.ToString());
+                newOrder.Add(Data);
+                Console.WriteLine(Data[4]);
+                Console.WriteLine(newOrder.Count);
+                Data.Clear();
+                i++;
+            }
+
+            //app.setNewOrderBike(newOrder, client);
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
             this.labelPrice.Text = "0€";
@@ -125,6 +147,15 @@ namespace Bovelo
         }
 
         private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }

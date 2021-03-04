@@ -214,5 +214,15 @@ namespace Bovelo
         {
 
         }
+
+        private void label8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
