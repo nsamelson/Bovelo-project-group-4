@@ -96,21 +96,23 @@ namespace Bovelo
             List<List<string>> newOrder = new List<List<string>>();
             List<string> Data = new List<string>();
             string client = textBox1.Text;
-            while(i < RowCount)
+            while (i < RowCount )
             {
-                Data.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());
-                Data.Add(dataGridView1.Rows[i].Cells[1].Value.ToString());
-                Data.Add(dataGridView1.Rows[i].Cells[2].Value.ToString());
-                Data.Add(dataGridView1.Rows[i].Cells[3].Value.ToString());
-                Data.Add(dataGridView1.Rows[i].Cells[5].Value.ToString());
-                newOrder.Add(Data);
-                Console.WriteLine(Data[4]);
-                Console.WriteLine(newOrder.Count);
-                Data.Clear();
+
+                Data.Insert(0, dataGridView1.Rows[i].Cells[0].Value.ToString());
+                Data.Insert(1, dataGridView1.Rows[i].Cells[1].Value.ToString());
+                Data.Insert(2, dataGridView1.Rows[i].Cells[2].Value.ToString());
+                Data.Insert(3, dataGridView1.Rows[i].Cells[3].Value.ToString());
+                Data.Insert(4, dataGridView1.Rows[i].Cells[5].Value.ToString());
+                Console.WriteLine("Data list contains Bike type is : " + Data[0]);
+                newOrder.Insert(i,Data);
+                Console.WriteLine("la longeur de new order est de : "  + newOrder.Count + newOrder[i][0] + " indice i est  : " + i  );
                 i++;
+                Data = new List<string>();
+                
             }
 
-            //app.setNewOrderBike(newOrder, client);
+            app.setNewOrderBike(newOrder, client);
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
             this.labelPrice.Text = "0€";

@@ -21,7 +21,7 @@ namespace Bovelo
         {
             this.userList = getUserList();
             this.bikeModel = getBikeModelList();
-            this.orderBikeList = getOrderBikeList();
+            //this.orderBikeList = getOrderBikeList();
             //this.planningList = getPlanningList();
         }
         
@@ -65,37 +65,42 @@ namespace Bovelo
         //SET To the DB methods
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName) //is used to pass a new order  HAVE TO CHANGE
         {
-            int orderId;
+            //int orderId;
             //It has to send 2 things to Database : Order details and Order client
-            if(orderBikeList.Count == 0)
+            /*if(orderBikeList.Count == 0)
             {
                 orderId = 1;
             }
             else
             {
                 orderId = orderBikeList.Last().orderId + 1;
-            }
+            }*/
 
 
-            OrderBike newOrderBike = new OrderBike(clientName, newOrder,orderId);
+            OrderBike newOrderBike = new OrderBike(clientName, newOrder);
+            Console.WriteLine("Order detail est de longeur :" + newOrderBike.orderDetail.Count);
 
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('"+ newOrderBike.clientName +"', '" + newOrderBike.totalPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
             sendToDB(queryOB);
             Console.WriteLine("New Order has been added to DB");
 
-            //foreach (var elem in newOrder)
-            //{
-            //    string type = elem[1];
-            //    int size = Int32.Parse(elem[2]);
-            //    string color = elem[3];
-            //    int quantity = Int32.Parse(elem[4]);
-            //    int price = Int32.Parse(elem[5]);
-            //    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Quantity,Price,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "',  '" + quantity + "', '" + price + "', '" + newOrderBike.clientName + "', '" + orderId + "'); ";
-            //    sendToDB(queryOD);
-            //    Console.WriteLine("New order détail has been added to DB");
+            foreach (var element in newOrder)
+            {
 
-            //}
-            orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
+                Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
+
+                string type = element[0];
+                int size = Int32.Parse(element[1]);
+                string color = element[2];
+                int quantity = Int32.Parse(element[3]);
+                int price = Int32.Parse(element[4]);
+                string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "'); ";
+                sendToDB(queryOD);
+                Console.WriteLine("New order détail has been added to DB");
+
+            }
+         
+            //orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
 
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
@@ -147,7 +152,9 @@ namespace Bovelo
             foreach (var row in orderList)
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0])); //takes each lists with the same order_Id
-                orderBikeList.Add(new OrderBike(row[1], details,Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
+                orderBikeList.Add(new OrderBike(row[1], details));// initialiser le meme constructeur avec deux listes différentes, fallait créer une classe order_details
+
+                //row[1] is the column where the name of the client is put
             }
             return orderBikeList;
         }
