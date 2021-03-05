@@ -146,7 +146,7 @@ namespace Bovelo
         }
         internal List<OrderBike> getOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
-            List<OrderBike> orderBikeList = new List<OrderBike>();
+            /*List<OrderBike> orderBikeList = new List<OrderBike>();
             List<List<string>> orderList = getFromDB("Order_Bikes");
             var orderDetailList = getFromDB("Order_Details");
             foreach (var row in orderList)
@@ -155,7 +155,7 @@ namespace Bovelo
                 orderBikeList.Add(new OrderBike(row[1], details));// initialiser le meme constructeur avec deux listes différentes, fallait créer une classe order_details
 
                 //row[1] is the column where the name of the client is put
-            }
+            }*/
             return orderBikeList;
         }
         internal List<User> getUserList() //is used to get all users 
