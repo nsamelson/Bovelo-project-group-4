@@ -17,14 +17,14 @@ namespace Bovelo
         public List<List<string>> orderDetail; //Details of the order : [id,Client_Name,Bike_Type,Bike_Color,Bike_Size,Quantity,Price,Order_Time]
         public List<Bike> bikeList;
 
-        public OrderBike(string clientName, List<List<string>> orderDetail)//needs to insert clientId
+        public OrderBike(string clientName, List<List<string>> orderDetail, int id)//needs to insert clientId
         {
             this.clientName = clientName;
             this.orderDetail = orderDetail;
-            //this.orderId = id;
+            this.orderId = id;
             this.totalPrice = getTotalPrice();
             this.orderDate = DateTime.Now;
-            this.shippingDate = DateTime.Today.AddDays(14);
+            this.shippingDate = DateTime.Today.AddDays(7);
             this.bikeList = getBikeList();
             this.isReadyToShip = getOrderState();
         }
@@ -34,13 +34,13 @@ namespace Bovelo
             foreach(var elem in orderDetail)
             {
                 Console.WriteLine("type : " + elem[0] + " size : " + elem[1]+ " color: " + elem[2]+ " quantity : " + elem[3] + " price : " + elem[4]);
-                string type = elem[0];
-                int size = Int16.Parse(elem[1]);
-                string color = elem[2];
-                int quantity = Int16.Parse(elem[3]);
-                int price = Int32.Parse(elem[4])/quantity;
+                string type = elem[1];
+                int size = Int16.Parse(elem[2]);
+                string color = elem[3];
+                //int quantity = Int16.Parse(elem[3]);
+                int price = Int32.Parse(elem[4]);
 
-                for (int i = 0; i < quantity; i++)//quantity of this bike
+                for (int i = 0; i < 2; i++)//quantity of this bike
                 {
                     bikes.Add(new Bike(type,color,size,price));
                 }

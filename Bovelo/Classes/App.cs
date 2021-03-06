@@ -65,19 +65,32 @@ namespace Bovelo
         //SET To the DB methods
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName) //is used to pass a new order  HAVE TO CHANGE
         {
-            //int orderId;
+
+            int orderId;
             //It has to send 2 things to Database : Order details and Order client
-            /*if(orderBikeList.Count == 0)
+            orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
+            Console.WriteLine("test :" + orderBikeList.Count);
+            if(orderBikeList.Count == 0)
             {
                 orderId = 1;
             }
             else
             {
                 orderId = orderBikeList.Last().orderId + 1;
-            }*/
+            }
 
+            List<List<string>> Order = new List<List<string>>();
 
-            OrderBike newOrderBike = new OrderBike(clientName, newOrder);
+            OrderBike newOrderBike = new OrderBike(clientName, Order,orderId);
+            Console.WriteLine(Order.Count);
+            foreach(var x in Order)
+            {
+                Console.WriteLine(x);
+                foreach ( var y in x)
+                {
+                    Console.WriteLine("voilà ton  : " + y);
+                }
+            }
             Console.WriteLine("Order detail est de longeur :" + newOrderBike.orderDetail.Count);
 
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
@@ -88,20 +101,19 @@ namespace Bovelo
             {
 
                 Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
-
                 string type = element[0];
                 int size = Int32.Parse(element[1]);
                 string color = element[2];
                 int quantity = Int32.Parse(element[3]);
                 int price = Int32.Parse(element[4]);
-                string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "'); ";
-                sendToDB(queryOD);
-                Console.WriteLine("New order détail has been added to DB");
+                for (int q = 0; q < quantity; q++)
+                {
+                    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
+                    sendToDB(queryOD);
+                    Console.WriteLine("New order détail has been added to DB");
+                }
 
             }
-         
-            //orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
-
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
@@ -146,16 +158,25 @@ namespace Bovelo
         }
         internal List<OrderBike> getOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
-            /*List<OrderBike> orderBikeList = new List<OrderBike>();
+            List<OrderBike> orderBikeList = new List<OrderBike>();
             List<List<string>> orderList = getFromDB("Order_Bikes");
             var orderDetailList = getFromDB("Order_Details");
+            
             foreach (var row in orderList)
             {
-                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0])); //takes each lists with the same order_Id
-                orderBikeList.Add(new OrderBike(row[1], details));// initialiser le meme constructeur avec deux listes différentes, fallait créer une classe order_details
-
-                //row[1] is the column where the name of the client is put
-            }*/
+                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0]));//takes each lists with the same order_Id
+                orderBikeList.Add(new OrderBike(row[1], details, Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
+                foreach( var x in details)
+                {
+                    Console.WriteLine(x);
+                    foreach(var y in x)
+                    {
+                        Console.WriteLine("y est : " + y);
+                    }
+                }
+                Console.WriteLine("orderbikeList est de longeur : " + orderBikeList.Count);
+            }
+            
             return orderBikeList;
         }
         internal List<User> getUserList() //is used to get all users 
