@@ -70,6 +70,7 @@ namespace Bovelo
             int orderId;
             //It has to send 2 things to Database : Order details and Order client
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
+            List<string> line = getBikePartInvoice(orderBikeList);
             Console.WriteLine("test :" + orderBikeList.Count);
             if (orderBikeList.Count == 0)
             {
@@ -219,12 +220,70 @@ namespace Bovelo
             }
             return bikeList;
         }
-        internal void getBikePartInvoice(List<OrderBike> orderBikeList)
+        internal List<string> getBikePartInvoice(List<OrderBike> orderBikeList)
         {
-            string path = "/list_part.txt";
+            string path = @"../../Classes/list_part.txt";
             IEnumerable<string> line = File.ReadLines(path);
+            var BikeType =new Dictionary<int, List<string>>(); //  to stock data
+            List<string> identity = new List<string>();        //  to add data to dict
+            int e = 0;                                         //  key index 
+            List<string> bikepart = new List<string>();        //  return value
+            foreach (var elem in line)
+            {
+                int i = 0;
+                int word = 0;
+                string currentWord = "";                
+                while (word != 15)                             // reading word
+                {
+                    currentWord = "";
+                    while ((elem[i]) != ';')                   // reading char
+                    {
+                        currentWord += elem[i];                // concatenate char to make word
+                        i++;
+                    }
+                    identity.Add(currentWord);                 // add word to list string
+                    word++;                                    // next word
+                    i++;                                       // pass ";" char
+                    }
+                BikeType.Add(e, identity);                     // add to dict list of word
+                identity = new List<string>();                 // reset list of word
+                e++;
+            }
+
+            foreach (var order in orderBikeList)
+            {
+                foreach (var bike in order.bikeList)
+                {
+                    
+                    foreach (var elem in BikeType.Values)
+                    {
+                        if (bike.Type == elem[0])              // finding parts with goods size,type,color
+                            if (bike.Size.ToString() == elem[1])                         
+                                if (bike.Color == elem[2])
+                                {
+                                    for(int i = 2; i < 15; i++)
+                                    { 
+                                        bikepart.Add(elem[i]);
+                                    }
+                                }                                                               
+                    }
+                }
+            }
+/*          foreach (var elem in BikeType.Values)             // what's in the dict
+            {
+                string toprint = " ";
+                foreach (var info in elem)
+                {
+                    toprint += info + " | ";
+                }
+                Console.WriteLine(toprint);
+            }
+
+            foreach(var elem in bikepart)                    // what I am returning
+            {
+                Console.WriteLine(elem);
+            }*/
+            return bikepart;
         }
-
-
     }
 }
