@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.IO;
 
 namespace Bovelo
 {
@@ -184,6 +185,11 @@ namespace Bovelo
             }
             return bikeList;
         }
+        internal void getBikePartInvoice(List<OrderBike> orderBikeList)
+        {
+            string path = "/list_part.txt";
+            IEnumerable<string> line = File.ReadLines(path);
+        }
+ 
 
-    }
 }
