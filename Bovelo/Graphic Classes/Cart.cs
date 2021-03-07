@@ -96,6 +96,8 @@ namespace Bovelo
             List<List<string>> newOrder = new List<List<string>>();
             List<string> Data = new List<string>();
             string client = textBox1.Text;
+            int price = 0;
+
             while (i < RowCount )
             {
 
@@ -107,15 +109,26 @@ namespace Bovelo
                 Console.WriteLine("Data list contains Bike type is : " + Data[0]);
                 newOrder.Insert(i,Data);
                 Console.WriteLine("la longeur de new order est de : "  + newOrder.Count + newOrder[i][0] + " indice i est  : " + i  );
+                
+                price += Int32.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
                 i++;
                 Data = new List<string>();
                 
             }
-
-            app.setNewOrderBike(newOrder, client);
-            dataGridView1.Rows.Clear();
-            _currentUser.emptyCart();
-            this.labelPrice.Text = "0€";
+            
+            if(client != ""&&RowCount!=0)
+            {
+                app.setNewOrderBike(newOrder, client,price);
+                dataGridView1.Rows.Clear();
+                _currentUser.emptyCart();
+                this.labelPrice.Text = "0€";
+                textBox1.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid name or add items to the cart!");
+            }
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

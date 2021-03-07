@@ -35,12 +35,11 @@ namespace Bovelo
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shipping_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -54,15 +53,18 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(884, 70);
+            this.panel1.Size = new System.Drawing.Size(1179, 86);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(91, 9);
+            this.button7.Location = new System.Drawing.Point(121, 11);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(82, 52);
+            this.button7.Size = new System.Drawing.Size(109, 64);
             this.button7.TabIndex = 5;
             this.button7.Text = "Catalogue";
             this.button7.UseVisualStyleBackColor = true;
@@ -70,9 +72,10 @@ namespace Bovelo
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(714, 0);
+            this.button3.Location = new System.Drawing.Point(952, 0);
+            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 70);
+            this.button3.Size = new System.Drawing.Size(109, 86);
             this.button3.TabIndex = 4;
             this.button3.Text = "Orders";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,9 +83,10 @@ namespace Bovelo
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(802, 0);
+            this.button2.Location = new System.Drawing.Point(1069, 0);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(82, 70);
+            this.button2.Size = new System.Drawing.Size(109, 86);
             this.button2.TabIndex = 3;
             this.button2.Text = "Cart";
             this.button2.UseVisualStyleBackColor = true;
@@ -92,9 +96,10 @@ namespace Bovelo
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("PMingLiU-ExtB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(396, 25);
+            this.label1.Location = new System.Drawing.Point(528, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 19);
+            this.label1.Size = new System.Drawing.Size(74, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
@@ -102,55 +107,67 @@ namespace Bovelo
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5,
-            this.Column6});
-            this.dataGridView1.Location = new System.Drawing.Point(30, 117);
+            this.Order_Id,
+            this.Customer_Name,
+            this.Total_Price,
+            this.Order_Date,
+            this.Shipping_Date});
+            this.dataGridView1.Location = new System.Drawing.Point(40, 144);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(646, 286);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(861, 352);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Column1
+            // Order_Id
             // 
-            this.Column1.HeaderText = "Bike :";
-            this.Column1.Name = "Column1";
+            this.Order_Id.HeaderText = "Order_Id";
+            this.Order_Id.MinimumWidth = 6;
+            this.Order_Id.Name = "Order_Id";
+            this.Order_Id.ReadOnly = true;
+            this.Order_Id.Width = 125;
             // 
-            // Column2
+            // Customer_Name
             // 
-            this.Column2.HeaderText = "Size :";
-            this.Column2.Name = "Column2";
+            this.Customer_Name.HeaderText = "Customer_Name";
+            this.Customer_Name.MinimumWidth = 6;
+            this.Customer_Name.Name = "Customer_Name";
+            this.Customer_Name.ReadOnly = true;
+            this.Customer_Name.Width = 125;
             // 
-            // Column3
+            // Total_Price
             // 
-            this.Column3.HeaderText = "Color :";
-            this.Column3.Name = "Column3";
+            this.Total_Price.HeaderText = "Total_Price";
+            this.Total_Price.MinimumWidth = 6;
+            this.Total_Price.Name = "Total_Price";
+            this.Total_Price.ReadOnly = true;
+            this.Total_Price.Width = 125;
             // 
-            // Column4
+            // Order_Date
             // 
-            this.Column4.HeaderText = "Quantity :";
-            this.Column4.Name = "Column4";
+            this.Order_Date.HeaderText = "Order_Date";
+            this.Order_Date.MinimumWidth = 6;
+            this.Order_Date.Name = "Order_Date";
+            this.Order_Date.ReadOnly = true;
+            this.Order_Date.Width = 125;
             // 
-            // Column5
+            // Shipping_Date
             // 
-            this.Column5.HeaderText = "Date of order";
-            this.Column5.Name = "Column5";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Price";
-            this.Column6.Name = "Column6";
+            this.Shipping_Date.HeaderText = "Shipping_Date";
+            this.Shipping_Date.MinimumWidth = 6;
+            this.Shipping_Date.Name = "Shipping_Date";
+            this.Shipping_Date.ReadOnly = true;
+            this.Shipping_Date.Width = 125;
             // 
             // Order
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1179, 567);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Order";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V1.0";
@@ -170,11 +187,10 @@ namespace Bovelo
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Shipping_Date;
     }
 }

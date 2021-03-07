@@ -21,8 +21,8 @@ namespace Bovelo
         {
             this.userList = getUserList();
             this.bikeModel = getBikeModelList();
-            //this.orderBikeList = getOrderBikeList();
-            //this.planningList = getPlanningList();
+            this.orderBikeList = getOrderBikeList();
+            this.planningList = getPlanningList();
         }
         
         //methods connecting to the DB
@@ -63,7 +63,7 @@ namespace Bovelo
         }
 
         //SET To the DB methods
-        internal void setNewOrderBike(List<List<string>> newOrder, string clientName) //is used to pass a new order  HAVE TO CHANGE
+        internal void setNewOrderBike(List<List<string>> newOrder, string clientName,int totPrice) //is used to pass a new order  HAVE TO CHANGE
         {
 
             int orderId;
@@ -81,8 +81,8 @@ namespace Bovelo
 
             List<List<string>> Order = new List<List<string>>();
 
-            OrderBike newOrderBike = new OrderBike(clientName, Order,orderId);
-            Console.WriteLine(Order.Count);
+            OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
+            /*Console.WriteLine(Order.Count);
             foreach(var x in Order)
             {
                 Console.WriteLine(x);
@@ -90,10 +90,10 @@ namespace Bovelo
                 {
                     Console.WriteLine("voilà ton  : " + y);
                 }
-            }
-            Console.WriteLine("Order detail est de longeur :" + newOrderBike.orderDetail.Count);
+            }*/
+            Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
 
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + newOrderBike.totalPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
             sendToDB(queryOB);
             Console.WriteLine("New Order has been added to DB");
 
@@ -105,7 +105,7 @@ namespace Bovelo
                 int size = Int32.Parse(element[1]);
                 string color = element[2];
                 int quantity = Int32.Parse(element[3]);
-                int price = Int32.Parse(element[4]);
+                int price = Int32.Parse(element[4]) / quantity;
                 for (int q = 0; q < quantity; q++)
                 {
                     string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";

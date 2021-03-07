@@ -33,26 +33,34 @@ namespace Bovelo
             var bikes = new List<Bike>();
             foreach(var elem in orderDetail)
             {
-                Console.WriteLine("type : " + elem[0] + " size : " + elem[1]+ " color: " + elem[2]+ " quantity : " + elem[3] + " price : " + elem[4]);
+                Console.WriteLine("id : " + elem[0] + " size : " + elem[1]+ " color: " + elem[2]+ " price : " + elem[4]);
                 string type = elem[1];
-                int size = Int16.Parse(elem[2]);
+                int size = Int32.Parse(elem[2]);
                 string color = elem[3];
-                //int quantity = Int16.Parse(elem[3]);
                 int price = Int32.Parse(elem[4]);
+                int id = Int32.Parse(elem[0]);
 
-                for (int i = 0; i < 2; i++)//quantity of this bike
+                bikes.Add(new Bike(type, color, size, price));
+                //int quantity = Int16.Parse(elem[3]);
+
+
+                /*for (int i = 0; i < 2; i++)//quantity of this bike
                 {
                     bikes.Add(new Bike(type,color,size,price));
-                }
+                }*/
             }
             return bikes;
         }
         public int getTotalPrice()
         {
             int totPrice = 0;
-            foreach(var item in orderDetail)
+/*            foreach(var item in orderDetail)
             {
                 totPrice += Int32.Parse(item[4]);
+            }*/
+            foreach(var item in getBikeList())
+            {
+                totPrice += item.Price;
             }
             return totPrice;
         }
