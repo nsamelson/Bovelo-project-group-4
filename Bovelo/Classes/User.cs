@@ -40,7 +40,7 @@ namespace Bovelo
             foreach (var item in cart)
             {
                 var bikeInfo = new List<string>();
-                bikeInfo.Add(i.ToString()); //I used this to have a corresponding list between orderBike when we pass orders from the cart and when we take from DB
+                //bikeInfo.Add(i.ToString()); //I used this to have a corresponding list between orderBike when we pass orders from the cart and when we take from DB
                 bikeInfo.Add(item.bike.Type);
                 bikeInfo.Add(item.bike.Size.ToString());
                 bikeInfo.Add(item.bike.Color);

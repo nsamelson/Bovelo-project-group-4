@@ -129,7 +129,7 @@ namespace Bovelo
             }
             else if (radioButton3.Checked)
             {
-                color = radioButton1.Text;
+                color = radioButton3.Text;
             }
             int _i = Convert.ToInt32(i);
             Bike BikeToAdd = new Bike(TypeOfBike, color, _i, getBikePrice());
@@ -211,6 +211,16 @@ namespace Bovelo
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }

@@ -12,6 +12,7 @@ namespace Bovelo
 {
     public partial class Order : Form
     {
+        private App newApp = new App();
         private User _currentUser = new User(" ", false, false, false);
         //private List<List<string>> orderList;
         private OrderBike order ;
@@ -29,8 +30,19 @@ namespace Bovelo
         }
         private void Order_Load(object sender, EventArgs e)
         {
-            int clientId = 0;
             int i = 0;
+            foreach(var orders in newApp.orderBikeList)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = orders.orderId.ToString();
+                dataGridView1.Rows[i].Cells[1].Value = orders.clientName;
+                dataGridView1.Rows[i].Cells[2].Value = orders.getTotalPrice().ToString();
+                dataGridView1.Rows[i].Cells[3].Value = orders.orderDate.ToString();
+                dataGridView1.Rows[i].Cells[4].Value = orders.shippingDate.ToString();
+
+
+                i++;
+            }
             /*foreach (var elem in _currentUser.getOrderList(clientId))
             {
 
@@ -67,6 +79,11 @@ namespace Bovelo
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
