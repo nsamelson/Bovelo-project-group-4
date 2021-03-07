@@ -14,7 +14,7 @@ namespace Bovelo
         internal List<Bike> bikeModel; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
-         
+
 
 
 
@@ -25,7 +25,7 @@ namespace Bovelo
             this.orderBikeList = getOrderBikeList();
             this.planningList = getPlanningList();
         }
-        
+
         //methods connecting to the DB
         internal List<List<string>> getFromDB(string DBTable) //is used to get anything from a database
         {
@@ -33,15 +33,15 @@ namespace Bovelo
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table "+DBTable+"...");
+            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
-            string sql = "SELECT * FROM "+DBTable+";";
+            string sql = "SELECT * FROM " + DBTable + ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
                 var col = new List<string>();
-                for (int j = 0; j<rdr.FieldCount; j++)
+                for (int j = 0; j < rdr.FieldCount; j++)
                 {
                     col.Add(rdr[j].ToString());
                 }
@@ -64,14 +64,14 @@ namespace Bovelo
         }
 
         //SET To the DB methods
-        internal void setNewOrderBike(List<List<string>> newOrder, string clientName,int totPrice) //is used to pass a new order  HAVE TO CHANGE
+        internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order  HAVE TO CHANGE
         {
 
             int orderId;
             //It has to send 2 things to Database : Order details and Order client
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
             Console.WriteLine("test :" + orderBikeList.Count);
-            if(orderBikeList.Count == 0)
+            if (orderBikeList.Count == 0)
             {
                 orderId = 1;
             }
@@ -130,12 +130,12 @@ namespace Bovelo
             sendToDB(query);
             bikeModel = getBikeModelList();//At the end of set, put a get to update App class
         }
-        internal void setNewPlanning(List<List<string>> planningCartList,string week)//NEED TO SET THE TABLES
+        internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             Planning newPlanning = new Planning(planningCartList, week);
-            string queryP = "INSERT INTO Planning(Week_Name,Working_Hours) VALUES('"+newPlanning.weekId+"','"+newPlanning.workingHours+"');";
+            string queryP = "INSERT INTO Planning(Week_Name,Working_Hours) VALUES('" + newPlanning.weekId + "','" + newPlanning.workingHours + "');";
             //sendToDB(queryP);
-            foreach(var bikesToBuild in newPlanning.planningDetails)
+            foreach (var bikesToBuild in newPlanning.planningDetails)
             {
                 int Planning_Id = 0;
                 string type = bikesToBuild[1];
@@ -151,9 +151,9 @@ namespace Bovelo
         internal List<Planning> getPlanningList()//COPY  getOrderBikeList() METHOD
         {
             List<Planning> plannings = new List<Planning>();
-           /* List<List<string>> planningDB = getFromDB("");
-            var planningDetails = getFromDB("");*/
-           
+            /* List<List<string>> planningDB = getFromDB("");
+             var planningDetails = getFromDB("");*/
+
             return plannings;
 
         }
@@ -162,22 +162,22 @@ namespace Bovelo
             List<OrderBike> orderBikeList = new List<OrderBike>();
             List<List<string>> orderList = getFromDB("Order_Bikes");
             var orderDetailList = getFromDB("Order_Details");
-            
+
             foreach (var row in orderList)
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0]));//takes each lists with the same order_Id
                 orderBikeList.Add(new OrderBike(row[1], details, Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
-                foreach( var x in details)
+                foreach (var x in details)
                 {
                     Console.WriteLine(x);
-                    foreach(var y in x)
+                    foreach (var y in x)
                     {
                         Console.WriteLine("y est : " + y);
                     }
                 }
                 Console.WriteLine("orderbikeList est de longeur : " + orderBikeList.Count);
             }
-            
+
             return orderBikeList;
         }
         internal List<User> getUserList() //is used to get all users 
@@ -191,7 +191,7 @@ namespace Bovelo
                 switch (userType)
                 {
                     case "Representative":
-                        userFromDB.Add(new User(login,true,false,false));
+                        userFromDB.Add(new User(login, true, false, false));
                         break;
                     case "ProductionManager":
                         userFromDB.Add(new User(login, false, true, false));
@@ -203,7 +203,7 @@ namespace Bovelo
                         Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
                         break;
                 }
-                
+
             }
             return userFromDB;
         }
@@ -224,6 +224,7 @@ namespace Bovelo
             string path = "/list_part.txt";
             IEnumerable<string> line = File.ReadLines(path);
         }
- 
 
+
+    }
 }
