@@ -224,7 +224,5 @@ namespace Bovelo
             string path = "/list_part.txt";
             IEnumerable<string> line = File.ReadLines(path);
         }
-
-
     }
 }
