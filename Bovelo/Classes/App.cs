@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -90,7 +90,7 @@ namespace Bovelo
                 Console.WriteLine(x);
                 foreach ( var y in x)
                 {
-                    Console.WriteLine("voilà ton  : " + y);
+                    Console.WriteLine("voilï¿½ ton  : " + y);
                 }
             }*/
             Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
@@ -112,7 +112,7 @@ namespace Bovelo
                 {
                     string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
                     sendToDB(queryOD);
-                    Console.WriteLine("New order détail has been added to DB");
+                    Console.WriteLine("New order dï¿½tail has been added to DB");
                 }
 
             }
