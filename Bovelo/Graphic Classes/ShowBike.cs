@@ -224,5 +224,15 @@ namespace Bovelo
         {
 
         }
+
+        private void label9_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
