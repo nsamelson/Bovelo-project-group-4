@@ -123,15 +123,7 @@ namespace Bovelo
 
             List<List<string>> Order = new List<List<string>>();// need to change this later
             OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
-            /*Console.WriteLine(Order.Count);
-            foreach(var x in Order)
-            {
-                Console.WriteLine(x);
-                foreach ( var y in x)
-                {
-                    Console.WriteLine("voil� ton  : " + y);
-                }
-            }*/
+
             Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
             sendToDB(queryOB);
@@ -358,20 +350,7 @@ namespace Bovelo
                     }
                 }
             }
-/*          foreach (var elem in BikeType.Values)             // what's in the dict
-            {
-                string toprint = " ";
-                foreach (var info in elem)
-                {
-                    toprint += info + " | ";
-                }
-                Console.WriteLine(toprint);
-            }
 
-            foreach(var elem in bikepart)                    // what I am returning
-            {
-                Console.WriteLine(elem);
-            }*/
             return bikePart;
         }
 
