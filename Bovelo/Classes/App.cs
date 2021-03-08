@@ -110,6 +110,7 @@ namespace Bovelo
             //List<string> line = getBikePartInvoice(orderBikeList);
             Bike bike_test = new Bike("City", "Red", 26, 800);
             List<string> line = getBikePart(bike_test);
+            getBikePartsList(line);
             //Console.WriteLine("test :" + orderBikeList.Count);
             if (orderBikeList.Count == 0)
             {
@@ -364,9 +365,9 @@ namespace Bovelo
                     if (bike.Size.ToString() == elem[1])
                         if (bike.Color == elem[2])
                         {
-                            foreach (var item in elem)
+                            for (int i = 3; i<elem.Count();i++)
                             {
-                                bikePart.Add(item);
+                                bikePart.Add(elem[i]);
                             }
                         }
                 }
@@ -387,5 +388,42 @@ namespace Bovelo
             return bikePart;
         }// end getbikepart
 
+        internal void getBikePartsList(List<string> bikePart)
+        {
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL at table Bike_Parts...");
+            conn.Open();
+            string sql_string = "SELECT * FROM Bike_Parts WHERE Bike_Parts_Name=";
+            string sql = " ";
+            List<string> name = new List<string>();
+            int i = 0;
+            foreach (var part in bikePart)
+            {
+                sql = sql_string +"'"+ part +"'" +";";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                
+                while (rdr.Read())
+                {
+                    name.Add(rdr[1].ToString());
+                    name.Add(rdr[3].ToString());
+                    name.Add(rdr[5].ToString());
+
+
+                }
+                sql = sql_string;
+                rdr.Close();
+                
+                i++;
+
+
+            }
+            conn.Close();
+            foreach (var elem in name)
+            {
+                Console.WriteLine("Nameeeeeeeeeeeeeeeee " + elem);
+            }
+        }
     } // end App Class
 } // end namespace Bovelo
