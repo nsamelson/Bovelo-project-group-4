@@ -52,7 +52,6 @@ An interface that updates the classes it's implemented in.
 - *Mockup iteration 1 :* https://drive.google.com/file/d/1E008b_3q2edldHUvpJ3NwuaSqwDhu-G8/view?usp=sharing
 - *Mockup iteration 2 :* https://drive.google.com/file/d/1Z4jrSf73k9zW0ssS0kXVY-IMI5MD1hKv/view?usp=sharing
 - *Mockup iteration 3 :* https://drive.google.com/file/d/1DUMMbBp80TinfHncI6ZJqvvj3tsIi1QV/view?usp=sharing
-![](Documents/Mockupv2.png)
 
 
 ## **3. User stories :**
