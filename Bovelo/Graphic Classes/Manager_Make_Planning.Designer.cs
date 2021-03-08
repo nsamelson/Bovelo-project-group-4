@@ -35,6 +35,7 @@ namespace Bovelo.Graphic_Classes
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,11 +101,25 @@ namespace Bovelo.Graphic_Classes
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "city | 26 | red",
+            "adventure | 28 | red ",
+            "explorer | 27 | blue "});
+            this.checkedListBox1.Location = new System.Drawing.Point(180, 178);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(277, 184);
+            this.checkedListBox1.TabIndex = 3;
+            this.checkedListBox1.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            // 
             // Manager_Make_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.checkedListBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Manager_Make_Planning";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -123,5 +138,6 @@ namespace Bovelo.Graphic_Classes
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
     }
 }

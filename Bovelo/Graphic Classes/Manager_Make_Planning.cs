@@ -24,5 +24,10 @@ namespace Bovelo.Graphic_Classes
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
         }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
