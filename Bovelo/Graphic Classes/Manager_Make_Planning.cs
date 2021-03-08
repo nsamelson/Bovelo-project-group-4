@@ -14,7 +14,7 @@ namespace Bovelo
     public partial class Manager_Make_Planning : Form
     {
         private App newApp = new App();
-        private User user = new User(" ", false, false, false);
+        private User user = new User("Manager", false, false, false);
         internal Manager_Make_Planning(User currentUser)
         {
             InitializeComponent();
