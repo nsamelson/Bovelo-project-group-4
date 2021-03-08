@@ -110,6 +110,7 @@ namespace Bovelo
             //List<string> line = getBikePartInvoice(orderBikeList);
             Bike bike_test = new Bike("City", "Red", 26, 800);
             List<string> line = getBikePart(bike_test);
+            getBikePartsList(line);
             //Console.WriteLine("test :" + orderBikeList.Count);
             if (orderBikeList.Count == 0)
             {
@@ -133,8 +134,7 @@ namespace Bovelo
                 }
             }*/
             Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
-
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
             sendToDB(queryOB);
             Console.WriteLine("New Order has been added to DB");
 
@@ -206,10 +206,13 @@ namespace Bovelo
             foreach (var row in orderList)
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0]));//takes each lists with the same order_Id
-                orderBikeList.Add(new OrderBike(row[1], details, Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
+                OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]));
+                newOrder.orderDate = Convert.ToDateTime(row[3]);
+                newOrder.shippingDate = Convert.ToDateTime(row[4]);
+                orderBikeList.Add(newOrder);//row[1] is the column where the name of the client is put
 
-                OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
-                Console.WriteLine(" Order : " + order.getBikeList());
+                //OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
+                //Console.WriteLine(" Order : " + order.getBikeList());
                 
             }
 
@@ -364,9 +367,9 @@ namespace Bovelo
                     if (bike.Size.ToString() == elem[1])
                         if (bike.Color == elem[2])
                         {
-                            foreach (var item in elem)
+                            for (int i = 3; i<elem.Count();i++)
                             {
-                                bikePart.Add(item);
+                                bikePart.Add(elem[i]);
                             }
                         }
                 }
@@ -387,5 +390,42 @@ namespace Bovelo
             return bikePart;
         }// end getbikepart
 
+        internal void getBikePartsList(List<string> bikePart)
+        {
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL at table Bike_Parts...");
+            conn.Open();
+            string sql_string = "SELECT * FROM Bike_Parts WHERE Bike_Parts_Name=";
+            string sql = " ";
+            List<string> name = new List<string>();
+            int i = 0;
+            foreach (var part in bikePart)
+            {
+                sql = sql_string +"'"+ part +"'" +";";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                
+                while (rdr.Read())
+                {
+                    name.Add(rdr[1].ToString());
+                    name.Add(rdr[3].ToString());
+                    name.Add(rdr[5].ToString());
+
+
+                }
+                sql = sql_string;
+                rdr.Close();
+                
+                i++;
+
+
+            }
+            conn.Close();
+            foreach (var elem in name)
+            {
+                Console.WriteLine("Nameeeeeeeeeeeeeeeee " + elem);
+            }
+        }
     } // end App Class
 } // end namespace Bovelo

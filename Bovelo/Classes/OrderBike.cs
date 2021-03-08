@@ -12,8 +12,8 @@ namespace Bovelo
         public bool isReadyToShip ;
         public string clientName;
         public int totalPrice;
-        public DateTime orderDate;
-        public DateTime shippingDate;
+        public DateTime orderDate=DateTime.Now;
+        public DateTime shippingDate=DateTime.Now;
         public List<List<string>> orderDetail; //Details of the order : [id,Client_Name,Bike_Type,Bike_Color,Bike_Size,Quantity,Price,Order_Time]
         public List<Bike> bikeList;
 
@@ -23,8 +23,8 @@ namespace Bovelo
             this.orderDetail = orderDetail;
             this.orderId = id;
             this.totalPrice = getTotalPrice();
-            this.orderDate = DateTime.Now;
-            this.shippingDate = DateTime.Today.AddDays(7);
+            // this.orderDate = DateTime.Now;
+            // this.shippingDate = DateTime.Today.AddDays(7);
             this.bikeList = getBikeList();
             this.isReadyToShip = getOrderState();
         }

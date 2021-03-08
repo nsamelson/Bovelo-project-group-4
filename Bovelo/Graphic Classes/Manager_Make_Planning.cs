@@ -44,21 +44,28 @@ namespace Bovelo
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
         {
             int i = 0;
-            foreach (var orderDetails in newApp.getOrderDetails())
+            foreach (var orderBikeList in newApp.getOrderBikeList())
             {
+                foreach (var orderDetails in orderBikeList.orderDetail)
+                {
 
-                //Console.WriteLine("détails in manager plan : " + orderDetails[0]);
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = orderDetails[0];
-                dataGridView1.Rows[i].Cells[1].Value = orderDetails[1];
-                dataGridView1.Rows[i].Cells[2].Value = orderDetails[2];
-                dataGridView1.Rows[i].Cells[3].Value = orderDetails[3];
-                dataGridView1.Rows[i].Cells[4].Value = orderDetails[5];
+                    //Console.WriteLine("détails in manager plan : " + orderDetails[0]);
+                    //Console.WriteLine(orderDetails[0] + "|" + orderDetails[1] + "|" + orderDetails[2] + "|" + orderDetails[3] + "|" + orderDetails[4] + "|" + orderDetails[5] + "|" + orderDetails[6] + "|" + orderDetails[7] + "|" + orderDetails[8] + "|");
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[i].Cells[0].Value = orderDetails[6];//[id, Client_Name, Bike_Type, Bike_Color, Bike_Size, Quantity, Price, Order_Time]
+                    dataGridView1.Rows[i].Cells[1].Value = orderDetails[0];
+                    dataGridView1.Rows[i].Cells[2].Value = orderDetails[7];
+                    dataGridView1.Rows[i].Cells[3].Value = orderDetails[1];
+                    dataGridView1.Rows[i].Cells[4].Value = orderDetails[2];
+                    dataGridView1.Rows[i].Cells[5].Value = orderDetails[3];
+                    //dataGridView1.Rows[i].Cells[6].Value = orderDetails[4];
+                    dataGridView1.Rows[i].Cells[6].Value = orderBikeList.orderDate;
 
-                i++;
+                    i++;
 
 
 
+                }
             }
         }
     }
