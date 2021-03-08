@@ -7,10 +7,10 @@ public class BikeModel
 	public DateTime totalTime;
 
 
-	public BikeModel(string type)
+	/*public BikeModel(string type)
 	{
 		this.type = type;
 		this.price = getBikeParts().price;
 		this.totalTime = getBikeParts().totalTime;
-	}
+	}*/
 }

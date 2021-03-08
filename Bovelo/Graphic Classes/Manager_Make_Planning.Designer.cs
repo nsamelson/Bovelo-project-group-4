@@ -169,7 +169,6 @@ namespace Bovelo
             this.Column5.HeaderText = "Add to planning";
             this.Column5.Name = "Column5";
             this.Column5.Text = "Add";
-            this.button1.Text = "Add";
             // 
             // Manager_Make_Planning
             // 
