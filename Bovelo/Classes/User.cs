@@ -104,11 +104,10 @@ namespace Bovelo
             foreach(var item in planningCart)
             {
                 var bikeInfo = new List<string>();
-                bikeInfo.Add(i.ToString()); //need an id, HAVE TO CHANGE
-                bikeInfo.Add(item.Type);
-                bikeInfo.Add(item.Size.ToString());
-                bikeInfo.Add(item.Color);
-                bikeInfo.Add(item.ToString());
+                //bikeInfo.Add(i.ToString()); //need an id, HAVE TO CHANGE
+                bikeInfo.Add(item.Type);            //elem 0
+                bikeInfo.Add(item.Size.ToString()); //elem 1
+                bikeInfo.Add(item.Color);           //elem 2
                 planningAsList.Add(bikeInfo);
                 i++;
             }

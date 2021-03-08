@@ -8,13 +8,15 @@ namespace Bovelo
 {
     class Planning
     {
-        public string weekId;
+        public string weekName;
+        public int planningId;
         public List<Bike> bikesToBuild= new List<Bike>();
         public List<List<string>> planningDetails;
         public int workingHours;
-        public Planning(List<List<string>> planningDetails, string weekId)
+        public Planning(List<List<string>> planningDetails, string weekName,int planningId)
         {
-            this.weekId = weekId;
+            this.weekName = weekName;
+            this.planningId = planningId;
             this.planningDetails = planningDetails;
             this.workingHours = 3 * 8 * 5;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
         }
