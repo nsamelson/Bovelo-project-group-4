@@ -173,7 +173,7 @@ namespace Bovelo
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             //Planning newPlanning = new Planning(planningCartList, week);
-            string queryP = "INSERT INTO Planning(Week_Name) VALUES('" + week + "');";
+            string queryP = "INSERT INTO Schedule(Week_Name) VALUES('" + week + "');";
             sendToDB(queryP);
 
             int planningId;
@@ -189,6 +189,8 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
+                Console.WriteLine("bikes in planning");
+                Console.WriteLine(bikesToBuild);
                 orderDetailsId = Int32.Parse(bikesToBuild[1]);
                 string type = bikesToBuild[1];
                 string size = bikesToBuild[2];

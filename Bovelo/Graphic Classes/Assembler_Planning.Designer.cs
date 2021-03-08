@@ -52,7 +52,7 @@ namespace Bovelo
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1179, 86);
             this.panel1.TabIndex = 2;
@@ -60,18 +60,19 @@ namespace Bovelo
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(121, 11);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(109, 64);
             this.button7.TabIndex = 8;
             this.button7.Text = "menu";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(769, 11);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(72, 68);
             this.button1.TabIndex = 7;
@@ -121,6 +122,7 @@ namespace Bovelo
             this.Bike_Type.HeaderText = "Bike Type";
             this.Bike_Type.MinimumWidth = 6;
             this.Bike_Type.Name = "Bike_Type";
+            this.Bike_Type.Width = 125;
             // 
             // Color
             // 
@@ -159,10 +161,11 @@ namespace Bovelo
             this.ClientSize = new System.Drawing.Size(1182, 590);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Assembler_Planning";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Builder_Planning";
+            this.Load += new System.EventHandler(this.Assembler_Planning_Load_1);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

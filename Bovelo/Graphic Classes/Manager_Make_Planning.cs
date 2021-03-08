@@ -40,7 +40,7 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            newApp.getOrderBikeList();
+            
             int i = 0;
             foreach (var orderBikeList in newApp.getOrderBikeList())
             {
@@ -48,9 +48,11 @@ namespace Bovelo
                 {
                     if (e.RowIndex == i)
                     {
+                        Console.WriteLine(orderDetails[3]);
                         Bike bike = new Bike(orderDetails[3], orderDetails[5], Int32.Parse(orderDetails[4]),0);
                         user.addToPlanningCart(bike,Int32.Parse(orderDetails[7]));
                     }
+                    i++;
                 }
             }
         }
@@ -82,12 +84,11 @@ namespace Bovelo
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             monthCalendar1.MaxSelectionCount = 1;
-            textBox1.Text = (monthCalendar1.SelectionRange.Start).ToString();
             DateTime Day = monthCalendar1.SelectionStart;
             var a = CultureInfo.CurrentCulture;
             var dtf = a.DateTimeFormat;
             var calendarWeek = a.Calendar.GetWeekOfYear(monthCalendar1.SelectionStart, dtf.CalendarWeekRule, dtf.FirstDayOfWeek);
-
+            textBox1.Text = calendarWeek.ToString();
             Console.WriteLine("Week number : " +  calendarWeek);
         }
 
@@ -95,5 +96,11 @@ namespace Bovelo
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string weekName = textBox1.Text;
+            newApp.setNewPlanning(user.planningCart, weekName);
+        } //here comments need to be updated
     }
 }

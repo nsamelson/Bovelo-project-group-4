@@ -14,8 +14,10 @@ namespace Bovelo
     public partial class Assembler_Planning : Form
     {
         private App newApp = new App();
-        public Assembler_Planning()
+        private User user = new User(" ", false, false, false);
+        internal Assembler_Planning(User user)
         {
+            this.user = user;
             InitializeComponent();
         }
 
@@ -48,6 +50,19 @@ namespace Bovelo
                 }
                 i++;
             }
+        }
+
+        private void Assembler_Planning_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Assembler_MainHome amh = new Assembler_MainHome(user);// create new window
+            amh.FormClosed += (s, args) => this.Close();
+            amh.Show();// Showing the Login window
         }
     }
 }
