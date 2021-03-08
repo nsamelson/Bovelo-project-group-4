@@ -70,7 +70,9 @@ namespace Bovelo
             int orderId;
             //It has to send 2 things to Database : Order details and Order client
             orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
-            List<string> line = getBikePartInvoice(orderBikeList);
+            //List<string> line = getBikePartInvoice(orderBikeList);
+            Bike bike_test = new Bike("City", "Red", 26, 800);
+            List<string> line = getBikePart(bike_test);
             Console.WriteLine("test :" + orderBikeList.Count);
             if (orderBikeList.Count == 0)
             {
@@ -227,18 +229,18 @@ namespace Bovelo
             var BikeType =new Dictionary<int, List<string>>(); //  to stock data
             List<string> identity = new List<string>();        //  to add data to dict
             int e = 0;                                         //  key index 
-            List<string> bikepart = new List<string>();        //  return value
+            List<string> bikePart = new List<string>();        //  return value
             foreach (var elem in line)
             {
                 int i = 0;
                 int word = 0;
                 string currentWord = "";                
-                while (word != 15)                             // reading word
+                foreach (var character in elem)                             // reading word
                 {
                     currentWord = "";
-                    while ((elem[i]) != ';')                   // reading char
+                    while (character != ';')                   // reading char
                     {
-                        currentWord += elem[i];                // concatenate char to make word
+                        currentWord += character;                // concatenate char to make word
                         i++;
                     }
                     identity.Add(currentWord);                 // add word to list string
@@ -263,7 +265,7 @@ namespace Bovelo
                                 {
                                     for(int i = 2; i < 15; i++)
                                     { 
-                                        bikepart.Add(elem[i]);
+                                        bikePart.Add(elem[i]);
                                     }
                                 }                                                               
                     }
@@ -283,7 +285,67 @@ namespace Bovelo
             {
                 Console.WriteLine(elem);
             }*/
-            return bikepart;
+            return bikePart;
         }
-    }
-}
+
+        internal List<string> getBikePart(Bike bike)
+        {
+            string path = @"../../Classes/list_part.txt";
+            IEnumerable<string> line = File.ReadLines(path);
+            var BikeType = new Dictionary<int, List<string>>(); //  to stock data
+            List<string> identity = new List<string>();        //  to add data to dict
+            int e = 0;                                         //  key index 
+            List<string> bikePart = new List<string>();        //  return value
+            foreach (var elem in line)
+            {
+                int word = 0;
+                string currentWord = "";
+                foreach (var character in elem)                             // reading word
+                {
+                    
+                    if (character == ';')                   // reading char
+                    {
+                        identity.Add(currentWord);                 // add word to list string
+                        currentWord = "";                          // pass ";" char
+                        word++;                                    // next word                                       
+                        continue;
+                    }
+                    currentWord += character;                // concatenate char to make word
+                    
+                    
+                }
+                BikeType.Add(e, identity);                     // add to dict list of word
+                identity = new List<string>();                 // reset list of word
+                e++;
+            }
+            foreach (var elem in BikeType.Values)
+            {
+                if (bike.Type == elem[0])              // finding parts with goods size,type,color
+                    if (bike.Size.ToString() == elem[1])
+                        if (bike.Color == elem[2])
+                        {
+                            foreach (var item in elem)
+                            {
+                                bikePart.Add(item);
+                            }
+                        }
+                }
+/*            foreach (var elem in BikeType.Values)             // what's in the dict
+            {
+                string toprint = " ";
+                foreach (var info in elem)
+                {
+                    toprint += info + " | ";
+                }
+                Console.WriteLine(toprint);
+            }
+*/            
+            foreach(var elem in bikePart)                    // what I am returning
+            {
+                Console.WriteLine(elem);
+            }
+            return bikePart;
+        }// end getbikepart
+
+    } // end App Class
+} // end namespace Bovelo
