@@ -39,6 +39,7 @@ namespace Bovelo
             this.button4 = new System.Windows.Forms.Button();
             this.City = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -157,11 +158,22 @@ namespace Bovelo
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(91, 331);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(82, 52);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Manager menu";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click_1);
+            // 
             // MainHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.City);
             this.Controls.Add(this.button4);
@@ -188,6 +200,7 @@ namespace Bovelo
         private System.Windows.Forms.Button City;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button5;
     }
 }
 

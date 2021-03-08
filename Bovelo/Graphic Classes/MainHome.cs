@@ -114,5 +114,18 @@ namespace Bovelo
         {
 
         }
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+            
+            if (_currentUser.login == "Manager" )
+            {
+                this.Hide();
+                Manager_MainHome mmh = new Manager_MainHome(_currentUser);// create new window
+                mmh.FormClosed += (s, args) => this.Close();
+                mmh.Show();// Showing the Login window
+            }
+            
+        }
     }
 }
