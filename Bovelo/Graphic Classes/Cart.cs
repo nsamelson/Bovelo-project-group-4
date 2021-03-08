@@ -87,17 +87,13 @@ namespace Bovelo
 
         private void button4_Click(object sender, EventArgs e)
         {
-            /*OrderBike o = new OrderBike(_currentUser);
-            o.addOrderBike();*/
-
-
-            int i = 0;
-            int RowCount = dataGridView1.RowCount;
-            List<List<string>> newOrder = new List<List<string>>();
+            string client = textBox1.Text;        
+            int RowCount = _currentUser.getCartList().Count();
+            /*List<List<string>> newOrder = new List<List<string>>();
             List<string> Data = new List<string>();
-            string client = textBox1.Text;
+            int i = 0;
             int price = 0;
-
+            int RowCount = dataGridView1.RowCount;
             while (i < RowCount )
             {
 
@@ -114,11 +110,11 @@ namespace Bovelo
                 i++;
                 Data = new List<string>();
                 
-            }
-            
-            if(client != ""&&RowCount!=0)
+            }*/
+
+            if (client != ""&&RowCount!=0)
             {
-                app.setNewOrderBike(newOrder, client,price);
+                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice());
                 dataGridView1.Rows.Clear();
                 _currentUser.emptyCart();
                 this.labelPrice.Text = "0€";
