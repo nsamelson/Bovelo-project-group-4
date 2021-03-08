@@ -44,5 +44,13 @@ namespace Bovelo
         {
 
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //hides the current form
+            MainHome mh = new MainHome(user);// maybe send the userType with it
+            mh.FormClosed += (s, args) => this.Close(); // close the login Form
+            mh.Show();
+        }
     }
 }

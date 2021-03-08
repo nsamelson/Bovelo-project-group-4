@@ -102,5 +102,13 @@ namespace Bovelo
             string weekName = textBox1.Text;
             newApp.setNewPlanning(user.planningCart, weekName);
         } //here comments need to be updated
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Manager_MainHome mmh = new Manager_MainHome(user);// create new window
+            mmh.FormClosed += (s, args) => this.Close();
+            mmh.Show();// Showing the Login window
+        }
     }
 }
