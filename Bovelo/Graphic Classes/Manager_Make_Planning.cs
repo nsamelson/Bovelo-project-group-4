@@ -12,6 +12,7 @@ namespace Bovelo
 {
     public partial class Manager_Make_Planning : Form
     {
+        private App newApp = new App();
         public Manager_Make_Planning()
         {
             InitializeComponent();
@@ -33,6 +34,32 @@ namespace Bovelo
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Manager_Make_Planning_Load(object sender, EventArgs e)
+        {
+            int i = 0;
+            foreach (var orderDetails in newApp.getOrderDetails())
+            {
+
+                //Console.WriteLine("détails in manager plan : " + orderDetails[0]);
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = orderDetails[0];
+                dataGridView1.Rows[i].Cells[1].Value = orderDetails[1];
+                dataGridView1.Rows[i].Cells[2].Value = orderDetails[2];
+                dataGridView1.Rows[i].Cells[3].Value = orderDetails[3];
+                dataGridView1.Rows[i].Cells[4].Value = orderDetails[5];
+
+                i++;
+
+
+
+            }
         }
     }
 }

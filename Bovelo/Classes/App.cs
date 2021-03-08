@@ -110,7 +110,7 @@ namespace Bovelo
             //List<string> line = getBikePartInvoice(orderBikeList);
             Bike bike_test = new Bike("City", "Red", 26, 800);
             List<string> line = getBikePart(bike_test);
-            Console.WriteLine("test :" + orderBikeList.Count);
+            //Console.WriteLine("test :" + orderBikeList.Count);
             if (orderBikeList.Count == 0)
             {
                 orderId = 1;
@@ -207,19 +207,22 @@ namespace Bovelo
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0]));//takes each lists with the same order_Id
                 orderBikeList.Add(new OrderBike(row[1], details, Int32.Parse(row[0])));//row[1] is the column where the name of the client is put
-                foreach (var x in details)
-                {
-                    Console.WriteLine(x);
-                    foreach (var y in x)
-                    {
-                        Console.WriteLine("y est : " + y);
-                    }
-                }
-                Console.WriteLine("orderbikeList est de longeur : " + orderBikeList.Count);
+
+                OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
+                Console.WriteLine(" Order : " + order.getBikeList());
+                
             }
 
             return orderBikeList;
         }
+
+        internal List<List<string>> getOrderDetails()
+        {
+            var orderDetailList = getFromDB("Order_Details");
+            return orderDetailList;
+        }
+
+       
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();

@@ -28,12 +28,13 @@ namespace Bovelo
             this.bikeList = getBikeList();
             this.isReadyToShip = getOrderState();
         }
+
         public List<Bike> getBikeList()
         {
             var bikes = new List<Bike>();
             foreach(var elem in orderDetail)
             {
-                Console.WriteLine("id : " + elem[0] + " size : " + elem[1]+ " color: " + elem[2]+ " price : " + elem[4]);
+                //Console.WriteLine("id : " + elem[0] + "type: " + elem[1] + " size : " + elem[2]+ " color: " + elem[3]+ " price : " + elem[4]);
                 string type = elem[1];
                 int size = Int32.Parse(elem[2]);
                 string color = elem[3];
