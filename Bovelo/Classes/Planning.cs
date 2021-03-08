@@ -30,6 +30,8 @@ namespace Bovelo
             {
                 string type = elem[2];
                 string status = elem[3];
+                bikes.Add(new Bike(type, "red", 26, 500));
+                
                 //int size = Int32.Parse(elem[2]);
                 //string color = elem[3];
                 //int quantity = Int32.Parse(elem[4]);
@@ -42,7 +44,11 @@ namespace Bovelo
             }
             return bikes;
         }
-
+        public void refreshBikes(List<List<string>> refreshedBikes)
+        {
+            planningDetails.Clear();
+            planningDetails = refreshedBikes;
+        }
 
         public void setBikeState(Bike bike,string state)//change the bike selected to a new state IT HAS TO CHANGE THE PLANNING DETAILS AND SEND IT INTO DB
         {
