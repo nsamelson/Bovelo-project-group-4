@@ -24,5 +24,10 @@ namespace Bovelo
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
