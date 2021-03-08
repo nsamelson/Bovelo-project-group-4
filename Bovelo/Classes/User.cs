@@ -41,16 +41,25 @@ namespace Bovelo
             {
                 var bikeInfo = new List<string>();
                 //bikeInfo.Add(i.ToString()); //I used this to have a corresponding list between orderBike when we pass orders from the cart and when we take from DB
-                bikeInfo.Add(item.bike.Type);
-                bikeInfo.Add(item.bike.Size.ToString());
-                bikeInfo.Add(item.bike.Color);
-                bikeInfo.Add(item.quantity.ToString());
-                bikeInfo.Add(item.getPrice().ToString());
+                bikeInfo.Add(item.bike.Type);             //elem 0
+                bikeInfo.Add(item.bike.Size.ToString());  //elem 1
+                bikeInfo.Add(item.bike.Color);            //elem 2
+                bikeInfo.Add(item.quantity.ToString());   //elem 3
+                bikeInfo.Add(item.getPrice().ToString()); //elem 4
                 cartAsList.Add(bikeInfo);
                 i++;
             }
 
             return cartAsList;
+        }
+        public int getCartPrice()
+        {
+            int price = 0;
+            foreach(var item in cart)
+            {
+                price += item.price;
+            }
+            return price;
         }
         public void incrementItem(int idList) //increment the quantity of a bike in cart
         {
