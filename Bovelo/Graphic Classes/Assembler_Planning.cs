@@ -15,9 +15,11 @@ namespace Bovelo
     {
         private App newApp = new App();
         private User user = new User(" ", false, false, false);
-        internal Assembler_Planning(User user)
+        private string planningWeek;
+        internal Assembler_Planning(User user, string planning)
         {
             this.user = user;
+            this.planningWeek = planning;
             InitializeComponent();
         }
 
@@ -31,7 +33,7 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
         public void assembler_Planning_Load(object sender, EventArgs e)
         {
@@ -41,19 +43,27 @@ namespace Bovelo
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
+            int i = 0;
             foreach (var planning in newApp.getPlanningList())
             {
-                int i = 0;
-                foreach (var bike in planning.bikesToBuild)
+                if (planningWeek == planning.weekName)
                 {
-                    dataGridView1.Rows[i].Cells[0].Value = 1;
-                    dataGridView1.Rows[i].Cells[1].Value = bike.Size;
-                    dataGridView1.Rows[i].Cells[2].Value = bike.Type;
-                    dataGridView1.Rows[i].Cells[3].Value = bike.Type;
-                    //dataGridView1.Rows[i].Cells[4].Value = bike.getBikeParts();
-                    dataGridView1.Rows[i].Cells[5].Value = bike.state;
+                    foreach (var bike in planning.planningDetails)
+                    {
+                        Console.WriteLine(bike[0] + bike[1] + bike[2] + bike[3] + bike[4]);
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[i].Cells[0].Value = bike[0];
+                        dataGridView1.Rows[i].Cells[1].Value = bike[2];
+                        dataGridView1.Rows[i].Cells[2].Value = "blue";
+                        dataGridView1.Rows[i].Cells[3].Value = "26";
+                        dataGridView1.Rows[i].Cells[4].Value = "FRAME";
+                        dataGridView1.Rows[i].Cells[5].Value = bike[3];
+                        i++;
+                    }
                 }
-                i++;
+                
+                
+                
             }
         }
 
@@ -63,6 +73,31 @@ namespace Bovelo
             Assembler_MainHome amh = new Assembler_MainHome(user);// create new window
             amh.FormClosed += (s, args) => this.Close();
             amh.Show();// Showing the Login window
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            foreach (var planning in newApp.getPlanningList())
+            {
+                if (planningWeek == planning.weekName)
+                {
+                    List<List<string>> refreshed = new List<List<string>>();
+                    for(int i =0;i<planning.planningDetails.Count;i++)
+                    {
+                        List<string> rows = new List<string>();
+                        for (int j=0;j< planning.planningDetails[0].Count;j++)
+                        {
+                            rows.Add(dataGridView1.Rows[i].Cells[j].Value.ToString());
+                        }
+                        refreshed.Add(rows);
+                    }
+                    planning.refreshBikes(refreshed);
+                }
+
+
+
+            }
         }
     }
 }
