@@ -109,5 +109,10 @@ namespace Bovelo
             order.Show();// Showing the Order window
             
         }
+
+        private void MainHome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

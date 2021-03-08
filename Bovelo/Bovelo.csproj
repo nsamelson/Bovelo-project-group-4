@@ -66,6 +66,12 @@
     <Compile Include="Graphic Classes\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphic Classes\Builder_MainHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Builder_MainHome.Designer.cs">
+      <DependentUpon>Builder_MainHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphic Classes\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,12 @@
     </Compile>
     <Compile Include="Graphic Classes\MainHome.Designer.cs">
       <DependentUpon>MainHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager_MainHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager_MainHome.Designer.cs">
+      <DependentUpon>Manager_MainHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphic Classes\Order.cs">
       <SubType>Form</SubType>
@@ -92,6 +104,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Graphic Classes\Builder_MainHome.resx">
+      <DependentUpon>Builder_MainHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +115,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\MainHome.resx">
       <DependentUpon>MainHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Manager_MainHome.resx">
+      <DependentUpon>Manager_MainHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
