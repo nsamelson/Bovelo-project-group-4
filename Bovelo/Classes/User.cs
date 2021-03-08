@@ -15,7 +15,8 @@ namespace Bovelo
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
         
         public List<Item> cart = new List<Item>();//cart of bikes used by representative
-        public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
+        //public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
+        public List<List<string>> planningCart = new List<List<string>>();
         //public List<BikePart> bikePartCart = new List<BikePart>(); //cart of bikePart used by production manager to order parts
         public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
@@ -99,25 +100,27 @@ namespace Bovelo
         
         public List<List<string>> getPlanningCartList()
         {
-            var planningAsList = new List<List<string>>();
-            int i = 0;
+            /*var planningAsList = new List<List<string>>();
+            int id = 0;
             foreach(var item in planningCart)
             {
                 var bikeInfo = new List<string>();
-                //bikeInfo.Add(i.ToString()); //need an id, HAVE TO CHANGE
-                bikeInfo.Add(item.Type);            //elem 0
-                bikeInfo.Add(item.Size.ToString()); //elem 1
-                bikeInfo.Add(item.Color);           //elem 2
+                bikeInfo.Add(item[0]);  //elem 0
+                bikeInfo.Add(item[1]);  //elem 1
+                bikeInfo.Add(item[2]);  //elem 2
+                bikeInfo.Add(item[3]);  //elem 3
+                //bikeInfo.Add();
                 planningAsList.Add(bikeInfo);
-                i++;
-            }
+            }*/
 
 
-            return planningAsList;
+            return planningCart;
         }
-        public void addToPlanningCart(Bike bike)//adds a bike from and order to the planning of the week
+        public void addToPlanningCart(Bike bike,int id)//adds a bike from and order to the planning of the week
         {
-            planningCart.Add(bike);
+            List<string> newBike = new List<string>() { id.ToString(), bike.Type, bike.Size.ToString(), bike.Color  };
+            
+            planningCart.Add(newBike);
         }
         public void emptyPlanningCart()
         {

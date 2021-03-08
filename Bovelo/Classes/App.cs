@@ -189,12 +189,13 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
-                string type = bikesToBuild[0];
-                string size = bikesToBuild[1];
-                string color = bikesToBuild[2];
+                orderDetailsId = Int32.Parse(bikesToBuild[1]);
+                string type = bikesToBuild[1];
+                string size = bikesToBuild[2];
+                string color = bikesToBuild[3];
 
 
-                string queryPD = "INSERT INTO Order_Details (Id_Order_Details,Bike_Name,Bike_Status,Week_Name,Id_General_Schedules) VALUES('" + orderDetailsId + "',  '" + type + "', 'New','" + week + "',  '" + planningId + "'); ";
+                string queryPD = "INSERT INTO Detailed_Schedules (Id_Order_Details,Bike_Name,Bike_Status,Week_Name,Id_General_Schedules) VALUES('" + orderDetailsId + "',  '" + type + "', 'New','" + week + "',  '" + planningId + "'); ";
                 sendToDB(queryPD);
             }
 
