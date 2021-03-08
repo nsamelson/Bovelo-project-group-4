@@ -12,7 +12,7 @@ namespace Bovelo
 {
     public partial class Manager_MainHome : Form
     {
-        private User user = new User(" ", false, false, false);
+        private User user = new User("Manager", false, false, false);
         internal Manager_MainHome(User currentUser)
         {
             this.user = currentUser;
