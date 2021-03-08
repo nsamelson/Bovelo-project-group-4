@@ -29,5 +29,13 @@ namespace Bovelo
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();// Hiding the MainHome Window
+            Manager_Make_Planning mmp = new Manager_Make_Planning();// create new window
+            mmp.FormClosed += (s, args) => this.Close();
+            mmp.Show();// Showing the manager make planning window
+        }
     }
 }

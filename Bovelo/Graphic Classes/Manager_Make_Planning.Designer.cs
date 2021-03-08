@@ -1,5 +1,5 @@
 ﻿
-namespace Bovelo.Graphic_Classes
+namespace Bovelo
 {
     partial class Manager_Make_Planning
     {
@@ -61,6 +61,7 @@ namespace Bovelo.Graphic_Classes
             this.button4.TabIndex = 6;
             this.button4.Text = "Provider Catalog";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button7
             // 

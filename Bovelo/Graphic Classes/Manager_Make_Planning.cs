@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bovelo.Graphic_Classes
+namespace Bovelo
 {
     public partial class Manager_Make_Planning : Form
     {
@@ -26,6 +26,11 @@ namespace Bovelo.Graphic_Classes
         }
 
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

@@ -24,7 +24,10 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Hide();// Hiding the MainHome Window
+            Assembler_Planning plng = new Assembler_Planning();// create new window
+            plng.FormClosed += (s, args) => this.Close();
+            plng.Show();// Showing the Assembler planning window
         }
 
         private void button1_Click(object sender, EventArgs e)
