@@ -107,6 +107,7 @@ namespace Bovelo.Graphic_Classes
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.panel1);
             this.Name = "Manager_Make_Planning";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager_Make_Planning";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

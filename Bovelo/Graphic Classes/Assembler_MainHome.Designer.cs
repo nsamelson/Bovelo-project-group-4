@@ -89,14 +89,15 @@ namespace Bovelo
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Builder_MainHome
+            // Assembler_MainHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
-            this.Name = "Builder_MainHome";
+            this.Name = "Assembler_MainHome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V2.0";
             this.Load += new System.EventHandler(this.Builder_MainHome_Load);
             this.panel1.ResumeLayout(false);

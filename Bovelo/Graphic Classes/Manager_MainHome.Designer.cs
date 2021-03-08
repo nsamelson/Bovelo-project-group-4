@@ -30,11 +30,11 @@ namespace Bovelo
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -52,6 +52,15 @@ namespace Bovelo
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 70);
             this.panel1.TabIndex = 1;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(200, 9);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(82, 52);
+            this.button4.TabIndex = 6;
+            this.button4.Text = "Provider Catalog";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -93,15 +102,6 @@ namespace Bovelo
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(200, 9);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(82, 52);
-            this.button4.TabIndex = 6;
-            this.button4.Text = "Provider Catalog";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(377, 208);
@@ -119,6 +119,7 @@ namespace Bovelo
             this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
             this.Name = "Manager_MainHome";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager_MainHome";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

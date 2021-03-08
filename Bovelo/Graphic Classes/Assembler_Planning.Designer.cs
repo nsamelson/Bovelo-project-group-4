@@ -78,13 +78,14 @@ namespace Bovelo
             this.label1.TabIndex = 6;
             this.label1.Text = "Bovelo";
             // 
-            // Builder_Planning
+            // Assembler_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.panel1);
-            this.Name = "Builder_Planning";
+            this.Name = "Assembler_Planning";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Builder_Planning";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
