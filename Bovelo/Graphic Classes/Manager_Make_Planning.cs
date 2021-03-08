@@ -49,7 +49,7 @@ namespace Bovelo
                     if (e.RowIndex == i)
                     {
                         Bike bike = new Bike(orderDetails[3], orderDetails[5], Int32.Parse(orderDetails[4]),0);
-                        user.addToPlanningCart(bike);
+                        user.addToPlanningCart(bike,Int32.Parse(orderDetails[7]));
                     }
                 }
             }
