@@ -172,27 +172,49 @@ namespace Bovelo
         }
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
-            Planning newPlanning = new Planning(planningCartList, week);
-            string queryP = "INSERT INTO Planning(Week_Name,Working_Hours) VALUES('" + newPlanning.weekId + "','" + newPlanning.workingHours + "');";
-            //sendToDB(queryP);
-            foreach (var bikesToBuild in newPlanning.planningDetails)
+            //Planning newPlanning = new Planning(planningCartList, week);
+            string queryP = "INSERT INTO Planning(Week_Name) VALUES('" + week + "');";
+            sendToDB(queryP);
+
+            int planningId;
+            int orderDetailsId = 0; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
+            if (planningList.Count == 0)
             {
-                int Planning_Id = 0;
+                planningId = 1;
+            }
+            else
+            {
+                planningId = planningList.Last().planningId + 1;
+            }
+
+            foreach (var bikesToBuild in planningCartList)
+            {
+                orderDetailsId = Int32.Parse(bikesToBuild[1]);
                 string type = bikesToBuild[1];
-                int size = Int32.Parse(bikesToBuild[2]);
+                string size = bikesToBuild[2];
                 string color = bikesToBuild[3];
-                string queryPD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Id_Planning) VALUES('" + type + "', '" + size + "','" + color + "',  '" + Planning_Id + "'); ";
-                //sendToDB(queryPD);
+
+
+                string queryPD = "INSERT INTO Detailed_Schedules (Id_Order_Details,Bike_Name,Bike_Status,Week_Name,Id_General_Schedules) VALUES('" + orderDetailsId + "',  '" + type + "', 'New','" + week + "',  '" + planningId + "'); ";
+                sendToDB(queryPD);
             }
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
         //GET from the DB methods
-        internal List<Planning> getPlanningList()//COPY  getOrderBikeList() METHOD
+        internal List<Planning> getPlanningList() //gets all plannings
         {
             List<Planning> plannings = new List<Planning>();
-            /* List<List<string>> planningDB = getFromDB("");
-             var planningDetails = getFromDB("");*/
+            List<List<string>> planningDB = getFromDB("Schedule");
+            var planningDetailsDB = getFromDB("Detailed_Schedules");
+
+            foreach (var row in planningDB)
+            {
+                List<List<string>> details = new List<List<string>>(planningDetailsDB.FindAll(x => x[5] == row[0]));//takes each lists with the same Id
+                Planning newPlanning = new Planning(details, row[1], Int32.Parse(row[0]));
+                plannings.Add(newPlanning);//row[1] is the column where the name of the client is put
+
+            }
 
             return plannings;
 
@@ -390,7 +412,7 @@ namespace Bovelo
             return bikePart;
         }// end getbikepart
 
-        internal void getBikePartsList(List<string> bikePart)
+        internal List<BikePart> getBikePartsList(List<string> bikePart)
         {
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -421,10 +443,16 @@ namespace Bovelo
                 i++;
             }
             conn.Close();
+            int totalTime = 0;
+            int bikePrice = 0;
             foreach (var elem in bikePartList)
             {
-                Console.WriteLine("LISTE DE PIECES: " + elem.name);
+                totalTime += elem.timeToBuild;
+                bikePrice += elem.price;
             }
+            Console.WriteLine("TIME TO BUILD THE BIKE: " + totalTime + " Minutes");
+            Console.WriteLine("BIKE PRICE: " + bikePrice + " €");
+            return bikePartList;
         }
     } // end App Class
 } // end namespace Bovelo
