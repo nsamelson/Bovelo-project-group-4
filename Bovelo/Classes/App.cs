@@ -398,33 +398,32 @@ namespace Bovelo
             conn.Open();
             string sql_string = "SELECT * FROM Bike_Parts WHERE Bike_Parts_Name=";
             string sql = " ";
-            List<string> name = new List<string>();
+            List<BikePart> bikePartList = new List<BikePart>();
             int i = 0;
             foreach (var part in bikePart)
             {
-                sql = sql_string +"'"+ part +"'" +";";
+                sql = sql_string + "'" + part + "'" + ";";
                 MySqlCommand cmd = new MySqlCommand(sql, conn);
                 MySqlDataReader rdr = cmd.ExecuteReader();
-                
+
                 while (rdr.Read())
                 {
-                    name.Add(rdr[1].ToString());
-                    name.Add(rdr[3].ToString());
-                    name.Add(rdr[5].ToString());
-
-
+                    string name = rdr[1].ToString();
+                    int quantity = Convert.ToInt32(rdr[2]);
+                    string location = rdr[3].ToString();
+                    int price = Convert.ToInt32(rdr[4]);
+                    string provider = rdr[5].ToString();
+                    int time = Convert.ToInt32(rdr[6]);
+                    bikePartList.Add(new BikePart(name, time, price, location));
                 }
                 sql = sql_string;
                 rdr.Close();
-                
                 i++;
-
-
             }
             conn.Close();
-            foreach (var elem in name)
+            foreach (var elem in bikePartList)
             {
-                Console.WriteLine("Nameeeeeeeeeeeeeeeee " + elem);
+                Console.WriteLine("LISTE DE PIECES: " + elem.name);
             }
         }
     } // end App Class
