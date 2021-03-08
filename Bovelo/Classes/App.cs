@@ -412,7 +412,7 @@ namespace Bovelo
             return bikePart;
         }// end getbikepart
 
-        internal void getBikePartsList(List<string> bikePart)
+        internal List<BikePart> getBikePartsList(List<string> bikePart)
         {
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
@@ -443,10 +443,16 @@ namespace Bovelo
                 i++;
             }
             conn.Close();
+            int totalTime = 0;
+            int bikePrice = 0;
             foreach (var elem in bikePartList)
             {
-                Console.WriteLine("LISTE DE PIECES: " + elem.name);
+                totalTime += elem.timeToBuild;
+                bikePrice += elem.price;
             }
+            Console.WriteLine("TIME TO BUILD THE BIKE: " + totalTime + " Minutes");
+            Console.WriteLine("BIKE PRICE: " + bikePrice + " €");
+            return bikePartList;
         }
     } // end App Class
 } // end namespace Bovelo
