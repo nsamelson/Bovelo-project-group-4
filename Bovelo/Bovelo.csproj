@@ -60,17 +60,23 @@
     <Compile Include="Classes\Item.cs" />
     <Compile Include="Classes\OrderBike.cs" />
     <Compile Include="Classes\User.cs" />
+    <Compile Include="Graphic Classes\Assembler_Planning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Assembler_Planning.Designer.cs">
+      <DependentUpon>Assembler_Planning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphic Classes\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Graphic Classes\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Builder_MainHome.cs">
+    <Compile Include="Graphic Classes\Assembler_MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Builder_MainHome.Designer.cs">
-      <DependentUpon>Builder_MainHome.cs</DependentUpon>
+    <Compile Include="Graphic Classes\Assembler_MainHome.Designer.cs">
+      <DependentUpon>Assembler_MainHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Graphic Classes\Login.cs">
       <SubType>Form</SubType>
@@ -90,6 +96,12 @@
     <Compile Include="Graphic Classes\Manager_MainHome.Designer.cs">
       <DependentUpon>Manager_MainHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphic Classes\Manager_Make_Planning.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager_Make_Planning.Designer.cs">
+      <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphic Classes\Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,8 +116,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Graphic Classes\Builder_MainHome.resx">
-      <DependentUpon>Builder_MainHome.cs</DependentUpon>
+    <EmbeddedResource Include="Graphic Classes\Assembler_MainHome.resx">
+      <DependentUpon>Assembler_MainHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Assembler_Planning.resx">
+      <DependentUpon>Assembler_Planning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
@@ -118,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Manager_MainHome.resx">
       <DependentUpon>Manager_MainHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Manager_Make_Planning.resx">
+      <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>

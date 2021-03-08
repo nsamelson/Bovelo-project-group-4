@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bovelo
+namespace Bovelo.Graphic_Classes
 {
-    public partial class Manager_MainHome : Form
+    public partial class Manager_Make_Planning : Form
     {
-        public Manager_MainHome()
+        public Manager_Make_Planning()
         {
             InitializeComponent();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

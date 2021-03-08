@@ -37,12 +37,31 @@ namespace Bovelo
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again or create a new user!"); }
             else
             {
-                int index = app.userList.FindIndex(a => a.login == userName);
-
-                this.Hide(); //hides the current form
-                MainHome mh = new MainHome(app.userList[index]);// maybe send the userType with it
-                mh.FormClosed += (s, args) => this.Close(); // close the login Form
-                mh.Show();
+                if (userType == "Representative")
+                {
+                    int index = app.userList.FindIndex(a => a.login == userName);
+                    this.Hide(); //hides the current form
+                    MainHome mh = new MainHome(app.userList[index]);// maybe send the userType with it
+                    mh.FormClosed += (s, args) => this.Close(); // close the login Form
+                    mh.Show();
+                }
+                if (userType == "Assembler")
+                {
+                    int index = app.userList.FindIndex(a => a.login == userName);
+                    this.Hide(); //hides the current form
+                    Assembler_MainHome amh = new Assembler_MainHome();// maybe send the userType with it
+                    amh.FormClosed += (s, args) => this.Close(); // close the login Form
+                    amh.Show();
+                }
+                if (userType == "Production Manager")
+                {
+                    int index = app.userList.FindIndex(a => a.login == userName);
+                    this.Hide(); //hides the current form
+                    Manager_MainHome mmh = new Manager_MainHome();// maybe send the userType with it
+                    mmh.FormClosed += (s, args) => this.Close(); // close the login Form
+                    mmh.Show();
+                }
+                    
             }
         }
 

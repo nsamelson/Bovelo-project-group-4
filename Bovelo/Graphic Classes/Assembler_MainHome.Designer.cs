@@ -1,7 +1,7 @@
 ﻿
-namespace Bovelo.Graphic_Classes
+namespace Bovelo
 {
-    partial class Builder_MainHome
+    partial class Assembler_MainHome
     {
         /// <summary>
         /// Required designer variable.
@@ -55,7 +55,7 @@ namespace Bovelo.Graphic_Classes
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(82, 52);
             this.button7.TabIndex = 8;
-            this.button7.Text = "Catalogue";
+            this.button7.Text = "menu";
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button1
@@ -67,6 +67,7 @@ namespace Bovelo.Graphic_Classes
             this.button1.TabIndex = 7;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 

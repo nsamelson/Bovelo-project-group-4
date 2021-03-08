@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Bovelo
 {
-    public partial class Manager_MainHome : Form
+    public partial class Assembler_Planning : Form
     {
-        public Manager_MainHome()
+        public Assembler_Planning()
         {
             InitializeComponent();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

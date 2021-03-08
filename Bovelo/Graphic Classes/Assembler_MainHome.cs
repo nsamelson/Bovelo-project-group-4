@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Bovelo.Graphic_Classes
+namespace Bovelo
 {
-    public partial class Builder_MainHome : Form
+    public partial class Assembler_MainHome : Form
     {
-        public Builder_MainHome()
+        public Assembler_MainHome()
         {
             InitializeComponent();
         }
@@ -25,6 +25,14 @@ namespace Bovelo.Graphic_Classes
         private void button2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var login = new Login();// create new window
+            login.FormClosed += (s, args) => this.Close();
+            login.Show();// Showing the Login window
         }
     }
 }
