@@ -93,11 +93,11 @@ namespace Bovelo
                         refreshed.Add(rows);
                     }
                     planning.refreshBikes(refreshed);
+                    newApp.updateSatus(refreshed);
                 }
 
-
-
             }
+            
         }
     }
 }
