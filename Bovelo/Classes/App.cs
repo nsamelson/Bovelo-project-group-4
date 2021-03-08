@@ -51,6 +51,43 @@ namespace Bovelo
             conn.Close();
             return listFromDB;
         }
+        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList)
+        {
+            var listFromDB = new List<List<string>>();
+
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            conn.Open();
+            string sql = "SELECT ";
+            for (int i = 0; i < argumentList.Count; i++)
+            {
+                if (i != argumentList.Count - 1)
+                {
+                    sql += argumentList[i] + ",";
+                }
+                else
+                {
+                    sql += argumentList[i];
+                }
+            }
+
+            sql += " FROM " + DBTable + ";";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                listFromDB.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return listFromDB;
+        }
         internal void sendToDB(string query) //is used to send anything to the database
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
