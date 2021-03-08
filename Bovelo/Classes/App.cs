@@ -140,7 +140,7 @@ namespace Bovelo
             foreach (var element in newOrder)
             {
 
-                Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
+                //Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
                 string type = element[0];
                 int size = Int32.Parse(element[1]);
                 string color = element[2];
@@ -150,7 +150,7 @@ namespace Bovelo
                 {
                     string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
                     sendToDB(queryOD);
-                    Console.WriteLine("New order d�tail has been added to DB");
+                    Console.WriteLine("New order detail has been added to DB");
                 }
 
             }
@@ -178,23 +178,23 @@ namespace Bovelo
 
             int planningId;
             int orderDetailsId = 0; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
-            if (planningList.Count == 0)
+            if (getPlanningList().Count == 0)
             {
                 planningId = 1;
             }
             else
             {
-                planningId = planningList.Last().planningId + 1;
+                planningId = getPlanningList().Last().planningId ;
             }
 
             foreach (var bikesToBuild in planningCartList)
             {
                 Console.WriteLine("bikes in planning");
-                Console.WriteLine(bikesToBuild);
-                orderDetailsId = Int32.Parse(bikesToBuild[1]);
+                Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
+                orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
-                string color = bikesToBuild[3];
+                //string color = bikesToBuild[3];
 
 
                 string queryPD = "INSERT INTO Detailed_Schedules (Id_Order_Details,Bike_Name,Bike_Status,Week_Name,Id_General_Schedules) VALUES('" + orderDetailsId + "',  '" + type + "', 'New','" + week + "',  '" + planningId + "'); ";
@@ -213,7 +213,17 @@ namespace Bovelo
             foreach (var row in planningDB)
             {
                 List<List<string>> details = new List<List<string>>(planningDetailsDB.FindAll(x => x[5] == row[0]));//takes each lists with the same Id
-                Planning newPlanning = new Planning(details, row[1], Int32.Parse(row[0]));
+                foreach (var elem in details)
+                {
+                    string test = "";
+                    for (int i = 0; i < elem.Count; i++)
+                    {
+                        test += elem[i] + " ";
+                    }
+                    Console.WriteLine(test);
+                }
+                
+                Planning newPlanning = new Planning(details, row[1], Convert.ToInt16(row[0]));
                 plannings.Add(newPlanning);//row[1] is the column where the name of the client is put
 
             }

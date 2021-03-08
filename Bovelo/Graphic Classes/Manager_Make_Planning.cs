@@ -48,8 +48,8 @@ namespace Bovelo
                 {
                     if (e.RowIndex == i)
                     {
-                        Console.WriteLine(orderDetails[3]);
-                        Bike bike = new Bike(orderDetails[3], orderDetails[5], Int32.Parse(orderDetails[4]),0);
+                        Console.WriteLine(orderDetails[1]);
+                        Bike bike = new Bike(orderDetails[1], orderDetails[5], Int32.Parse(orderDetails[4]),0);
                         user.addToPlanningCart(bike,Int32.Parse(orderDetails[7]));
                     }
                     i++;

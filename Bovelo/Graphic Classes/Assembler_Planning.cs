@@ -36,10 +36,15 @@ namespace Bovelo
         public void assembler_Planning_Load(object sender, EventArgs e)
         {
             
+           
+        }
+
+        private void Assembler_Planning_Load_1(object sender, EventArgs e)
+        {
             foreach (var planning in newApp.getPlanningList())
             {
                 int i = 0;
-                foreach(var bike in planning.bikesToBuild)
+                foreach (var bike in planning.bikesToBuild)
                 {
                     dataGridView1.Rows[i].Cells[0].Value = 1;
                     dataGridView1.Rows[i].Cells[1].Value = bike.Size;
@@ -50,11 +55,6 @@ namespace Bovelo
                 }
                 i++;
             }
-        }
-
-        private void Assembler_Planning_Load_1(object sender, EventArgs e)
-        {
-
         }
 
         private void button7_Click(object sender, EventArgs e)

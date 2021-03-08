@@ -25,19 +25,20 @@ namespace Bovelo
         {
 
             var bikes = new List<Bike>();
-
+            
             foreach (var elem in planningDetails)
             {
-                string type = elem[1];
-                int size = Int32.Parse(elem[2]);
-                string color = elem[3];
-                int quantity = Int32.Parse(elem[4]);
-                int price = Int32.Parse(elem[5]) / quantity;//dont need price
+                string type = elem[2];
+                string status = elem[3];
+                //int size = Int32.Parse(elem[2]);
+                //string color = elem[3];
+                //int quantity = Int32.Parse(elem[4]);
+                //int price = Int32.Parse(elem[5]) / quantity;//dont need price
                 //NEED ID OF THE BIKE
-                for (int i = 0; i < quantity; i++)//quantity of this bike
+                /*for (int i = 0; i < quantity; i++)//quantity of this bike
                 {
                     bikes.Add(new Bike(type, color, size, price));
-                }
+                }*/
             }
             return bikes;
         }
