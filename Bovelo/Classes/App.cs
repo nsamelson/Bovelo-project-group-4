@@ -103,15 +103,15 @@ namespace Bovelo
         //SET To the DB methods
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order  HAVE TO CHANGE
         {
-
-            int orderId;
             //It has to send 2 things to Database : Order details and Order client
-            orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
-            //List<string> line = getBikePartInvoice(orderBikeList);
+
+            // TEST 
             Bike bike_test = new Bike("City", "Red", 26, 800);
             List<string> line = getBikePart(bike_test);
             getBikePartsList(line);
-            //Console.WriteLine("test :" + orderBikeList.Count);
+
+            
+            int orderId;
             if (orderBikeList.Count == 0)
             {
                 orderId = 1;
@@ -121,19 +121,9 @@ namespace Bovelo
                 orderId = orderBikeList.Last().orderId + 1;
             }
 
-            List<List<string>> Order = new List<List<string>>();
-
+            List<List<string>> Order = new List<List<string>>();// need to change this later
             OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
-            /*Console.WriteLine(Order.Count);
-            foreach(var x in Order)
-            {
-                Console.WriteLine(x);
-                foreach ( var y in x)
-                {
-                    Console.WriteLine("voil� ton  : " + y);
-                }
-            }*/
-            Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
+
 
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + newOrderBike.orderDate.ToString() + "','" + newOrderBike.shippingDate.ToString() + "');";
             sendToDB(queryOB);
@@ -156,6 +146,7 @@ namespace Bovelo
                 }
 
             }
+            orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
