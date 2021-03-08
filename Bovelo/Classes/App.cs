@@ -233,7 +233,7 @@ namespace Bovelo
                     case "Representative":
                         userFromDB.Add(new User(login, true, false, false));
                         break;
-                    case "ProductionManager":
+                    case "Production Manager":
                         userFromDB.Add(new User(login, false, true, false));
                         break;
                     case "Assembler":

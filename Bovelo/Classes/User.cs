@@ -21,7 +21,7 @@ namespace Bovelo
         {
             this.login = login;
             userType.Add("Representative", isRepresentative);
-            userType.Add("ProductionManager", isProductionManager);
+            userType.Add("Production Manager", isProductionManager);
             userType.Add("Assembler", isAssembler);
 
         }
