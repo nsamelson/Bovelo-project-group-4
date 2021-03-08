@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Bovelo
 {
@@ -62,11 +63,26 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[6].Value = orderBikeList.orderDate;
 
                     i++;
-
-
-
                 }
+                
             }
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            monthCalendar1.MaxSelectionCount = 1;
+            textBox1.Text = (monthCalendar1.SelectionRange.Start).ToString();
+            DateTime Day = monthCalendar1.SelectionStart;
+            var a = CultureInfo.CurrentCulture;
+            var dtf = a.DateTimeFormat;
+            var calendarWeek = a.Calendar.GetWeekOfYear(monthCalendar1.SelectionStart, dtf.CalendarWeekRule, dtf.FirstDayOfWeek);
+
+            Console.WriteLine("Week number : " +  calendarWeek);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
