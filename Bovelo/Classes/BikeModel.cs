@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
+using MySql.Data.MySqlClient;
 
 public class BikeModel
 {
@@ -7,10 +13,10 @@ public class BikeModel
 	public DateTime totalTime;
 
 
-	/*public BikeModel(string type)
+	public BikeModel(string type)
 	{
 		this.type = type;
-		this.price = getBikeParts().price;
-		this.totalTime = getBikeParts().totalTime;
-	}*/
+		//this.price = getBikePartsList().price;
+		//this.totalTime = getBikePartsList().totalTime;
+	}
 }
