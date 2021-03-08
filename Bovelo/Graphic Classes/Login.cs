@@ -57,7 +57,7 @@ namespace Bovelo
                 {
                     int index = app.userList.FindIndex(a => a.login == userName);
                     this.Hide(); //hides the current form
-                    Manager_MainHome mmh = new Manager_MainHome();// maybe send the userType with it
+                    Manager_MainHome mmh = new Manager_MainHome(app.userList[index]);// maybe send the userType with it
                     mmh.FormClosed += (s, args) => this.Close(); // close the login Form
                     mmh.Show();
                 }
@@ -105,6 +105,11 @@ namespace Bovelo
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
         {
 
         }

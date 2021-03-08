@@ -35,8 +35,9 @@ namespace Bovelo
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.panel1.SuspendLayout();
@@ -95,8 +96,9 @@ namespace Bovelo
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
             this.Bike_Type,
+            this.Color,
+            this.Column2,
             this.Bike_Part,
             this.Price});
             this.dataGridView1.Location = new System.Drawing.Point(13, 94);
@@ -114,18 +116,25 @@ namespace Bovelo
             this.Column1.Name = "Column1";
             this.Column1.Width = 75;
             // 
+            // Bike_Type
+            // 
+            this.Bike_Type.HeaderText = "Bike Type";
+            this.Bike_Type.MinimumWidth = 6;
+            this.Bike_Type.Name = "Bike_Type";
+            // 
+            // Color
+            // 
+            this.Color.HeaderText = "Color";
+            this.Color.MinimumWidth = 6;
+            this.Color.Name = "Color";
+            this.Color.Width = 125;
+            // 
             // Column2
             // 
             this.Column2.HeaderText = "Size :";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.Width = 50;
-            // 
-            // Bike_Type
-            // 
-            this.Bike_Type.HeaderText = "Bike Type";
-            this.Bike_Type.MinimumWidth = 6;
-            this.Bike_Type.Name = "Bike_Type";
             // 
             // Bike_Part
             // 
@@ -169,8 +178,9 @@ namespace Bovelo
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Part;
         private System.Windows.Forms.DataGridViewComboBoxColumn Price;
     }

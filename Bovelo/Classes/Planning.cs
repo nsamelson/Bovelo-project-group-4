@@ -17,6 +17,7 @@ namespace Bovelo
             this.weekId = weekId;
             this.planningDetails = planningDetails;
             this.workingHours = 3 * 8 * 5;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
+            this.bikesToBuild = getBikesToBuild();
         }
         public List<Bike> getBikesToBuild()
         {

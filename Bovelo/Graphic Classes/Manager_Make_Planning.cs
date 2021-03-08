@@ -13,7 +13,8 @@ namespace Bovelo
     public partial class Manager_Make_Planning : Form
     {
         private App newApp = new App();
-        public Manager_Make_Planning()
+        private User user = new User(" ", false, false, false);
+        internal Manager_Make_Planning(User currentUser)
         {
             InitializeComponent();
         }
@@ -38,7 +39,19 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            newApp.getOrderBikeList();
+            int i = 0;
+            foreach (var orderBikeList in newApp.getOrderBikeList())
+            {
+                foreach (var orderDetails in orderBikeList.orderDetail)
+                {
+                    if (e.RowIndex == i)
+                    {
+                        Bike bike = new Bike(orderDetails[3], orderDetails[5], Int32.Parse(orderDetails[4]),0);
+                        user.addToPlanningCart(bike);
+                    }
+                }
+            }
         }
 
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
@@ -48,23 +61,18 @@ namespace Bovelo
             {
                 foreach (var orderDetails in orderBikeList.orderDetail)
                 {
-
                     //Console.WriteLine("détails in manager plan : " + orderDetails[0]);
                     //Console.WriteLine(orderDetails[0] + "|" + orderDetails[1] + "|" + orderDetails[2] + "|" + orderDetails[3] + "|" + orderDetails[4] + "|" + orderDetails[5] + "|" + orderDetails[6] + "|" + orderDetails[7] + "|" + orderDetails[8] + "|");
                     dataGridView1.Rows.Add();
                     dataGridView1.Rows[i].Cells[0].Value = orderDetails[6];//[id, Client_Name, Bike_Type, Bike_Color, Bike_Size, Quantity, Price, Order_Time]
                     dataGridView1.Rows[i].Cells[1].Value = orderDetails[0];
-                    dataGridView1.Rows[i].Cells[2].Value = orderDetails[7];
-                    dataGridView1.Rows[i].Cells[3].Value = orderDetails[1];
-                    dataGridView1.Rows[i].Cells[4].Value = orderDetails[2];
+                    dataGridView1.Rows[i].Cells[2].Value = orderDetails[7];//type
+                    dataGridView1.Rows[i].Cells[3].Value = orderDetails[1];//size
+                    dataGridView1.Rows[i].Cells[4].Value = orderDetails[2];//color
                     dataGridView1.Rows[i].Cells[5].Value = orderDetails[3];
                     //dataGridView1.Rows[i].Cells[6].Value = orderDetails[4];
                     dataGridView1.Rows[i].Cells[6].Value = orderBikeList.orderDate;
-
                     i++;
-
-
-
                 }
             }
         }

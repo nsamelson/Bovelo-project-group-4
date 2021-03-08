@@ -12,8 +12,10 @@ namespace Bovelo
 {
     public partial class Manager_MainHome : Form
     {
-        public Manager_MainHome()
+        private User user = new User(" ", false, false, false);
+        internal Manager_MainHome(User currentUser)
         {
+            this.user = currentUser;
             InitializeComponent();
         }
 
@@ -33,9 +35,14 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();// Hiding the MainHome Window
-            Manager_Make_Planning mmp = new Manager_Make_Planning();// create new window
+            Manager_Make_Planning mmp = new Manager_Make_Planning(user);// create new window
             mmp.FormClosed += (s, args) => this.Close();
             mmp.Show();// Showing the manager make planning window
+        }
+
+        private void Manager_MainHome_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
