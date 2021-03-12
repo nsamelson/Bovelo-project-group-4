@@ -35,12 +35,14 @@ namespace Bovelo
        public int getBikePrice()
         {
             int price = 0;
-            foreach (var bike in app.bikeModel)
+            foreach (var bike in app.bikeModels)
             {
-                if (bike.Type == TypeOfBike)
+                Console.WriteLine(bike.type);
+                if (bike.type == TypeOfBike)
                 {
-                    price = bike.Price;
+                   price= bike.price;
                 }
+                
             }
             return price;
         }

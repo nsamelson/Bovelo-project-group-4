@@ -11,7 +11,7 @@ namespace Bovelo
     public class App //Super class, it takes everything from the database and will send anything to it
     {
         internal List<User> userList; //All users from DB( Representative, Assembler, ProductionManager)
-        internal List<Bike> bikeModel; //All bike types (Adventure, city and explorer)
+        internal List<BikeModel> bikeModels; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
 
@@ -20,8 +20,8 @@ namespace Bovelo
 
         public App()
         {
+            this.bikeModels = createBikeModel();
             this.userList = getUserList();
-            this.bikeModel = getBikeModelList();
             this.orderBikeList = getOrderBikeList();
             this.planningList = getPlanningList();
         }
@@ -33,7 +33,7 @@ namespace Bovelo
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
             string sql = "SELECT * FROM " + DBTable + ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -57,7 +57,7 @@ namespace Bovelo
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
             string sql = "SELECT ";
             for (int i = 0; i < argumentList.Count; i++)
@@ -73,7 +73,7 @@ namespace Bovelo
             }
 
             sql += " FROM " + DBTable + ";";
-            Console.WriteLine(sql);
+            //Console.WriteLine(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -92,10 +92,9 @@ namespace Bovelo
         public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
         {
             var listFromDB = new List<List<string>>();
-
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
             string sql = "SELECT ";
             for (int i = 0; i < argumentList.Count; i++)
@@ -111,7 +110,7 @@ namespace Bovelo
             }
 
             sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
-            Console.WriteLine(sql);
+            //Console.WriteLine(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -131,7 +130,7 @@ namespace Bovelo
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL to send new element...");
+            //Console.WriteLine("Connecting to MySQL to send new element...");
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -149,7 +148,7 @@ namespace Bovelo
             //List<string> line = getBikePart(bike_test);
             //getBikePartsList(line);
 
-            
+            this.bikeModels = createBikeModel();
             int orderId;
             if (orderBikeList.Count == 0)
             {
@@ -163,10 +162,10 @@ namespace Bovelo
             List<List<string>> Order = new List<List<string>>();// need to change this later
             OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
 
-            Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
+            //Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
             sendToDB(queryOB);
-            Console.WriteLine("New Order has been added to DB");
+            //Console.WriteLine("New Order has been added to DB");
 
             foreach (var element in newOrder)
             {
@@ -181,7 +180,7 @@ namespace Bovelo
                 {
                     string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
                     sendToDB(queryOD);
-                    Console.WriteLine("New order detail has been added to DB");
+                    //Console.WriteLine("New order detail has been added to DB");
                 }
 
             }
@@ -194,12 +193,25 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
+        internal List<BikeModel> createBikeModel()
+        {
+
+            var row_column = getFromDB("Bike_Model");
+            List<BikeModel> BikeModels = new List<BikeModel>();
+            foreach (var row in row_column)
+            {
+                BikeModels.Add(new BikeModel(Int32.Parse(row[0]), row[3], row[1], Int32.Parse(row[2])));
+                //Console.WriteLine(row[3]);
+            }
+            //this.bikeModels = BikeModels;
+            return BikeModels;   
+        }
         internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
             string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
             sendToDB(query);
-            bikeModel = getBikeModelList();//At the end of set, put a get to update App class
+            //bikeModel = getBikeModelList();//At the end of set, put a get to update App class
         }
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
@@ -220,8 +232,8 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
-                Console.WriteLine("bikes in planning");
-                Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
+                //Console.WriteLine("bikes in planning");
+                //Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
@@ -240,7 +252,7 @@ namespace Bovelo
         {
             foreach (var item in refreshPlaning)
             {
-                Console.WriteLine(item[0] + item[1] + item[2] + item[3] + item[4] + item[5]);
+                //Console.WriteLine(item[0] + item[1] + item[2] + item[3] + item[4] + item[5]);
                 string query = "UPDATE Detailed_Schedules SET Bike_Status = '" + item[5] +"' WHERE Id = '"+item[0]+"' ;";
                 sendToDB(query);
             }
@@ -261,7 +273,7 @@ namespace Bovelo
                     {
                         test += elem[i] + " ";
                     }
-                    Console.WriteLine(test);
+                    //Console.WriteLine(test);
                 }
                 
                 Planning newPlanning = new Planning(details, row[1], Convert.ToInt16(row[0]));
@@ -304,6 +316,7 @@ namespace Bovelo
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();
+            //createBikeModel();
             List<List<string>> orderList = getFromDB("Users");
             foreach (var row in orderList)
             {
@@ -321,7 +334,7 @@ namespace Bovelo
                         userFromDB.Add(new User(login, false, false, true));
                         break;
                     default:
-                        Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
+                        //Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
                         break;
                 }
 

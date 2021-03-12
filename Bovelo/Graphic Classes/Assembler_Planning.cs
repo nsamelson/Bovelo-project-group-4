@@ -67,9 +67,11 @@ namespace Bovelo
                         }
                         List<BikePart> bikePartList = newApp.getBikePart(Type_Size_Color);
                         string toPrint = "";
+                        int time=0;
                         foreach(var bikePart in bikePartList)
                         {
                             toPrint += bikePart.part_Id + " | " + bikePart.name + " | " + bikePart.location + " | \n";
+                            time += bikePart.timeToBuild;
                         }
                         Console.WriteLine(Type_Size_Color[0]);
                         dataGridView1.Rows.Add();
@@ -80,6 +82,7 @@ namespace Bovelo
                         dataGridView1.Rows[i].Cells[3].Value = Type_Size_Color[1]; // must be order date and date add to planning
                         dataGridView1.Rows[i].Cells[4].Value = toPrint;
                         dataGridView1.Rows[i].Cells[5].Value = bike[3].ToString();
+                        dataGridView1.Rows[i].Cells[6].Value = time.ToString();
                         i++;
                     }
                 }
