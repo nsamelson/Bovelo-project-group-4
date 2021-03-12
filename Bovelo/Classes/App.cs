@@ -51,7 +51,7 @@ namespace Bovelo
             conn.Close();
             return listFromDB;
         }
-        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList)
+        public List<List<string>> getFromDBSelect(string DBTable, List<string> argumentList)
         {
             var listFromDB = new List<List<string>>();
 
@@ -73,6 +73,45 @@ namespace Bovelo
             }
 
             sql += " FROM " + DBTable + ";";
+            Console.WriteLine(sql);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                listFromDB.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return listFromDB;
+        }
+        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
+        {
+            var listFromDB = new List<List<string>>();
+
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            conn.Open();
+            string sql = "SELECT ";
+            for (int i = 0; i < argumentList.Count; i++)
+            {
+                if (i != argumentList.Count - 1)
+                {
+                    sql += argumentList[i] + ",";
+                }
+                else
+                {
+                    sql += argumentList[i];
+                }
+            }
+
+            sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
+            Console.WriteLine(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -107,8 +146,8 @@ namespace Bovelo
 
             // TEST 
             Bike bike_test = new Bike("City", "Red", 26, 800);
-            List<string> line = getBikePart(bike_test);
-            getBikePartsList(line);
+            //List<string> line = getBikePart(bike_test);
+            //getBikePartsList(line);
 
             
             int orderId;
@@ -354,106 +393,18 @@ namespace Bovelo
             return bikePart;
         }
 
-        internal List<string> getBikePart(Bike bike)
+        internal List<BikePart> getBikePart(List<string> TypeSizeColor)
         {
-            string path = @"../../Classes/list_part.txt";
-            IEnumerable<string> line = File.ReadLines(path);
-            var BikeType = new Dictionary<int, List<string>>(); //  to stock data
-            List<string> identity = new List<string>();        //  to add data to dict
-            int e = 0;                                         //  key index 
-            List<string> bikePart = new List<string>();        //  return value
-            foreach (var elem in line)
-            {
-                int word = 0;
-                string currentWord = "";
-                foreach (var character in elem)                             // reading word
-                {
-                    
-                    if (character == ';')                   // reading char
-                    {
-                        identity.Add(currentWord);                 // add word to list string
-                        currentWord = "";                          // pass ";" char
-                        word++;                                    // next word                                       
-                        continue;
-                    }
-                    currentWord += character;                // concatenate char to make word
-                    
-                    
-                }
-                BikeType.Add(e, identity);                     // add to dict list of word
-                identity = new List<string>();                 // reset list of word
-                e++;
-            }
-            foreach (var elem in BikeType.Values)
-            {
-                if (bike.Type == elem[0])              // finding parts with goods size,type,color
-                    if (bike.Size.ToString() == elem[1])
-                        if (bike.Color == elem[2])
-                        {
-                            for (int i = 3; i<elem.Count();i++)
-                            {
-                                bikePart.Add(elem[i]);
-                            }
-                        }
-                }
-/*            foreach (var elem in BikeType.Values)             // what's in the dict
-            {
-                string toprint = " ";
-                foreach (var info in elem)
-                {
-                    toprint += info + " | ";
-                }
-                Console.WriteLine(toprint);
-            }
-*/            
-            foreach(var elem in bikePart)                    // what I am returning
-            {
-                Console.WriteLine(elem);
-            }
-            return bikePart;
-        }// end getbikepart
-
-        internal List<BikePart> getBikePartsList(List<string> bikePart)
-        {
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table Bike_Parts...");
-            conn.Open();
-            string sql_string = "SELECT * FROM Bike_Parts WHERE Bike_Parts_Name=";
-            string sql = " ";
+            List<string> query = new List<string>();
+            query.Add("*");
+            List<List<string>> bikePart = new List<List<string>>();
+            bikePart = getFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '"+TypeSizeColor[2]+"' AND Type_Model = '"+ TypeSizeColor[0]+ "' AND Size = '"+TypeSizeColor[1]+"'))");
             List<BikePart> bikePartList = new List<BikePart>();
-            int i = 0;
-            foreach (var part in bikePart)
+            foreach (var line in bikePart)
             {
-                sql = sql_string + "'" + part + "'" + ";";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    string name = rdr[1].ToString();
-                    int quantity = Convert.ToInt32(rdr[2]);
-                    string location = rdr[3].ToString();
-                    int price = Convert.ToInt32(rdr[4]);
-                    string provider = rdr[5].ToString();
-                    int time = Convert.ToInt32(rdr[6]);
-                    bikePartList.Add(new BikePart(name, time, price, location));
-                }
-                sql = sql_string;
-                rdr.Close();
-                i++;
+                bikePartList.Add(new BikePart(Int32.Parse(line[0]), line[1], line[3], Int32.Parse(line[4]),line[5],Int32.Parse(line[6])));
             }
-            conn.Close();
-            int totalTime = 0;
-            int bikePrice = 0;
-            foreach (var elem in bikePartList)
-            {
-                totalTime += elem.timeToBuild;
-                bikePrice += elem.price;
-            }
-            Console.WriteLine("TIME TO BUILD THE BIKE: " + totalTime + " Minutes");
-            Console.WriteLine("BIKE PRICE: " + bikePrice + " €");
             return bikePartList;
-        }
+        }// end getbikepart
     } // end App Class
 } // end namespace Bovelo
