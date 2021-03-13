@@ -14,26 +14,27 @@ namespace Bovelo
 		public int price;
 		public int totalTime;
 		public string Type;
-		public string Color;
-		public int Size;
+		/*public string Color;
+		public int Size;*/
 		public int idBikeModel;
 		private List<BikePart> bikeParts;
 		//private App newApp = new App();
 
 
-		public BikeModel(int idBikeModel, string Type, string Color, int Size)
+		internal BikeModel(int idBikeModel, string Type, List<BikePart> allParts)
 		{
 
 			this.type = Type;
-			this.Color = Color;
-			this.Size = Size;
-			this.idBikeModel = idBikeModel;
-            List<string> TypeSizeColor = new List<string>();
+            this.idBikeModel = idBikeModel;
+            /*this.Color = Color;
+			this.Size = Size;*/
+            /*List<string> TypeSizeColor = new List<string>();
             TypeSizeColor.Add(Type);
             TypeSizeColor.Add(Size.ToString());
-            TypeSizeColor.Add(Color);
-            this.bikeParts = getBikePart(TypeSizeColor);
-            foreach(var elem in bikeParts)
+            TypeSizeColor.Add(Color);*/
+
+            this.bikeParts = getBikeParts(allParts);
+            foreach (var elem in bikeParts)
             {
                 this.price += elem.price;
                 this.totalTime += elem.timeToBuild;
@@ -42,8 +43,29 @@ namespace Bovelo
             
 
         }
+        internal virtual List<BikePart> getBikeParts(List<BikePart> allParts)//NOT FINNISHED YET
+        {
+            List<BikePart> partsByModel = new List<BikePart>();
+            foreach(var part in allParts)
+            {
+                switch (Type)
+                {
+                    case "Explorer":
+                        break;
+                    case "Adventure":
+                        break;
+                    case "City":
+                        break;
+                    default:
+                        //errror
+                        break;
+                }
+            }
+            
 
-		internal List<BikePart> getBikePart(List<string> TypeSizeColor)
+            return partsByModel;
+        }
+        internal List<BikePart> getBikePart(List<string> TypeSizeColor)//TO REMOVE
 		{
 			List<string> query = new List<string>();
 			query.Add("*");
@@ -57,7 +79,7 @@ namespace Bovelo
 			return bikePartList;
 		}// end getbikepart
 
-        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
+        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)//TO REMOVE
         {
             var listFromDB = new List<List<string>>();
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";

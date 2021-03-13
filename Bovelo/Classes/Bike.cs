@@ -9,7 +9,7 @@ using MySql.Data.MySqlClient;
 namespace Bovelo
 {
     //maybe differenciate into 2 classes (bikeModel which is linked to BikePart(with totaltime,price,type)) and this class which is used only for the orders or be me more logical between app and bike...
-    class Bike 
+    class Bike : BikeModel
     {
         public DateTime TotalTime = DateTime.Now;
         public int Price = 0;
@@ -21,7 +21,7 @@ namespace Bovelo
         public string Color;
         public int Size;
 
-        public Bike(string Type,string Color,int Size,int price)//need to move price in bikeModel and depends from the model from the DB
+        public Bike(int idBikeModel, string Type, List<BikePart> allPart,string Color, int Size) : base ( idBikeModel, Type, allPart)//need to move price in bikeModel and depends from the model from the DB
         {
             this.Type = Type;
             this.Color = Color;
