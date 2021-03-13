@@ -11,7 +11,7 @@ namespace Bovelo
     public class App //Super class, it takes everything from the database and will send anything to it
     {
         internal List<User> userList; //All users from DB( Representative, Assembler, ProductionManager)
-        internal List<Bike> bikeModel; //All bike types (Adventure, city and explorer)
+        internal List<BikeModel> bikeModels; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
 
@@ -20,8 +20,8 @@ namespace Bovelo
 
         public App()
         {
+            this.bikeModels = createBikeModel();
             this.userList = getUserList();
-            this.bikeModel = getBikeModelList();
             this.orderBikeList = getOrderBikeList();
             this.planningList = getPlanningList();
         }
@@ -33,7 +33,7 @@ namespace Bovelo
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
             string sql = "SELECT * FROM " + DBTable + ";";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
@@ -51,13 +51,13 @@ namespace Bovelo
             conn.Close();
             return listFromDB;
         }
-        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList)
+        public List<List<string>> getFromDBSelect(string DBTable, List<string> argumentList)
         {
             var listFromDB = new List<List<string>>();
 
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
             conn.Open();
             string sql = "SELECT ";
             for (int i = 0; i < argumentList.Count; i++)
@@ -73,6 +73,44 @@ namespace Bovelo
             }
 
             sql += " FROM " + DBTable + ";";
+            //Console.WriteLine(sql);
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                listFromDB.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return listFromDB;
+        }
+        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
+        {
+            var listFromDB = new List<List<string>>();
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
+            conn.Open();
+            string sql = "SELECT ";
+            for (int i = 0; i < argumentList.Count; i++)
+            {
+                if (i != argumentList.Count - 1)
+                {
+                    sql += argumentList[i] + ",";
+                }
+                else
+                {
+                    sql += argumentList[i];
+                }
+            }
+
+            sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
+            //Console.WriteLine(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -92,7 +130,7 @@ namespace Bovelo
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
             MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL to send new element...");
+            //Console.WriteLine("Connecting to MySQL to send new element...");
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(query, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
@@ -107,10 +145,10 @@ namespace Bovelo
 
             // TEST 
             Bike bike_test = new Bike("City", "Red", 26, 800);
-            List<string> line = getBikePart(bike_test);
-            getBikePartsList(line);
+            //List<string> line = getBikePart(bike_test);
+            //getBikePartsList(line);
 
-            
+            this.bikeModels = createBikeModel();
             int orderId;
             if (orderBikeList.Count == 0)
             {
@@ -123,19 +161,11 @@ namespace Bovelo
 
             List<List<string>> Order = new List<List<string>>();// need to change this later
             OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
-            /*Console.WriteLine(Order.Count);
-            foreach(var x in Order)
-            {
-                Console.WriteLine(x);
-                foreach ( var y in x)
-                {
-                    Console.WriteLine("voil� ton  : " + y);
-                }
-            }*/
-            Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
+
+            //Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
             sendToDB(queryOB);
-            Console.WriteLine("New Order has been added to DB");
+            //Console.WriteLine("New Order has been added to DB");
 
             foreach (var element in newOrder)
             {
@@ -150,7 +180,7 @@ namespace Bovelo
                 {
                     string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
                     sendToDB(queryOD);
-                    Console.WriteLine("New order detail has been added to DB");
+                    //Console.WriteLine("New order detail has been added to DB");
                 }
 
             }
@@ -163,12 +193,25 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
+        internal List<BikeModel> createBikeModel()
+        {
+
+            var row_column = getFromDB("Bike_Model");
+            List<BikeModel> BikeModels = new List<BikeModel>();
+            foreach (var row in row_column)
+            {
+                BikeModels.Add(new BikeModel(Int32.Parse(row[0]), row[3], row[1], Int32.Parse(row[2])));
+                //Console.WriteLine(row[3]);
+            }
+            //this.bikeModels = BikeModels;
+            return BikeModels;   
+        }
         internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
             string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
             sendToDB(query);
-            bikeModel = getBikeModelList();//At the end of set, put a get to update App class
+            //bikeModel = getBikeModelList();//At the end of set, put a get to update App class
         }
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
@@ -189,8 +232,8 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
-                Console.WriteLine("bikes in planning");
-                Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
+                //Console.WriteLine("bikes in planning");
+                //Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
@@ -209,7 +252,7 @@ namespace Bovelo
         {
             foreach (var item in refreshPlaning)
             {
-                Console.WriteLine(item[0] + item[1] + item[2] + item[3] + item[4] + item[5]);
+                //Console.WriteLine(item[0] + item[1] + item[2] + item[3] + item[4] + item[5]);
                 string query = "UPDATE Detailed_Schedules SET Bike_Status = '" + item[5] +"' WHERE Id = '"+item[0]+"' ;";
                 sendToDB(query);
             }
@@ -230,7 +273,7 @@ namespace Bovelo
                     {
                         test += elem[i] + " ";
                     }
-                    Console.WriteLine(test);
+                    //Console.WriteLine(test);
                 }
                 
                 Planning newPlanning = new Planning(details, row[1], Convert.ToInt16(row[0]));
@@ -273,6 +316,7 @@ namespace Bovelo
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();
+            //createBikeModel();
             List<List<string>> orderList = getFromDB("Users");
             foreach (var row in orderList)
             {
@@ -290,7 +334,7 @@ namespace Bovelo
                         userFromDB.Add(new User(login, false, false, true));
                         break;
                     default:
-                        Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
+                        //Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
                         break;
                 }
 
@@ -358,123 +402,22 @@ namespace Bovelo
                     }
                 }
             }
-/*          foreach (var elem in BikeType.Values)             // what's in the dict
-            {
-                string toprint = " ";
-                foreach (var info in elem)
-                {
-                    toprint += info + " | ";
-                }
-                Console.WriteLine(toprint);
-            }
 
-            foreach(var elem in bikepart)                    // what I am returning
-            {
-                Console.WriteLine(elem);
-            }*/
             return bikePart;
         }
 
-        internal List<string> getBikePart(Bike bike)
+        internal List<BikePart> getBikePart(List<string> TypeSizeColor)
         {
-            string path = @"../../Classes/list_part.txt";
-            IEnumerable<string> line = File.ReadLines(path);
-            var BikeType = new Dictionary<int, List<string>>(); //  to stock data
-            List<string> identity = new List<string>();        //  to add data to dict
-            int e = 0;                                         //  key index 
-            List<string> bikePart = new List<string>();        //  return value
-            foreach (var elem in line)
-            {
-                int word = 0;
-                string currentWord = "";
-                foreach (var character in elem)                             // reading word
-                {
-                    
-                    if (character == ';')                   // reading char
-                    {
-                        identity.Add(currentWord);                 // add word to list string
-                        currentWord = "";                          // pass ";" char
-                        word++;                                    // next word                                       
-                        continue;
-                    }
-                    currentWord += character;                // concatenate char to make word
-                    
-                    
-                }
-                BikeType.Add(e, identity);                     // add to dict list of word
-                identity = new List<string>();                 // reset list of word
-                e++;
-            }
-            foreach (var elem in BikeType.Values)
-            {
-                if (bike.Type == elem[0])              // finding parts with goods size,type,color
-                    if (bike.Size.ToString() == elem[1])
-                        if (bike.Color == elem[2])
-                        {
-                            for (int i = 3; i<elem.Count();i++)
-                            {
-                                bikePart.Add(elem[i]);
-                            }
-                        }
-                }
-/*            foreach (var elem in BikeType.Values)             // what's in the dict
-            {
-                string toprint = " ";
-                foreach (var info in elem)
-                {
-                    toprint += info + " | ";
-                }
-                Console.WriteLine(toprint);
-            }
-*/            
-            foreach(var elem in bikePart)                    // what I am returning
-            {
-                Console.WriteLine(elem);
-            }
-            return bikePart;
-        }// end getbikepart
-
-        internal List<BikePart> getBikePartsList(List<string> bikePart)
-        {
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            Console.WriteLine("Connecting to MySQL at table Bike_Parts...");
-            conn.Open();
-            string sql_string = "SELECT * FROM Bike_Parts WHERE Bike_Parts_Name=";
-            string sql = " ";
+            List<string> query = new List<string>();
+            query.Add("*");
+            List<List<string>> bikePart = new List<List<string>>();
+            bikePart = getFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '"+TypeSizeColor[2]+"' AND Type_Model = '"+ TypeSizeColor[0]+ "' AND Size = '"+TypeSizeColor[1]+"'))");
             List<BikePart> bikePartList = new List<BikePart>();
-            int i = 0;
-            foreach (var part in bikePart)
+            foreach (var line in bikePart)
             {
-                sql = sql_string + "'" + part + "'" + ";";
-                MySqlCommand cmd = new MySqlCommand(sql, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-
-                while (rdr.Read())
-                {
-                    string name = rdr[1].ToString();
-                    int quantity = Convert.ToInt32(rdr[2]);
-                    string location = rdr[3].ToString();
-                    int price = Convert.ToInt32(rdr[4]);
-                    string provider = rdr[5].ToString();
-                    int time = Convert.ToInt32(rdr[6]);
-                    bikePartList.Add(new BikePart(name, time, price, location));
-                }
-                sql = sql_string;
-                rdr.Close();
-                i++;
+                bikePartList.Add(new BikePart(Int32.Parse(line[0]), line[1], line[3], Int32.Parse(line[4]),line[5],Int32.Parse(line[6])));
             }
-            conn.Close();
-            int totalTime = 0;
-            int bikePrice = 0;
-            foreach (var elem in bikePartList)
-            {
-                totalTime += elem.timeToBuild;
-                bikePrice += elem.price;
-            }
-            Console.WriteLine("TIME TO BUILD THE BIKE: " + totalTime + " Minutes");
-            Console.WriteLine("BIKE PRICE: " + bikePrice + " €");
             return bikePartList;
-        }
+        }// end getbikepart
     } // end App Class
 } // end namespace Bovelo

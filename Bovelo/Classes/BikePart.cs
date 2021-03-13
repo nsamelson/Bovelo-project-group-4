@@ -11,21 +11,23 @@ namespace Bovelo
     class BikePart
     {
         public int timeToBuild = 0;
+        public string provider;
         public int price = 0;
-        public string name;
         public string location;
-        //public string provider;
-        //public int part_Id = 0;
+        public string name;
+        public int part_Id = 0;
 
-        public BikePart(string name,int timeToBuild, int price, string location)
+        public BikePart(int part_Id,string name, string location,int price, string provider, int timeToBuild)
         {
             this.name = name;
             this.timeToBuild = timeToBuild;
             this.price = price;
             this.location = location;
-            //this.part_Id = part_Id;
+            this.part_Id = part_Id;
+            this.provider = provider;
         }
- 
+
+
     }//end class BikePart
 
 }//end namespace

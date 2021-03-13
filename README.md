@@ -46,6 +46,7 @@ An interface that updates the classes it's implemented in.
 - *Design brief :* https://claco.ecam.be/apiv2/resource_file79568/raw
 - *Azure Devops :* https://dev.azure.com/ECAM3BE/Groupe4  
 - *Bike Parts List:* https://ecambxl-my.sharepoint.com/:t:/g/personal/17010_ecam_be/EaTMBrHmODJBg-rELj5LX1MB87OP6OkHwTrc_O8-oE5qKg?e=kAzBUZ
+- *PowerPoint:* https://ecambxl-my.sharepoint.com/:p:/g/personal/17338_ecam_be/ET_e1rXheQVIjLAcY5zWgIMBcUq5bcwVUpFtmmSPUWidMQ?rtime=LCVDwNLi2Eg
 
 ### **2.3. Schematics :**  
 - *Interface mockup :*  

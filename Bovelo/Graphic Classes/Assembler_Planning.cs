@@ -43,21 +43,46 @@ namespace Bovelo
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
+            
+            List<string> where_conditions = new List<string>();
+            List<string> Type_Size_Color = new List<string>();
             int i = 0;
             foreach (var planning in newApp.getPlanningList())
-            {
+            { 
                 if (planningWeek == planning.weekName)
                 {
                     foreach (var bike in planning.planningDetails)
-                    {
-                        Console.WriteLine(bike[0] + bike[1] + bike[2] + bike[3] + bike[4]);
+                    {        
+                        where_conditions.Add("Bike_Type");
+                        where_conditions.Add("Bike_Size");
+                        where_conditions.Add("Bike_Color");
+                        List<List<string>> bikeModel =  newApp.getFromDBWhere("Order_Details", where_conditions, "Id_Order_Details ='" + bike[1] +"'");
+
+                        foreach(var elem in bikeModel)
+                        {
+                            foreach(var value in elem)
+                            {
+                                Type_Size_Color.Add(value);
+                            }
+                        }
+                        List<BikePart> bikePartList = newApp.getBikePart(Type_Size_Color);
+                        string toPrint = "";
+                        int time=0;
+                        foreach(var bikePart in bikePartList)
+                        {
+                            toPrint += bikePart.part_Id + " | " + bikePart.name + " | " + bikePart.location + " | \n";
+                            time += bikePart.timeToBuild;
+                        }
+                        Console.WriteLine(Type_Size_Color[0]);
                         dataGridView1.Rows.Add();
-                        dataGridView1.Rows[i].Cells[0].Value = bike[0];
-                        dataGridView1.Rows[i].Cells[1].Value = bike[2];
-                        dataGridView1.Rows[i].Cells[2].Value = "blue";
-                        dataGridView1.Rows[i].Cells[3].Value = "26";
-                        dataGridView1.Rows[i].Cells[4].Value = "FRAME";
-                        dataGridView1.Rows[i].Cells[5].Value = bike[3];
+                        dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                        dataGridView1.Rows[i].Cells[0].Value = bike[0].ToString();
+                        dataGridView1.Rows[i].Cells[1].Value = Type_Size_Color[0];
+                        dataGridView1.Rows[i].Cells[2].Value = Type_Size_Color[2];
+                        dataGridView1.Rows[i].Cells[3].Value = Type_Size_Color[1]; // must be order date and date add to planning
+                        dataGridView1.Rows[i].Cells[4].Value = toPrint;
+                        dataGridView1.Rows[i].Cells[5].Value = bike[3].ToString();
+                        dataGridView1.Rows[i].Cells[6].Value = time.ToString();
                         i++;
                     }
                 }
