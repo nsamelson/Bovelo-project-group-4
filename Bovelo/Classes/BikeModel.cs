@@ -13,15 +13,14 @@ namespace Bovelo
 		public string type;
 		public int price;
 		public int totalTime;
-		public string Type;
 		/*public string Color;
 		public int Size;*/
 		public int idBikeModel;
-		private List<BikePart> bikeParts;
+		internal List<BikePart> bikeParts;
 		//private App newApp = new App();
 
 
-		internal BikeModel(int idBikeModel, string Type, List<BikePart> allParts)
+		public BikeModel(int idBikeModel, string Type)
 		{
 
 			this.type = Type;
@@ -33,37 +32,42 @@ namespace Bovelo
             TypeSizeColor.Add(Size.ToString());
             TypeSizeColor.Add(Color);*/
 
-            this.bikeParts = getBikeParts(allParts);
+            //this.bikeParts = getBikeParts(allParts);
+            
+
+
+        }
+        internal void setPriceAndTime()
+        {
             foreach (var elem in bikeParts)
             {
                 this.price += elem.price;
                 this.totalTime += elem.timeToBuild;
                 Console.WriteLine(this.price);
             }
-            
-
         }
-        internal virtual List<BikePart> getBikeParts(List<BikePart> allParts)//NOT FINNISHED YET
+        internal virtual void setBikeParts(List<BikePart> allParts)//NOT FINNISHED YET
         {
-            List<BikePart> partsByModel = new List<BikePart>();
-            foreach(var part in allParts)
+            List<int> partsId = new List<int>() {1,2,15,16,17,17,17,17,18,27,27,28,29,29,31,33,34,40,40,42,52};
+            switch (type)
             {
-                switch (Type)
-                {
-                    case "Explorer":
-                        break;
-                    case "Adventure":
-                        break;
-                    case "City":
-                        break;
-                    default:
-                        //errror
-                        break;
-                }
+                case "City":
+                    partsId.AddRange(new List<int>() { 5, 21, 30, 35, 35, 39 });//by default black and 26"
+                    break;
+                case "Explorer":
+                    partsId.AddRange(new List<int>() {5,25,30,37,37,39 });//by default black and 26"
+                    break;
+                case "Adventure":
+                    partsId.AddRange(new List<int>() {11,25,37,37});//by default black and 26"
+                    break;
+                default:
+                    //errror
+                    break;
             }
+            //bikeParts = allParts.FindAll(part => partsIndices.Contains(part.id));//adds each part into the list, without duplicates
+            bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
+            setPriceAndTime(); //after getting all the parts, set the price and time to build
             
-
-            return partsByModel;
         }
         internal List<BikePart> getBikePart(List<string> TypeSizeColor)//TO REMOVE
 		{

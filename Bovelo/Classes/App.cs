@@ -22,10 +22,10 @@ namespace Bovelo
         public App()
         {
             this.bikePartList = getBikePartList();
-            this.bikeModels = createBikeModel();
-            this.userList = getUserList();
+            this.bikeModels = getBikeModelList();
+            /*this.userList = getUserList();
             this.orderBikeList = getOrderBikeList();
-            this.planningList = getPlanningList();
+            this.planningList = getPlanningList();*/
         }
 
         //methods connecting to the DB
@@ -150,7 +150,8 @@ namespace Bovelo
             //List<string> line = getBikePart(bike_test);
             //getBikePartsList(line);
 
-            this.bikeModels = createBikeModel();
+            //this.bikeModels = createBikeModel();
+            this.bikeModels = getBikeModelList();
             int orderId;
             if (orderBikeList.Count == 0)
             {
@@ -195,7 +196,7 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
-        internal List<BikeModel> createBikeModel()
+        /*internal List<BikeModel> createBikeModel()
         {
 
             var row_column = getFromDB("Bike_Model");
@@ -207,7 +208,7 @@ namespace Bovelo
             }
             //this.bikeModels = BikeModels;
             return BikeModels;   
-        }
+        }*/
         internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
@@ -362,7 +363,9 @@ namespace Bovelo
             foreach (var row in modelList)
             {
                 string Type = row[1];
-                bikeList.Add(new BikeModel(Int32.Parse(row[0]), Type, getBikePartList()));
+                var newBikeModel = new BikeModel(Int32.Parse(row[0]), Type);
+                newBikeModel.setBikeParts(getBikePartList());
+                bikeList.Add(newBikeModel);
             }
             return bikeList;
         }
