@@ -37,10 +37,10 @@ namespace Bovelo
             int price = 0;
             foreach (var bike in app.bikeModels)
             {
-                Console.WriteLine(bike.type);
-                if (bike.type == TypeOfBike)
+                Console.WriteLine(bike.Type);
+                if (bike.Type == TypeOfBike)
                 {
-                   price= bike.price;
+                   price= bike.Price;
                 }
                 
             }
@@ -134,7 +134,7 @@ namespace Bovelo
                 color = radioButton3.Text;
             }
             int _i = Convert.ToInt32(i);
-            Bike BikeToAdd = new Bike(TypeOfBike, color, _i, getBikePrice());
+            Bike BikeToAdd = new Bike(0,TypeOfBike, color, _i);//id is set to 0 MAYBE NEED TO CHANGE
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
 
 

@@ -146,7 +146,7 @@ namespace Bovelo
             //It has to send 2 things to Database : Order details and Order client
 
             // TEST 
-            Bike bike_test = new Bike("City", "Red", 26, 800);
+            //Bike bike_test = new Bike("City", "Red", 26, 800);
             //List<string> line = getBikePart(bike_test);
             //getBikePartsList(line);
 

@@ -30,7 +30,8 @@ namespace Bovelo
             {
                 string type = elem[2];
                 string status = elem[3];
-                bikes.Add(new Bike(type, "red", 26, 500));
+                int id = Int32.Parse(elem[0]);//NOT SURE
+                bikes.Add(new Bike(id,type, "red", 26));
                 
                 //int size = Int32.Parse(elem[2]);
                 //string color = elem[3];
