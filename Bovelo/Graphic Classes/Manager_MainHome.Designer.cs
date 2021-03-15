@@ -42,6 +42,8 @@ namespace Bovelo
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.button4);
@@ -75,6 +77,7 @@ namespace Bovelo
             // 
             // button3
             // 
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(714, 0);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 70);
@@ -84,6 +87,7 @@ namespace Bovelo
             // 
             // button1
             // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(577, 9);
             this.button1.Name = "button1";
@@ -95,6 +99,7 @@ namespace Bovelo
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("PMingLiU-ExtB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(396, 25);
@@ -105,6 +110,7 @@ namespace Bovelo
             // 
             // button2
             // 
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button2.Location = new System.Drawing.Point(377, 208);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 70);
@@ -115,6 +121,7 @@ namespace Bovelo
             // 
             // button5
             // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button5.Location = new System.Drawing.Point(377, 314);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(158, 70);
@@ -134,6 +141,7 @@ namespace Bovelo
             this.Name = "Manager_MainHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manager_MainHome";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager_MainHome_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

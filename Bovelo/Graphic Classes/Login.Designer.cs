@@ -43,11 +43,10 @@ namespace Bovelo
             // 
             // signup
             // 
-            this.signup.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.signup.Location = new System.Drawing.Point(380, 417);
-            this.signup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signup.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.signup.Location = new System.Drawing.Point(333, 338);
             this.signup.Name = "signup";
-            this.signup.Size = new System.Drawing.Size(149, 28);
+            this.signup.Size = new System.Drawing.Size(112, 23);
             this.signup.TabIndex = 1;
             this.signup.Text = "Add new User";
             this.signup.UseVisualStyleBackColor = true;
@@ -55,11 +54,10 @@ namespace Bovelo
             // 
             // signin
             // 
-            this.signin.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.signin.Location = new System.Drawing.Point(575, 417);
-            this.signin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.signin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.signin.Location = new System.Drawing.Point(479, 338);
             this.signin.Name = "signin";
-            this.signin.Size = new System.Drawing.Size(100, 28);
+            this.signin.Size = new System.Drawing.Size(75, 23);
             this.signin.TabIndex = 2;
             this.signin.Text = "Login";
             this.signin.UseVisualStyleBackColor = true;
@@ -67,13 +65,12 @@ namespace Bovelo
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(376, 308);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(282, 250);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 18);
+            this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 5;
             this.label1.Text = "Login";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -84,10 +81,9 @@ namespace Bovelo
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.Info;
             this.label3.Font = new System.Drawing.Font("Gabriola", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(455, 119);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(389, 97);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 45);
+            this.label3.Size = new System.Drawing.Size(165, 35);
             this.label3.TabIndex = 7;
             this.label3.Text = "User Authentification";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -98,70 +94,68 @@ namespace Bovelo
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.label4);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel1.MaximumSize = new System.Drawing.Size(11787, 86);
-            this.panel1.MinimumSize = new System.Drawing.Size(1179, 86);
+            this.panel1.MaximumSize = new System.Drawing.Size(8840, 70);
+            this.panel1.MinimumSize = new System.Drawing.Size(884, 70);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1179, 86);
+            this.panel1.Size = new System.Drawing.Size(981, 70);
             this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("PMingLiU-ExtB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(517, 28);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(436, 23);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 24);
+            this.label4.Size = new System.Drawing.Size(61, 19);
             this.label4.TabIndex = 0;
             this.label4.Text = "Bovelo";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // comboBox1
             // 
-            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Assembler",
             "Production Manager",
             "Representative"});
-            this.comboBox1.Location = new System.Drawing.Point(513, 225);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBox1.Location = new System.Drawing.Point(385, 180);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(160, 24);
+            this.comboBox1.Size = new System.Drawing.Size(179, 21);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Representative";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.Location = new System.Drawing.Point(513, 308);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBox1.Location = new System.Drawing.Point(385, 248);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 22);
+            this.textBox1.Size = new System.Drawing.Size(179, 20);
             this.textBox1.TabIndex = 10;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(376, 225);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(282, 183);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 17);
+            this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 11;
             this.label2.Text = "User type";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1179, 567);
+            this.ClientSize = new System.Drawing.Size(981, 460);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
@@ -170,10 +164,10 @@ namespace Bovelo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.signin);
             this.Controls.Add(this.signup);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V2.0";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Login_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
