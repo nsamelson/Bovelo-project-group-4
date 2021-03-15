@@ -152,6 +152,7 @@ namespace Bovelo
 
             //this.bikeModels = createBikeModel();
             this.bikeModels = getBikeModelList();
+            orderBikeList = getOrderBikeList();
             int orderId;
             if (orderBikeList.Count == 0)
             {
@@ -181,13 +182,13 @@ namespace Bovelo
                 int price = Int32.Parse(element[4]) / quantity;
                 for (int q = 0; q < quantity; q++)
                 {
-                    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Customer_Name,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + newOrderBike.clientName + "','" + orderId + "'); ";
+                    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "'); ";
                     sendToDB(queryOD);
                     //Console.WriteLine("New order detail has been added to DB");
                 }
 
             }
-            orderBikeList = getOrderBikeList(); //At the end of set, put a get to update App class
+             //At the end of set, put a get to update App class
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
@@ -219,8 +220,8 @@ namespace Bovelo
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             //Planning newPlanning = new Planning(planningCartList, week);
-            string queryP = "INSERT INTO Schedule(Week_Name) VALUES('" + week + "');";
-            sendToDB(queryP);
+            /*string queryP = "INSERT INTO Schedule(Week_Name) VALUES('" + week + "');";
+            sendToDB(queryP);*/
 
             int planningId;
             int orderDetailsId = 0; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
@@ -243,7 +244,7 @@ namespace Bovelo
                 //string color = bikesToBuild[3];
 
 
-                string queryPD = "INSERT INTO Detailed_Schedules (Id_Order_Details,Bike_Name,Bike_Status,Week_Name,Id_General_Schedules) VALUES('" + orderDetailsId + "',  '" + type + "', 'New','" + week + "',  '" + planningId + "'); ";
+                string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
                 sendToDB(queryPD);
             }
 
@@ -275,7 +276,7 @@ namespace Bovelo
         internal List<Planning> getPlanningList() //gets all plannings
         {
             List<Planning> plannings = new List<Planning>();
-            List<List<string>> planningDB = getFromDB("Schedule");
+            /*List<List<string>> planningDB = getFromDB("Schedule");
             var planningDetailsDB = getFromDB("Detailed_Schedules");
 
             foreach (var row in planningDB)
@@ -294,7 +295,7 @@ namespace Bovelo
                 Planning newPlanning = new Planning(details, row[1], Convert.ToInt16(row[0]));
                 plannings.Add(newPlanning);//row[1] is the column where the name of the client is put
 
-            }
+            }*/
 
             return plannings;
 
@@ -307,7 +308,7 @@ namespace Bovelo
 
             foreach (var row in orderList)
             {
-                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[7] == row[0]));//takes each lists with the same order_Id
+                List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[6] == row[0]));//takes each lists with the same order_Id
                 OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]));
                 newOrder.orderDate = Convert.ToDateTime(row[3]);
                 newOrder.shippingDate = Convert.ToDateTime(row[4]);
