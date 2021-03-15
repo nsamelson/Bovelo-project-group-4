@@ -39,9 +39,9 @@ namespace Bovelo
                 
                 foreach (var bike in app.bikeModels)
                 {
-                    if (bike.type == elem.bike.Type)
+                    if (bike.Type == elem.bike.Type)
                     {
-                        price = bike.price;
+                        price = bike.Price;
                     }
                 }
                 totalPrice += price * elem.quantity;

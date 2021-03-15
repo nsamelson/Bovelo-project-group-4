@@ -41,7 +41,7 @@ namespace Bovelo
                 int price = Int32.Parse(elem[4]);
                 int id = Int32.Parse(elem[0]);
 
-                bikes.Add(new Bike(type, color, size, price));
+                bikes.Add(new Bike(id,type, color, size));
                 //int quantity = Int16.Parse(elem[3]);
 
 

@@ -75,6 +75,12 @@ An interface that updates the classes it's implemented in.
 - As an assembler, I want to have access to the available bike parts in order to assemble the bikes.
 - As a representative, I want to receive an estimated delivery time in order to inform the bicycle shop when the order will be ready.
 
+###  **3.3 Iteration 3 :**  
+-	As a manager, I want to know who is assembling the bike and when he started the production, in order to manage the production schedule according to the building process.
+-	As a manager, I want to be able to modify the production schedule, in order to manage the orders.
+-	As a manager, I want to know how much bike parts there are in stock, to order the bike parts needed.
+-	As a manager, I want to be able to order new bike parts, in order to have always enough parts available to assemble the bikes.
+
 ## **4. Old links :**  
 
 - *First Diagrams [old] :* https://lucid.app/lucidchart/2d7e6938-bb10-4799-b251-3f24b5d9584f/edit?page=0_0#?folder_id=home&browser=icon  

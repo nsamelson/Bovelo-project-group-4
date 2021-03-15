@@ -57,7 +57,7 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(929, 70);
+            this.panel1.Size = new System.Drawing.Size(1231, 70);
             this.panel1.TabIndex = 2;
             // 
             // button7
@@ -74,7 +74,7 @@ namespace Bovelo
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(577, 9);
+            this.button1.Location = new System.Drawing.Point(728, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 55);
             this.button1.TabIndex = 7;
@@ -87,7 +87,7 @@ namespace Bovelo
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("PMingLiU-ExtB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(429, 25);
+            this.label1.Location = new System.Drawing.Point(580, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 6;
@@ -99,6 +99,7 @@ namespace Bovelo
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -111,7 +112,7 @@ namespace Bovelo
             this.dataGridView1.Location = new System.Drawing.Point(10, 76);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(787, 392);
+            this.dataGridView1.Size = new System.Drawing.Size(1016, 509);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -121,7 +122,6 @@ namespace Bovelo
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 75;
             // 
             // Bike_Type
             // 
@@ -129,7 +129,6 @@ namespace Bovelo
             this.Bike_Type.MinimumWidth = 6;
             this.Bike_Type.Name = "Bike_Type";
             this.Bike_Type.ReadOnly = true;
-            this.Bike_Type.Width = 125;
             // 
             // Color
             // 
@@ -137,7 +136,6 @@ namespace Bovelo
             this.Color.MinimumWidth = 6;
             this.Color.Name = "Color";
             this.Color.ReadOnly = true;
-            this.Color.Width = 125;
             // 
             // Column2
             // 
@@ -145,7 +143,6 @@ namespace Bovelo
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 50;
             // 
             // Bike_Part
             // 
@@ -153,7 +150,6 @@ namespace Bovelo
             this.Bike_Part.MinimumWidth = 6;
             this.Bike_Part.Name = "Bike_Part";
             this.Bike_Part.ReadOnly = true;
-            this.Bike_Part.Width = 300;
             // 
             // Price
             // 
@@ -166,19 +162,17 @@ namespace Bovelo
             this.Price.Name = "Price";
             this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Price.Width = 125;
             // 
             // timeToBuild
             // 
             this.timeToBuild.HeaderText = "BuildingTime";
             this.timeToBuild.MinimumWidth = 6;
             this.timeToBuild.Name = "timeToBuild";
-            this.timeToBuild.Width = 125;
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(803, 398);
+            this.button2.Location = new System.Drawing.Point(1105, 515);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 55);
             this.button2.TabIndex = 4;
@@ -190,7 +184,7 @@ namespace Bovelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 479);
+            this.ClientSize = new System.Drawing.Size(1230, 596);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);

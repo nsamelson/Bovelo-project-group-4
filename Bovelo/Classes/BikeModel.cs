@@ -10,40 +10,52 @@ namespace Bovelo
 {
 	public class BikeModel
 	{
-		public string type;
-		public int price;
-		public int totalTime;
 		public string Type;
-		public string Color;
-		public int Size;
+		public int Price;
+		public int TotalTime;//time to build a bike
 		public int idBikeModel;
-		private List<BikePart> bikeParts;
-		//private App newApp = new App();
+		internal List<BikePart> bikeParts;
 
 
-		public BikeModel(int idBikeModel, string Type, string Color, int Size)
+		public BikeModel(int idBikeModel, string Type)
 		{
-
-			this.type = Type;
-			this.Color = Color;
-			this.Size = Size;
-			this.idBikeModel = idBikeModel;
-            List<string> TypeSizeColor = new List<string>();
-            TypeSizeColor.Add(Type);
-            TypeSizeColor.Add(Size.ToString());
-            TypeSizeColor.Add(Color);
-            this.bikeParts = getBikePart(TypeSizeColor);
-            foreach(var elem in bikeParts)
-            {
-                this.price += elem.price;
-                this.totalTime += elem.timeToBuild;
-                Console.WriteLine(this.price);
-            }
-            
-
+			this.Type = Type;
+            this.idBikeModel = idBikeModel;
         }
-
-		internal List<BikePart> getBikePart(List<string> TypeSizeColor)
+        internal void setPriceAndTime()//is used to set the total price of a bike
+        {
+            foreach (var elem in bikeParts)
+            {
+                this.Price += elem.price;
+                this.TotalTime += elem.timeToBuild;
+                
+            }
+            //Console.WriteLine(this.type +" | Price : "+this.Price+" | Time : "+this.totalTime);
+        }
+        internal virtual void setBikeParts(List<BikePart> allParts)//used to set the bikeparts needed to assemble a bike depending on its type
+        {
+            List<int> partsId = new List<int>() {1,2,15,16,17,17,17,17,18,27,27,28,29,29,31,33,34,40,40,42,52};
+            switch (Type)
+            {
+                case "City":
+                    partsId.AddRange(new List<int>() { 5, 21, 30, 35, 35, 39 });//by default black and 26"
+                    break;
+                case "Explorer":
+                    partsId.AddRange(new List<int>() {5,25,30,37,37,39 });//by default black and 26"
+                    break;
+                case "Adventure":
+                    partsId.AddRange(new List<int>() {11,25,37,37});//by default black and 26"
+                    break;
+                default:
+                    //errror
+                    break;
+            }
+            //bikeParts = allParts.FindAll(part => partsIndices.Contains(part.id));//adds each part into the list, without duplicates
+            bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
+            setPriceAndTime(); //after getting all the parts, set the price and time to build
+            
+        }
+        /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)//TO REMOVE
 		{
 			List<string> query = new List<string>();
 			query.Add("*");
@@ -57,7 +69,7 @@ namespace Bovelo
 			return bikePartList;
 		}// end getbikepart
 
-        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
+        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)//TO REMOVE
         {
             var listFromDB = new List<List<string>>();
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
@@ -93,6 +105,6 @@ namespace Bovelo
             rdr.Close();
             conn.Close();
             return listFromDB;
-        }
+        }*/
     }
 }
