@@ -31,7 +31,7 @@ namespace Bovelo
         private void Order_Load(object sender, EventArgs e)
         {
             int i = 0;
-            foreach(var orders in newApp.orderBikeList)
+            foreach(var orders in newApp.orderBikeList)//Errors in the cells
             {
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = orders.orderId.ToString();
