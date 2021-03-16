@@ -15,7 +15,7 @@ namespace Bovelo
         
         static void Main(string[] args)
         {
-            //Application.Run(new Login());
+            Application.Run(new Login());
             //Application.Run(new MainHome(app.userList[0]));
 
          }

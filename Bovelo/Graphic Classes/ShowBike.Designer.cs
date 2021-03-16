@@ -138,6 +138,7 @@ namespace Bovelo
             // 
             // comboBox1
             // 
+            this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "26",
@@ -151,6 +152,7 @@ namespace Bovelo
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(335, 115);
@@ -163,6 +165,7 @@ namespace Bovelo
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.numericUpDown1.Location = new System.Drawing.Point(407, 168);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Name = "numericUpDown1";
@@ -174,6 +177,7 @@ namespace Bovelo
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(336, 167);
@@ -185,6 +189,7 @@ namespace Bovelo
             // 
             // button4
             // 
+            this.button4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button4.Location = new System.Drawing.Point(552, 108);
             this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
@@ -196,6 +201,7 @@ namespace Bovelo
             // 
             // button5
             // 
+            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -210,6 +216,7 @@ namespace Bovelo
             // 
             // button6
             // 
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button6.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -224,6 +231,7 @@ namespace Bovelo
             // 
             // button8
             // 
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button8.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -238,6 +246,7 @@ namespace Bovelo
             // 
             // button9
             // 
+            this.button9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button9.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -252,6 +261,7 @@ namespace Bovelo
             // 
             // button10
             // 
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button10.BackColor = System.Drawing.SystemColors.ControlLight;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -276,6 +286,7 @@ namespace Bovelo
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(336, 207);
@@ -297,6 +308,7 @@ namespace Bovelo
             // 
             // label7
             // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(336, 249);
@@ -308,6 +320,7 @@ namespace Bovelo
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Location = new System.Drawing.Point(58, 78);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -318,10 +331,11 @@ namespace Bovelo
             // 
             // radioButton1
             // 
+            this.radioButton1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioButton1.AutoSize = true;
             this.radioButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton1.ForeColor = System.Drawing.Color.Red;
-            this.radioButton1.Location = new System.Drawing.Point(379, 249);
+            this.radioButton1.Location = new System.Drawing.Point(382, 247);
             this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(48, 17);
@@ -333,10 +347,11 @@ namespace Bovelo
             // 
             // radioButton2
             // 
+            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioButton2.AutoSize = true;
             this.radioButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButton2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.radioButton2.Location = new System.Drawing.Point(428, 249);
+            this.radioButton2.Location = new System.Drawing.Point(431, 247);
             this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(50, 17);
@@ -348,9 +363,10 @@ namespace Bovelo
             // 
             // radioButton3
             // 
+            this.radioButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioButton3.AutoSize = true;
             this.radioButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButton3.Location = new System.Drawing.Point(481, 249);
+            this.radioButton3.Location = new System.Drawing.Point(484, 247);
             this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(57, 17);
@@ -389,7 +405,7 @@ namespace Bovelo
             this.Name = "ShowBike";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V2.0";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Explorerbike_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
