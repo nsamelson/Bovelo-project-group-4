@@ -128,6 +128,29 @@ namespace Bovelo
             conn.Close();
             return listFromDB;
         }
+        internal List<List<string>> getFromDbInnerJoin(string week)
+        {
+            var listInnerJoin = new List<List<string>>();
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            conn.Open();
+            string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Detailed_Schedules.Week_Name = '" + week + "';";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                listInnerJoin.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return listInnerJoin;
+        }
         internal void sendToDB(string query) //is used to send anything to the database
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
@@ -141,39 +164,25 @@ namespace Bovelo
         }
 
         //SET To the DB methods
-        internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order  HAVE TO CHANGE
+        internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order
         {
-            //It has to send 2 things to Database : Order details and Order client
-
-            // TEST 
-            //Bike bike_test = new Bike("City", "Red", 26, 800);
-            //List<string> line = getBikePart(bike_test);
-            //getBikePartsList(line);
-
-            //this.bikeModels = createBikeModel();
-            this.bikeModels = getBikeModelList();
-            orderBikeList = getOrderBikeList();
+            orderBikeList = getOrderBikeList();//updates the list
+            //first request
             int orderId;
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
+            sendToDB(queryOB);
+
+            //second request
             if (orderBikeList.Count == 0)
             {
                 orderId = 1;
             }
             else
             {
-                orderId = orderBikeList.Last().orderId + 1;
+                orderId = orderBikeList.Last().orderId +1;
             }
-
-            List<List<string>> Order = new List<List<string>>();// need to change this later
-            OrderBike newOrderBike = new OrderBike(clientName, Order, orderId);
-
-            //Console.WriteLine("TOTAL PRICE OF ORDER IS :" + newOrderBike.getTotalPrice());
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + newOrderBike.clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
-            sendToDB(queryOB);
-            //Console.WriteLine("New Order has been added to DB");
-
             foreach (var element in newOrder)
             {
-
                 //Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
                 string type = element[0];
                 int size = Int32.Parse(element[1]);
@@ -186,9 +195,8 @@ namespace Bovelo
                     sendToDB(queryOD);
                     //Console.WriteLine("New order detail has been added to DB");
                 }
-
             }
-             //At the end of set, put a get to update App class
+            orderBikeList = getOrderBikeList();//updates the list 
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
@@ -197,19 +205,7 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
-        /*internal List<BikeModel> createBikeModel()
-        {
 
-            var row_column = getFromDB("Bike_Model");
-            List<BikeModel> BikeModels = new List<BikeModel>();
-            foreach (var row in row_column)
-            {
-                BikeModels.Add(new BikeModel(Int32.Parse(row[0]), row[3], row[1], Int32.Parse(row[2])));
-                //Console.WriteLine(row[3]);
-            }
-            //this.bikeModels = BikeModels;
-            return BikeModels;   
-        }*/
         internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
@@ -370,7 +366,7 @@ namespace Bovelo
             }
             return bikeList;
         }
-        internal List<string> getBikePartInvoice(List<OrderBike> orderBikeList)
+        /*internal List<string> getBikePartInvoice(List<OrderBike> orderBikeList)
         {
             string path = @"../../Classes/list_part.txt";
             IEnumerable<string> line = File.ReadLines(path);
@@ -421,7 +417,7 @@ namespace Bovelo
             }
 
             return bikePart;
-        }
+        }*/
 
         internal List<BikePart> getBikePart(List<string> TypeSizeColor)
         {
