@@ -49,7 +49,6 @@ namespace Bovelo
                     if (e.RowIndex == i)
                     {
                         Console.WriteLine(orderDetails[0] + "|" + orderDetails[1] + "|" + orderDetails[2] + "|" + orderDetails[3] + "|" + orderDetails[4] + "|" + orderDetails[5] + "|" + orderDetails[6]);
-
                         Console.WriteLine(orderDetails[1]);
                         Bike bike = new Bike(Int32.Parse(orderDetails[0]),orderDetails[1], orderDetails[3], Int32.Parse(orderDetails[2]));//Needs to be verified (id)
                         user.addToPlanningCart(bike,Int32.Parse(orderDetails[0]));

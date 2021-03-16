@@ -39,7 +39,7 @@ namespace Bovelo
             App app =new App();
             List<string> argumentList = new List<string>();
             argumentList.Add("Quantity");
-            string whereclause = "Id_Bike_Parts ='"+this.part_Id;
+            string whereclause = "Id_Bike_Parts ="+this.part_Id;
             List<List<string>> result = app.getFromDBWhere("Bike_Parts", argumentList, whereclause);
             int quantity = Int32.Parse(result[0][0]);
             return quantity;

@@ -140,7 +140,6 @@ namespace Bovelo
                 Console.WriteLine(plan[0] + "|" + plan[1] + "|" + plan[2] + "|" + plan[3] + "" + plan[4]);
 
                 dataGridView1.Rows.Add();
-
                 dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dataGridView1.Rows[i].Cells[0].Value = plan[0];
                 dataGridView1.Rows[i].Cells[1].Value = plan[1];
