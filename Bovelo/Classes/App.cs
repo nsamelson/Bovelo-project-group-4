@@ -23,9 +23,9 @@ namespace Bovelo
         {
             this.bikePartList = getBikePartList();
             this.bikeModels = getBikeModelList();
-            /*this.userList = getUserList();
+            this.userList = getUserList();
             this.orderBikeList = getOrderBikeList();
-            this.planningList = getPlanningList();*/
+            this.planningList = getPlanningList();
         }
 
         //methods connecting to the DB

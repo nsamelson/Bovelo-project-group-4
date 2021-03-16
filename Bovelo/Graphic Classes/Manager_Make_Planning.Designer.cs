@@ -140,18 +140,7 @@ namespace Bovelo
             this.dataGridView1.Size = new System.Drawing.Size(859, 247);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // monthCalendar1
-            // 
-            this.Customer_Name.HeaderText = "Customer Name";
-            this.Customer_Name.MinimumWidth = 6;
-            this.Customer_Name.Name = "Customer_Name";
-            // 
-            // textBox1
-            // 
-            this.Column1.HeaderText = "Id detail :";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
+
             // 
             // Id_order_details
             // 
