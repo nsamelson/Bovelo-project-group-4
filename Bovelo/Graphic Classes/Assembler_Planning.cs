@@ -43,8 +43,8 @@ namespace Bovelo
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
-            
-            List<string> where_conditions = new List<string>();
+
+            /*List<string> where_conditions = new List<string>();
             List<string> Type_Size_Color = new List<string>();
             int i = 0;
             foreach (var planning in newApp.getPlanningList())
@@ -87,11 +87,9 @@ namespace Bovelo
                         dataGridView1.Rows[i].Cells[6].Value = time.ToString();
                         i++;
                     }
-                }
-                
-                
-                
-            }
+                }            
+            }*/
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -125,6 +123,34 @@ namespace Bovelo
 
             }
             
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Rows.Clear();
+            string week = textBox1.Text;
+            int i = 0;
+            foreach (var plan in newApp.getFromDbInnerJoin(week))
+            {
+                Console.WriteLine(plan[0] + "|" + plan[1] + "|" + plan[2] + "|" + plan[3] + "" + plan[4]);
+
+                dataGridView1.Rows.Add();
+
+                dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridView1.Rows[i].Cells[0].Value = plan[0];
+                dataGridView1.Rows[i].Cells[1].Value = plan[1];
+                dataGridView1.Rows[i].Cells[2].Value = plan[2];
+                dataGridView1.Rows[i].Cells[3].Value = plan[3]; // must be order date and date add to planning
+                //dataGridView1.Rows[i].Cells[4].Value = plan[5];
+                dataGridView1.Rows[i].Cells[5].Value = plan[5];
+                dataGridView1.Rows[i].Cells[6].Value = plan[7];
+                i++;
+            }
         }
     }
 }
