@@ -43,7 +43,7 @@ namespace Bovelo
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
-
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             /*List<string> where_conditions = new List<string>();
             List<string> Type_Size_Color = new List<string>();
             int i = 0;
@@ -103,7 +103,8 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
 
-            foreach (var planning in newApp.getPlanningList())
+
+            /*foreach (var planning in newApp.getPlanningList())
             {
                 if (planningWeek == planning.weekName)
                 {
@@ -121,8 +122,23 @@ namespace Bovelo
                     newApp.updateSatus(refreshed);
                 }
 
+            }*/
+
+            /*string week = textBox1.Text;
+            int i = 0;
+            foreach (var planning in newApp.getFromDbInnerJoin(week))
+            {
+                Console.WriteLine(dataGridView1.Rows[i].Cells[5].Value +  );
+
+            }*/
+            foreach (DataGridViewRow row  in dataGridView1.SelectedRows)
+            {
+                Console.WriteLine("Id Order details : " + row.Cells[0].Value + " Status : " + row.Cells[5].Value);
+                newApp.updateSatus(row.Cells[0].Value.ToString(), row.Cells[5].Value.ToString());
             }
+            dataGridView1.Refresh();
             
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

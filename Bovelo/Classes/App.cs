@@ -264,14 +264,11 @@ namespace Bovelo
 
             return bikeParts;
         }
-        internal void updateSatus(List<List<string>> refreshPlaning)
+        internal void updateSatus(string id, string status)
         {
-            foreach (var item in refreshPlaning)
-            {
-                //Console.WriteLine(item[0] + item[1] + item[2] + item[3] + item[4] + item[5]);
-                string query = "UPDATE Detailed_Schedules SET Bike_Status = '" + item[5] +"' WHERE Id = '"+item[0]+"' ;";
-                sendToDB(query);
-            }
+            
+            string query = "UPDATE Order_Details SET Bike_Status = '" + status + "' WHERE Id_Order_Details = '" + id + "' ;";
+            sendToDB(query);
         }
         internal List<Planning> getPlanningList() //gets all plannings
         {
