@@ -19,13 +19,17 @@ namespace Bovelo
 
 
 
-        public App()
+        public App(bool getAll = false)
         {
-            this.bikePartList = getBikePartList();
-            this.bikeModels = getBikeModelList();
-            this.userList = getUserList();
-            this.orderBikeList = getOrderBikeList();
-            this.planningList = getPlanningList();
+            if (getAll)
+            {
+
+                this.bikePartList = getBikePartList();
+                this.bikeModels = getBikeModelList();
+                this.userList = getUserList();
+                this.orderBikeList = getOrderBikeList();
+                this.planningList = getPlanningList();
+            }
         }
 
         //methods connecting to the DB

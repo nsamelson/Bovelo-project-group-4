@@ -27,6 +27,23 @@ namespace Bovelo
             this.provider = provider;
         }
 
+        public void addQuantity(int value)
+        {
+            int quantity=getQuantity();
+            quantity += value;
+            Console.WriteLine("-----------------------------------------");
+            Console.WriteLine(quantity);
+        }
+        public int getQuantity()
+        {
+            App app =new App();
+            List<string> argumentList = new List<string>();
+            argumentList.Add("Quantity");
+            string whereclause = "Id_Bike_Parts ='"+this.part_Id;
+            List<List<string>> result = app.getFromDBWhere("Bike_Parts", argumentList, whereclause);
+            int quantity = Int32.Parse(result[0][0]);
+            return quantity;
+        }
 
     }//end class BikePart
 

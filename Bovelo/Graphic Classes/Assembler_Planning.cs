@@ -72,8 +72,10 @@ namespace Bovelo
                         {
                             toPrint += bikePart.part_Id + " | " + bikePart.name + " | " + bikePart.location + " | \n";
                             time += bikePart.timeToBuild;
+                            int result = bikePart.getQuantity();
+                            Console.WriteLine(result);
                         }
-                        Console.WriteLine(Type_Size_Color[0]);
+                        //Console.WriteLine(Type_Size_Color[0]);
                         dataGridView1.Rows.Add();
                         dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                         dataGridView1.Rows[i].Cells[0].Value = bike[0].ToString();
