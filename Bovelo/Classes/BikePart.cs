@@ -31,8 +31,8 @@ namespace Bovelo
         {
             int quantity=getQuantity();
             quantity += value;
-            Console.WriteLine("-----------------------------------------");
-            Console.WriteLine(quantity);
+            App app = new App();
+            app.sendToDB("UPDATE Bike_Parts SET Quantity =" + quantity + " WHERE Id_Bike_Parts = " + this.part_Id + ";");
         }
         public int getQuantity()
         {

@@ -18,9 +18,12 @@ namespace Bovelo
             int result=app.bikeModels[0].bikeParts[0].getQuantity();
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine(result);
+            app.bikeModels[0].bikeParts[0].addQuantity(5);
+            result = app.bikeModels[0].bikeParts[0].getQuantity();
+            Console.WriteLine("------------------------------------------------------");
+            Console.WriteLine(result);
             Application.Run(new Login());
             //Application.Run(new MainHome(app.userList[0]));
-            
          }
     }
 }
