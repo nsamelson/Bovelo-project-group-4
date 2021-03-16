@@ -264,12 +264,13 @@ namespace Bovelo
 
             return bikeParts;
         }
-        internal void updateSatus(string id, string status)
+        internal void updateSatus(int id, string status, string user)
         {
             
-            string query = "UPDATE Order_Details SET Bike_Status = '" + status + "' WHERE Id_Order_Details = '" + id + "' ;";
+            string query = "UPDATE Order_Details SET Bike_Status = '" + status + "', Modified_by = '" + user + "'  WHERE Id_Order_Details = '" + id + "' ;";
             sendToDB(query);
         }
+
         internal List<Planning> getPlanningList() //gets all plannings
         {
             List<Planning> plannings = new List<Planning>();
