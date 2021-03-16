@@ -12,6 +12,8 @@ namespace Bovelo
 {
     public partial class Assembler_MainHome : Form
     {
+        private App newApp = new App();
+
         private User user = new User(" ", false, false, false);
         internal Assembler_MainHome(User user)
         {
@@ -28,6 +30,7 @@ namespace Bovelo
         {
             this.Hide();// Hiding the MainHome Window
             Assembler_Planning plng = new Assembler_Planning(user,textBox2.Text);// create new window
+            
             plng.FormClosed += (s, args) => this.Close();
             plng.Show();// Showing the Assembler planning window
         }

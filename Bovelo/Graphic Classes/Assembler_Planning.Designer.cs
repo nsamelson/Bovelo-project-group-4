@@ -34,6 +34,7 @@ namespace Bovelo
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,7 +42,8 @@ namespace Bovelo
             this.Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.timeToBuild = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(885, 70);
+            this.panel1.Size = new System.Drawing.Size(1049, 70);
             this.panel1.TabIndex = 2;
             // 
             // button7
@@ -74,7 +76,7 @@ namespace Bovelo
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(555, 9);
+            this.button1.Location = new System.Drawing.Point(637, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 55);
             this.button1.TabIndex = 7;
@@ -87,7 +89,7 @@ namespace Bovelo
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("PMingLiU-ExtB", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(407, 25);
+            this.label1.Location = new System.Drawing.Point(489, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 6;
@@ -109,43 +111,58 @@ namespace Bovelo
             this.Bike_Part,
             this.Price,
             this.timeToBuild});
-            this.dataGridView1.Location = new System.Drawing.Point(10, 76);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 76);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(670, 374);
+            this.dataGridView1.Size = new System.Drawing.Size(909, 374);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(961, 382);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 55);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Confirm Status";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Column1
             // 
-            this.Column1.HeaderText = "Bike ID:";
+            this.Column1.HeaderText = "Order Detail Id:";
             this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             // 
             // Bike_Type
             // 
-            this.Bike_Type.HeaderText = "Bike Type";
+            this.Bike_Type.FillWeight = 80.54144F;
+            this.Bike_Type.HeaderText = "Bike Type :";
             this.Bike_Type.MinimumWidth = 6;
             this.Bike_Type.Name = "Bike_Type";
             this.Bike_Type.ReadOnly = true;
             // 
             // Color
             // 
-            this.Color.HeaderText = "Color";
+            this.Color.FillWeight = 80.54144F;
+            this.Color.HeaderText = "Bike Size :";
             this.Color.MinimumWidth = 6;
             this.Color.Name = "Color";
             this.Color.ReadOnly = true;
             // 
             // Column2
             // 
-            this.Column2.HeaderText = "Size :";
+            this.Column2.FillWeight = 80.54144F;
+            this.Column2.HeaderText = "Bike Color :";
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             // 
             // Bike_Part
             // 
+            this.Bike_Part.FillWeight = 80.54144F;
             this.Bike_Part.HeaderText = "ID | Name | Location | Quantity";
             this.Bike_Part.MinimumWidth = 6;
             this.Bike_Part.Name = "Bike_Part";
@@ -153,7 +170,8 @@ namespace Bovelo
             // 
             // Price
             // 
-            this.Price.HeaderText = "Status";
+            this.Price.FillWeight = 80.54144F;
+            this.Price.HeaderText = "Bike Status :";
             this.Price.Items.AddRange(new object[] {
             "New",
             "Active",
@@ -165,26 +183,36 @@ namespace Bovelo
             // 
             // timeToBuild
             // 
-            this.timeToBuild.HeaderText = "BuildingTime";
+            this.timeToBuild.FillWeight = 80.54144F;
+            this.timeToBuild.HeaderText = "Week :";
             this.timeToBuild.MinimumWidth = 6;
             this.timeToBuild.Name = "timeToBuild";
             // 
-            // button2
+            // textBox1
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(759, 380);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 55);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Confirm Status";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.textBox1.Location = new System.Drawing.Point(927, 103);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 5;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(927, 144);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(100, 26);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "Get Planning";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Assembler_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.ClientSize = new System.Drawing.Size(1048, 461);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
@@ -197,6 +225,7 @@ namespace Bovelo
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,13 +236,15 @@ namespace Bovelo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Part;
         private System.Windows.Forms.DataGridViewComboBoxColumn Price;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeToBuild;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button3;
     }
 }
