@@ -55,6 +55,7 @@ namespace Bovelo
             // signin
             // 
             this.signin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.signin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.signin.Location = new System.Drawing.Point(479, 338);
             this.signin.Name = "signin";
             this.signin.Size = new System.Drawing.Size(75, 23);
@@ -155,6 +156,7 @@ namespace Bovelo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(981, 460);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox1);
@@ -164,7 +166,9 @@ namespace Bovelo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.signin);
             this.Controls.Add(this.signup);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Login";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
