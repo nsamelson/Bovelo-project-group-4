@@ -250,6 +250,84 @@ namespace Bovelo
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
+        internal void setNewBikePart(string name, List<int> sizes, List<string> colors)//is used to create a new bikePart : takes name, list of sizes (26,28) and list of colors (black,red,blue)
+        {
+            var rand = new Random();
+            var bikePartLocation = new List<string>();
+            string location = RandomString(3);
+            string provider = RandomString(8);
+            int timeToBuild = rand.Next(1, 15);
+            int price = rand.Next(1, 101);
+            string bikePartName = name;
+            string RandomString(int length)//create a random string of letters and numbers
+            {
+                const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                return new string(Enumerable.Repeat(chars, length)
+                  .Select(s => s[rand.Next(s.Length)]).ToArray());
+            }
+            foreach (var partlocation in getBikePartList())//takes every used location
+            {
+                bikePartLocation.Add(partlocation.location);
+            }
+
+            if (colors.Count == 0 && sizes.Count == 0)
+            {
+                while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
+                {
+                    location = RandomString(3);
+                }
+                string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+                sendToDB(query);
+            }
+            else
+            {
+                if (colors.Count == 0)
+                {
+                    foreach (var size in sizes)
+                    {
+                        while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
+                        {
+                            location = RandomString(3);
+                        }
+                        bikePartLocation.Add(location);
+                        bikePartName = name + "_" + size.ToString();
+                        string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+                        sendToDB(query);
+                    }
+                }
+                else if (sizes.Count == 0)
+                {
+                    foreach (var color in colors)
+                    {
+                        while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
+                        {
+                            location = RandomString(3);
+                        }
+                        bikePartLocation.Add(location);
+                        bikePartName = name + "_" + color;
+                        string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+                        sendToDB(query);
+                    }
+                }
+                else
+                {
+                    foreach (var color in colors)
+                    {
+                        foreach (var size in sizes)
+                        {
+                            while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
+                            {
+                                location = RandomString(3);
+                            }
+                            bikePartLocation.Add(location);
+                            bikePartName = name + "_" + color + "_" + size.ToString();
+                            string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+                            sendToDB(query);
+                        }
+                    }
+                }
+            }
+        }
         //GET from the DB methods
 
         internal List<BikePart> getBikePartList()
