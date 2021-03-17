@@ -16,10 +16,10 @@ namespace Bovelo
         private App newApp = new App();
         private User user = new User(" ", false, false, false);
         private string planningWeek;
-        internal Assembler_Planning(User user, string planning)
+        internal Assembler_Planning(User user)
         {
             this.user = user;
-            this.planningWeek = planning;
+            //this.planningWeek = planning; Was in constructor
             InitializeComponent();
         }
 

@@ -207,13 +207,20 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
-        internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
+        /*internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
             string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
             sendToDB(query);
             //bikeModel = getBikeModelList();//At the end of set, put a get to update App class
+        }*/
+        internal void setNewBikeModel(string type, int size, string color)//is used to add a new model (for ex: Electric)
+        {
+            string query = "INSERT INTO Bike_Model (Bike_Type,Color,Size) VALUES ('" + type + "', " + color + ", '" + size + "')";
+            sendToDB(query);
+            bikeModels = getBikeModelList();//At the end of set, put a get to update App class
         }
+
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             //Planning newPlanning = new Planning(planningCartList, week);
@@ -247,7 +254,7 @@ namespace Bovelo
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
-        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, list of sizes (26,28) and list of colors (black,red,blue)
+        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)
         {
             var rand = new Random();
             var bikePartLocation = new List<string>();
@@ -384,6 +391,35 @@ namespace Bovelo
         }
         internal List<BikeModel> getBikeModelList() //is used to get all bike models
         {
+            List<BikeModel> bikeList = new List<BikeModel>();//list to return
+            List<List<string>> modelList = getFromDB("Bike_Model");//bikemodels from db
+            var allPartsId = getFromDB("Parts");//all parts from db
+            
+            foreach (var row in modelList)
+            {
+                List<int> bikePartsIds = new List<int>();
+                int id = Int32.Parse(row[0]);
+                string color = row[1];
+                int size = Int32.Parse(row[2]);
+                string type = row[3];
+                var newBikeModel = new BikeModel(type, color, size) { idBikeModel = id };
+
+                foreach (var part in allPartsId)
+                {
+                    if (Int32.Parse(part[1]) == id)
+                    {
+                        bikePartsIds.Add(Int32.Parse(part[0]));
+                    }
+                }
+                //newBikeModel.bikeParts = bikePartsIds.Select(x=> bikePartList.First(part=>part.part_Id ==x)).ToList(); //FOR DUPLICATES (not working yet)
+                newBikeModel.bikeParts = bikePartList.FindAll(part => bikePartsIds.Contains(part.part_Id));
+                newBikeModel.setPriceAndTime();
+                bikeList.Add(newBikeModel);
+            }
+            return bikeList;
+        }
+        /*internal List<BikeModel> getBikeModelList() //is used to get all bike models
+        {
             List<BikeModel> bikeList = new List<BikeModel>();
             List<List<string>> modelList = getFromDB("Bikes");
             foreach (var row in modelList)
@@ -394,7 +430,7 @@ namespace Bovelo
                 bikeList.Add(newBikeModel);
             }
             return bikeList;
-        }
+        }*/
         /*internal List<string> getBikePartInvoice(List<OrderBike> orderBikeList)
         {
             string path = @"../../Classes/list_part.txt";

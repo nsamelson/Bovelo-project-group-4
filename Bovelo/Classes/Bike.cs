@@ -12,11 +12,12 @@ namespace Bovelo
     class Bike : BikeModel
     {
         public Dictionary<string, bool> state = new Dictionary<string, bool>();
-        public string Color;
-        public int Size;
-
-        public Bike(int idBikeModel, string Type, string Color, int Size) : base(idBikeModel, Type)//need to move price in bikeModel and depends from the model from the DB
+        /*public string Color;
+        public int Size;*/
+        public int bikeId;//MAYBE REMOVE
+        public Bike(int bikeId,string Type, string Color, int Size) : base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
         {
+            this.bikeId = bikeId;
             this.Type = Type;
             this.Color = Color;
             this.Size = Size;

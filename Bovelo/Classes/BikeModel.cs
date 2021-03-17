@@ -11,16 +11,20 @@ namespace Bovelo
 	public class BikeModel
 	{
 		public string Type;
-		public int Price;
+		public int Price = 0;
+        public int Size;
+        public string Color;
 		public int TotalTime;//time to build a bike
 		public int idBikeModel;
 		internal List<BikePart> bikeParts;
 
 
-		public BikeModel(int idBikeModel, string Type)
+		public BikeModel( string Type,string color,int size)
 		{
 			this.Type = Type;
-            this.idBikeModel = idBikeModel;
+            this.Color = color;
+            this.Size = size;
+            /*this.idBikeModel = idBikeModel;*/
         }
         internal void setPriceAndTime()//is used to set the total price of a bike
         {
@@ -52,10 +56,10 @@ namespace Bovelo
             }
             //bikeParts = allParts.FindAll(part => partsIndices.Contains(part.id));//adds each part into the list, without duplicates
             bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
-            setPriceAndTime(); //after getting all the parts, set the price and time to build
+            //setPriceAndTime(); //after getting all the parts, set the price and time to build
             
         }
-        /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)//TO REMOVE
+        /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)
 		{
 			List<string> query = new List<string>();
 			query.Add("*");
