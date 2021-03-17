@@ -16,9 +16,6 @@ namespace Bovelo
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
 
-
-
-
         public App(bool getAll = false)
         {
             if (getAll)
@@ -168,6 +165,7 @@ namespace Bovelo
         }
 
         //SET To the DB methods
+
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order
         {
             orderBikeList = getOrderBikeList();//updates the list
@@ -209,7 +207,6 @@ namespace Bovelo
             userList = getUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
-
         internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
         {
 
@@ -250,7 +247,7 @@ namespace Bovelo
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
-        internal void setNewBikePart(string name, List<int> sizes, List<string> colors)//is used to create a new bikePart : takes name, list of sizes (26,28) and list of colors (black,red,blue)
+        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, list of sizes (26,28) and list of colors (black,red,blue)
         {
             var rand = new Random();
             var bikePartLocation = new List<string>();
@@ -259,6 +256,8 @@ namespace Bovelo
             int timeToBuild = rand.Next(1, 15);
             int price = rand.Next(1, 101);
             string bikePartName = name;
+            string query;
+
             string RandomString(int length)//create a random string of letters and numbers
             {
                 const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -269,65 +268,19 @@ namespace Bovelo
             {
                 bikePartLocation.Add(partlocation.location);
             }
+            while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
+            {
+                location = RandomString(3);
+            }
 
-            if (colors.Count == 0 && sizes.Count == 0)
-            {
-                while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
-                {
-                    location = RandomString(3);
-                }
-                string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-                sendToDB(query);
-            }
-            else
-            {
-                if (colors.Count == 0)
-                {
-                    foreach (var size in sizes)
-                    {
-                        while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
-                        {
-                            location = RandomString(3);
-                        }
-                        bikePartLocation.Add(location);
-                        bikePartName = name + "_" + size.ToString();
-                        string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-                        sendToDB(query);
-                    }
-                }
-                else if (sizes.Count == 0)
-                {
-                    foreach (var color in colors)
-                    {
-                        while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
-                        {
-                            location = RandomString(3);
-                        }
-                        bikePartLocation.Add(location);
-                        bikePartName = name + "_" + color;
-                        string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-                        sendToDB(query);
-                    }
-                }
-                else
-                {
-                    foreach (var color in colors)
-                    {
-                        foreach (var size in sizes)
-                        {
-                            while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
-                            {
-                                location = RandomString(3);
-                            }
-                            bikePartLocation.Add(location);
-                            bikePartName = name + "_" + color + "_" + size.ToString();
-                            string query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-                            sendToDB(query);
-                        }
-                    }
-                }
-            }
+            if(color == "null" && size != 0){bikePartName += "_" + size.ToString();}
+            else if (color != "null" && size == 0) { bikePartName += "_" + color; }
+            else if (color != "null" && size != 0) { bikePartName += "_" + color + "_" + size.ToString(); }
+
+            query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+            sendToDB(query);            
         }
+
         //GET from the DB methods
 
         internal List<BikePart> getBikePartList()
@@ -348,7 +301,6 @@ namespace Bovelo
             string query = "UPDATE Order_Details SET Bike_Status = '" + status + "', Modified_by = '" + user + "'  WHERE Id_Order_Details = '" + id + "' ;";
             sendToDB(query);
         }
-
         internal List<Planning> getPlanningList() //gets all plannings
         {
             List<Planning> plannings = new List<Planning>();
@@ -397,14 +349,11 @@ namespace Bovelo
 
             return orderBikeList;
         }
-
         internal List<List<string>> getOrderDetails()
         {
             var orderDetailList = getFromDB("Order_Details");
             return orderDetailList;
-        }
-
-       
+        }    
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();
@@ -498,7 +447,6 @@ namespace Bovelo
 
             return bikePart;
         }*/
-
         internal List<BikePart> getBikePart(List<string> TypeSizeColor)
         {
             List<string> query = new List<string>();
