@@ -152,6 +152,28 @@ namespace Bovelo
             conn.Close();
             return listInnerJoin;
         }
+        internal List<List<string>> getPanifiedOrderDetails(string sql)
+        {
+            var OrderDetails = new List<List<string>>();
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                OrderDetails.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return OrderDetails;
+        }
         internal void sendToDB(string query) //is used to send anything to the database
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
@@ -240,14 +262,12 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
-                //Console.WriteLine("bikes in planning");
-                //Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
+                Console.WriteLine("bikes in planning");
+                Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
                 //string color = bikesToBuild[3];
-
-
                 string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
                 sendToDB(queryPD);
             }
@@ -360,7 +380,20 @@ namespace Bovelo
         {
             var orderDetailList = getFromDB("Order_Details");
             return orderDetailList;
-        }    
+        }
+        internal List<List<string>> getPlanifiedBikes()
+        {
+            string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules);";
+            var Planified = getPanifiedOrderDetails(sql);
+            return Planified;
+        }
+        internal List<List<string>> getNonPlanifiedBikes()
+        {
+            string sql = "Select * from Order_Details where Id_Order_Details Not In (select Id_Order_Details from Detailed_Schedules);";
+            var nonPlanified = getPanifiedOrderDetails(sql);
+            return nonPlanified;
+        }
+
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();

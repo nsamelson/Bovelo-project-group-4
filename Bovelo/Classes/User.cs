@@ -112,9 +112,10 @@ namespace Bovelo
                 //bikeInfo.Add();
                 planningAsList.Add(bikeInfo);
             }*/
+            var Plan = new List<List<string>>();
+            
 
-
-            return planningCart;
+            return Plan;
         }
         public void addToPlanningCart(Bike bike,int id)//adds a bike from and order to the planning of the week
         {

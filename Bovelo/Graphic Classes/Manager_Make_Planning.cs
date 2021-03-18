@@ -40,46 +40,62 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+            int adapt = newApp.getPlanifiedBikes().Count;
             int i = 0;
-            foreach (var orderBikeList in newApp.getOrderBikeList())
+            foreach (var nonPlanifiedBikes in newApp.getNonPlanifiedBikes())
             {
-                foreach (var orderDetails in orderBikeList.orderDetail)
+                if (e.RowIndex - adapt == i)
                 {
-                    if (e.RowIndex == i)
-                    {
-                        Console.WriteLine(orderDetails[0] + "|" + orderDetails[1] + "|" + orderDetails[2] + "|" + orderDetails[3] + "|" + orderDetails[4] + "|" + orderDetails[5] + "|" + orderDetails[6]);
-                        Console.WriteLine(orderDetails[1]);
-                        Bike bike = new Bike(Int32.Parse(orderDetails[0]),orderDetails[1], orderDetails[3], Int32.Parse(orderDetails[2]));//Needs to be verified (id)
-                        user.addToPlanningCart(bike,Int32.Parse(orderDetails[0]));
-                    }
-                    i++;
+                    Console.WriteLine(nonPlanifiedBikes[0] + "|" + nonPlanifiedBikes[1] + "|" + nonPlanifiedBikes[2] + "|" + nonPlanifiedBikes[3] + "|" + nonPlanifiedBikes[4] + "|" + nonPlanifiedBikes[5] + "|" + nonPlanifiedBikes[6]);
+                    Console.WriteLine(nonPlanifiedBikes[1]);
+                    Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]), nonPlanifiedBikes[1], nonPlanifiedBikes[3], Int32.Parse(nonPlanifiedBikes[2]));//Needs to be verified (id)
+                    user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
                 }
+                i++;
+            
+        
             }
         }
 
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
         {
             int i = 0;
-            foreach (var orderBikeList in newApp.getOrderBikeList())
+            foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
             {
-                foreach (var orderDetails in orderBikeList.orderDetail)
-                {
-                    //Console.WriteLine("détails in manager plan : " + orderDetails[0]);
-                    //Console.WriteLine(orderDetails[0] + "|" + orderDetails[1] + "|" + orderDetails[2] + "|" + orderDetails[3] + "|" + orderDetails[4] + "|" + orderDetails[5] + "|" + orderDetails[6]);
-                    dataGridView1.Rows.Add();
-                    dataGridView1.Rows[i].Cells[0].Value = orderDetails[0];//id order details
-                    dataGridView1.Rows[i].Cells[1].Value = orderDetails[1];//type
-                    dataGridView1.Rows[i].Cells[2].Value = orderDetails[2];//size
-                    dataGridView1.Rows[i].Cells[3].Value = orderDetails[3];//color
-                    dataGridView1.Rows[i].Cells[4].Value = orderDetails[5];//status
-                    dataGridView1.Rows[i].Cells[5].Value = orderDetails[6];//Id Order 
-                    //dataGridView1.Rows[i].Cells[6].Value = orderDetails[4];
-                    //dataGridView1.Rows[i].Cells[6].Value = orderBikeList.orderDate;
-                    i++;
-                }
-                
+                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
+                Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
+                dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
+                dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
+                dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
+                dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
+                dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
+                dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
+                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                cell.Value = String.Empty;
+                dataGridView1.Rows[i].Cells[7] = cell;
+                cell.ReadOnly = true;
+                i++;
+            }           
+            Console.WriteLine("index i : " + i);
+            foreach (var nonPlanifiedOrderDetails in newApp.getNonPlanifiedBikes())
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = nonPlanifiedOrderDetails[0];//id order details
+                dataGridView1.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
+                dataGridView1.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
+                dataGridView1.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
+                dataGridView1.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
+                dataGridView1.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[7];//Id Order
+                dataGridView1.Rows[i].Cells[6].Value = "Not Plannified Yet"  ;
+                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                cell.Value = String.Empty;
+                dataGridView1.Rows[i].Cells[8] = cell;
+                cell.ReadOnly = true;
+                i++;
             }
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -101,8 +117,11 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
             string weekName = textBox1.Text;
+            
+            //Console.WriteLine("COUNT : " + user.planningCart.Count);
             newApp.setNewPlanning(user.planningCart, weekName);
-        } //here comments need to be updated
+            Manager_Make_Planning_Load(sender, e);
+        } 
 
         private void button7_Click(object sender, EventArgs e)
         {

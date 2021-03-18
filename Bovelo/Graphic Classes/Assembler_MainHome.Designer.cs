@@ -86,7 +86,7 @@ namespace Bovelo
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(375, 197);
+            this.button2.Location = new System.Drawing.Point(377, 218);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(100, 52);
             this.button2.TabIndex = 9;
