@@ -55,8 +55,13 @@ namespace Bovelo
             }
             if (dataGridView1.CurrentCell.Value.ToString() == "Modify")
             {
+                MessageBox.Show("Choose a week from the calendar ");
                 
+                //dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Week  " + calendarWeek.ToString();
+                weekToModify.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                idBike.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();   
             }
+
             if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
             {
                 Console.WriteLine("e.RowIndex : " + e.RowIndex);
@@ -124,8 +129,10 @@ namespace Bovelo
             var a = CultureInfo.CurrentCulture;
             var datetimeformat = a.DateTimeFormat;
             var calendarWeek = a.Calendar.GetWeekOfYear(monthCalendar1.SelectionStart, datetimeformat.CalendarWeekRule, datetimeformat.FirstDayOfWeek);
-            textBox1.Text = "Week : " + calendarWeek.ToString() + ",  Year: " +  a.Calendar.GetYear(monthCalendar1.SelectionStart) ;
+            newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
             Console.WriteLine("Week number : " +  calendarWeek);
+            newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -135,7 +142,7 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string weekName = textBox1.Text;
+            string weekName = newWeekToAssign.Text;
             //Console.WriteLine("COUNT : " + user.planningCart.Count);
             newApp.setNewPlanning(user.planningCart, weekName);
             Manager_Make_Planning_Load(sender, e);
@@ -147,6 +154,25 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// create new window
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int id = Int32.Parse(idBike.Text.ToString());
+            string newWeek = newWeekToAssign.Text.ToString();
+            string currentWeek = weekToModify.Text.ToString();
+            newApp.updateSchedule(id, newWeek, currentWeek);
+            Manager_Make_Planning_Load(sender, e);
         }
     }
 }

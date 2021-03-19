@@ -407,6 +407,12 @@ namespace Bovelo
             sendToDB(deleteQuery);
         }
 
+        internal void updateSchedule(int id, string newWeek, string currentWeek)
+        {
+            string modifyQuery = "UPDATE Detailed_Schedules SET Week_name = '"+ newWeek +"' WHERE Id_Order_Details = '"+ id +"' and Week_Name = '"+ currentWeek+"';";
+            sendToDB(modifyQuery);
+        }
+
 
         internal List<User> getUserList() //is used to get all users 
         {
