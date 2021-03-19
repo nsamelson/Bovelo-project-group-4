@@ -238,11 +238,19 @@ namespace Bovelo
         }*/
         internal void setNewBikeModel(string type, int size, string color)//is used to add a new model (for ex: Electric)
         {
-            string query = "INSERT INTO Bike_Model (Bike_Type,Color,Size) VALUES ('" + type + "', " + color + ", '" + size + "')";
+            string query = "INSERT INTO Bike_Model (Color,Size,Type_Model) VALUES ('" + color + "','" + size + "', '" + type + "')";
             sendToDB(query);
             bikeModels = getBikeModelList();//At the end of set, put a get to update App class
         }
-
+        internal void setLinkBikePartsToBikeModel(int idBikeModel, List<int> idBikeParts)//id of the bikeModel and List of id's of BikeParts
+        {
+            foreach(var idPart in idBikeParts)
+            {
+                string query = "INSERT INTO Parts (Id_Bike_Parts,Bikes_Id) VALUES ('" + idPart + "',' " + idBikeModel + "')";
+                sendToDB(query);
+            }
+            bikeModels = getBikeModelList();//At the end of set, put a get to update App class
+        }
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             //Planning newPlanning = new Planning(planningCartList, week);
@@ -274,7 +282,7 @@ namespace Bovelo
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
-        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)
+        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)PROBLEM : Price/time differs from color and sizes
         {
             var rand = new Random();
             var bikePartLocation = new List<string>();
@@ -516,7 +524,7 @@ namespace Bovelo
 
             return bikePart;
         }*/
-        internal List<BikePart> getBikePart(List<string> TypeSizeColor)
+        internal List<BikePart> getSpecificBikePart(List<string> TypeSizeColor)
         {
             List<string> query = new List<string>();
             query.Add("*");
