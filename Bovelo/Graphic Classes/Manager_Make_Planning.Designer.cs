@@ -48,6 +48,7 @@ namespace Bovelo
             this.Planified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Modify = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -137,7 +138,8 @@ namespace Bovelo
             this.Id_Order_Bike,
             this.Planified,
             this.Column5,
-            this.Modify});
+            this.Modify,
+            this.Delete});
             this.dataGridView1.Location = new System.Drawing.Point(12, 94);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -232,6 +234,14 @@ namespace Bovelo
             this.Modify.ToolTipText = "Modify";
             this.Modify.UseColumnTextForButtonValue = true;
             // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete from planning :";
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.ToolTipText = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
+            // 
             // Manager_Make_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,5 +286,6 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Planified;
         private System.Windows.Forms.DataGridViewButtonColumn Column5;
         private System.Windows.Forms.DataGridViewButtonColumn Modify;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

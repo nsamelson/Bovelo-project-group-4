@@ -51,10 +51,24 @@ namespace Bovelo
                     Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]), nonPlanifiedBikes[1], nonPlanifiedBikes[3], Int32.Parse(nonPlanifiedBikes[2]));//Needs to be verified (id)
                     user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
                 }
-                i++;
-            
-        
+                i++;    
             }
+            if (dataGridView1.CurrentCell.Value.ToString() == "Modify")
+            {
+                
+            }
+            if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
+            {
+                Console.WriteLine("e.RowIndex : " + e.RowIndex);
+                int id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string week = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                Console.WriteLine("id : " + id + "week : " + week);
+                newApp.deletePlanifiedBike(id,week);
+                MessageBox.Show("Bike has been delted from schedule");
+                Manager_Make_Planning_Load(sender, e);
+                
+            }
+
         }
 
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
@@ -63,7 +77,7 @@ namespace Bovelo
             foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
-                Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
+                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
                 dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
@@ -93,6 +107,11 @@ namespace Bovelo
                 cell.Value = String.Empty;
                 dataGridView1.Rows[i].Cells[8] = cell;
                 cell.ReadOnly = true;
+                
+                DataGridViewTextBoxCell deleteCell = new DataGridViewTextBoxCell();
+                deleteCell.Value = String.Empty;
+                dataGridView1.Rows[i].Cells[9] = deleteCell;
+                deleteCell.ReadOnly = true;
                 i++;
             }
 
@@ -117,7 +136,6 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
             string weekName = textBox1.Text;
-            
             //Console.WriteLine("COUNT : " + user.planningCart.Count);
             newApp.setNewPlanning(user.planningCart, weekName);
             Manager_Make_Planning_Load(sender, e);

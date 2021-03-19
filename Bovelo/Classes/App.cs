@@ -393,6 +393,12 @@ namespace Bovelo
             var nonPlanified = getPanifiedOrderDetails(sql);
             return nonPlanified;
         }
+        internal void deletePlanifiedBike(int idOrderDetail, string week)
+        {
+            string deleteQuery = "delete from Detailed_Schedules where Week_Name = '" + week + "' and Id_Order_Details='" + idOrderDetail + "';";
+            sendToDB(deleteQuery);
+        }
+
 
         internal List<User> getUserList() //is used to get all users 
         {
