@@ -9,23 +9,41 @@ using MySql.Data.MySqlClient;
 namespace Bovelo
 {
     //maybe differenciate into 2 classes (bikeModel which is linked to BikePart(with totaltime,price,type)) and this class which is used only for the orders or be me more logical between app and bike...
-    class Bike : BikeModel
+    class Bike 
     {
         public Dictionary<string, bool> state = new Dictionary<string, bool>();
-        /*public string Color;
-        public int Size;*/
+        public string Color;
+        public int Size;
+        public string Type;
+        public int Price;
+        public int TotalTime;
         public int bikeId;//MAYBE REMOVE
-        public Bike(int bikeId,string Type, string Color, int Size) : base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
+        public List<BikePart> bikeParts;
+        private BikeModel _model;
+        public Bike(int bikeId,string Type, string Color, int Size) //: base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;
-            this.Type = Type;
-            this.Color = Color;
-            this.Size = Size;
+            setBikeModel(Type,Color,Size);
             state.Add("New", true);
             state.Add("Active", false);
             state.Add("Closed", false);
+
         }
-        internal override void setBikeParts(List<BikePart> allParts)
+        public void setBikeModel(string Type, string Color, int Size)
+        {
+            App newApp = new App();
+            var bikeModels = newApp.getBikeModelList();
+
+            _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);
+            this.Type = _model.Type;
+            this.Color = _model.Color;
+            this.Size = _model.Size;
+            this.Price = _model.Price;
+            this.TotalTime = _model.TotalTime;
+            this.bikeParts = _model.bikeParts;
+        }
+
+        /*internal override void setBikeParts(List<BikePart> allParts)
         {
             List<int> partsId = new List<int>() { 1, 2, 15, 16, 17, 17, 17, 17, 18, 27, 27, 28, 29, 29, 33, 34, 42, 52 };
             if (Size == 26)
@@ -102,7 +120,7 @@ namespace Bovelo
             //bikeParts = allParts.FindAll(part => partsIndices.Contains(part.id));//adds each part into the list, without duplicates
             bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
             setPriceAndTime(); //after getting all the parts, set the price and time to build
-        }
+        }*/
 
     }
 

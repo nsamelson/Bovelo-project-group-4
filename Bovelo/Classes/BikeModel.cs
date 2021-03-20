@@ -36,7 +36,7 @@ namespace Bovelo
             }
             //Console.WriteLine(this.type +" | Price : "+this.Price+" | Time : "+this.totalTime);
         }
-        internal virtual void setBikeParts(List<BikePart> allParts)//used to set the bikeparts needed to assemble a bike depending on its type
+        /*internal virtual void setBikeParts(List<BikePart> allParts)//used to set the bikeparts needed to assemble a bike depending on its type
         {
             List<int> partsId = new List<int>() {1,2,15,16,17,17,17,17,18,27,27,28,29,29,31,33,34,40,40,42,52};
             switch (Type)
@@ -58,7 +58,7 @@ namespace Bovelo
             bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
             //setPriceAndTime(); //after getting all the parts, set the price and time to build
             
-        }
+        }*/
         /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)
 		{
 			List<string> query = new List<string>();
