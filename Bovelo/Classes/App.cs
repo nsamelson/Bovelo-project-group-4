@@ -610,16 +610,21 @@ namespace Bovelo
                 stockQuantity = getQuantity(elem.Key);
                 quantityNeeded = elem.Value;            // just to be clear
                 int orderQuantity = 0;
-                if (stockQuantity < 10)
-                if (stockQuantity<quantityNeeded )
+                orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
+                if (orderQuantity < 0) //means there is enough stock
+                { 
+                    orderQuantity = 0; 
+                }
+                //NEED TO ADD THIS ORDER WITH THE ID TO A LIST
+                /*if (stockQuantity<quantityNeeded )
                 {                   
                     orderQuantity = stockQuantity - quantityNeeded;
                     if (stockQuantity-orderQuantity < 10)
                     {
                         orderQuantity += 10 - (orderQuantity - stockQuantity);
                     }
-                }
-                
+                }*/
+
                 {
 
                 }

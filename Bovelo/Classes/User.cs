@@ -8,16 +8,16 @@ using System.Reflection;
 
 namespace Bovelo
 {
-
     class User //user class, is representative, ProductionManager or Assembler. Contains a cart for the representative and methods with rights depending of its status
     {
         public string login; 
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
-        
         public List<Item> cart = new List<Item>();//cart of bikes used by representative
-        //public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
         public List<List<string>> planningCart = new List<List<string>>();
+
         //public List<BikePart> bikePartCart = new List<BikePart>(); //cart of bikePart used by production manager to order parts
+        //public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
+
         public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
             this.login = login;
@@ -117,10 +117,9 @@ namespace Bovelo
 
             return Plan;
         }
-        public void addToPlanningCart(Bike bike,int id)//adds a bike from and order to the planning of the week
+        public void addToPlanningCart(Bike bike,int id)//adds a bike from an order to the planning of the week
         {
             List<string> newBike = new List<string>() { id.ToString(), bike.Type, bike.Size.ToString(), bike.Color  };
-            
             planningCart.Add(newBike);
         }
         public void emptyPlanningCart()
