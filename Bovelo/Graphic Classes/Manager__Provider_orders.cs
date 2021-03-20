@@ -12,8 +12,10 @@ namespace Bovelo
 {
     public partial class Manager__Provider_orders : Form
     {
-        public Manager__Provider_orders()
+        private User user = new User("Manager", false, false, false);
+        internal Manager__Provider_orders(User currentUser)
         {
+            this.user = currentUser;
             InitializeComponent();
         }
 
