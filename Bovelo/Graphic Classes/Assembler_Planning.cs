@@ -16,10 +16,10 @@ namespace Bovelo
         private App newApp = new App();
         private User user = new User(" ", false, false, false);
         private string planningWeek;
-        internal Assembler_Planning(User user, string planning)
+        internal Assembler_Planning(User user)
         {
             this.user = user;
-            this.planningWeek = planning;
+            //this.planningWeek = planning; Was in constructor
             InitializeComponent();
         }
 
@@ -43,7 +43,7 @@ namespace Bovelo
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
-
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             /*List<string> where_conditions = new List<string>();
             List<string> Type_Size_Color = new List<string>();
             int i = 0;
@@ -103,26 +103,19 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
 
-            foreach (var planning in newApp.getPlanningList())
+            string Builder, status;
+            int id;
+            foreach (DataGridViewRow row  in dataGridView1.SelectedRows)
             {
-                if (planningWeek == planning.weekName)
-                {
-                    List<List<string>> refreshed = new List<List<string>>();
-                    for(int i =0;i<planning.planningDetails.Count;i++)
-                    {
-                        List<string> rows = new List<string>();
-                        for (int j=0;j< planning.planningDetails[0].Count;j++)
-                        {
-                            rows.Add(dataGridView1.Rows[i].Cells[j].Value.ToString());
-                        }
-                        refreshed.Add(rows);
-                    }
-                    planning.refreshBikes(refreshed);
-                    newApp.updateSatus(refreshed);
-                }
+                id = Int32.Parse(row.Cells[0].Value.ToString());
+                Builder = user.login.ToString();
+                status = row.Cells[5].Value.ToString();
 
+                row.Cells[7].Value = Builder;
+                newApp.updateSatus(id,status , Builder);
             }
-            
+            dataGridView1.Refresh();            
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -137,7 +130,7 @@ namespace Bovelo
             int i = 0;
             foreach (var plan in newApp.getFromDbInnerJoin(week))
             {
-                Console.WriteLine(plan[0] + "|" + plan[1] + "|" + plan[2] + "|" + plan[3] + "" + plan[4]);
+                Console.WriteLine(plan[0] + "|" + plan[1] + "|" + plan[2] + "|" + plan[3] + "" + plan[8]);
 
                 dataGridView1.Rows.Add();
                 dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -147,7 +140,8 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[3].Value = plan[3]; // must be order date and date add to planning
                 //dataGridView1.Rows[i].Cells[4].Value = plan[5];
                 dataGridView1.Rows[i].Cells[5].Value = plan[5];
-                dataGridView1.Rows[i].Cells[6].Value = plan[7];
+                dataGridView1.Rows[i].Cells[6].Value = plan[8];
+                dataGridView1.Rows[i].Cells[7].Value = plan[6];
                 i++;
             }
         }

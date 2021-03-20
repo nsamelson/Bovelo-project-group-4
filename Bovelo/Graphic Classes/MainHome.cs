@@ -12,7 +12,7 @@ namespace Bovelo
 {
     public partial class MainHome : Form
     {
-        private User _currentUser = new User(" ", false, false, false); 
+        private User _currentUser; 
         internal MainHome(User incomingUser)
         {
             InitializeComponent();
@@ -75,6 +75,9 @@ namespace Bovelo
                     ShowBike explorerbike = new ShowBike("Explorer", ref _currentUser);
                     explorerbike.FormClosed += (s, args) => this.Close();
                     explorerbike.Show();
+                    break;
+                case "Electric":
+                    //to implement
                     break;
             }
         }

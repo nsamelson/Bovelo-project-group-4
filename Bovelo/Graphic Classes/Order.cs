@@ -13,7 +13,7 @@ namespace Bovelo
     public partial class Order : Form
     {
         private App newApp = new App();
-        private User _currentUser = new User(" ", false, false, false);
+        private User _currentUser;
         //private List<List<string>> orderList;
         private OrderBike order ;
         internal Order(ref User incomingUser)
@@ -31,32 +31,19 @@ namespace Bovelo
         private void Order_Load(object sender, EventArgs e)
         {
             int i = 0;
-            foreach(var orders in newApp.orderBikeList)//Errors in the cells
+            foreach(var orders in newApp.getOrderBikeList())//Errors in the cells
             {
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = orders.orderId.ToString();
                 dataGridView1.Rows[i].Cells[1].Value = orders.clientName;
-                dataGridView1.Rows[i].Cells[2].Value = orders.getTotalPrice().ToString();
+                dataGridView1.Rows[i].Cells[2].Value = orders.totalPrice;
                 dataGridView1.Rows[i].Cells[3].Value = orders.orderDate.ToString();
                 dataGridView1.Rows[i].Cells[4].Value = orders.shippingDate.ToString();
 
 
                 i++;
             }
-            /*foreach (var elem in _currentUser.getOrderList(clientId))
-            {
-
-                dataGridView1.Rows.Add();
-                Console.WriteLine(elem[0] + " " + elem[1]);
-                dataGridView1.Rows[i].Cells[0].Value = elem[0].ToString();
-                dataGridView1.Rows[i].Cells[1].Value = elem[1].ToString();
-                dataGridView1.Rows[i].Cells[2].Value = elem[2].ToString();
-                dataGridView1.Rows[i].Cells[3].Value = elem[3].ToString();
-                dataGridView1.Rows[i].Cells[4].Value = elem[4].ToString();
-                dataGridView1.Rows[i].Cells[5].Value = (Int32.Parse(elem[5])* Int32.Parse(elem[3])).ToString();
-
-                i++;
-            }*/
+         
         }
         private void button3_Click(object sender, EventArgs e)
         {

@@ -11,16 +11,20 @@ namespace Bovelo
 	public class BikeModel
 	{
 		public string Type;
-		public int Price;
+		public int Price = 0;
+        public int Size;
+        public string Color;
 		public int TotalTime;//time to build a bike
 		public int idBikeModel;
 		internal List<BikePart> bikeParts;
 
 
-		public BikeModel(int idBikeModel, string Type)
+		public BikeModel( string Type,string color,int size)
 		{
 			this.Type = Type;
-            this.idBikeModel = idBikeModel;
+            this.Color = color;
+            this.Size = size;
+            /*this.idBikeModel = idBikeModel;*/
         }
         internal void setPriceAndTime()//is used to set the total price of a bike
         {
@@ -32,7 +36,7 @@ namespace Bovelo
             }
             //Console.WriteLine(this.type +" | Price : "+this.Price+" | Time : "+this.totalTime);
         }
-        internal virtual void setBikeParts(List<BikePart> allParts)//used to set the bikeparts needed to assemble a bike depending on its type
+        /*internal virtual void setBikeParts(List<BikePart> allParts)//used to set the bikeparts needed to assemble a bike depending on its type
         {
             List<int> partsId = new List<int>() {1,2,15,16,17,17,17,17,18,27,27,28,29,29,31,33,34,40,40,42,52};
             switch (Type)
@@ -52,10 +56,10 @@ namespace Bovelo
             }
             //bikeParts = allParts.FindAll(part => partsIndices.Contains(part.id));//adds each part into the list, without duplicates
             bikeParts = partsId.Select(id => allParts.First(part => part.part_Id == id)).ToList();//adds each part into the list, even duplicates
-            setPriceAndTime(); //after getting all the parts, set the price and time to build
+            //setPriceAndTime(); //after getting all the parts, set the price and time to build
             
-        }
-        /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)//TO REMOVE
+        }*/
+        /*internal List<BikePart> getBikePart(List<string> TypeSizeColor)
 		{
 			List<string> query = new List<string>();
 			query.Add("*");

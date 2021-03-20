@@ -16,12 +16,14 @@ namespace Bovelo
         public string TypeOfBike;
         public string path = @"../../Graphic Classes";
         //public string path = Directory.GetCurrentDirectory();// recup the position in repositories
-        private User _currentUser= new User(" ", false, false, false);
+        private User _currentUser;
         private App app = new App();
+        //private Bike bikeToAdd;
         internal ShowBike(string TypeBike,ref User current_user)
         {
             TypeOfBike = TypeBike;
-            _currentUser = current_user; 
+            _currentUser = current_user;
+            // bikeToAdd = new Bike(0, TypeBike, "black", 26);
             InitializeComponent();
             // display the first bykeview at the first time
             pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
@@ -34,16 +36,7 @@ namespace Bovelo
 
        public int getBikePrice()
         {
-            int price = 0;
-            foreach (var bike in app.bikeModels)
-            {
-                Console.WriteLine(bike.Type);
-                if (bike.Type == TypeOfBike)
-                {
-                   price= bike.Price;
-                }
-                
-            }
+            int price = app.getBikeModelList().FirstOrDefault(x=> x.Type == TypeOfBike).Price;
             return price;
         }
 
@@ -137,34 +130,8 @@ namespace Bovelo
             Bike BikeToAdd = new Bike(0,TypeOfBike, color, _i);//id is set to 0 MAYBE NEED TO CHANGE
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
 
-
-
-
-
-
-            //Cart cart = new Cart();// create new window
-            //cart.row = new string[] { panel1.Name.ToString(), comboBox1.Text.ToString(), label8.Text.ToString(), numericUpDown1.Value.ToString(), DateTime.Now.ToString() };
-            //cart.Show();// Showing the Main Home window
-
-            //this.Close();// Hiding the Explorerbike Window
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -180,16 +147,6 @@ namespace Bovelo
             var login = new Login();// create new window
             login.FormClosed += (s, args) => this.Close();
             login.Show();// Showing the Login window
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -217,20 +174,6 @@ namespace Bovelo
 
         }
 
-        private void label8_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         private void label5_Click(object sender, EventArgs e)
         {

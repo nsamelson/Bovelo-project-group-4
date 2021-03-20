@@ -15,12 +15,8 @@ namespace Bovelo
         
         static void Main(string[] args)
         {
-            int result=app.bikeModels[0].bikeParts[0].getQuantity();
-            Console.WriteLine("------------------------------------------------------");
-            Console.WriteLine(result);
             Application.Run(new Login());
             //Application.Run(new MainHome(app.userList[0]));
-            
          }
     }
 }
