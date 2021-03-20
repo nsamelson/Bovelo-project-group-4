@@ -315,6 +315,16 @@ namespace Bovelo
             query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
             sendToDB(query);            
         }
+        internal void deletePlanifiedBike(int idOrderDetail, string week)
+        {
+            string deleteQuery = "delete from Detailed_Schedules where Week_Name = '" + week + "' and Id_Order_Details='" + idOrderDetail + "';";
+            sendToDB(deleteQuery);
+        }
+        internal void updateSchedule(int id, string newWeek, string currentWeek)
+        {
+            string modifyQuery = "UPDATE Detailed_Schedules SET Week_name = '" + newWeek + "' WHERE Id_Order_Details = '" + id + "' and Week_Name = '" + currentWeek + "';";
+            sendToDB(modifyQuery);
+        }
 
         //GET from the DB methods
 
@@ -373,8 +383,12 @@ namespace Bovelo
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[6] == row[0]));//takes each lists with the same order_Id
                 OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]));
+
+                //maybe put those 3 into a SET method inside orderBike
                 newOrder.orderDate = Convert.ToDateTime(row[3]);
                 newOrder.shippingDate = Convert.ToDateTime(row[4]);
+                newOrder.totalPrice = Int32.Parse(row[2]);
+
                 orderBikeList.Add(newOrder);//row[1] is the column where the name of the client is put
 
                 //OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
@@ -401,19 +415,6 @@ namespace Bovelo
             var nonPlanified = getPanifiedOrderDetails(sql);
             return nonPlanified;
         }
-        internal void deletePlanifiedBike(int idOrderDetail, string week)
-        {
-            string deleteQuery = "delete from Detailed_Schedules where Week_Name = '" + week + "' and Id_Order_Details='" + idOrderDetail + "';";
-            sendToDB(deleteQuery);
-        }
-
-        internal void updateSchedule(int id, string newWeek, string currentWeek)
-        {
-            string modifyQuery = "UPDATE Detailed_Schedules SET Week_name = '"+ newWeek +"' WHERE Id_Order_Details = '"+ id +"' and Week_Name = '"+ currentWeek+"';";
-            sendToDB(modifyQuery);
-        }
-
-
         internal List<User> getUserList() //is used to get all users 
         {
             var userFromDB = new List<User>();
@@ -585,7 +586,6 @@ namespace Bovelo
             }
             return PartIdQuantity;
         }
-
         public void addQuantity(int value,int part_Id)
         {
             int quantity = getQuantity(part_Id);

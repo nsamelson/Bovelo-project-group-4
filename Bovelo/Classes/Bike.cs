@@ -23,6 +23,7 @@ namespace Bovelo
         public Bike(int bikeId,string Type, string Color, int Size) //: base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;
+            //call app to get the model of the bike
             App newApp = new App();
             var bikeModels = newApp.getBikeModelList();
             _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);

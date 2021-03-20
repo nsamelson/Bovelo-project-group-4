@@ -299,6 +299,7 @@ namespace Bovelo
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(388, 207);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);

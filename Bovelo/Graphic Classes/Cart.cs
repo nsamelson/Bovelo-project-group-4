@@ -14,7 +14,7 @@ namespace Bovelo
     {
         
         public string[] row;
-        private User _currentUser = new User(" ",false,false,false);
+        private User _currentUser;
 
         private App app = new App();
         internal Cart(ref User incomingUser)
@@ -25,37 +25,21 @@ namespace Bovelo
 
         private void Cart_Load(object sender, EventArgs e)
         {
-            int totalPrice = 0;
+
             int i = 0;
-            while (i< _currentUser.cart.Count)
-            {
-                dataGridView1.Rows.Add();
-                i++;
-            }
-            i = 0;
             foreach (Item elem in _currentUser.cart)
             {
-                int price = 0;
-                
-                foreach (var bike in app.bikeModels)
-                {
-                    if (bike.Type == elem.bike.Type)
-                    {
-                        price = bike.Price;
-                    }
-                }
-                totalPrice += price * elem.quantity;
-                Console.WriteLine(elem.bike.Type + " " + elem.quantity);
+                dataGridView1.Rows.Add();
+                int price = elem.getPrice();                
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
-                dataGridView1.Rows[i].Cells[4].Value = elem.bike.TotalTime.ToString();
-                dataGridView1.Rows[i].Cells[5].Value = (price * elem.quantity).ToString();
-                Console.WriteLine(price);
+                dataGridView1.Rows[i].Cells[4].Value = "0 in stock";//elem.bike.TotalTime.ToString();
+                dataGridView1.Rows[i].Cells[5].Value = price.ToString();
                 i++;
             }
-            Decimal B = totalPrice;
+            Decimal B = _currentUser.getCartPrice();
             this.labelPrice.Text = B.ToString() + "€";
         }
 
@@ -89,28 +73,6 @@ namespace Bovelo
         {
             string client = textBox1.Text;        
             int RowCount = _currentUser.getCartList().Count();
-            /*List<List<string>> newOrder = new List<List<string>>();
-            List<string> Data = new List<string>();
-            int i = 0;
-            int price = 0;
-            int RowCount = dataGridView1.RowCount;
-            while (i < RowCount )
-            {
-
-                Data.Insert(0, dataGridView1.Rows[i].Cells[0].Value.ToString());
-                Data.Insert(1, dataGridView1.Rows[i].Cells[1].Value.ToString());
-                Data.Insert(2, dataGridView1.Rows[i].Cells[2].Value.ToString());
-                Data.Insert(3, dataGridView1.Rows[i].Cells[3].Value.ToString());
-                Data.Insert(4, dataGridView1.Rows[i].Cells[5].Value.ToString());
-                Console.WriteLine("Data list contains Bike type is : " + Data[0]);
-                newOrder.Insert(i,Data);
-                Console.WriteLine("la longeur de new order est de : "  + newOrder.Count + newOrder[i][0] + " indice i est  : " + i  );
-                
-                price += Int32.Parse(dataGridView1.Rows[i].Cells[5].Value.ToString());
-                i++;
-                Data = new List<string>();
-                
-            }*/
 
             if (client != ""&&RowCount!=0)
             {

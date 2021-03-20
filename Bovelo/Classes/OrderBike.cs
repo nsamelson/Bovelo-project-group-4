@@ -22,12 +22,12 @@ namespace Bovelo
             this.clientName = clientName;
             this.orderDetail = orderDetail;
             this.orderId = id;
-            this.totalPrice = getTotalPrice();
             // this.orderDate = DateTime.Now;
             // this.shippingDate = DateTime.Today.AddDays(7);
             this.bikeList = getBikeList();
             this.isReadyToShip = getOrderState();
         }
+        
 
         public List<Bike> getBikeList()
         {
@@ -52,19 +52,7 @@ namespace Bovelo
             }
             return bikes;
         }
-        public int getTotalPrice()
-        {
-            int totPrice = 0;
-/*            foreach(var item in orderDetail)
-            {
-                totPrice += Int32.Parse(item[4]);
-            }*/
-            foreach(var item in getBikeList())
-            {
-                totPrice += item.Price;
-            }
-            return totPrice;
-        }
+        
         public bool getOrderState()//needs to be tested
         {
             if (bikeList.TrueForAll(x => x.state["Closed"]))
