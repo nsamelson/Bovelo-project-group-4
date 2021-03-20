@@ -585,5 +585,47 @@ namespace Bovelo
             }
             return PartIdQuantity;
         }
+
+        public void addQuantity(int value,int part_Id)
+        {
+            int quantity = getQuantity(part_Id);
+            quantity += value;
+            sendToDB("UPDATE Bike_Parts SET Quantity =" + quantity + " WHERE Id_Bike_Parts = " + part_Id + ";");
+        }
+        public int getQuantity(int part_Id)
+        {
+            List<string> argumentList = new List<string>();
+            argumentList.Add("Quantity");
+            string whereclause = "Id_Bike_Parts =" + part_Id;
+            List<List<string>> result = getFromDBWhere("Bike_Parts", argumentList, whereclause);
+            int quantity = Int32.Parse(result[0][0]);
+            return quantity;
+        }
+        internal Dictionary<int, int> computeMissingPieces(Dictionary<int, int> PartIdQuantity)
+        {
+            int stockQuantity = 0;
+            int quantityNeeded = 0;
+            foreach (var elem in PartIdQuantity)
+            {
+                stockQuantity = getQuantity(elem.Key);
+                quantityNeeded = elem.Value;            // just to be clear
+                int orderQuantity = 0;
+                if (stockQuantity < 10)
+                if (stockQuantity<quantityNeeded )
+                {                   
+                    orderQuantity = stockQuantity - quantityNeeded;
+                    if (stockQuantity-orderQuantity < 10)
+                    {
+                        orderQuantity += 10 - (orderQuantity - stockQuantity);
+                    }
+                }
+                
+                {
+
+                }
+            }
+            return PartIdQuantity;
+        }
+
     } // end App Class
 } // end namespace Bovelo
