@@ -447,7 +447,7 @@ namespace Bovelo
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
             List<List<string>> modelList = getFromDB("Bike_Model");//bikemodels from db
             var allPartsId = getFromDB("Parts");//all parts from db
-            
+            bikePartList = getBikePartList();
             foreach (var row in modelList)
             {
                 List<int> bikePartsIds = new List<int>();
@@ -549,5 +549,41 @@ namespace Bovelo
             }
             return bikePartList;
         }// end getbikepart
+
+
+        internal Dictionary<int, int> getWeekPieces(string weekName) //really with weekName ?!
+        {
+
+            List<Bike> BikesToGetPieces = new List<Bike>();
+
+            foreach (var planning in this.getPlanningList())
+            {
+                if (planning.weekName == weekName)
+                {
+                    BikesToGetPieces = planning.getBikesToBuild();
+                }
+            }
+            List<int> differentPartsId = new List<int>();
+            List<int> allPartsId = new List<int>();
+            foreach (var bike in BikesToGetPieces)
+            {
+                foreach(var bikepart in bike.bikeParts)
+                {
+                    if (!differentPartsId.Contains(bikepart.part_Id))
+                    {
+                        differentPartsId.Add(bikepart.part_Id);
+                    }
+                    allPartsId.Add(bikepart.part_Id);
+                }
+            }
+            Dictionary<int, int> PartIdQuantity = new Dictionary<int, int>();
+            foreach (var partId in differentPartsId)
+            {
+                List<int> elem_to_count = allPartsId.FindAll(partID => partID==partId);
+                PartIdQuantity.Add(partId,elem_to_count.Count());
+                elem_to_count.Clear();
+            }
+            return PartIdQuantity;
+        }
     } // end App Class
 } // end namespace Bovelo
