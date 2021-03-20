@@ -11,7 +11,7 @@ namespace Bovelo
     //maybe differenciate into 2 classes (bikeModel which is linked to BikePart(with totaltime,price,type)) and this class which is used only for the orders or be me more logical between app and bike...
     class Bike 
     {
-        public Dictionary<string, bool> state = new Dictionary<string, bool>();
+        public Dictionary<string, bool> state = new Dictionary<string, bool>() { { "New",true},{ "Active", false },{ "Closed", false } };
         public string Color;
         public int Size;
         public string Type;
@@ -23,18 +23,10 @@ namespace Bovelo
         public Bike(int bikeId,string Type, string Color, int Size) //: base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;
-            setBikeModel(Type,Color,Size);
-            state.Add("New", true);
-            state.Add("Active", false);
-            state.Add("Closed", false);
-
-        }
-        public void setBikeModel(string Type, string Color, int Size)
-        {
             App newApp = new App();
             var bikeModels = newApp.getBikeModelList();
-
             _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);
+
             this.Type = _model.Type;
             this.Color = _model.Color;
             this.Size = _model.Size;
@@ -42,6 +34,7 @@ namespace Bovelo
             this.TotalTime = _model.TotalTime;
             this.bikeParts = _model.bikeParts;
         }
+
 
         /*internal override void setBikeParts(List<BikePart> allParts)
         {
