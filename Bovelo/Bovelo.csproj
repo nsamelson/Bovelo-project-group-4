@@ -170,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Classes\list_part.txt" />
+    <None Include="Graphic Classes\Pictures\icones\settings.png" />
+    <None Include="Graphic Classes\Pictures\icones\profile.jpg" />
     <None Include="Graphic Classes\Pictures\icones\profile.png" />
     <None Include="Graphic Classes\Pictures\icones\tprofile.jpg" />
     <None Include="Graphic Classes\Pictures\icones\home.JPG" />
