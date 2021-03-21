@@ -110,6 +110,18 @@
     <Compile Include="Graphic Classes\Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphic Classes\Manager__Provider_catalog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager__Provider_catalog.Designer.cs">
+      <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager__Provider_orders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager__Provider_orders.Designer.cs">
+      <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphic Classes\ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,8 +151,14 @@
     <EmbeddedResource Include="Graphic Classes\Manager_Make_Planning.resx">
       <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Manager__Provider_orders.resx">
+      <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Manager__Provider_catalog.resx">
+      <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
@@ -153,6 +171,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -170,6 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Classes\list_part.txt" />
+    <None Include="Graphic Classes\Pictures\icones\settings.png" />
+    <None Include="Graphic Classes\Pictures\icones\profile.jpg" />
+    <None Include="Graphic Classes\Pictures\icones\profile.png" />
+    <None Include="Graphic Classes\Pictures\icones\tprofile.jpg" />
+    <None Include="Graphic Classes\Pictures\icones\home.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
