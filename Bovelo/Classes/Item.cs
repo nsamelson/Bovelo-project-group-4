@@ -16,6 +16,7 @@ namespace Bovelo
             this.bike = bike;
             this.price = getPrice();
         }
+
         public void increment()
         {
             quantity++;

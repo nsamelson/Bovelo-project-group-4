@@ -605,6 +605,7 @@ namespace Bovelo
         {
             int stockQuantity = 0;
             int quantityNeeded = 0;
+            Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
             foreach (var elem in PartIdQuantity)
             {
                 stockQuantity = getQuantity(elem.Key);
@@ -615,6 +616,7 @@ namespace Bovelo
                 { 
                     orderQuantity = 0; 
                 }
+                partOrderQuantity.Add(elem.Key, orderQuantity);
                 //NEED TO ADD THIS ORDER WITH THE ID TO A LIST
                 /*if (stockQuantity<quantityNeeded )
                 {                   
@@ -624,13 +626,11 @@ namespace Bovelo
                         orderQuantity += 10 - (orderQuantity - stockQuantity);
                     }
                 }*/
-
-                {
-
-                }
             }
-            return PartIdQuantity;
+            return partOrderQuantity;
         }
+
+         
 
     } // end App Class
 } // end namespace Bovelo
