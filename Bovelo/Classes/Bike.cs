@@ -20,6 +20,7 @@ namespace Bovelo
         public int bikeId;//MAYBE REMOVE
         public List<BikePart> bikeParts;
         private BikeModel _model;
+        public string assembler;
         public Bike(int bikeId,string Type, string Color, int Size) //: base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;
@@ -27,13 +28,32 @@ namespace Bovelo
             App newApp = new App();
             var bikeModels = newApp.getBikeModelList();
             _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);
-
+            
             this.Type = _model.Type;
             this.Color = _model.Color;
             this.Size = _model.Size;
-            this.Price = _model.Price;
-            this.TotalTime = _model.TotalTime;
-            this.bikeParts = _model.bikeParts;
+            Price = _model.Price;
+            TotalTime = _model.TotalTime;
+            bikeParts = _model.bikeParts;
+        }
+        public void setNewState(string status,string assemblerName ="")
+        {
+            state[getCurrentState()] = false;// change the actual state to false
+            if (status == "New" || status == "Active" || status == "Closed")
+            {
+                state[status] = true;
+            }
+            else { }//error
+            if (assemblerName != "")
+            {
+                assembler = assemblerName;
+            }
+            
+        }
+        public string getCurrentState()
+        {
+            var status = state.FirstOrDefault(x => x.Value == true).Key;
+            return status;
         }
 
 

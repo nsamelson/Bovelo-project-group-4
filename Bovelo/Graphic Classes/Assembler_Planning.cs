@@ -14,8 +14,7 @@ namespace Bovelo
     public partial class Assembler_Planning : Form
     {
         private App newApp = new App();
-        private User user = new User(" ", false, false, false);
-        private string planningWeek;
+        private User user;
         internal Assembler_Planning(User user)
         {
             this.user = user;
@@ -125,10 +124,32 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
+            newApp.planningList = newApp.getPlanningList();
             dataGridView1.Rows.Clear();
             string week = textBox1.Text;
             int i = 0;
-            foreach (var plan in newApp.getFromDbInnerJoin(week))
+
+            var planningWeek = newApp.planningList.FirstOrDefault(x => x.weekName == week);
+            foreach (var bike in planningWeek.getBikesToBuild())
+            {
+                string parts = "";
+                foreach(var part in bike.bikeParts)
+                {
+                    parts += part.name + " | ";
+                }
+                dataGridView1.Rows.Add();
+                dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridView1.Rows[i].Cells[0].Value = bike.bikeId;
+                dataGridView1.Rows[i].Cells[1].Value = bike.Type;
+                dataGridView1.Rows[i].Cells[2].Value = bike.Size;
+                dataGridView1.Rows[i].Cells[3].Value = bike.Color; // must be order date and date add to planning
+                dataGridView1.Rows[i].Cells[4].Value = parts;
+                dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
+                dataGridView1.Rows[i].Cells[6].Value = week;
+                dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
+                i++;
+            }
+            /*foreach (var plan in newApp.getFromDbInnerJoin(week))
             {
                 Console.WriteLine(plan[0] + "|" + plan[1] + "|" + plan[2] + "|" + plan[3] + "" + plan[8]);
 
@@ -143,7 +164,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[6].Value = plan[8];
                 dataGridView1.Rows[i].Cells[7].Value = plan[6];
                 i++;
-            }
+            }*/
         }
     }
 }

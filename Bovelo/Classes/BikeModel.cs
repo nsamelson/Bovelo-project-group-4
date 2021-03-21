@@ -19,9 +19,9 @@ namespace Bovelo
 		internal List<BikePart> bikeParts;
 
 
-		public BikeModel( string Type,string color,int size)
+		public BikeModel( string type,string color,int size)
 		{
-			this.Type = Type;
+			this.Type = type;
             this.Color = color;
             this.Size = size;
             /*this.idBikeModel = idBikeModel;*/

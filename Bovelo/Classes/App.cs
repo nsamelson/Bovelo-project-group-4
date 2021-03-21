@@ -349,27 +349,31 @@ namespace Bovelo
         internal List<Planning> getPlanningList() //gets all plannings
         {
             List<Planning> plannings = new List<Planning>();
-            /*List<List<string>> planningDB = getFromDB("Schedule");
-            var planningDetailsDB = getFromDB("Detailed_Schedules");
-
-            foreach (var row in planningDB)
+            var detailedSchedules = getFromDB("Detailed_Schedules");
+            var allorders = getOrderDetails();
+            Dictionary<string, List<string>> weeks = new Dictionary<string, List<string>>();
+            int id = 0;//I don't know if it's usefull, maybe delete later
+            foreach (var row in detailedSchedules)
             {
-                List<List<string>> details = new List<List<string>>(planningDetailsDB.FindAll(x => x[5] == row[0]));//takes each lists with the same Id
-                foreach (var elem in details)
+                if (!weeks.ContainsKey(row[0]))
                 {
-                    string test = "";
-                    for (int i = 0; i < elem.Count; i++)
-                    {
-                        test += elem[i] + " ";
-                    }
-                    //Console.WriteLine(test);
+                    weeks.Add(row[0], new List<string>() { row[1] });
                 }
-                
-                Planning newPlanning = new Planning(details, row[1], Convert.ToInt16(row[0]));
-                plannings.Add(newPlanning);//row[1] is the column where the name of the client is put
+                else
+                {
+                    var values = weeks.FirstOrDefault(k => k.Key == row[0]).Value;
+                    values.Add(row[1]);
+                    weeks[row[0]] = values;
+                }
+            }
+            foreach (var row in weeks)
+            {
 
-            }*/
+                var bikes = allorders.FindAll(x => row.Value.Contains(x[0]));
+                plannings.Add(new Planning(bikes, row.Key, id));
 
+                id++;
+            }
             return plannings;
 
         }
