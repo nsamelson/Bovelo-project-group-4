@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Bovelo
 {
-    
+
     public partial class Assembler_Planning : Form
     {
         private App newApp = new App();
@@ -20,6 +20,7 @@ namespace Bovelo
             this.user = user;
             //this.planningWeek = planning; Was in constructor
             InitializeComponent();
+            newApp.planningList = newApp.getPlanningList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,17 +33,23 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+            string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
+            MessageBox.Show(partsToShow);
         }
         public void assembler_Planning_Load(object sender, EventArgs e)
         {
-            
-           
+
+
         }
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            var plans = newApp.planningList.Select(x => x.weekName).ToList();
+            comboBox1.DataSource = plans;
+            //comboBox1.Items = test;
+
             /*List<string> where_conditions = new List<string>();
             List<string> Type_Size_Color = new List<string>();
             int i = 0;
@@ -88,7 +95,7 @@ namespace Bovelo
                     }
                 }            
             }*/
-            
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -104,16 +111,17 @@ namespace Bovelo
 
             string Builder, status;
             int id;
-            foreach (DataGridViewRow row  in dataGridView1.SelectedRows)
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
             {
                 id = Int32.Parse(row.Cells[0].Value.ToString());
                 Builder = user.login.ToString();
                 status = row.Cells[5].Value.ToString();
 
                 row.Cells[7].Value = Builder;
-                newApp.updateSatus(id,status , Builder);
+                newApp.updateSatus(id, status, Builder);
             }
-            dataGridView1.Refresh();            
+            dataGridView1.Refresh();
+            newApp.planningList = newApp.getPlanningList();
 
         }
 
@@ -124,18 +132,18 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
-            newApp.planningList = newApp.getPlanningList();
+            //newApp.planningList = newApp.getPlanningList();
             dataGridView1.Rows.Clear();
-            string week = textBox1.Text;
+            string week = comboBox1.Text;
             int i = 0;
 
             var planningWeek = newApp.planningList.FirstOrDefault(x => x.weekName == week);
             foreach (var bike in planningWeek.getBikesToBuild())
             {
                 string parts = "";
-                foreach(var part in bike.bikeParts)
+                foreach (var part in bike.bikeParts)
                 {
-                    parts += part.name + " | ";
+                    parts += part.part_Id + " | " + part.name + " | " + part.location + " \n";
                 }
                 dataGridView1.Rows.Add();
                 dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
@@ -143,7 +151,8 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[1].Value = bike.Type;
                 dataGridView1.Rows[i].Cells[2].Value = bike.Size;
                 dataGridView1.Rows[i].Cells[3].Value = bike.Color; // must be order date and date add to planning
-                dataGridView1.Rows[i].Cells[4].Value = parts;
+                dataGridView1.Rows[i].Cells[4].Value = "Click to see parts";
+                dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
                 dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
                 dataGridView1.Rows[i].Cells[6].Value = week;
                 dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
