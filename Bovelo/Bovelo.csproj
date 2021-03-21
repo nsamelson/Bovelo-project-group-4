@@ -94,6 +94,12 @@
     <Compile Include="Graphic Classes\MainHome.Designer.cs">
       <DependentUpon>MainHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Graphic Classes\Manager_Create_Model.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Graphic Classes\Manager_Create_Model.Designer.cs">
+      <DependentUpon>Manager_Create_Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Graphic Classes\Manager_MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\MainHome.resx">
       <DependentUpon>MainHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graphic Classes\Manager_Create_Model.resx">
+      <DependentUpon>Manager_Create_Model.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Manager_MainHome.resx">
       <DependentUpon>Manager_MainHome.cs</DependentUpon>
