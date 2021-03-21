@@ -18,10 +18,9 @@ namespace Bovelo
 
         public App(bool getAll = false)
         {
+            this.bikePartList = getBikePartList();
             if (getAll)
-            {
-
-                this.bikePartList = getBikePartList();
+            {        
                 this.bikeModels = getBikeModelList();
                 this.userList = getUserList();
                 this.orderBikeList = getOrderBikeList();
@@ -633,6 +632,8 @@ namespace Bovelo
             }
             return partOrderQuantity;
         }
+
+
 
          
 

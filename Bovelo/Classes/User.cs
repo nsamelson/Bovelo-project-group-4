@@ -13,6 +13,7 @@ namespace Bovelo
         public string login; 
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
         public List<Item> cart = new List<Item>();//cart of bikes used by representative
+        public List<ItemPart> cartPart = new List<ItemPart>();
         public List<List<string>> planningCart = new List<List<string>>();
 
         //public List<BikePart> bikePartCart = new List<BikePart>(); //cart of bikePart used by production manager to order parts

@@ -57,6 +57,7 @@
     <Compile Include="Classes\Bike.cs" />
     <Compile Include="Classes\BikeModel.cs" />
     <Compile Include="Classes\BikePart.cs" />
+    <Compile Include="Classes\Itempart.cs" />
     <Compile Include="Classes\OrderBikePart.cs" />
     <Compile Include="Classes\Planning.cs" />
     <Compile Include="Classes\Item.cs" />
@@ -159,6 +160,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\Manager__Provider_catalog.resx">
       <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
