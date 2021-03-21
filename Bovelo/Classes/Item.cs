@@ -8,13 +8,11 @@ namespace Bovelo
     class Item //: Bike should maybe put it that way because of composition
     {
         public int quantity ;
-        public Bike bike;
-        public int price;
-        public Item(Bike bike, int quantity)
+        public int price = 0;
+
+        public Item(int quantity)
         {
             this.quantity = quantity;
-            this.bike = bike;
-            this.price = getPrice();
         }
 
         public void increment()
@@ -27,9 +25,9 @@ namespace Bovelo
             quantity--;
             price = getPrice();
         }
-        public int getPrice()
+        public virtual int getPrice()
         {
-            return quantity * bike.Price;
+            return price;
         }
     }
 }

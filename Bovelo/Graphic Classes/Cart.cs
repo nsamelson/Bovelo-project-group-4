@@ -27,7 +27,7 @@ namespace Bovelo
         {
 
             int i = 0;
-            foreach (Item elem in _currentUser.cart)
+            foreach (ItemBike elem in _currentUser.cart)
             {
                 dataGridView1.Rows.Add();
                 int price = elem.getPrice();                

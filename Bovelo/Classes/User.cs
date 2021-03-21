@@ -12,7 +12,7 @@ namespace Bovelo
     {
         public string login; 
         public Dictionary<string,bool> userType =new Dictionary<string, bool>();
-        public List<Item> cart = new List<Item>();//cart of bikes used by representative
+        public List<ItemBike> cart = new List<ItemBike>();//cart of bikes used by representative
         public List<ItemPart> cartPart = new List<ItemPart>();
         public List<List<string>> planningCart = new List<List<string>>();
 
@@ -33,7 +33,7 @@ namespace Bovelo
         //REPRESENTATIVE METHODS
         public void addToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
         {
-            cart.Add(new Item(bike, quantity));
+            cart.Add(new ItemBike(bike, quantity));
         }
         public List<List<string>> getCartList() //returns the cart into a list of list of string
         {

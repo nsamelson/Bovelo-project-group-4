@@ -1,25 +1,22 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Bovelo
 {
-    internal class ItemPart : Item
+    class ItemBike : Item //: Bike should maybe put it that way because of composition
     {
-        public BikePart part;
-        public ItemPart(BikePart part, int quantity):base(quantity)
+        public Bike bike;
+        public ItemBike(Bike bike, int quantity) : base(quantity)
         {
             this.quantity = quantity;
-            this.part = part;
+            this.bike = bike;
             price = getPrice();
         }
-
-        
         public override int getPrice()
         {
-            return quantity * part.price;
+            return quantity * bike.Price;
         }
     }
 }
