@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Bovelo
 {
-    public class ItemPart
+    internal class ItemPart
     {
         public int quantity;
-        internal BikePart part;
+        public BikePart part;
         public int price;
-        ItemPart(BikePart part, int quantity)
+        public ItemPart(BikePart part, int quantity)
         {
             this.quantity = quantity;
             this.part = part;
