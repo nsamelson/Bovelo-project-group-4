@@ -13,12 +13,15 @@ namespace Bovelo
     public partial class Manager__Provider_catalog : Form
     {
         private User user = new User("Manager", false, false, false);
-        private App newApp = new App();
+        private App newApp = new App(true);
+        private string plannedWeek;
         internal Manager__Provider_catalog(User currentUser)
         {
             this.user = currentUser;
             InitializeComponent();
-            catalogLoad();
+            var plans = newApp.planningList.Select(x => x.weekName).ToList();
+            comboBox1.DataSource = plans;
+            plannedWeek = comboBox1.Text;
             //cartLoad();
         }
 
@@ -47,7 +50,7 @@ namespace Bovelo
         {
             dataGridView1.Rows.Clear();
             int i = 0;
-            Dictionary<int, int> resultWeek = newApp.getWeekPieces("Week : 13");
+            Dictionary<int, int> resultWeek = newApp.getWeekPieces(this.plannedWeek);
             Dictionary<int, int> resultCompute = newApp.computeMissingPieces(resultWeek);
             foreach(var elem in resultWeek)
             {
@@ -145,6 +148,45 @@ namespace Bovelo
                 int value = Int32.Parse(dataGridView2.Rows[i].Cells[4].Value.ToString());
                 user.cartPart[i].setQuantity(value);
             }      
+            cartLoad();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            catalogLoad();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            user.cartPart.Clear();
+            dataGridView2.Rows.Clear();
+            Dictionary<int, int> resultWeek = newApp.getWeekPieces(this.plannedWeek);
+            Dictionary<int, int> resultCompute = newApp.computeMissingPieces(resultWeek);
+            int i = 0;
+            foreach (var part in newApp.bikePartList)
+            {
+                foreach (var elem in resultCompute)
+                {
+                    if (part.part_Id == elem.Key)
+                    {
+                        dataGridView1.Rows[i].Cells[5].Value = elem.Value;
+                        ItemPart toAdd = new ItemPart(part, elem.Value);
+                        user.cartPart.Add(toAdd);
+                    }
+                }
+                i++;
+            }
+            cartLoad();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            plannedWeek = comboBox1.Text;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            user.cartPart.Clear();
             cartLoad();
         }
     }// end of Manager__Provider_catalog : Form
