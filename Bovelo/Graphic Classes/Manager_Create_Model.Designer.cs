@@ -47,11 +47,14 @@ namespace Bovelo
             this.button5 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.button6 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button8 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -59,18 +62,15 @@ namespace Bovelo
             this.checkedListBox3 = new System.Windows.Forms.CheckedListBox();
             this.checkedListBox4 = new System.Windows.Forms.CheckedListBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.idPart = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Add = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Model_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BIke_Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Linked_Parts = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.idPart = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Add = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -161,10 +161,10 @@ namespace Bovelo
             this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(9, 76);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.MaximumSize = new System.Drawing.Size(243, 500);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(243, 267);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -175,7 +175,7 @@ namespace Bovelo
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Location = new System.Drawing.Point(4, 235);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(148, 27);
             this.button2.TabIndex = 6;
@@ -222,7 +222,7 @@ namespace Bovelo
             "26",
             "28"});
             this.checkedListBox2.Location = new System.Drawing.Point(82, 134);
-            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox2.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(150, 49);
             this.checkedListBox2.TabIndex = 2;
@@ -236,7 +236,7 @@ namespace Bovelo
             "Black",
             "Blue"});
             this.checkedListBox1.Location = new System.Drawing.Point(82, 66);
-            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.checkedListBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(150, 64);
             this.checkedListBox1.TabIndex = 1;
@@ -244,7 +244,7 @@ namespace Bovelo
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(82, 42);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(150, 20);
             this.textBox1.TabIndex = 0;
@@ -257,9 +257,9 @@ namespace Bovelo
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(256, 76);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(605, 600);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
@@ -269,7 +269,7 @@ namespace Bovelo
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button5.Location = new System.Drawing.Point(4, 568);
-            this.button5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(148, 27);
             this.button5.TabIndex = 7;
@@ -291,7 +291,7 @@ namespace Bovelo
             this.Bike_Size,
             this.Linked_Parts});
             this.dataGridView1.Location = new System.Drawing.Point(4, 42);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
@@ -309,20 +309,32 @@ namespace Bovelo
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.Controls.Add(this.dataGridView2);
             this.groupBox3.Location = new System.Drawing.Point(865, 76);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(502, 600);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Link parts to a model";
+            // 
+            // button9
+            // 
+            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button9.Location = new System.Drawing.Point(7, 568);
+            this.button9.Margin = new System.Windows.Forms.Padding(2);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(148, 27);
+            this.button9.TabIndex = 11;
+            this.button9.Text = "Load BikeParts";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(99, 518);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(92, 21);
             this.comboBox1.TabIndex = 10;
@@ -342,7 +354,7 @@ namespace Bovelo
             // 
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.Location = new System.Drawing.Point(350, 568);
-            this.button6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(148, 27);
             this.button6.TabIndex = 8;
@@ -363,7 +375,7 @@ namespace Bovelo
             this.Price,
             this.Add});
             this.dataGridView2.Location = new System.Drawing.Point(4, 42);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.RowTemplate.Height = 24;
@@ -392,6 +404,24 @@ namespace Bovelo
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add a new Bike Part to the Database";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 187);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Price :";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(82, 187);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(150, 20);
+            this.textBox3.TabIndex = 7;
             // 
             // button8
             // 
@@ -468,56 +498,13 @@ namespace Bovelo
             this.textBox2.Size = new System.Drawing.Size(150, 20);
             this.textBox2.TabIndex = 0;
             // 
-            // button9
-            // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button9.Location = new System.Drawing.Point(7, 568);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(148, 27);
-            this.button9.TabIndex = 11;
-            this.button9.Text = "Load BikeParts";
-            this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // idPart
-            // 
-            this.idPart.HeaderText = "idPart";
-            this.idPart.Name = "idPart";
-            this.idPart.ReadOnly = true;
-            // 
-            // Part
-            // 
-            this.Part.HeaderText = "Part";
-            this.Part.MinimumWidth = 6;
-            this.Part.Name = "Part";
-            this.Part.ReadOnly = true;
-            this.Part.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            this.Price.Width = 125;
-            // 
-            // Add
-            // 
-            this.Add.HeaderText = "Add";
-            this.Add.MinimumWidth = 6;
-            this.Add.Name = "Add";
-            this.Add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Add.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Add.Width = 50;
-            // 
             // Model_Id
             // 
+            this.Model_Id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Model_Id.HeaderText = "Model_Id";
             this.Model_Id.MinimumWidth = 6;
             this.Model_Id.Name = "Model_Id";
             this.Model_Id.ReadOnly = true;
-            this.Model_Id.Width = 75;
             // 
             // Bike_Type
             // 
@@ -550,23 +537,37 @@ namespace Bovelo
             this.Linked_Parts.ReadOnly = true;
             this.Linked_Parts.Text = "Click to see";
             // 
-            // textBox3
+            // idPart
             // 
-            this.textBox3.Location = new System.Drawing.Point(82, 187);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 20);
-            this.textBox3.TabIndex = 7;
+            this.idPart.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idPart.HeaderText = "idPart";
+            this.idPart.Name = "idPart";
+            this.idPart.ReadOnly = true;
             // 
-            // label9
+            // Part
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(23, 187);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Price :";
+            this.Part.HeaderText = "Part";
+            this.Part.MinimumWidth = 6;
+            this.Part.Name = "Part";
+            this.Part.ReadOnly = true;
+            this.Part.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            this.Price.Width = 125;
+            // 
+            // Add
+            // 
+            this.Add.HeaderText = "Add";
+            this.Add.MinimumWidth = 6;
+            this.Add.Name = "Add";
+            this.Add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Add.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Add.Width = 50;
             // 
             // Manager_Create_Model
             // 
@@ -578,7 +579,7 @@ namespace Bovelo
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Manager_Create_Model";
             this.Text = "Manager_Create_Model";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -630,16 +631,16 @@ namespace Bovelo
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idPart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Part;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Add;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn BIke_Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Size;
         private System.Windows.Forms.DataGridViewButtonColumn Linked_Parts;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idPart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Part;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Add;
     }
 }

@@ -22,7 +22,10 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)//orders
         {
-
+            this.Hide(); //hides the current form
+            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
+            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
+            mpo.Show();
         }
 
         private void button7_Click(object sender, EventArgs e)//menu
