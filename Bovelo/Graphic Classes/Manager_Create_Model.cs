@@ -68,5 +68,133 @@ namespace Bovelo
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)//Create a model
+        {
+            string type = textBox1.Text;
+            var colors = checkedListBox1.CheckedItems;
+            var sizes = checkedListBox2.CheckedItems;
+            if(colors.Count !=0 && sizes.Count != 0)
+            {
+                foreach(var color in colors)
+                {
+                    foreach (var size in sizes)
+                    {
+                        app.setNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
+                        //Console.WriteLine(type + " Size : "+Int32.Parse(size.ToString()) + " Color : " + color.ToString());
+                    }
+                }
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)//create BikePart
+        {
+            string name = textBox2.Text;
+            var colors = checkedListBox4.CheckedItems;
+            var sizes = checkedListBox3.CheckedItems;
+            if (colors.Count != 0 && sizes.Count != 0)
+            {
+                foreach (var color in colors)
+                {
+                    foreach (var size in sizes)
+                    {
+                        app.setNewBikePart(name, Int32.Parse(size.ToString()), color.ToString());
+                    }
+                }
+            }
+            else if (colors.Count != 0 && sizes.Count == 0)
+            {
+                foreach (var color in colors)
+                {
+                    app.setNewBikePart(name, 0, color.ToString());
+                }
+            }
+            else if (colors.Count == 0 && sizes.Count != 0)
+            {
+                foreach (var size in sizes)
+                {
+                    app.setNewBikePart(name, Int32.Parse(size.ToString()));
+                }
+            }
+            else
+            {
+                app.setNewBikePart(name);
+            }
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)//Load bikeModels
+        {
+            dataGridView1.Rows.Clear();
+            var models = app.getBikeModelList();
+            int i= 0;
+            List<int> idModels = new List<int>();
+            foreach(var bike in models)
+            {
+                string parts = "";
+                foreach (var part in bike.bikeParts)
+                {
+                    parts += part.part_Id + " | " + part.name + " | " + part.location + " \n";
+                }
+                int id = bike.idBikeModel;
+                string type = bike.Type;
+                string color = bike.Color;
+                int size = bike.Size;
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = id;
+                dataGridView1.Rows[i].Cells[1].Value = type;
+                dataGridView1.Rows[i].Cells[2].Value = color;
+                dataGridView1.Rows[i].Cells[3].Value = size;
+                dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
+                dataGridView1.Rows[i].Cells[4].Value = "Click to see";
+                i++;
+                idModels.Add(id);
+            }
+            comboBox1.DataSource = idModels;
+        }
+
+        private void button6_Click(object sender, EventArgs e)//Link a model to a bike
+        {
+            List<int> partsToLink = new List<int>();
+            int idModel;
+            if (comboBox1.Text != "")
+            {
+                idModel = Int32.Parse(comboBox1.Text);
+
+                foreach(DataGridViewRow row in dataGridView2.Rows)
+                {
+                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[3];
+                    if (chk.Value != chk.TrueValue)
+                    {
+                        partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
+                    }
+                }
+                app.setLinkBikePartsToBikeModel(idModel, partsToLink);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)//Load bikeParts
+        {
+            dataGridView2.Rows.Clear();
+            var parts = app.getBikePartList();
+            int i = 0;
+            foreach (var part in parts)
+            {
+                int id = part.part_Id;
+                int price = part.price;
+                string name = part.name;
+                dataGridView2.Rows.Add();
+                dataGridView2.Rows[i].Cells[0].Value = id;
+                dataGridView2.Rows[i].Cells[1].Value = name;
+                dataGridView2.Rows[i].Cells[2].Value = price;
+                i++;
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
+            MessageBox.Show(partsToShow);
+        }
     }
 }
