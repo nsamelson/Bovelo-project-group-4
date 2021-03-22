@@ -15,6 +15,7 @@ namespace Bovelo
         private User user = new User("Manager", false, false, false);
         private App newApp = new App(true);
         private string plannedWeek;
+        private int cartPrice;
         internal Manager__Provider_catalog(User currentUser)
         {
             this.user = currentUser;
@@ -126,6 +127,7 @@ namespace Bovelo
         public void cartLoad()
         {
             int i = 0;
+            cartPrice = 0;
             dataGridView2.Rows.Clear();
             foreach (var elem in user.cartPart)
             {
@@ -138,8 +140,10 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[4].Value = elem.quantity;
                 dataGridView2.Rows[i].Cells[5].Value = elem.price;
                 //dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(elem.part.part_Id);
+                cartPrice += elem.price;
                 i++;
             }
+            this.labelPrice.Text = cartPrice.ToString() +" € ";
         }      
         private void button2_Click(object sender, EventArgs e)
         { 
@@ -196,6 +200,29 @@ namespace Bovelo
             Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
             mpo.FormClosed += (s, args) => this.Close(); // close the login Form
             mpo.Show();
+        }
+
+        private void labelPrice_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+
+            string query = "INSERT INTO Bovelo.Order_Part(Week_Name,Total_Price) VALUES('" + plannedWeek + "'," + cartPrice + ");";
+            newApp.sendToDB(query);
+            List<string> all = new List<string>();
+            all.Add("*");
+            List<List<string>> result = newApp.getFromDBWhere("Order_Part", all, "Week_Name='" + plannedWeek + "' AND " + " Total_Price=" + cartPrice);
+            Console.WriteLine(result);
+            foreach (var elem in user.cartPart)
+            {
+                query = "INSERT INTO Bovelo.Order_Detailed_Part(Id_Order,Id_Bike_Parts,Quantity) VALUES('" + result[0][0] +"'," + elem.part.part_Id +","+elem.quantity+ ");";
+                newApp.sendToDB(query);
+            }
+            user.cartPart.Clear();
+            cartLoad();
         }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo

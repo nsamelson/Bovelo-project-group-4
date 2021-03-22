@@ -112,7 +112,7 @@ namespace Bovelo
             }
 
             sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
-            //Console.WriteLine(sql);
+            Console.WriteLine(sql);
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
             while (rdr.Read())
