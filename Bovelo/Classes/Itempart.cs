@@ -15,11 +15,15 @@ namespace Bovelo
             this.part = part;
             price = getPrice();
         }
-
-        
         public override int getPrice()
         {
             return quantity * part.price;
         }
+        public void setQuantity(int quantity)
+        {           
+            this.quantity = quantity;
+            this.price = quantity * this.part.price;
+        }
+
     }
 }

@@ -18,6 +18,8 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
+            catalogLoad();
+            //cartLoad();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace Bovelo
         {
             dataGridView1.Rows.Clear();
             int i = 0;
-            Dictionary<int, int> resultWeek = newApp.getWeekPieces("Week : 12");
+            Dictionary<int, int> resultWeek = newApp.getWeekPieces("Week : 13");
             Dictionary<int, int> resultCompute = newApp.computeMissingPieces(resultWeek);
             foreach (var part in newApp.bikePartList)
             {
@@ -87,15 +89,30 @@ namespace Bovelo
                         Console.WriteLine("Part Id : " + elem.part_Id);
                     }
                 }
+                cartLoad();
             }
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (dataGridView2.CurrentCell.Value == "Remove")
+            {
+
+                foreach (var elem in user.cartPart)
+                {
+                    if (elem.part.part_Id == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString()))
+                    {
+                        user.cartPart.Remove(elem);                      
+                        break;
+                    }
+                }
+                cartLoad();
+            }
 
         }
         public void cartLoad()
         {
             int i = 0;
+            dataGridView2.Rows.Clear();
             foreach (var elem in user.cartPart)
             {
                 dataGridView2.Rows.Add();
@@ -104,16 +121,20 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[1].Value = elem.part.name;
                 dataGridView2.Rows[i].Cells[2].Value = elem.part.price;
                 dataGridView2.Rows[i].Cells[3].Value = elem.part.provider;
-                dataGridView2.Rows[i].Cells[4].Value = elem.price;
+                dataGridView2.Rows[i].Cells[4].Value = elem.quantity;
+                dataGridView2.Rows[i].Cells[5].Value = elem.price;
                 //dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(elem.part.part_Id);
                 i++;
             }
         }      
-
         private void button2_Click(object sender, EventArgs e)
-        {
-            catalogLoad();
-            cartLoad();         
+        { 
+            for(int i = 0;i<user.cartPart.Count();i++ )
+            {
+                int value = Int32.Parse(dataGridView2.Rows[i].Cells[4].Value.ToString());
+                user.cartPart[i].setQuantity(value);
+            }      
+            cartLoad();
         }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo

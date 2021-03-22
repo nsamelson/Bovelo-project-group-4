@@ -18,5 +18,6 @@ namespace Bovelo
         {
             return quantity * bike.Price;
         }
+
     }
 }
