@@ -281,26 +281,33 @@ namespace Bovelo
 
             planningList = getPlanningList();//At the end of set, put a get to update App class
         }
-        internal void setNewBikePart(string name, int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)PROBLEM : Price/time differs from color and sizes
+        internal void setNewBikePart(string name, int price = 0,int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)PROBLEM : Price/time differs from color and sizes
         {
             var rand = new Random();
             var bikePartLocation = new List<string>();
             string location = RandomString(3);
             string provider = RandomString(8);
             int timeToBuild = rand.Next(1, 15);
-            int price = rand.Next(1, 101);
             string bikePartName = name;
             string query;
-
+            int partPrice ;
+            if (price == 0)
+            {
+                partPrice = rand.Next(1, 101);
+            }
+            else
+            {
+                partPrice = price;
+            }
             string RandomString(int length)//create a random string of letters and numbers
             {
                 const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 return new string(Enumerable.Repeat(chars, length)
                   .Select(s => s[rand.Next(s.Length)]).ToArray());
             }
-            foreach (var partlocation in getBikePartList())//takes every used location
+            foreach (var part in getBikePartList())//takes every used location
             {
-                bikePartLocation.Add(partlocation.location);
+                bikePartLocation.Add(part.location);
             }
             while (bikePartLocation.FirstOrDefault(x => x.Contains(location)) != null)//verifies if the location is already in use
             {
@@ -311,7 +318,7 @@ namespace Bovelo
             else if (color != "null" && size == 0) { bikePartName += "_" + color; }
             else if (color != "null" && size != 0) { bikePartName += "_" + color + "_" + size.ToString(); }
 
-            query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + price + "' , '" + provider + "' , '" + timeToBuild + "'); ";
+            query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + partPrice + "' , '" + provider + "' , '" + timeToBuild + "'); ";
             sendToDB(query);            
         }
         internal void deletePlanifiedBike(int idOrderDetail, string week)

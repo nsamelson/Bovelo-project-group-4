@@ -69,6 +69,8 @@ namespace Bovelo
             this.BIke_Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bike_Size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Linked_Parts = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -372,6 +374,8 @@ namespace Bovelo
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.button8);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.label7);
@@ -544,6 +548,25 @@ namespace Bovelo
             this.Linked_Parts.HeaderText = "Linked_Parts";
             this.Linked_Parts.Name = "Linked_Parts";
             this.Linked_Parts.ReadOnly = true;
+            this.Linked_Parts.Text = "Click to see";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(82, 187);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(150, 20);
+            this.textBox3.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(23, 187);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Price :";
             // 
             // Manager_Create_Model
             // 
@@ -616,5 +639,7 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn BIke_Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Size;
         private System.Windows.Forms.DataGridViewButtonColumn Linked_Parts;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
