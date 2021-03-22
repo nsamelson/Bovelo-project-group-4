@@ -147,5 +147,13 @@ namespace Bovelo
             }      
             cartLoad();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //hides the current form
+            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
+            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
+            mpo.Show();
+        }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo
