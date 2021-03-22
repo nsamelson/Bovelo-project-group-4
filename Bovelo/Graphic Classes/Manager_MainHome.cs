@@ -63,7 +63,10 @@ namespace Bovelo
 
         private void button3_Click(object sender, EventArgs e)
         {
-
+            this.Hide(); //hides the current form
+            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
+            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
+            mpo.Show();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -72,6 +75,16 @@ namespace Bovelo
             Manager_Create_Model mpc = new Manager_Create_Model(user);// maybe send the userType with it
             mpc.FormClosed += (s, args) => this.Close(); // close the login Form
             mpc.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

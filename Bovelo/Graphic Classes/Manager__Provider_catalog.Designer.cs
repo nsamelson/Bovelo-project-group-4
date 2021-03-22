@@ -68,21 +68,19 @@ namespace Bovelo
             // idBike
             // 
             this.idBike.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.idBike.Location = new System.Drawing.Point(-151, 597);
-            this.idBike.Margin = new System.Windows.Forms.Padding(4);
+            this.idBike.Location = new System.Drawing.Point(-113, 485);
             this.idBike.Name = "idBike";
             this.idBike.ReadOnly = true;
-            this.idBike.Size = new System.Drawing.Size(136, 22);
+            this.idBike.Size = new System.Drawing.Size(103, 20);
             this.idBike.TabIndex = 21;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-228, 601);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(-171, 488);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 17);
+            this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 20;
             this.label2.Text = "Id Bike :";
             // 
@@ -93,7 +91,7 @@ namespace Bovelo
             this.button2.Location = new System.Drawing.Point(1198, 355);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(148, 50);
+            this.button2.Size = new System.Drawing.Size(111, 41);
             this.button2.TabIndex = 18;
             this.button2.Text = "Save Quantity";
             this.button2.UseVisualStyleBackColor = false;
@@ -113,11 +111,10 @@ namespace Bovelo
             this.Quantity,
             this.Quantity_in_a_week,
             this.Add});
-            this.dataGridView1.Location = new System.Drawing.Point(23, 142);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(17, 115);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(615, 321);
+            this.dataGridView1.Size = new System.Drawing.Size(461, 261);
             this.dataGridView1.TabIndex = 15;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -183,17 +180,15 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1371, 86);
+            this.panel1.Size = new System.Drawing.Size(1028, 70);
             this.panel1.TabIndex = 14;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(267, 11);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(200, 9);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(109, 64);
+            this.button4.Size = new System.Drawing.Size(82, 52);
             this.button4.TabIndex = 6;
             this.button4.Text = "Provider Catalog";
             this.button4.UseVisualStyleBackColor = true;
@@ -201,10 +196,9 @@ namespace Bovelo
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(121, 11);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Location = new System.Drawing.Point(91, 9);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(109, 64);
+            this.button7.Size = new System.Drawing.Size(82, 52);
             this.button7.TabIndex = 5;
             this.button7.Text = "menu";
             this.button7.UseVisualStyleBackColor = true;
@@ -213,13 +207,13 @@ namespace Bovelo
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(1135, 0);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(851, 0);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(211, 84);
+            this.button3.Size = new System.Drawing.Size(158, 68);
             this.button3.TabIndex = 4;
             this.button3.Text = "Provider Orders";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button1
             // 
@@ -228,7 +222,7 @@ namespace Bovelo
             this.button1.Location = new System.Drawing.Point(997, 10);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(151, 68);
+            this.button1.Size = new System.Drawing.Size(113, 55);
             this.button1.TabIndex = 2;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
@@ -242,7 +236,7 @@ namespace Bovelo
             this.label1.Location = new System.Drawing.Point(765, 31);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 24);
+            this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
@@ -261,8 +255,7 @@ namespace Bovelo
             this.QuantityToOrder,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView2.Location = new System.Drawing.Point(661, 142);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView2.Location = new System.Drawing.Point(496, 115);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(534, 321);
@@ -390,7 +383,7 @@ namespace Bovelo
             // 
             // Manager__Provider_catalog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1371, 660);
             this.Controls.Add(this.button5);
