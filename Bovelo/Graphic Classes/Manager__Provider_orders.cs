@@ -18,6 +18,7 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
+            orderLoad();
         }
 
         private void Manager__Provider_orders_Load(object sender, EventArgs e)
@@ -52,6 +53,29 @@ namespace Bovelo
             Manager__Provider_catalog mpc = new Manager__Provider_catalog(user);// maybe send the userType with it
             mpc.FormClosed += (s, args) => this.Close(); // close the login Form
             mpc.Show();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void orderLoad()
+        {
+            int i = 0;
+            List<List<string>> result = newApp.getFromDB("Order_Detailed_Part");
+            dataGridView1.Rows.Clear();
+            foreach (var elem in result)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+                dataGridView1.Rows[i].Cells[0].Value = result[i][0];
+                dataGridView1.Rows[i].Cells[1].Value = result[i][1];
+                dataGridView1.Rows[i].Cells[2].Value = result[i][2];
+                dataGridView1.Rows[i].Cells[3].Value = result[i][3];
+                //dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(elem.part.part_Id);
+                i++;
+            }
         }
     }
 }

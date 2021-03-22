@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Bovelo
 {
@@ -76,8 +77,19 @@ namespace Bovelo
 
             if (client != ""&&RowCount!=0)
             {
+                string text ="";
                 app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice());
                 dataGridView1.Rows.Clear();
+                foreach(var elem in _currentUser.getCartList())
+                {                   
+                    foreach(var value in elem)
+                    {
+                        text += value + ";";
+                    }
+                    text += "\n";
+                }
+                string path = @"../../Classes/list_part.txt";               
+                File.WriteAllText(path, text);
                 _currentUser.emptyCart();
                 this.labelPrice.Text = "0€";
                 textBox1.Text = "";
