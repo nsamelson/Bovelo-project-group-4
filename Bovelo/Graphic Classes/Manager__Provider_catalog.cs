@@ -49,6 +49,14 @@ namespace Bovelo
             int i = 0;
             Dictionary<int, int> resultWeek = newApp.getWeekPieces("Week : 13");
             Dictionary<int, int> resultCompute = newApp.computeMissingPieces(resultWeek);
+            foreach(var elem in resultWeek)
+            {
+                Console.WriteLine("Key " +elem.Key +" Value : "+ elem.Value);
+            }
+            foreach (var elem in resultCompute)
+            {
+                Console.WriteLine("Key " + elem.Key + " Value : " + elem.Value);
+            }
             foreach (var part in newApp.bikePartList)
             {
                 dataGridView1.Rows.Add();
@@ -58,16 +66,19 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[2].Value = part.price;
                 dataGridView1.Rows[i].Cells[3].Value = part.provider;
                 dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(part.part_Id);
+                dataGridView1.Rows[i].Cells[5].Value = 0;
                 foreach (var elem in resultCompute)
                 {
+                    
                     if (part.part_Id == elem.Key)
                     {
                         dataGridView1.Rows[i].Cells[5].Value = elem.Value;
                     }
-                    else
+                    /*else
                     {
                         dataGridView1.Rows[i].Cells[5].Value = "-";
-                    }
+                    }*/
+
                 }
                 i++;
             }
