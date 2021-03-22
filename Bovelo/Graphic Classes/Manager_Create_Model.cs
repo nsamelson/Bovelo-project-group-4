@@ -92,13 +92,22 @@ namespace Bovelo
             string name = textBox2.Text;
             var colors = checkedListBox4.CheckedItems;
             var sizes = checkedListBox3.CheckedItems;
+            int price;
+            if (textBox3.Text != "")
+            {
+                price = Int32.Parse(textBox3.Text);
+            }
+            else
+            {
+                price = 0;
+            }
             if (colors.Count != 0 && sizes.Count != 0)
             {
                 foreach (var color in colors)
                 {
                     foreach (var size in sizes)
                     {
-                        app.setNewBikePart(name, Int32.Parse(size.ToString()), color.ToString());
+                        app.setNewBikePart(name, price,Int32.Parse(size.ToString()), color.ToString());
                     }
                 }
             }
@@ -106,19 +115,19 @@ namespace Bovelo
             {
                 foreach (var color in colors)
                 {
-                    app.setNewBikePart(name, 0, color.ToString());
+                    app.setNewBikePart(name,price, 0, color.ToString());
                 }
             }
             else if (colors.Count == 0 && sizes.Count != 0)
             {
                 foreach (var size in sizes)
                 {
-                    app.setNewBikePart(name, Int32.Parse(size.ToString()));
+                    app.setNewBikePart(name, price,Int32.Parse(size.ToString()));
                 }
             }
             else
             {
-                app.setNewBikePart(name);
+                app.setNewBikePart(name,price);
             }
 
         }
@@ -167,6 +176,7 @@ namespace Bovelo
                     if (chk.Value != chk.TrueValue)
                     {
                         partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
+                        chk.Value = chk.TrueValue;
                     }
                 }
                 app.setLinkBikePartsToBikeModel(idModel, partsToLink);
