@@ -45,6 +45,7 @@ namespace Bovelo
             this.Order_State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Receive = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Remove_Order = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +54,7 @@ namespace Bovelo
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button3);
@@ -99,7 +101,7 @@ namespace Bovelo
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(577, 9);
+            this.button1.Location = new System.Drawing.Point(490, 9);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(54, 55);
             this.button1.TabIndex = 2;
@@ -135,10 +137,10 @@ namespace Bovelo
             this.Order_State,
             this.Receive,
             this.Remove_Order});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 87);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 76);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(860, 362);
+            this.dataGridView1.Size = new System.Drawing.Size(860, 373);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -203,6 +205,17 @@ namespace Bovelo
             this.Remove_Order.ToolTipText = "Remove";
             this.Remove_Order.UseColumnTextForButtonValue = true;
             // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(550, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 70);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Manage Stock";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
             // Manager__Provider_orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,5 +252,6 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_State;
         private System.Windows.Forms.DataGridViewButtonColumn Receive;
         private System.Windows.Forms.DataGridViewButtonColumn Remove_Order;
+        private System.Windows.Forms.Button button2;
     }
 }
