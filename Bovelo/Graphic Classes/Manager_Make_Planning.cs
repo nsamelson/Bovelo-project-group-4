@@ -44,19 +44,7 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int adapt = newApp.getPlanifiedBikes().Count;
-            int i = 0;
-            foreach (var nonPlanifiedBikes in newApp.getNonPlanifiedBikes())
-            {
-                if (e.RowIndex - adapt == i)
-                {
-                    Console.WriteLine(nonPlanifiedBikes[0] + "|" + nonPlanifiedBikes[1] + "|" + nonPlanifiedBikes[2] + "|" + nonPlanifiedBikes[3] + "|" + nonPlanifiedBikes[4] + "|" + nonPlanifiedBikes[5] + "|" + nonPlanifiedBikes[6]);
-                    Console.WriteLine(nonPlanifiedBikes[1]);
-                    Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]), nonPlanifiedBikes[1], nonPlanifiedBikes[3], Int32.Parse(nonPlanifiedBikes[2]));//Needs to be verified (id)
-                    user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
-                }
-                i++;    
-            }
+            
             if (dataGridView1.CurrentCell.Value.ToString() == "Modify")
             {
                 MessageBox.Show("Choose a week from the calendar ");
@@ -95,32 +83,22 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
                 dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
                 dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
-                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = String.Empty;
-                dataGridView1.Rows[i].Cells[7] = cell;
-                cell.ReadOnly = true;
                 i++;
             }           
             Console.WriteLine("index i : " + i);
+            Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);
+            i = 0;
             foreach (var nonPlanifiedOrderDetails in newApp.getNonPlanifiedBikes())
             {
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = nonPlanifiedOrderDetails[0];//id order details
-                dataGridView1.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
-                dataGridView1.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
-                dataGridView1.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
-                dataGridView1.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
-                dataGridView1.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[7];//Id Order
-                dataGridView1.Rows[i].Cells[6].Value = "Not Plannified Yet"  ;
-                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = String.Empty;
-                dataGridView1.Rows[i].Cells[8] = cell;
-                cell.ReadOnly = true;
+                dataGridView2.Rows.Add();
+                dataGridView2.Rows[i].Cells[0].Value = nonPlanifiedOrderDetails[0];//id order details
+                dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
+                dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
+                dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
+                dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
+                dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[7];//Id Order
+                dataGridView2.Rows[i].Cells[6].Value = "Not Plannified Yet"  ;
                 
-                DataGridViewTextBoxCell deleteCell = new DataGridViewTextBoxCell();
-                deleteCell.Value = String.Empty;
-                dataGridView1.Rows[i].Cells[9] = deleteCell;
-                deleteCell.ReadOnly = true;
                 i++;
             }
 
@@ -134,6 +112,7 @@ namespace Bovelo
             var datetimeformat = a.DateTimeFormat;
             var calendarWeek = a.Calendar.GetWeekOfYear(monthCalendar1.SelectionStart, datetimeformat.CalendarWeekRule, datetimeformat.FirstDayOfWeek);
             newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
+            textBox1.Text = "Week : " + calendarWeek.ToString();
             Console.WriteLine("Week number : " +  calendarWeek);
             newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
 
@@ -146,8 +125,8 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string weekName = newWeekToAssign.Text;
-            //Console.WriteLine("COUNT : " + user.planningCart.Count);
+            string weekName = textBox1.Text;
+            Console.WriteLine("COUNT : " + user.planningCart.Count);
             newApp.setNewPlanning(user.planningCart, weekName);
             Manager_Make_Planning_Load(sender, e);
         } 
@@ -185,6 +164,28 @@ namespace Bovelo
             Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
             mpo.FormClosed += (s, args) => this.Close(); // close the login Form
             mpo.Show();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //int adapt = newApp.getPlanifiedBikes().Count;
+            int i = 0;
+            foreach (var nonPlanifiedBikes in newApp.getNonPlanifiedBikes())
+            {
+                if (e.RowIndex == i)
+                {
+                    Console.WriteLine(nonPlanifiedBikes[0] + "|" + nonPlanifiedBikes[1] + "|" + nonPlanifiedBikes[2] + "|" + nonPlanifiedBikes[3] + "|" + nonPlanifiedBikes[4] + "|" + nonPlanifiedBikes[5] + "|" + nonPlanifiedBikes[6]);
+                    Console.WriteLine(nonPlanifiedBikes[1]);
+                    Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]), nonPlanifiedBikes[1], nonPlanifiedBikes[3], Int32.Parse(nonPlanifiedBikes[2]));//Needs to be verified (id)
+                    user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
+                }
+                i++;
+            }
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

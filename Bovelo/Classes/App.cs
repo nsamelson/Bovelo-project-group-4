@@ -253,9 +253,8 @@ namespace Bovelo
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
             //Planning newPlanning = new Planning(planningCartList, week);
-            /*string queryP = "INSERT INTO Schedule(Week_Name) VALUES('" + week + "');";
-            sendToDB(queryP);*/
 
+            planningList = getPlanningList();
             int planningId;
             int orderDetailsId = 0; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
             if (getPlanningList().Count == 0)
