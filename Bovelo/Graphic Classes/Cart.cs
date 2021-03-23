@@ -88,7 +88,7 @@ namespace Bovelo
                     }
                     text += "\n";
                 }
-                string path = @"../../Classes/list_part.txt";               
+                string path = @"../../Classes/list_part.csv";               
                 File.WriteAllText(path, text);
                 _currentUser.emptyCart();
                 this.labelPrice.Text = "0€";

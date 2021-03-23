@@ -1,2 +1,0 @@
-Explorer;28;Blue;4;8232;
-City;28;Red;5;10965;
