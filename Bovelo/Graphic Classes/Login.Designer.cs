@@ -56,7 +56,7 @@ namespace Bovelo
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(367, 297);
+            this.label1.Location = new System.Drawing.Point(358, 297);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 5;
@@ -71,9 +71,9 @@ namespace Bovelo
             "Assembler",
             "Production Manager",
             "Representative"});
-            this.comboBox1.Location = new System.Drawing.Point(449, 226);
+            this.comboBox1.Location = new System.Drawing.Point(440, 226);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(179, 29);
+            this.comboBox1.Size = new System.Drawing.Size(196, 29);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Representative";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -81,9 +81,9 @@ namespace Bovelo
             // textBox1
             // 
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBox1.Location = new System.Drawing.Point(449, 294);
+            this.textBox1.Location = new System.Drawing.Point(440, 294);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 27);
+            this.textBox1.Size = new System.Drawing.Size(196, 27);
             this.textBox1.TabIndex = 10;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -92,7 +92,7 @@ namespace Bovelo
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(346, 229);
+            this.label2.Location = new System.Drawing.Point(337, 229);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 11;
@@ -220,7 +220,7 @@ namespace Bovelo
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::Bovelo.Properties.Resources.profile2;
-            this.pictureBox1.Location = new System.Drawing.Point(508, 144);
+            this.pictureBox1.Location = new System.Drawing.Point(516, 143);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(56, 64);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
