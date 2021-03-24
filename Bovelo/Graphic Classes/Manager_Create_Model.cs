@@ -175,11 +175,21 @@ namespace Bovelo
 
                 foreach(DataGridViewRow row in dataGridView2.Rows)
                 {
-                    DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[3];
+                    /*DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[3];
                     if (chk.Value != chk.TrueValue)
                     {
                         partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
                         chk.Value = chk.TrueValue;
+                    }*/
+                    int qty = Int32.Parse(row.Cells[3].Value.ToString());
+                    if (qty != 0)
+                    {
+                        for(int j = 0; j<qty; j++)
+                        {
+                            partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
+                        }
+                        
+                        row.Cells[3].Value = "0";
                     }
                 }
                 app.setLinkBikePartsToBikeModel(idModel, partsToLink);
@@ -200,6 +210,8 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[0].Value = id;
                 dataGridView2.Rows[i].Cells[1].Value = name;
                 dataGridView2.Rows[i].Cells[2].Value = price;
+                dataGridView2.Rows[i].Cells[3].Value = "0";
+
                 i++;
             }
         }
