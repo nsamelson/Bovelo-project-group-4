@@ -142,10 +142,10 @@
     <Compile Include="Graphic Classes\ShowBike.Designer.cs">
       <DependentUpon>ShowBike.cs</DependentUpon>
     </Compile>
-    <Compile Include="Manager_AssemblerWork.cs">
+    <Compile Include="Graphic Classes\Manager_AssemblerWork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Manager_AssemblerWork.Designer.cs">
+    <Compile Include="Graphic Classes\Manager_AssemblerWork.Designer.cs">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -190,7 +190,7 @@
     <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Manager_AssemblerWork.resx">
+    <EmbeddedResource Include="Graphic Classes\Manager_AssemblerWork.resx">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

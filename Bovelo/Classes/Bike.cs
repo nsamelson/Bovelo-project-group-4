@@ -28,7 +28,6 @@ namespace Bovelo
             App newApp = new App();
             var bikeModels = newApp.getBikeModelList();
             _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);
-            
             this.Type = _model.Type;
             this.Color = _model.Color;
             this.Size = _model.Size;

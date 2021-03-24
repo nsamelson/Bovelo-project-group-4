@@ -346,10 +346,12 @@ namespace Bovelo
 
             return bikeParts;
         }
-        internal void updateSatus(int id, string status, string user)
+        internal void updateSatus(int id, string status, string user, string started, string finished)
         {
-            
-            string query = "UPDATE Order_Details SET Bike_Status = '" + status + "', Modified_by = '" + user + "'  WHERE Id_Order_Details = '" + id + "' ;";
+
+            string query = "UPDATE Order_Details SET Bike_Status = '" + status + "'  WHERE Id_Order_Details = '" + id + "' ;" +
+                           "UPDATE Detailed_Schedules SET Assembled_by = '" + user + "', Started = '" + started + "', Finished = '" + finished + "'  WHERE Id_Order_Details = '" + id + "' ;";
+
             sendToDB(query);
         }
         internal List<Planning> getPlanningList() //gets all plannings
@@ -467,6 +469,7 @@ namespace Bovelo
             bikePartList = getBikePartList();
             foreach (var row in modelList)
             {
+                Console.WriteLine();
                 List<int> bikePartsIds = new List<int>();
                 int id = Int32.Parse(row[0]);
                 string color = row[1];

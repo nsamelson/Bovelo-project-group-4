@@ -72,6 +72,7 @@ namespace Bovelo
         {
             int i = 0;
             int t = 0;
+            Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
             foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
@@ -99,7 +100,7 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
                 dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
                 dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
-                dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[7];//Id Order
+                dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[6];//Id Order
                 dataGridView2.Rows[i].Cells[6].Value = "Not Plannified Yet"  ;
                 
                 i++;

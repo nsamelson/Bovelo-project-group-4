@@ -35,7 +35,7 @@ namespace Bovelo
         {
 
             
-            string Builder, status;
+            string Builder, status, start, finish;
             int id;
             if (dataGridView1.CurrentCell.Value.ToString() == "set on active")
             {
@@ -50,14 +50,15 @@ namespace Bovelo
                     id = Int32.Parse(row.Cells[0].Value.ToString());
                     Builder = user.login.ToString();
                     status = row.Cells[5].Value.ToString();
-
+                    start = row.Cells[8].Value.ToString();
+                    finish = "Not finished yet";
                     row.Cells[7].Value = Builder;
-                    newApp.updateSatus(id, status, Builder);
+                    newApp.updateSatus(id, status, Builder, start, finish);
                 }
                 dataGridView1.Refresh();
                 newApp.planningList = newApp.getPlanningList();
             }
-            else if (dataGridView1.CurrentCell.Value.ToString() == "set on closed")
+            else if (dataGridView1.CurrentCell.Value.ToString() == "set on close")
             {
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
                 DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
@@ -70,9 +71,10 @@ namespace Bovelo
                     id = Int32.Parse(row.Cells[0].Value.ToString());
                     Builder = user.login.ToString();
                     status = row.Cells[5].Value.ToString();
-
+                    start = row.Cells[8].Value.ToString();
+                    finish = row.Cells[9].Value.ToString();
                     row.Cells[7].Value = Builder;
-                    newApp.updateSatus(id, status, Builder);
+                    newApp.updateSatus(id, status, Builder, start, finish);
                 }
                 dataGridView1.Refresh();
                 newApp.planningList = newApp.getPlanningList();
