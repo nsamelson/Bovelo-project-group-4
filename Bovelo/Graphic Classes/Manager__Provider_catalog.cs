@@ -91,7 +91,7 @@ namespace Bovelo
         {
             
             Console.WriteLine(dataGridView1.CurrentCell.Value);
-            if (dataGridView1.CurrentCell.Value== "Add")
+            if (dataGridView1.CurrentCell.Value.ToString()== "Add")
             {
 
                 foreach (var elem in newApp.bikePartList)
@@ -109,7 +109,7 @@ namespace Bovelo
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView2.CurrentCell.Value == "Remove")
+            if (dataGridView2.CurrentCell.Value.ToString() == "Remove")
             {
 
                 foreach (var elem in user.cartPart)

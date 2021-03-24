@@ -87,6 +87,14 @@ namespace Bovelo
 
         }
 
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Manager_Manager_Stock mms = new Manager_Manager_Stock(user);// maybe send the userType with it
+            mms.FormClosed += (s, args) => this.Close(); // close the login Form
+            mms.Show();
+        }
+
         private void button9_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form

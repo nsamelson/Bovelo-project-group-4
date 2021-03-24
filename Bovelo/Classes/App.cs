@@ -481,8 +481,9 @@ namespace Bovelo
                         bikePartsIds.Add(Int32.Parse(part[0]));
                     }
                 }
-                //newBikeModel.bikeParts = bikePartsIds.Select(x=> bikePartList.First(part=>part.part_Id ==x)).ToList(); //FOR DUPLICATES (not working yet)
-                newBikeModel.bikeParts = bikePartList.FindAll(part => bikePartsIds.Contains(part.part_Id));
+                bikePartsIds.Sort();
+                newBikeModel.bikeParts = bikePartsIds.Select(x=> bikePartList.First(part=>part.part_Id ==x)).ToList(); //FOR DUPLICATES 
+                //newBikeModel.bikeParts = bikePartList.FindAll(part => bikePartsIds.Contains(part.part_Id));
                 newBikeModel.setPriceAndTime();
                 bikeList.Add(newBikeModel);
             }

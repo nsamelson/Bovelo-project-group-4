@@ -57,18 +57,27 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.CurrentCell.Value == "Remove")
+            if (dataGridView1.CurrentCell.Value.ToString() == "Remove")
             {
                 string query = "DELETE FROM Order_Detailed_Part WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + ";";
-                Console.WriteLine(query);
+                //Console.WriteLine(query);
                 newApp.sendToDB(query);
                 orderLoad();
             }
-            if (dataGridView1.CurrentCell.Value == "Received")
+            if (dataGridView1.CurrentCell.Value.ToString() == "Received")
             {
-                string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " ;";
-                Console.WriteLine(query);
-                newApp.sendToDB(query);
+                if (dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString() == "Not Received")
+                {
+                    string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " ;";
+                    //Console.WriteLine(query);
+                    newApp.sendToDB(query);
+                    var field = new List<string>();
+                    field.Add("Quantity");
+                    var result = newApp.getFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                    query = "UPDATE Bike_Parts SET Quantity="+quantity+" WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                    newApp.sendToDB(query);
+                }
                 orderLoad();
             }
 
@@ -82,6 +91,7 @@ namespace Bovelo
             int currentOrder = Int32.Parse(result[i][1]);
             int previousOrder = 0;
             dataGridView1.Rows.Clear();
+            
             foreach (var elem in result)
             {
                 dataGridView1.Rows.Add();
@@ -97,13 +107,34 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[0].Value = result[i][1];
                 dataGridView1.Rows[i].Cells[1].Value = result[i][0];
                 dataGridView1.Rows[i].Cells[2].Value = result[i][2];
-                dataGridView1.Rows[i].Cells[3].Value = result[i][3];
-                dataGridView1.Rows[i].Cells[4].Value = result[i][4];
-                dataGridView1.Rows[i].Cells[5].Value = result2[0][3];
-                dataGridView1.Rows[i].Cells[6].Value = result[i][5];
+                
+                foreach(var value in newApp.bikePartList)
+                {
+                    if (value.part_Id == Int32.Parse(result[i][2]))
+                    {
+                        dataGridView1.Rows[i].Cells[3].Value = value.name.ToString();
+                    }
+                }
+                dataGridView1.Rows[i].Cells[4].Value = result[i][3];
+                dataGridView1.Rows[i].Cells[5].Value = result[i][4];
+                dataGridView1.Rows[i].Cells[6].Value = result2[0][3];
+                dataGridView1.Rows[i].Cells[7].Value = result[i][5];
                 //dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(elem.part.part_Id);
                 i++;
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Manager_Manager_Stock mms = new Manager_Manager_Stock(user);// maybe send the userType with it
+            mms.FormClosed += (s, args) => this.Close(); // close the login Form
+            mms.Show();
         }
     }
 }
