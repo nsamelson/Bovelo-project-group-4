@@ -12,8 +12,8 @@ namespace Bovelo
         public int planningId;
         public List<Bike> bikesToBuild= new List<Bike>();
         public List<List<string>> planningDetails;
-        public int workingHours;
-        public int maxWorkingHours = 3 * 8 * 5;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
+        public int workingMinute;
+        public int maxWorkingMinute = 3 * 8 * 5 * 60;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
         public Planning(List<List<string>> planningDetails, string weekName,int planningId)
         {
             this.weekName = weekName;
@@ -37,7 +37,7 @@ namespace Bovelo
                 var newBike = new Bike(idOrderDetails, bikeType, bikeColor, bikeSize) { assembler = assemblerName };
                 newBike.setNewState(status);
                 bikes.Add(newBike);
-                workingHours += newBike.TotalTime;
+                workingMinute += newBike.TotalTime;
             }
             return bikes;
         }
@@ -46,8 +46,5 @@ namespace Bovelo
             planningDetails.Clear();
             planningDetails = refreshedBikes;
         }
-
-        
-
     }
 }

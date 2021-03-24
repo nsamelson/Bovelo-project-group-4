@@ -71,6 +71,7 @@ namespace Bovelo
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
         {
             int i = 0;
+            int t = 0;
             foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
@@ -84,6 +85,8 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
                 dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
                 i++;
+                Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), planifiedOrderDetails[1], planifiedOrderDetails[3], Int32.Parse(planifiedOrderDetails[2]));
+                t += newBike.TotalTime;
             }           
             Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);
@@ -101,7 +104,7 @@ namespace Bovelo
                 
                 i++;
             }
-
+            labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -184,6 +187,16 @@ namespace Bovelo
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPrice_Click(object sender, EventArgs e)
         {
 
         }
