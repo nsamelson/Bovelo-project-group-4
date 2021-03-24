@@ -87,7 +87,7 @@ namespace Bovelo
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void button9_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
             Manager_AssemblerWork maw = new Manager_AssemblerWork(user);
