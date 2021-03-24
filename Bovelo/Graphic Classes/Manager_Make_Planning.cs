@@ -19,6 +19,7 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
+            newApp.updateBikePartList();
         }
 
         private void button1_Click(object sender, EventArgs e)

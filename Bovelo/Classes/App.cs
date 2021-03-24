@@ -15,10 +15,9 @@ namespace Bovelo
         internal List<BikeModel> bikeModels; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
-
+        private List<List<string>> _linkingPartList = new List<List<string>>();
         public App(bool getAll = false, bool getUpdatable = false)
         {
-
             if (getAll)
             {
                 this.bikePartList = getBikePartList();
@@ -26,6 +25,7 @@ namespace Bovelo
                 this.userList = getUserList();
                 updateOrderBikeList();
                 updatePlanningList();
+                updateLinkingPartList();
             }
             if (getUpdatable)
             {
@@ -134,7 +134,30 @@ namespace Bovelo
             conn.Close();
             return listFromDB;
         }
-        internal List<List<string>> getFromDbInnerJoin(string week)
+        internal List<List<string>> getFromDBInnerJoin(string selectTable, string innerJoinCondition,string whereColumn,string whereCondition)
+        {
+            var listInnerJoin = new List<List<string>>();
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            MySqlConnection conn = new MySqlConnection(connStr);
+
+            conn.Open();
+            string sql = "SELECT * FROM "+ selectTable + "inner join  "+innerJoinCondition + " where "+whereColumn+" = '" + whereCondition + "';";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                listInnerJoin.Add(col);
+            }
+            rdr.Close();
+            conn.Close();
+            return listInnerJoin;
+        }
+        /*internal List<List<string>> getFromDbInnerJoin(string week)
         {
             var listInnerJoin = new List<List<string>>();
             string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
@@ -156,7 +179,7 @@ namespace Bovelo
             rdr.Close();
             conn.Close();
             return listInnerJoin;
-        }
+        }*/
         internal List<List<string>> getPanifiedOrderDetails(string sql)
         {
             var OrderDetails = new List<List<string>>();
@@ -353,9 +376,16 @@ namespace Bovelo
         {
             planningList = getPlanningList();
         }
+        internal void updateLinkingPartList()
+        {
+            _linkingPartList = getLinkingPartList();
+        }
 
         //GET from the DB methods
-
+        internal List<List<string>> getLinkingPartList()
+        {
+            return getFromDB("Parts");
+        }
         internal List<BikePart> getBikePartList()
         {
             List<BikePart> bikeParts = new List<BikePart>();
@@ -486,8 +516,10 @@ namespace Bovelo
         {
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
             List<List<string>> modelList = getFromDB("Bike_Model");//bikemodels from db
-            var allPartsId = getFromDB("Parts");//all parts from db
-            updateBikePartList();
+            if(_linkingPartList.Count == 0)
+            {
+                updateLinkingPartList();
+            }
             foreach (var row in modelList)
             {
                 List<int> bikePartsIds = new List<int>();
@@ -497,7 +529,7 @@ namespace Bovelo
                 string type = row[3];
                 var newBikeModel = new BikeModel(type, color, size) { idBikeModel = id };
 
-                foreach (var part in allPartsId)
+                foreach (var part in _linkingPartList)
                 {
                     if (Int32.Parse(part[1]) == id)
                     {
@@ -589,7 +621,7 @@ namespace Bovelo
                 bikePartList.Add(new BikePart(Int32.Parse(line[0]), line[1], line[3], Int32.Parse(line[4]), line[5], Int32.Parse(line[6])));
             }
             return bikePartList;
-        }// end getbikepart
+        }
         internal Dictionary<int, int> getWeekPieces(string weekName) //really with weekName ?!
         {
 
