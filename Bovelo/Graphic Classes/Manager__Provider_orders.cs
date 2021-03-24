@@ -91,6 +91,7 @@ namespace Bovelo
             int currentOrder = Int32.Parse(result[i][1]);
             int previousOrder = 0;
             dataGridView1.Rows.Clear();
+            
             foreach (var elem in result)
             {
                 dataGridView1.Rows.Add();
@@ -106,10 +107,18 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[0].Value = result[i][1];
                 dataGridView1.Rows[i].Cells[1].Value = result[i][0];
                 dataGridView1.Rows[i].Cells[2].Value = result[i][2];
-                dataGridView1.Rows[i].Cells[3].Value = result[i][3];
-                dataGridView1.Rows[i].Cells[4].Value = result[i][4];
-                dataGridView1.Rows[i].Cells[5].Value = result2[0][3];
-                dataGridView1.Rows[i].Cells[6].Value = result[i][5];
+                
+                foreach(var value in newApp.bikePartList)
+                {
+                    if (value.part_Id == Int32.Parse(result[i][2]))
+                    {
+                        dataGridView1.Rows[i].Cells[3].Value = value.name.ToString();
+                    }
+                }
+                dataGridView1.Rows[i].Cells[4].Value = result[i][3];
+                dataGridView1.Rows[i].Cells[5].Value = result[i][4];
+                dataGridView1.Rows[i].Cells[6].Value = result2[0][3];
+                dataGridView1.Rows[i].Cells[7].Value = result[i][5];
                 //dataGridView1.Rows[i].Cells[4].Value = newApp.getQuantity(elem.part.part_Id);
                 i++;
             }

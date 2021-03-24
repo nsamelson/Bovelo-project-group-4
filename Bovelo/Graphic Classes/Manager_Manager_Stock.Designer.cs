@@ -135,6 +135,7 @@ namespace Bovelo
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(776, 367);
             this.dataGridView1.TabIndex = 17;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
             // 
             // Id_order_details
             // 
@@ -192,6 +193,7 @@ namespace Bovelo
             this.Set.Name = "Set";
             this.Set.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Set.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Set.Text = "Set";
             this.Set.ToolTipText = "Set";
             this.Set.UseColumnTextForButtonValue = true;
             // 

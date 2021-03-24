@@ -30,6 +30,7 @@ namespace Bovelo
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -39,13 +40,13 @@ namespace Bovelo
             this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Order_State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Receive = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Remove_Order = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +66,17 @@ namespace Bovelo
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(884, 70);
             this.panel1.TabIndex = 2;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Location = new System.Drawing.Point(550, 0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(158, 70);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Manage Stock";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // button4
             // 
@@ -131,6 +143,7 @@ namespace Bovelo
             this.Order_Id,
             this.Customer_Name,
             this.Id_Bike_Part,
+            this.Name,
             this.Quantity,
             this.Total_Price,
             this.Order_Date,
@@ -162,6 +175,11 @@ namespace Bovelo
             // 
             this.Id_Bike_Part.HeaderText = "Id_Bike_Part";
             this.Id_Bike_Part.Name = "Id_Bike_Part";
+            // 
+            // Name
+            // 
+            this.Name.HeaderText = "Name";
+            this.Name.Name = "Name";
             // 
             // Quantity
             // 
@@ -205,17 +223,6 @@ namespace Bovelo
             this.Remove_Order.ToolTipText = "Remove";
             this.Remove_Order.UseColumnTextForButtonValue = true;
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(550, 0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(158, 70);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Manage Stock";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // Manager__Provider_orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -223,7 +230,7 @@ namespace Bovelo
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Name = "Manager__Provider_orders";
+            //this.Name = "Manager__Provider_orders";
             this.Text = "Provider_orders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager__Provider_orders_Load);
@@ -243,15 +250,16 @@ namespace Bovelo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Customer_Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id_Bike_Part;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_State;
         private System.Windows.Forms.DataGridViewButtonColumn Receive;
         private System.Windows.Forms.DataGridViewButtonColumn Remove_Order;
-        private System.Windows.Forms.Button button2;
     }
 }
