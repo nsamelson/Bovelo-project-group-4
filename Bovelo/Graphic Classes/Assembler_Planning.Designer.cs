@@ -431,8 +431,8 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeToBuild;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modified_by;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        //private System.Windows.Forms.Label label2;
+        //private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
