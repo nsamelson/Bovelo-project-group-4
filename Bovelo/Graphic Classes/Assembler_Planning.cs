@@ -34,8 +34,57 @@ namespace Bovelo
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
-            MessageBox.Show(partsToShow);
+            
+            string Builder, status;
+            int id;
+            if (dataGridView1.CurrentCell.Value.ToString() == "set on active")
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Active";
+                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+                dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
+                cell.ReadOnly = true;
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+
+                    id = Int32.Parse(row.Cells[0].Value.ToString());
+                    Builder = user.login.ToString();
+                    status = row.Cells[5].Value.ToString();
+
+                    row.Cells[7].Value = Builder;
+                    newApp.updateSatus(id, status, Builder);
+                }
+                dataGridView1.Refresh();
+                newApp.planningList = newApp.getPlanningList();
+            }
+            else if (dataGridView1.CurrentCell.Value.ToString() == "set on closed")
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
+                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+                dataGridView1.Rows[e.RowIndex].Cells[9] = cell;
+                cell.ReadOnly = true;
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+
+                    id = Int32.Parse(row.Cells[0].Value.ToString());
+                    Builder = user.login.ToString();
+                    status = row.Cells[5].Value.ToString();
+
+                    row.Cells[7].Value = Builder;
+                    newApp.updateSatus(id, status, Builder);
+                }
+                dataGridView1.Refresh();
+                newApp.planningList = newApp.getPlanningList();
+            }
+            else if(dataGridView1.CurrentCell.Value.ToString() == "Click to see parts")
+            {
+                string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
+                MessageBox.Show(partsToShow);
+            }
+
+                
+
         }
         public void assembler_Planning_Load(object sender, EventArgs e)
         {
@@ -109,19 +158,19 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
 
-            string Builder, status;
-            int id;
-            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            {
-                id = Int32.Parse(row.Cells[0].Value.ToString());
-                Builder = user.login.ToString();
-                status = row.Cells[5].Value.ToString();
+            //string Builder, status;
+            //int id;
+            //foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            //{
+            //    id = Int32.Parse(row.Cells[0].Value.ToString());
+            //    Builder = user.login.ToString();
+            //    status = row.Cells[5].Value.ToString();
 
-                row.Cells[7].Value = Builder;
-                newApp.updateSatus(id, status, Builder);
-            }
-            dataGridView1.Refresh();
-            newApp.planningList = newApp.getPlanningList();
+            //    row.Cells[7].Value = Builder;
+            //    newApp.updateSatus(id, status, Builder);
+            //}
+            //dataGridView1.Refresh();
+            //newApp.planningList = newApp.getPlanningList();
 
         }
 

@@ -39,6 +39,7 @@ namespace Bovelo
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.builderPlaning = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +117,7 @@ namespace Bovelo
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(377, 208);
+            this.button2.Location = new System.Drawing.Point(377, 177);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 70);
             this.button2.TabIndex = 7;
@@ -127,7 +128,7 @@ namespace Bovelo
             // button5
             // 
             this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button5.Location = new System.Drawing.Point(377, 303);
+            this.button5.Location = new System.Drawing.Point(377, 271);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(158, 70);
             this.button5.TabIndex = 8;
@@ -138,7 +139,7 @@ namespace Bovelo
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button6.Location = new System.Drawing.Point(377, 109);
+            this.button6.Location = new System.Drawing.Point(377, 90);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(158, 70);
             this.button6.TabIndex = 9;
@@ -157,12 +158,26 @@ namespace Bovelo
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // builderPlaning
+            // 
+            this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.builderPlaning.BackColor = System.Drawing.Color.Cyan;
+            this.builderPlaning.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.builderPlaning.Location = new System.Drawing.Point(377, 369);
+            this.builderPlaning.Name = "builderPlaning";
+            this.builderPlaning.Size = new System.Drawing.Size(158, 70);
+            this.builderPlaning.TabIndex = 10;
+            this.builderPlaning.Text = "Builders Planning";
+            this.builderPlaning.UseVisualStyleBackColor = false;
+            this.builderPlaning.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Manager_MainHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
             this.Controls.Add(this.button8);
+            this.Controls.Add(this.builderPlaning);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button2);
@@ -191,5 +206,6 @@ namespace Bovelo
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button builderPlaning;
     }
 }

@@ -173,6 +173,7 @@ namespace Bovelo
             conn.Close();
             return OrderDetails;
         }
+
         internal void sendToDB(string query) //is used to send anything to the database
         {
             string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
@@ -417,6 +418,12 @@ namespace Bovelo
             string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules);";
             var Planified = getPanifiedOrderDetails(sql);
             return Planified;
+        }
+        internal List<List<string>> getAssembler()
+        {
+            string sql = "SELECT Login FROM Bovelo.Users where Role = 'Assembler';";
+            var Assemblers = getPanifiedOrderDetails(sql);
+            return Assemblers;
         }
         internal List<List<string>> getNonPlanifiedBikes()
         {
