@@ -55,7 +55,6 @@ namespace Bovelo
             // 
             // button4
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -70,7 +69,6 @@ namespace Bovelo
             // 
             // button3
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -85,7 +83,6 @@ namespace Bovelo
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -101,9 +98,7 @@ namespace Bovelo
             // 
             // button2
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(432, 199);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -116,7 +111,6 @@ namespace Bovelo
             // 
             // button5
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -131,9 +125,7 @@ namespace Bovelo
             // 
             // button6
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Location = new System.Drawing.Point(755, 199);
             this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -146,9 +138,7 @@ namespace Bovelo
             // 
             // button8
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Location = new System.Drawing.Point(432, 373);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -161,9 +151,7 @@ namespace Bovelo
             // 
             // builderPlaning
             // 
-            this.builderPlaning.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.builderPlaning.BackColor = System.Drawing.Color.Transparent;
             this.builderPlaning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
