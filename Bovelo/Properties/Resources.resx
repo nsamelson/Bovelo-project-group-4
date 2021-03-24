@@ -127,6 +127,9 @@
   <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Graphic Classes\Pictures\icones\home.JPG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Graphic Classes\Pictures\icones\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="profile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Graphic Classes\Pictures\icones\profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,7 +139,7 @@
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Graphic Classes\Pictures\icones\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="settings1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Graphic Classes\Pictures\icones\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="profile3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Graphic Classes\Pictures\icones\profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -148,7 +148,7 @@ namespace Bovelo
             // 
             // button8
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button8.Location = new System.Drawing.Point(577, 208);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(158, 70);
