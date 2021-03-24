@@ -34,7 +34,6 @@ namespace Bovelo
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            
             string Builder, status, start, finish;
             int id;
             if (dataGridView1.CurrentCell.Value.ToString() == "set on active")
@@ -44,19 +43,7 @@ namespace Bovelo
                 cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
                 dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
                 cell.ReadOnly = true;
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-
-                    id = Int32.Parse(row.Cells[0].Value.ToString());
-                    Builder = user.login.ToString();
-                    status = row.Cells[5].Value.ToString();
-                    start = row.Cells[8].Value.ToString();
-                    finish = "Not finished yet";
-                    row.Cells[7].Value = Builder;
-                    newApp.updateSatus(id, status, Builder, start, finish);
-                }
                 dataGridView1.Refresh();
-                newApp.planningList = newApp.getPlanningList();
             }
             else if (dataGridView1.CurrentCell.Value.ToString() == "set on close")
             {
@@ -67,7 +54,6 @@ namespace Bovelo
                 cell.ReadOnly = true;
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
-
                     id = Int32.Parse(row.Cells[0].Value.ToString());
                     Builder = user.login.ToString();
                     status = row.Cells[5].Value.ToString();
@@ -77,15 +63,32 @@ namespace Bovelo
                     newApp.updateSatus(id, status, Builder, start, finish);
                 }
                 dataGridView1.Refresh();
-                newApp.planningList = newApp.getPlanningList();
+                
+            }
+            else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new")
+            {
+                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "New";
+                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+                {
+                    id = Int32.Parse(row.Cells[0].Value.ToString());
+                    Builder = string.Empty;
+                    status = row.Cells[5].Value.ToString();
+                    start = string.Empty;
+                    finish = string.Empty;
+                    row.Cells[7].Value = Builder;
+                    newApp.updateSatus(id, status, Builder, start, finish);
+                }
+                dataGridView1.Refresh();
+
             }
             else if(dataGridView1.CurrentCell.Value.ToString() == "Click to see parts")
             {
                 string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
                 MessageBox.Show(partsToShow);
             }
+            newApp.planningList = newApp.getPlanningList();
 
-                
+
 
         }
         public void assembler_Planning_Load(object sender, EventArgs e)
@@ -160,19 +163,6 @@ namespace Bovelo
         private void button2_Click(object sender, EventArgs e)
         {
 
-            //string Builder, status;
-            //int id;
-            //foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-            //{
-            //    id = Int32.Parse(row.Cells[0].Value.ToString());
-            //    Builder = user.login.ToString();
-            //    status = row.Cells[5].Value.ToString();
-
-            //    row.Cells[7].Value = Builder;
-            //    newApp.updateSatus(id, status, Builder);
-            //}
-            //dataGridView1.Refresh();
-            //newApp.planningList = newApp.getPlanningList();
 
         }
 
@@ -187,7 +177,7 @@ namespace Bovelo
             dataGridView1.Rows.Clear();
             string week = comboBox1.Text;
             int i = 0;
-
+            string comp;
             var planningWeek = newApp.planningList.FirstOrDefault(x => x.weekName == week);
             foreach (var bike in planningWeek.getBikesToBuild())
             {
@@ -205,8 +195,24 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[4].Value = "Click to see parts";
                 dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
                 dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
+                comp = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                if (comp == "Closed")
+                {
+                    Console.WriteLine("voila : " + dataGridView1.Rows[i].Cells[0].Value);
+                    DataGridViewTextBoxCell startCell = new DataGridViewTextBoxCell();
+                    DataGridViewTextBoxCell finishCell = new DataGridViewTextBoxCell();
+                    DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
+
+                    newCell.Value = string.Empty;
+                    startCell.Value = newApp.getPlanifiedBikes()[i][10];
+                    finishCell.Value = newApp.getPlanifiedBikes()[i][11];
+
+                    dataGridView1.Rows[i].Cells[8] = startCell;
+                    dataGridView1.Rows[i].Cells[9] = finishCell;
+                    dataGridView1.Rows[i].Cells[10] = newCell;
+                }
                 dataGridView1.Rows[i].Cells[6].Value = week;
-                dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
+                dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikes()[i][9];
                 i++;
             }
             /*foreach (var plan in newApp.getFromDbInnerJoin(week))
