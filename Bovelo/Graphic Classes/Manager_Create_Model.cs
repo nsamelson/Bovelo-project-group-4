@@ -18,6 +18,8 @@ namespace Bovelo
         {
             this.user = user;
             InitializeComponent();
+            app.updateBikeModelList();
+            app.updateBikePartList();
         }
 
         private void button3_Click(object sender, EventArgs e)//orders
@@ -138,7 +140,7 @@ namespace Bovelo
         private void button5_Click(object sender, EventArgs e)//Load bikeModels
         {
             dataGridView1.Rows.Clear();
-            var models = app.getBikeModelList();
+            var models = app.bikeModels;
             int i= 0;
             List<int> idModels = new List<int>();
             foreach(var bike in models)
@@ -175,12 +177,6 @@ namespace Bovelo
 
                 foreach(DataGridViewRow row in dataGridView2.Rows)
                 {
-                    /*DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)row.Cells[3];
-                    if (chk.Value != chk.TrueValue)
-                    {
-                        partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
-                        chk.Value = chk.TrueValue;
-                    }*/
                     int qty = Int32.Parse(row.Cells[3].Value.ToString());
                     if (qty != 0)
                     {
@@ -199,7 +195,8 @@ namespace Bovelo
         private void button9_Click(object sender, EventArgs e)//Load bikeParts
         {
             dataGridView2.Rows.Clear();
-            var parts = app.getBikePartList();
+            app.updateBikePartList();
+            var parts = app.bikePartList;
             int i = 0;
             foreach (var part in parts)
             {

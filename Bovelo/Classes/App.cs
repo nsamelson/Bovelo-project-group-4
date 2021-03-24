@@ -16,15 +16,21 @@ namespace Bovelo
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
 
-        public App(bool getAll = false)
+        public App(bool getAll = false, bool getUpdatable = false)
         {
-            this.bikePartList = getBikePartList();
+
             if (getAll)
-            {        
+            {
+                this.bikePartList = getBikePartList();
                 this.bikeModels = getBikeModelList();
                 this.userList = getUserList();
-                this.orderBikeList = getOrderBikeList();
-                this.planningList = getPlanningList();
+                updateOrderBikeList();
+                updatePlanningList();
+            }
+            if (getUpdatable)
+            {
+                updateOrderBikeList();
+                updatePlanningList();
             }
         }
 
@@ -190,7 +196,7 @@ namespace Bovelo
 
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order
         {
-            orderBikeList = getOrderBikeList();//updates the list
+            updateOrderBikeList();//updates the list
             //first request
             int orderId;
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
@@ -203,7 +209,7 @@ namespace Bovelo
             }
             else
             {
-                orderId = orderBikeList.Last().orderId +1;
+                orderId = orderBikeList.Last().orderId + 1;
             }
             foreach (var element in newOrder)
             {
@@ -226,7 +232,7 @@ namespace Bovelo
         {
             string query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "','NULL','" + user.userType.FirstOrDefault(x => x.Value == true).Key + "')";
             sendToDB(query);
-            userList = getUserList(); //At the end of set, put a get to update App class
+            updateUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
         /*internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
@@ -240,49 +246,43 @@ namespace Bovelo
         {
             string query = "INSERT INTO Bike_Model (Color,Size,Type_Model) VALUES ('" + color + "','" + size + "', '" + type + "')";
             sendToDB(query);
-            bikeModels = getBikeModelList();//At the end of set, put a get to update App class
+            updateBikeModelList();//At the end of set, put a get to update App class
         }
         internal void setLinkBikePartsToBikeModel(int idBikeModel, List<int> idBikeParts)//id of the bikeModel and List of id's of BikeParts
         {
-            foreach(var idPart in idBikeParts)
+            foreach (var idPart in idBikeParts)
             {
                 string query = "INSERT INTO Parts (Id_Bike_Parts,Bikes_Id) VALUES ('" + idPart + "',' " + idBikeModel + "')";
                 sendToDB(query);
             }
-            bikeModels = getBikeModelList();//At the end of set, put a get to update App class
+            updateBikeModelList();//At the end of set, put a get to update App class
         }
         internal void setNewPlanning(List<List<string>> planningCartList, string week)//NEED TO SET THE TABLES
         {
-            //Planning newPlanning = new Planning(planningCartList, week);
+            updatePlanningList();
 
-            planningList = getPlanningList();
-            int planningId;
-            int orderDetailsId = 0; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
-            if (getPlanningList().Count == 0)
+            int planningId = 1;
+            int orderDetailsId; //NEED TO LINK ORDER DETAILS WITH THE CORRECT ID
+            if (planningList.Count != 0)
             {
-                planningId = 1;
-            }
-            else
-            {
-                planningId = getPlanningList().Last().planningId ;
+                planningId = planningList.Last().planningId;
             }
 
             foreach (var bikesToBuild in planningCartList)
             {
-                Console.WriteLine("bikes in planning");
-                Console.WriteLine(bikesToBuild[0]+ bikesToBuild[1]+bikesToBuild[2]+ bikesToBuild[3]);
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
-                string type = bikesToBuild[1];
+                /*string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
-                //string color = bikesToBuild[3];
+                string color = bikesToBuild[3];*/
                 string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
                 sendToDB(queryPD);
             }
 
-            planningList = getPlanningList();//At the end of set, put a get to update App class
+            updatePlanningList();//At the end of set, put a get to update App class
         }
-        internal void setNewBikePart(string name, int price = 0,int size = 0,string color="null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)PROBLEM : Price/time differs from color and sizes
+        internal void setNewBikePart(string name, int price = 0, int size = 0, string color = "null")//is used to create a new bikePart : takes name, size(0 for default,26,28) and color (null for default,black,red,blue)PROBLEM : Price/time differs from color and sizes
         {
+            updateBikePartList();
             var rand = new Random();
             var bikePartLocation = new List<string>();
             string location = RandomString(3);
@@ -290,7 +290,7 @@ namespace Bovelo
             int timeToBuild = rand.Next(1, 15);
             string bikePartName = name;
             string query;
-            int partPrice ;
+            int partPrice;
             if (price == 0)
             {
                 partPrice = rand.Next(1, 101);
@@ -305,7 +305,7 @@ namespace Bovelo
                 return new string(Enumerable.Repeat(chars, length)
                   .Select(s => s[rand.Next(s.Length)]).ToArray());
             }
-            foreach (var part in getBikePartList())//takes every used location
+            foreach (var part in bikePartList)//takes every used location
             {
                 bikePartLocation.Add(part.location);
             }
@@ -314,12 +314,12 @@ namespace Bovelo
                 location = RandomString(3);
             }
 
-            if(color == "null" && size != 0){bikePartName += "_" + size.ToString();}
+            if (color == "null" && size != 0) { bikePartName += "_" + size.ToString(); }
             else if (color != "null" && size == 0) { bikePartName += "_" + color; }
             else if (color != "null" && size != 0) { bikePartName += "_" + color + "_" + size.ToString(); }
 
             query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + partPrice + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-            sendToDB(query);            
+            sendToDB(query);
         }
         internal void deletePlanifiedBike(int idOrderDetail, string week)
         {
@@ -332,6 +332,28 @@ namespace Bovelo
             sendToDB(modifyQuery);
         }
 
+        //UPDATE lists from DB
+        internal void updateUserList()
+        {
+            userList = getUserList();
+        }
+        internal void updateBikeModelList()
+        {
+            bikeModels = getBikeModelList();
+        }
+        internal void updateBikePartList()
+        {
+            bikePartList = getBikePartList();
+        }
+        internal void updateOrderBikeList()
+        {
+            orderBikeList = getOrderBikeList();
+        }
+        internal void updatePlanningList()
+        {
+            planningList = getPlanningList();
+        }
+
         //GET from the DB methods
 
         internal List<BikePart> getBikePartList()
@@ -341,7 +363,7 @@ namespace Bovelo
 
             foreach (var row in BikePartsFromDB)
             {
-                bikeParts.Add(new BikePart(Int32.Parse(row[0]),row[1],row[3], Int32.Parse(row[4]),row[5], Int32.Parse(row[6])));
+                bikeParts.Add(new BikePart(Int32.Parse(row[0]), row[1], row[3], Int32.Parse(row[4]), row[5], Int32.Parse(row[6])));
             }
 
             return bikeParts;
@@ -405,7 +427,7 @@ namespace Bovelo
 
                 //OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
                 //Console.WriteLine(" Order : " + order.getBikeList());
-                
+
             }
 
             return orderBikeList;
@@ -457,7 +479,6 @@ namespace Bovelo
                         //Console.WriteLine("user : " + login + ", is not registered correctly in the DataBase");
                         break;
                 }
-
             }
             return userFromDB;
         }
@@ -466,10 +487,9 @@ namespace Bovelo
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
             List<List<string>> modelList = getFromDB("Bike_Model");//bikemodels from db
             var allPartsId = getFromDB("Parts");//all parts from db
-            bikePartList = getBikePartList();
+            updateBikePartList();
             foreach (var row in modelList)
             {
-                Console.WriteLine();
                 List<int> bikePartsIds = new List<int>();
                 int id = Int32.Parse(row[0]);
                 string color = row[1];
@@ -485,7 +505,7 @@ namespace Bovelo
                     }
                 }
                 bikePartsIds.Sort();
-                newBikeModel.bikeParts = bikePartsIds.Select(x=> bikePartList.First(part=>part.part_Id ==x)).ToList(); //FOR DUPLICATES 
+                newBikeModel.bikeParts = bikePartsIds.Select(x => bikePartList.First(part => part.part_Id == x)).ToList(); //FOR DUPLICATES 
                 //newBikeModel.bikeParts = bikePartList.FindAll(part => bikePartsIds.Contains(part.part_Id));
                 newBikeModel.setPriceAndTime();
                 bikeList.Add(newBikeModel);
@@ -562,16 +582,14 @@ namespace Bovelo
             List<string> query = new List<string>();
             query.Add("*");
             List<List<string>> bikePart = new List<List<string>>();
-            bikePart = getFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '"+TypeSizeColor[2]+"' AND Type_Model = '"+ TypeSizeColor[0]+ "' AND Size = '"+TypeSizeColor[1]+"'))");
+            bikePart = getFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '" + TypeSizeColor[2] + "' AND Type_Model = '" + TypeSizeColor[0] + "' AND Size = '" + TypeSizeColor[1] + "'))");
             List<BikePart> bikePartList = new List<BikePart>();
             foreach (var line in bikePart)
             {
-                bikePartList.Add(new BikePart(Int32.Parse(line[0]), line[1], line[3], Int32.Parse(line[4]),line[5],Int32.Parse(line[6])));
+                bikePartList.Add(new BikePart(Int32.Parse(line[0]), line[1], line[3], Int32.Parse(line[4]), line[5], Int32.Parse(line[6])));
             }
             return bikePartList;
         }// end getbikepart
-
-
         internal Dictionary<int, int> getWeekPieces(string weekName) //really with weekName ?!
         {
 
@@ -588,7 +606,7 @@ namespace Bovelo
             List<int> allPartsId = new List<int>();
             foreach (var bike in BikesToGetPieces)
             {
-                foreach(var bikepart in bike.bikeParts)
+                foreach (var bikepart in bike.bikeParts)
                 {
                     if (!differentPartsId.Contains(bikepart.part_Id))
                     {
@@ -600,13 +618,13 @@ namespace Bovelo
             Dictionary<int, int> PartIdQuantity = new Dictionary<int, int>();
             foreach (var partId in differentPartsId)
             {
-                List<int> elem_to_count = allPartsId.FindAll(partID => partID==partId);
-                PartIdQuantity.Add(partId,elem_to_count.Count());
+                List<int> elem_to_count = allPartsId.FindAll(partID => partID == partId);
+                PartIdQuantity.Add(partId, elem_to_count.Count());
                 elem_to_count.Clear();
             }
             return PartIdQuantity;
         }
-        public void addQuantity(int value,int part_Id)
+        public void addQuantity(int value, int part_Id)
         {
             int quantity = getQuantity(part_Id);
             quantity += value;
@@ -633,8 +651,8 @@ namespace Bovelo
                 int orderQuantity = 0;
                 orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
                 if (orderQuantity < 0) //means there is enough stock
-                { 
-                    orderQuantity = 0; 
+                {
+                    orderQuantity = 0;
                 }
                 partOrderQuantity.Add(elem.Key, orderQuantity);
                 //NEED TO ADD THIS ORDER WITH THE ID TO A LIST
@@ -652,7 +670,7 @@ namespace Bovelo
 
 
 
-         
+
 
     } // end App Class
 } // end namespace Bovelo
