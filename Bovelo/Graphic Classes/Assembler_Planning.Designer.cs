@@ -54,6 +54,7 @@ namespace Bovelo
             this.Modified_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Started = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Finsihed = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Reset = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -66,10 +67,10 @@ namespace Bovelo
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.SystemColors.Control;
-            this.button7.Location = new System.Drawing.Point(0, 191);
+            this.button7.Location = new System.Drawing.Point(5, 187);
             this.button7.Margin = new System.Windows.Forms.Padding(5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 92);
+            this.button7.Size = new System.Drawing.Size(154, 92);
             this.button7.TabIndex = 8;
             this.button7.Text = "menu";
             this.button7.UseVisualStyleBackColor = true;
@@ -82,10 +83,10 @@ namespace Bovelo
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button1.Location = new System.Drawing.Point(0, 97);
+            this.button1.Location = new System.Drawing.Point(5, 103);
             this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 90);
+            this.button1.Size = new System.Drawing.Size(154, 90);
             this.button1.TabIndex = 7;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
@@ -98,6 +99,7 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -110,13 +112,14 @@ namespace Bovelo
             this.timeToBuild,
             this.Modified_by,
             this.Started,
-            this.Finsihed});
+            this.Finsihed,
+            this.Reset});
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dataGridView1.Location = new System.Drawing.Point(248, 140);
+            this.dataGridView1.Location = new System.Drawing.Point(177, 138);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(725, 328);
+            this.dataGridView1.Size = new System.Drawing.Size(820, 328);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -124,10 +127,10 @@ namespace Bovelo
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(803, 492);
+            this.button2.Location = new System.Drawing.Point(1010, 399);
             this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(170, 46);
+            this.button2.Size = new System.Drawing.Size(143, 37);
             this.button2.TabIndex = 4;
             this.button2.Text = "Confirm Status";
             this.button2.UseVisualStyleBackColor = true;
@@ -137,10 +140,10 @@ namespace Bovelo
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(980, 326);
+            this.button3.Location = new System.Drawing.Point(1010, 333);
             this.button3.Margin = new System.Windows.Forms.Padding(5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(170, 42);
+            this.button3.Size = new System.Drawing.Size(143, 42);
             this.button3.TabIndex = 6;
             this.button3.Text = "Get Planning";
             this.button3.UseVisualStyleBackColor = true;
@@ -151,7 +154,7 @@ namespace Bovelo
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(977, 242);
+            this.label2.Location = new System.Drawing.Point(1007, 252);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 16);
@@ -162,10 +165,10 @@ namespace Bovelo
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(980, 273);
+            this.comboBox1.Location = new System.Drawing.Point(1010, 280);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(170, 29);
+            this.comboBox1.Size = new System.Drawing.Size(143, 29);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -175,7 +178,7 @@ namespace Bovelo
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(6, 6);
+            this.label5.Location = new System.Drawing.Point(-12, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(189, 79);
@@ -189,10 +192,10 @@ namespace Bovelo
             this.panel1.Controls.Add(this.label3);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
+            this.panel1.Location = new System.Drawing.Point(164, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(964, 90);
+            this.panel1.Size = new System.Drawing.Size(1000, 90);
             this.panel1.TabIndex = 18;
             // 
             // label1
@@ -202,7 +205,7 @@ namespace Bovelo
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(847, 7);
+            this.label1.Location = new System.Drawing.Point(883, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 33);
@@ -216,7 +219,7 @@ namespace Bovelo
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(285, 6);
+            this.label3.Location = new System.Drawing.Point(303, 6);
             this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(239, 79);
@@ -249,7 +252,7 @@ namespace Bovelo
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 574);
+            this.panel2.Size = new System.Drawing.Size(164, 574);
             this.panel2.TabIndex = 17;
             // 
             // panel4
@@ -361,6 +364,14 @@ namespace Bovelo
             this.Finsihed.ToolTipText = "set on close";
             this.Finsihed.UseColumnTextForButtonValue = true;
             // 
+            // Reset
+            // 
+            this.Reset.HeaderText = "Reset :";
+            this.Reset.Name = "Reset";
+            this.Reset.Text = "Reset on new";
+            this.Reset.ToolTipText = "Reset on new";
+            this.Reset.UseColumnTextForButtonValue = true;
+            // 
             // Assembler_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -420,5 +431,6 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Modified_by;
         private System.Windows.Forms.DataGridViewButtonColumn Started;
         private System.Windows.Forms.DataGridViewButtonColumn Finsihed;
+        private System.Windows.Forms.DataGridViewButtonColumn Reset;
     }
 }
