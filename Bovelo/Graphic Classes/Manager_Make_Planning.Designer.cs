@@ -150,6 +150,7 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id_order_details,
@@ -231,7 +232,7 @@ namespace Bovelo
             this.monthCalendar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.monthCalendar1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.monthCalendar1.Location = new System.Drawing.Point(1752, 359);
-            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.monthCalendar1.Margin = new System.Windows.Forms.Padding(14);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 5;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
@@ -371,6 +372,7 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
@@ -508,7 +510,7 @@ namespace Bovelo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(21, 21, 21, 21);
+            this.panel1.Margin = new System.Windows.Forms.Padding(21);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1835, 90);
             this.panel1.TabIndex = 23;
@@ -550,7 +552,7 @@ namespace Bovelo
             this.panel3.Controls.Add(this.label1);
             this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(21, 21, 21, 21);
+            this.panel3.Margin = new System.Windows.Forms.Padding(21);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 90);
             this.panel3.TabIndex = 15;
@@ -567,7 +569,7 @@ namespace Bovelo
             this.panel2.Controls.Add(this.button7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(21, 21, 21, 21);
+            this.panel2.Margin = new System.Windows.Forms.Padding(21);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 1061);
             this.panel2.TabIndex = 22;
@@ -582,7 +584,7 @@ namespace Bovelo
             this.panel4.Controls.Add(this.label9);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel4.Location = new System.Drawing.Point(0, 1018);
-            this.panel4.Margin = new System.Windows.Forms.Padding(21, 21, 21, 21);
+            this.panel4.Margin = new System.Windows.Forms.Padding(21);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
             this.panel4.TabIndex = 16;
