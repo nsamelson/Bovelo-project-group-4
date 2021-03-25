@@ -11,7 +11,7 @@ namespace Bovelo
     public class App //Super class, it takes everything from the database and will send anything to it
     {
         internal List<User> userList; //All users from DB( Representative, Assembler, ProductionManager)
-        internal List<BikePart> bikePartList;
+        internal List<BikePart> bikePartList = new List<BikePart>();
         internal List<BikeModel> bikeModels; //All bike types (Adventure, city and explorer)
         internal List<OrderBike> orderBikeList; //takes all the orders from the DB 
         internal List<Planning> planningList; //takes all the plannings from the DB
@@ -519,6 +519,10 @@ namespace Bovelo
             if(_linkingPartList.Count == 0)
             {
                 updateLinkingPartList();
+            }
+            if(bikePartList.Count == 0)
+            {
+                updateBikePartList();
             }
             foreach (var row in modelList)
             {
