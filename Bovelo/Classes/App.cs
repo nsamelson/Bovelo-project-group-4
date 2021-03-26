@@ -717,7 +717,19 @@ namespace Bovelo
             return partOrderQuantity;
         }
 
-
+        internal int getEstimatedTimeBeforeShipping(int orderId)//WORKING ON IT
+        {
+            int days = 0;
+            updateOrderBikeList();
+            updatePlanningList();
+            var order = orderBikeList.FirstOrDefault(x => x.orderId == orderId);
+            //I have to check if all the bike id's of this order are already inside a planning
+            //if yes : take the latest planning and compute days
+            //if not : take all the bikes in the nonPlannifiedBikes,
+            //         count the number of bikes between the first non plannified and the last of this order
+            //         compute in days by taking the n° of hours an amount a bike takes and the last planning
+            return days;
+        }
 
 
 
