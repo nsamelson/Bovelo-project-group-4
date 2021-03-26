@@ -20,6 +20,7 @@ namespace Bovelo
             this.user = currentUser;
             InitializeComponent();
             newApp.updateBikePartList();
+            newApp.updateBikeModelList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -71,6 +72,7 @@ namespace Bovelo
 
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
         {
+            
             int i = 0;
             int t = 0;
             Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
@@ -87,7 +89,9 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
                 dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
                 i++;
-                Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), planifiedOrderDetails[1], planifiedOrderDetails[3], Int32.Parse(planifiedOrderDetails[2]));
+
+                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == planifiedOrderDetails[3] && x.Size == Int32.Parse(planifiedOrderDetails[2]) && x.Type == planifiedOrderDetails[1]);//gets the specific model
+                Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]),model);
                 t += newBike.TotalTime;
             }           
             Console.WriteLine("index i : " + i);
@@ -181,7 +185,10 @@ namespace Bovelo
                 {
                     Console.WriteLine(nonPlanifiedBikes[0] + "|" + nonPlanifiedBikes[1] + "|" + nonPlanifiedBikes[2] + "|" + nonPlanifiedBikes[3] + "|" + nonPlanifiedBikes[4] + "|" + nonPlanifiedBikes[5] + "|" + nonPlanifiedBikes[6]);
                     Console.WriteLine(nonPlanifiedBikes[1]);
-                    Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]), nonPlanifiedBikes[1], nonPlanifiedBikes[3], Int32.Parse(nonPlanifiedBikes[2]));//Needs to be verified (id)
+
+                    BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == nonPlanifiedBikes[3] && x.Size == Int32.Parse(nonPlanifiedBikes[2]) && x.Type == nonPlanifiedBikes[1]);//gets the specific model
+
+                    Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]),model);//Needs to be verified (id)
                     user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
                 }
                 i++;

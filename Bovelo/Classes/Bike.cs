@@ -21,21 +21,28 @@ namespace Bovelo
         public List<BikePart> bikeParts;
         private BikeModel _model;
         public string assembler;
-        public Bike(int bikeId,string Type, string Color, int Size) //: base( Type,Color,Size)//ID OF THE BIKE NOT BIKEMODEL
+        public Bike(int bikeId,BikeModel bikeModel) //ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;
-
+            _model = bikeModel;
+            /*this.Type = Type;
+            this.Size = Size;
+            this.Color = Color;*/
             //call app to get the model of the bike
-            App newApp = new App();
+
+
+            /*App newApp = new App();
             var bikeModels = newApp.getBikeModelList();
-            _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);
-            
-            this.Type = _model.Type;
-            this.Color = _model.Color;
-            this.Size = _model.Size;
+            _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);*/
+
+            Type = _model.Type;
+            Color = _model.Color;
+            Size = _model.Size;
             Price = _model.Price;
             TotalTime = _model.TotalTime;
             bikeParts = _model.bikeParts;
+            
+
         }
         public void setNewState(string status,string assemblerName ="")
         {

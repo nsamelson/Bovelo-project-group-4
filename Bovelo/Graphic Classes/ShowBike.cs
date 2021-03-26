@@ -128,7 +128,9 @@ namespace Bovelo
                 color = radioButton3.Text;
             }
             int _i = Convert.ToInt32(i);
-            Bike BikeToAdd = new Bike(0,TypeOfBike, color, _i);//id is set to 0 MAYBE NEED TO CHANGE
+
+            var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == TypeOfBike);
+            Bike BikeToAdd = new Bike(0,_model);//id is set to 0 MAYBE NEED TO CHANGE
             _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
 
         }

@@ -23,6 +23,8 @@ namespace Bovelo
         }
         public List<Bike> getBikesToBuild()
         {
+            App newApp = new App();
+            var bikeModels = newApp.getBikeModelList();//get the model list
 
             var bikes = new List<Bike>();
             
@@ -34,9 +36,13 @@ namespace Bovelo
                 string bikeColor = elem[3];
                 string status = elem[5];
                 string assemblerName = elem[6];
-                var newBike = new Bike(idOrderDetails, bikeType, bikeColor, bikeSize) { assembler = assemblerName };
+                //takes Corresponding model, creates a bike, adds a status and assembler's name, adds bike to the list
+                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == bikeColor && x.Size == bikeSize && x.Type == bikeType);//gets the specific model
+                var newBike = new Bike(idOrderDetails,model) { assembler = assemblerName };
                 newBike.setNewState(status);
                 bikes.Add(newBike);
+
+
                 workingMinute += newBike.TotalTime;
             }
             return bikes;

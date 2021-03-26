@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data;
+using System.Linq;
+
 
 namespace Bovelo
 {
@@ -31,24 +33,21 @@ namespace Bovelo
 
         public List<Bike> getBikeList()
         {
+            App newApp = new App();
+            var bikeModels = newApp.getBikeModelList();//get the model list
+
             var bikes = new List<Bike>();
             foreach(var elem in orderDetail)
             {
                 //Console.WriteLine("id : " + elem[0] + "type: " + elem[1] + " size : " + elem[2]+ " color: " + elem[3]+ " price : " + elem[4]);
+                int id = Int32.Parse(elem[0]);
                 string type = elem[1];
                 int size = Int32.Parse(elem[2]);
                 string color = elem[3];
-                int price = Int32.Parse(elem[4]);
-                int id = Int32.Parse(elem[0]);
+                //int price = Int32.Parse(elem[4]);
 
-                bikes.Add(new Bike(id,type, color, size));
-                //int quantity = Int16.Parse(elem[3]);
-
-
-                /*for (int i = 0; i < 2; i++)//quantity of this bike
-                {
-                    bikes.Add(new Bike(type,color,size,price));
-                }*/
+                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == color && x.Size == size && x.Type == type);//gets the specific model
+                bikes.Add(new Bike(id, model));//adds a corresponding Bike
             }
             return bikes;
         }
