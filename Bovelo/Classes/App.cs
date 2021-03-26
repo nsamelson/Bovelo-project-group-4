@@ -473,6 +473,19 @@ namespace Bovelo
             var Planified = getPanifiedOrderDetails(sql);
             return Planified;
         }
+        internal List<List<string>> getPlanifiedBikesByWeekName(string week)
+        {
+            string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules) and Week_Name = '" +week+ "';";
+            var planifiedByWeek = getPanifiedOrderDetails(sql);
+            return planifiedByWeek;
+        }
+        internal List<List<string>> getAssemblerWork(string assemblerName)
+        {
+            string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules) and Assembled_by = '" + assemblerName + "';";
+            var assemblerWork = getPanifiedOrderDetails(sql);
+            return assemblerWork;
+        }
+
         internal List<List<string>> getAssembler()
         {
             string sql = "SELECT Login FROM Bovelo.Users where Role = 'Assembler';";

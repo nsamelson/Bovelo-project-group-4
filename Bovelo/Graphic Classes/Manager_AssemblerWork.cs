@@ -22,21 +22,6 @@ namespace Bovelo
 
         private void Manager_AssemblerWork_Load(object sender, EventArgs e)
         {
-            int i = 0;
-            foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
-            {
-                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
-                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
-                dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
-                dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
-                dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
-                dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
-                dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
-                dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
-                i++;
-            }
             var users = newApp.getAssembler().Select(x=> x[0]).ToList();
             comboBox1.DataSource = users;
         }
@@ -71,6 +56,36 @@ namespace Bovelo
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            string builder = comboBox1.SelectedItem.ToString();
+            int i = 0;
+            dataGridView1.Rows.Clear();
+            foreach (var assemblerWork in newApp.getAssemblerWork(builder))
+            {
+                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
+                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = assemblerWork[0];//id order details
+                dataGridView1.Rows[i].Cells[1].Value = assemblerWork[1];//type
+                dataGridView1.Rows[i].Cells[2].Value = assemblerWork[2];//size
+                dataGridView1.Rows[i].Cells[3].Value = assemblerWork[3];//color
+                dataGridView1.Rows[i].Cells[4].Value = assemblerWork[5];//status
+                dataGridView1.Rows[i].Cells[5].Value = assemblerWork[6];//Id Order
+                dataGridView1.Rows[i].Cells[6].Value = assemblerWork[7];//planified week
+                dataGridView1.Rows[i].Cells[7].Value = assemblerWork[10];//started at
+                dataGridView1.Rows[i].Cells[8].Value = assemblerWork[11];//finished at
+                i++;
+            }
+            
 
         }
     }

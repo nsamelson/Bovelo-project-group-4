@@ -30,7 +30,6 @@ namespace Bovelo
         {
             this.Hide();// Hiding the MainHome Window
             Assembler_Planning plng = new Assembler_Planning(user);// create new window
-            
             plng.FormClosed += (s, args) => this.Close();
             plng.Show();// Showing the Assembler planning window
         }
