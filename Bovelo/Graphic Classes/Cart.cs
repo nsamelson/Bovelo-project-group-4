@@ -23,10 +23,29 @@ namespace Bovelo
             _currentUser = incomingUser;
             InitializeComponent();
         }
+        private void Cart_Load() 
+        {
+            dataGridView1.Rows.Clear();
+            int i = 0;
+            foreach (ItemBike elem in _currentUser.cart)
+            {
+                dataGridView1.Rows.Add();
+                int price = elem.getPrice();
+                dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
+                dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
+                dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
+                dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
+                dataGridView1.Rows[i].Cells[4].Value = "0 in stock";//elem.bike.TotalTime.ToString();
+                dataGridView1.Rows[i].Cells[5].Value = price.ToString();
+                i++;
+            }
+            Decimal B = _currentUser.getCartPrice();
+            this.labelPrice.Text = B.ToString() + "€";
+        }
 
         private void Cart_Load(object sender, EventArgs e)
         {
-
+            dataGridView1.Rows.Clear();
             int i = 0;
             foreach (ItemBike elem in _currentUser.cart)
             {
@@ -54,7 +73,13 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            int i = dataGridView1.CurrentCell.RowIndex;
+            Console.WriteLine(i);
+            Console.WriteLine(_currentUser.cart[i].quantity);
+            Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
+            Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()).GetType());
+            _currentUser.cart[i].quantity = Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            this.Cart_Load();
         }
 
         private void button7_Click(object sender, EventArgs e)
