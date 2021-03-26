@@ -16,7 +16,7 @@ namespace Bovelo
         public string location;
         public string name;
         public int part_Id = 0;
-
+        public int quantity=0;
         public BikePart(int part_Id,string name, string location,int price, string provider, int timeToBuild)
         {
             this.name = name;

@@ -393,7 +393,7 @@ namespace Bovelo
 
             foreach (var row in BikePartsFromDB)
             {
-                bikeParts.Add(new BikePart(Int32.Parse(row[0]), row[1], row[3], Int32.Parse(row[4]), row[5], Int32.Parse(row[6])));
+                bikeParts.Add(new BikePart(Int32.Parse(row[0]), row[1], row[3], Int32.Parse(row[4]), row[5], Int32.Parse(row[6])) { quantity = Int32.Parse(row[2])});
             }
 
             return bikeParts;
@@ -688,31 +688,24 @@ namespace Bovelo
             int quantity = Int32.Parse(result[0][0]);
             return quantity;
         }
-        internal Dictionary<int, int> computeMissingPieces(Dictionary<int, int> PartIdQuantity)
+        internal Dictionary<int, int> computeMissingPieces(ref Dictionary<int, int> PartIdQuantity)
         {
+            updateBikePartList();
             int stockQuantity = 0;
             int quantityNeeded = 0;
             Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
             foreach (var elem in PartIdQuantity)
             {
-                stockQuantity = getQuantity(elem.Key);
+                //stockQuantity = getQuantity(elem.Key);
+                stockQuantity = bikePartList.FirstOrDefault(x => x.part_Id == elem.Key).quantity;
                 quantityNeeded = elem.Value;            // just to be clear
                 int orderQuantity = 0;
                 orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
-                if (orderQuantity < 0) //means there is enough stock
+                if (orderQuantity > 0) //means there is enough stock
                 {
-                    orderQuantity = 0;
+                    partOrderQuantity.Add(elem.Key, orderQuantity);
                 }
-                partOrderQuantity.Add(elem.Key, orderQuantity);
-                //NEED TO ADD THIS ORDER WITH THE ID TO A LIST
-                /*if (stockQuantity<quantityNeeded )
-                {                   
-                    orderQuantity = stockQuantity - quantityNeeded;
-                    if (stockQuantity-orderQuantity < 10)
-                    {
-                        orderQuantity += 10 - (orderQuantity - stockQuantity);
-                    }
-                }*/
+                //NEED TO ADD THIS ORDER WITH THE ID TO A LIST         
             }
             return partOrderQuantity;
         }

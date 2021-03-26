@@ -41,7 +41,7 @@ namespace Bovelo
         private void button4_Click(object sender, EventArgs e)//catalog
         {
             this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(user);// maybe send the userType with it
+            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
             mpc.FormClosed += (s, args) => this.Close(); // close the login Form
             mpc.Show();
         }
