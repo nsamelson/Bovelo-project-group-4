@@ -149,5 +149,33 @@ namespace Bovelo
         {
 
         }
+
+        private int rowIndex = 0;
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right)
+            {
+                this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                this.rowIndex = e.RowIndex;
+                this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                this.contextMenuStrip1.Show(this.dataGridView1, e.Location);
+                contextMenuStrip1.Show(Cursor.Position);
+            }
+        }
+
+
+        private void deletedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.dataGridView1.Rows[this.rowIndex].IsNewRow)
+            {
+
+
+                this.labelPrice.Text = (_currentUser.getCartPrice() - _currentUser.cart[0].getPrice()).ToString() + "€";
+                _currentUser.deleteItem(this.rowIndex);
+                this.dataGridView1.Rows.RemoveAt(this.rowIndex);
+            }
+
+        }
     }
 }
