@@ -18,6 +18,10 @@ namespace Bovelo
         {
             return quantity * bike.Price;
         }
-
+        public void setQuantity(int quantity)
+        {
+            this.quantity = quantity;
+            this.price = quantity * this.bike.Price;
+        }
     }
 }
