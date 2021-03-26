@@ -203,6 +203,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Classes\list_part.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -218,7 +219,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Classes\list_part.txt" />
     <None Include="Graphic Classes\Pictures\icones\settings.png" />
     <None Include="Graphic Classes\Pictures\icones\profile.jpg" />
     <None Include="Graphic Classes\Pictures\icones\profile.png" />

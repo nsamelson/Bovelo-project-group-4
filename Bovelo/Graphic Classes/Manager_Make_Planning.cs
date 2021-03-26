@@ -39,7 +39,7 @@ namespace Bovelo
         private void button4_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(user);// maybe send the userType with it
+            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
             mpc.FormClosed += (s, args) => this.Close(); // close the login Form
             mpc.Show();
         }
@@ -80,25 +80,31 @@ namespace Bovelo
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
                 //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
+                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == planifiedOrderDetails[3] && x.Size == Int32.Parse(planifiedOrderDetails[2]) && x.Type == planifiedOrderDetails[1]);//gets the specific model
+                Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), model);
+                t += newBike.TotalTime;
+
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
                 dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
                 dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
                 dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
                 dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
-                dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//Id Order
-                dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//planified week
+                dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//plannified week
+                dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//Id Order
+                dataGridView1.Rows[i].Cells[7].Value = newBike.TotalTime.ToString();
                 i++;
 
-                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == planifiedOrderDetails[3] && x.Size == Int32.Parse(planifiedOrderDetails[2]) && x.Type == planifiedOrderDetails[1]);//gets the specific model
-                Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]),model);
-                t += newBike.TotalTime;
+                
             }           
-            Console.WriteLine("index i : " + i);
-            Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);
+           /* Console.WriteLine("index i : " + i);
+            Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
             i = 0;
             foreach (var nonPlanifiedOrderDetails in newApp.getNonPlanifiedBikes())
             {
+                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == nonPlanifiedOrderDetails[3] && x.Size == Int32.Parse(nonPlanifiedOrderDetails[2]) && x.Type == nonPlanifiedOrderDetails[1]);//gets the specific model
+                Bike newBike = new Bike(Int32.Parse(nonPlanifiedOrderDetails[0]), model);
+                t += newBike.TotalTime;
                 dataGridView2.Rows.Add();
                 dataGridView2.Rows[i].Cells[0].Value = nonPlanifiedOrderDetails[0];//id order details
                 dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
@@ -106,7 +112,7 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
                 dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
                 dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[6];//Id Order
-                dataGridView2.Rows[i].Cells[6].Value = "Not Plannified Yet"  ;
+                dataGridView2.Rows[i].Cells[6].Value = newBike.TotalTime.ToString() ;
                 
                 i++;
             }
