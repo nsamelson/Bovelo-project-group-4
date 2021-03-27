@@ -33,17 +33,18 @@ namespace Bovelo
             button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
             button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
             button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
+            isChecked();
         }
 
        public int getBikePrice()
         {
             int price = app.bikeModels.FirstOrDefault(x=> x.Type == TypeOfBike).Price;
             return price;
-        }
+       }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            isChecked();
         }
 
 
@@ -109,29 +110,35 @@ namespace Bovelo
             
             Decimal B = this.numericUpDown1.Value * getBikePrice();
             this.label6.Text = B.ToString();
+            isChecked();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+
             string i = comboBox1.Text;
             string color = " ";
             if (radioButton1.Checked)
             {
                 color = radioButton1.Text;
+                button4.Enabled = true;
             }
             else if (radioButton2.Checked)
             {
                 color = radioButton2.Text;
+                
             }
             else if (radioButton3.Checked)
             {
                 color = radioButton3.Text;
+                
             }
+            
             int _i = Convert.ToInt32(i);
 
             var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == TypeOfBike);
 
-            Bike BikeToAdd = new Bike(0,_model);//id is set to 0 MAYBE NEED TO CHANGE
+            Bike BikeToAdd = new Bike(0, _model);//id is set to 0 MAYBE NEED TO CHANGE
 
             bool isInCart = false;
             foreach (var elem in _currentUser.cart)
@@ -141,13 +148,13 @@ namespace Bovelo
                     Console.WriteLine("Already in cart");
                     isInCart = true;
                 }
-                
-                
             }
             if (!isInCart)
             {
                 _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
-            }
+                MessageBox.Show("Added to cart");
+            }       
+            
         }
 
 
@@ -179,23 +186,41 @@ namespace Bovelo
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-
+            //button4.Enabled = true;
+            isChecked();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-
+            //button4.Enabled = true;
+            isChecked();
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-
+            //button4.Enabled = true;
+            isChecked();
         }
 
 
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void isChecked()
+        {            
+            if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
+            {
+                if (numericUpDown1 != null && comboBox1 != null)
+                {
+                    button4.Enabled = true;
+                }
+            }
+            else
+            {
+                button4.Enabled = false;
+            }
         }
     }
 }

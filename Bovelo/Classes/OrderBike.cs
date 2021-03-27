@@ -29,9 +29,17 @@ namespace Bovelo
             this.bikeList = getBikeList();
             this.isReadyToShip = getOrderState();
         }
-        
 
-        public List<Bike> getBikeList()
+        public float getTotalBuildingTime()
+        {
+            int hours = 0;
+            foreach(var bike in bikeList)
+            {
+                hours += bike.TotalTime;
+            }
+            return hours / 60;
+        }
+        private List<Bike> getBikeList()
         {
             App newApp = new App();
             var bikeModels = newApp.getBikeModelList();//get the model list

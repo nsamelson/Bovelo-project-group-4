@@ -101,6 +101,7 @@ namespace Bovelo
             // 
             this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button4.BackgroundImage")));
+            this.button4.FlatAppearance.BorderSize = 0;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -119,6 +120,7 @@ namespace Bovelo
             // 
             this.City.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.City.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("City.BackgroundImage")));
+            this.City.FlatAppearance.BorderSize = 0;
             this.City.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.City.Image = ((System.Drawing.Image)(resources.GetObject("City.Image")));
             this.City.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -137,6 +139,7 @@ namespace Bovelo
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.button6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button6.BackgroundImage")));
+            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Image = ((System.Drawing.Image)(resources.GetObject("button6.Image")));
             this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
