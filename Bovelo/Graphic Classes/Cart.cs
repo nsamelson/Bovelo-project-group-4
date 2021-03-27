@@ -54,22 +54,7 @@ namespace Bovelo
 
         private void Cart_Load(object sender, EventArgs e)
         {
-            dataGridView1.Rows.Clear();
-            int i = 0;
-            foreach (ItemBike elem in _currentUser.cart)
-            {
-                dataGridView1.Rows.Add();
-                int price = elem.getPrice();                
-                dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
-                dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
-                dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
-                dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
-                dataGridView1.Rows[i].Cells[4].Value = "0 in stock";//elem.bike.TotalTime.ToString();
-                dataGridView1.Rows[i].Cells[5].Value = price.ToString();
-                i++;
-            }
-            Decimal B = _currentUser.getCartPrice();
-            this.labelPrice.Text = B.ToString() + "€";
+            Cart_Load();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -139,13 +124,11 @@ namespace Bovelo
         private void printInvoice(string client)
         {
             string FileName = DateTime.Now.ToString();
-            FileName= FileName.Replace('/','_');
-            FileName= FileName.Replace(' ', '_');
-            FileName= FileName.Replace(':', '_');
-            Console.WriteLine(FileName);
-            Console.WriteLine("*********************************************************************");
+            FileName = FileName.Replace('/', '_');
+            FileName = FileName.Replace(' ', '_');
+            FileName = FileName.Replace(':', '_');
             string path = Environment.CurrentDirectory;
-            PdfWriter writer = new PdfWriter(@"../../facture/" +client+ FileName+".pdf");
+            PdfWriter writer = new PdfWriter(@"../../facture/" + client + FileName + ".pdf");
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
 
@@ -174,41 +157,26 @@ namespace Bovelo
             document.Add(newline);
             // Table
             Table table = new Table(5, false);
-            Cell cell11 = new Cell(1, 1)
-                .SetBackgroundColor(ColorConstants.GRAY)
-                .SetTextAlignment(TextAlignment.CENTER)
-                .SetWidth(100)
-                .Add(new Paragraph("Bike"));
-            Cell cell12 = new Cell(1, 1)
-                .SetBackgroundColor(ColorConstants.GRAY)
-                .SetTextAlignment(TextAlignment.CENTER)
-                .SetWidth(100)
-                .Add(new Paragraph("Size"));
-            Cell cell13 = new Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.GRAY)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .SetWidth(100)
-               .Add(new Paragraph("Color"));
-            Cell cell14 = new Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.GRAY)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .SetWidth(100)
-               .Add(new Paragraph("Quantity"));
-            Cell cell15 = new Cell(1, 1)
-               .SetBackgroundColor(ColorConstants.GRAY)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .SetWidth(100)
-               .Add(new Paragraph("Price"));
-            table.AddCell(cell11);
-            table.AddCell(cell12);
-            table.AddCell(cell13);
-            table.AddCell(cell14);
-            table.AddCell(cell15);
+            List<string> column = new List<string>();
+            column.Add("Bike");
+            column.Add("Size");
+            column.Add("Color");
+            column.Add("Quantity");
+            column.Add("Price");
+            foreach (var elem in column)
+            {
+                Cell cell = new Cell(1, 1)
+                    .SetBackgroundColor(ColorConstants.GRAY)
+                    .SetTextAlignment(TextAlignment.CENTER)
+                    .SetWidth(100)
+                    .Add(new Paragraph(elem));
+                table.AddCell(cell);
+            }
             foreach (var item in _currentUser.getCartList())
             {
                 for (int e = 0; e < 5; e++)
                 {
-                    
+
                     Cell cell = new Cell(1, 1)
                         .SetTextAlignment(TextAlignment.CENTER)
                         .Add(new Paragraph(item[e]));
@@ -216,12 +184,19 @@ namespace Bovelo
                 }
             }
             document.Add(table);
+            //Total
+            document.Add(newline);
+            document.Add(ls);
+            document.Add(newline);
+            Paragraph paragraph2 = new Paragraph("Total : " + this.labelPrice.Text);
+            paragraph2.SetTextAlignment(TextAlignment.RIGHT);
+            document.Add(paragraph2);
             // Page numbers
             int n = pdf.GetNumberOfPages();
             for (int i = 1; i <= n; i++)
             {
                 document.ShowTextAligned(new Paragraph(String
-                   .Format("page" + i + " of " + n)),
+                   .Format(i + "/" + n)),
                    559, 806, i, TextAlignment.RIGHT,
                    VerticalAlignment.TOP, 0);
             }
@@ -229,7 +204,7 @@ namespace Bovelo
             // Close document
             document.Close();
         }
-        
+
 
         private void label2_Click(object sender, EventArgs e)
         {
