@@ -724,6 +724,30 @@ namespace Bovelo
             return days;
         }
 
+        internal List<Bike> getStockBikesID()
+        {
+            var stockBikeID = getFromDBWhere("Order_Bikes", new List<string>() { "Id_Order" }, "Customer_Name='Stock'");
+            List<string> bikes = stockBikeID.SelectMany(x => x).ToList();
+            Console.WriteLine(string.Join("\t", bikes));
+
+            var stockBike = getFromDBWhere("Order_Details", new List<string>() { "Bike_Type", "Bike_Size", "Bike_Color","Id_Order"}, "Bike_Status = 'Closed'");
+
+            //List<string> stock = new List<string>();
+            List<Bike> test = new List<Bike>();
+            foreach(var row in stockBike)
+            {
+                if (bikes.Any(x => x == row[3]))
+                {
+                    test.Add(new Bike(0, new BikeModel(row[0],row[2],Int32.Parse(row[1]))));
+                    //stock.Add(string.Join("\t", row));                   
+                }
+            }
+            Console.WriteLine(string.Join("\n", test[0].Size));
+            return test;
+        }
+
+        
+
 
 
     } // end App Class
