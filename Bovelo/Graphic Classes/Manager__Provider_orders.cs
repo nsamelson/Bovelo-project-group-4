@@ -13,12 +13,13 @@ namespace Bovelo
     public partial class Manager__Provider_orders : Form
     {
         private User user = new User("Manager", false, false, false);
-        private App newApp = new App();
+        private App newApp = new App();//because i need part name 
         internal Manager__Provider_orders(User currentUser)
         {
             this.user = currentUser;
             InitializeComponent();
             orderLoad();
+            newApp.updateBikePartList();
         }
 
         private void Manager__Provider_orders_Load(object sender, EventArgs e)
@@ -59,22 +60,29 @@ namespace Bovelo
         {
             if (dataGridView1.CurrentCell.Value.ToString() == "Remove")
             {
-                string query = "DELETE FROM Order_Detailed_Part WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + ";";
-                //Console.WriteLine(query);
+                string query = "DELETE FROM Order_Detailed_Part WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + ";";
+                Console.WriteLine(query);
                 newApp.sendToDB(query);
                 orderLoad();
+                MessageBox.Show(@"Deleted :" +
+                    "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value+
+                    "\nId_Order= " + dataGridView1.Rows[e.RowIndex].Cells[0].Value +
+                    "\nId_Order_Detailed_Part = " + dataGridView1.Rows[e.RowIndex].Cells[1].Value +
+                    "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
+                    "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+
             }
             if (dataGridView1.CurrentCell.Value.ToString() == "Received")
             {
-                if (dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString() == "Not Received")
+                if (dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString() == "Not Received")
                 {
-                    string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[3].Value + " ;";
+                    string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " ;";
                     //Console.WriteLine(query);
                     newApp.sendToDB(query);
                     var field = new List<string>();
                     field.Add("Quantity");
                     var result = newApp.getFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString());
+                    int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
                     query = "UPDATE Bike_Parts SET Quantity="+quantity+" WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                     newApp.sendToDB(query);
                 }
