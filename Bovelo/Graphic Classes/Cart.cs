@@ -8,6 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Pdf;
+using iText.Kernel.Pdf.Action;
+using iText.Kernel.Pdf.Canvas.Draw;
+using iText.Layout;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+
 
 namespace Bovelo
 {
@@ -115,8 +124,9 @@ namespace Bovelo
                 }
                 string path = @"../../Classes/list_part.csv";               
                 File.WriteAllText(path, text);
+                printInvoice(client);
                 _currentUser.emptyCart();
-                this.labelPrice.Text = "0€";
+                this.labelPrice.Text = "0€";               
                 textBox1.Text = "";
             }
             else
@@ -125,6 +135,101 @@ namespace Bovelo
             }
             
         }
+
+        private void printInvoice(string client)
+        {
+            string FileName = DateTime.Now.ToString();
+            FileName= FileName.Replace('/','_');
+            FileName= FileName.Replace(' ', '_');
+            FileName= FileName.Replace(':', '_');
+            Console.WriteLine(FileName);
+            Console.WriteLine("*********************************************************************");
+            string path = Environment.CurrentDirectory;
+            PdfWriter writer = new PdfWriter(@"../../facture/" +client+ FileName+".pdf");
+            PdfDocument pdf = new PdfDocument(writer);
+            Document document = new Document(pdf);
+
+            // Header
+            Paragraph header = new Paragraph("Bovelo")
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontSize(20);
+
+            // New line
+            Paragraph newline = new Paragraph(new Text("\n"));
+            document.Add(newline);
+            document.Add(header);
+            // Add sub-header
+            Paragraph subheader = new Paragraph(client)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetFontSize(15);
+            document.Add(subheader);
+            // Line separator
+            LineSeparator ls = new LineSeparator(new SolidLine());
+            document.Add(ls);
+            // Add paragraph1
+            Paragraph paragraph1 = new Paragraph("Récapitulatif de commande");
+            paragraph1.SetTextAlignment(TextAlignment.CENTER);
+            document.Add(paragraph1);
+            document.Add(ls);
+            document.Add(newline);
+            // Table
+            Table table = new Table(5, false);
+            Cell cell11 = new Cell(1, 1)
+                .SetBackgroundColor(ColorConstants.GRAY)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetWidth(100)
+                .Add(new Paragraph("Bike"));
+            Cell cell12 = new Cell(1, 1)
+                .SetBackgroundColor(ColorConstants.GRAY)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetWidth(100)
+                .Add(new Paragraph("Size"));
+            Cell cell13 = new Cell(1, 1)
+               .SetBackgroundColor(ColorConstants.GRAY)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetWidth(100)
+               .Add(new Paragraph("Color"));
+            Cell cell14 = new Cell(1, 1)
+               .SetBackgroundColor(ColorConstants.GRAY)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetWidth(100)
+               .Add(new Paragraph("Quantity"));
+            Cell cell15 = new Cell(1, 1)
+               .SetBackgroundColor(ColorConstants.GRAY)
+               .SetTextAlignment(TextAlignment.CENTER)
+               .SetWidth(100)
+               .Add(new Paragraph("Price"));
+            table.AddCell(cell11);
+            table.AddCell(cell12);
+            table.AddCell(cell13);
+            table.AddCell(cell14);
+            table.AddCell(cell15);
+            foreach (var item in _currentUser.getCartList())
+            {
+                for (int e = 0; e < 5; e++)
+                {
+                    
+                    Cell cell = new Cell(1, 1)
+                        .SetTextAlignment(TextAlignment.CENTER)
+                        .Add(new Paragraph(item[e]));
+                    table.AddCell(cell);
+                }
+            }
+            document.Add(table);
+            // Page numbers
+            int n = pdf.GetNumberOfPages();
+            for (int i = 1; i <= n; i++)
+            {
+                document.ShowTextAligned(new Paragraph(String
+                   .Format("page" + i + " of " + n)),
+                   559, 806, i, TextAlignment.RIGHT,
+                   VerticalAlignment.TOP, 0);
+            }
+
+            // Close document
+            document.Close();
+        }
+        
 
         private void label2_Click(object sender, EventArgs e)
         {
