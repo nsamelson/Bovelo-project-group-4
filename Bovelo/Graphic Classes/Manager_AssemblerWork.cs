@@ -99,10 +99,10 @@ namespace Bovelo
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Hide(); //hides the current form
-            MainHome mh = new MainHome(user);// maybe send the userType with it
-            mh.FormClosed += (s, args) => this.Close(); // close the login Form
-            mh.Show();
+            this.Hide();
+            Manager_MainHome mmh = new Manager_MainHome(user);// create new window
+            mmh.FormClosed += (s, args) => this.Close();
+            mmh.Show();// Showing the Login window
         }
 
         private void button3_Click(object sender, EventArgs e)
