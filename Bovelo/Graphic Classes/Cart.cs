@@ -47,37 +47,19 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
-                dataGridView1.Rows[i].Cells[4].Value = "0 in stock";//elem.bike.TotalTime.ToString();
-                dataGridView1.Rows[i].Cells[5].Value = price.ToString();
-                i++;
-            }
-            Decimal B = _currentUser.getCartPrice();
-            this.labelPrice.Text = B.ToString() + "€";
-            
-        }
-
-        private void Cart_Load(object sender, EventArgs e)
-        {
-<<<<<<< HEAD
-            Cart_Load();
-=======
-            dataGridView1.Rows.Clear();
-            int i = 0;
-            foreach (ItemBike elem in _currentUser.cart)
-            {
-                dataGridView1.Rows.Add();
-                int price = elem.getPrice();                
-                dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
-                dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
-                dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
-                dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
                 dataGridView1.Rows[i].Cells[4].Value = getStockBikes();
                 dataGridView1.Rows[i].Cells[5].Value = price.ToString();
                 i++;
             }
             Decimal B = _currentUser.getCartPrice();
             this.labelPrice.Text = B.ToString() + "€";
->>>>>>> 002b4d188bbb1c5a15a366fa6cc072a3287bd363
+
+        }
+
+        private void Cart_Load(object sender, EventArgs e)
+        {
+
+            Cart_Load();
         }
 
         private void button1_Click(object sender, EventArgs e)
