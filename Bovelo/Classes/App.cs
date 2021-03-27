@@ -293,12 +293,14 @@ namespace Bovelo
 
             foreach (var bikesToBuild in planningCartList)
             {
+                Console.WriteLine("ID_ORDER_DETAILS : " + bikesToBuild[0] + "|" +  bikesToBuild[1] + "|" + bikesToBuild[2]);
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 /*string type = bikesToBuild[1];
                 string size = bikesToBuild[2];
                 string color = bikesToBuild[3];*/
                 string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
                 sendToDB(queryPD);
+
             }
 
             updatePlanningList();//At the end of set, put a get to update App class
