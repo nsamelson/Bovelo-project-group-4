@@ -63,7 +63,7 @@ namespace Bovelo
                 string week = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 Console.WriteLine("id : " + id + "week : " + week);
                 newApp.deletePlanifiedBike(id,week);
-                MessageBox.Show("Bike has been delted from schedule");
+                MessageBox.Show("Bike has been deleted from schedule");
                 Manager_Make_Planning_Load(sender, e);
                 
             }
@@ -196,6 +196,7 @@ namespace Bovelo
 
                     Bike bike = new Bike(Int32.Parse(nonPlanifiedBikes[0]),model);//Needs to be verified (id)
                     user.addToPlanningCart(bike, Int32.Parse(nonPlanifiedBikes[0]));
+                    // NEED TO MODIFY THE DATAGRIDVIEW AND THE NON PLANNIFIEDBIKES
                 }
                 i++;
             }

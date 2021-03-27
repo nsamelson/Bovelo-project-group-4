@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.IO;
+using System.Globalization;
 
 namespace Bovelo
 {
@@ -217,12 +218,17 @@ namespace Bovelo
 
         //SET To the DB methods
 
-        internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice) //is used to pass a new order
+        internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice,int shippingWeek) //is used to pass a new order
         {
             updateOrderBikeList();//updates the list
             //first request
             int orderId;
-            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(7).ToString() + "');";
+
+            var daysToAdd = shippingWeek * 7;
+            Console.WriteLine("ship " + shippingWeek);
+            Console.WriteLine("daysToAdd " + daysToAdd);
+
+            string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(daysToAdd).ToString() + "');";
             sendToDB(queryOB);
 
             //second request
@@ -710,18 +716,66 @@ namespace Bovelo
             return partOrderQuantity;
         }
 
-        internal int getEstimatedTimeBeforeShipping(int orderId)//WORKING ON IT
+        internal int getEstimatedTimeBeforeShipping(List<ItemBike> bikesToOrder)//WORKING ON IT
         {
-            int days = 0;
-            updateOrderBikeList();
+            float days = 0;
+            int weeks = 0;
+            int minutes = 0;
+            float hours = 0;
+            //updateOrderBikeList();
             updatePlanningList();
-            var order = orderBikeList.FirstOrDefault(x => x.orderId == orderId);
-            //I have to check if all the bike id's of this order are already inside a planning
-            //if yes : take the latest planning and compute days
-            //if not : take all the bikes in the nonPlannifiedBikes,
-            //         count the number of bikes between the first non plannified and the last of this order
-            //         compute in days by taking the n° of hours an amount a bike takes and the last planning
-            return days;
+            updateBikeModelList();
+            var nonPlannified = getNonPlanifiedBikes();
+            var nonPlannifiedBikes = new List<Bike>();
+            //var order = orderBikeList.FirstOrDefault(x => x.orderId == orderId);
+            foreach(var bike in nonPlannified)
+            {
+                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == bike[3] && x.Size == Int32.Parse(bike[2]) && x.Type == bike[1]);//gets the specific model
+                nonPlannifiedBikes.Add(new Bike(Int32.Parse(bike[0]), model));//adds a corresponding Bike
+            }
+            foreach(var bike in nonPlannifiedBikes)
+            {
+                minutes += bike.TotalTime;
+            }
+            foreach(var elem in bikesToOrder)
+            {
+                minutes += elem.getTotalTime();
+            }
+            hours = minutes/ 60;
+            days = hours / 24; //because 3 builders working 8 hours a day
+
+            if (planningList.Count != 0)
+            {
+                string lastWeek = planningList.Last().weekName;
+                string b = string.Empty;
+                int lastWeekNumber=0;
+
+                CultureInfo myCI = new CultureInfo("en-US");
+                Calendar myCal = myCI.Calendar;
+                CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
+                DayOfWeek myFirstDOW = myCI.DateTimeFormat.FirstDayOfWeek;
+                var currentWeek = myCal.GetWeekOfYear(DateTime.Now, myCWR, myFirstDOW);//gets the current week
+                for (int i = 0; i < lastWeek.Length; i++)
+                {
+                    if (Char.IsDigit(lastWeek[i]))
+                        b += lastWeek[i];
+                }
+                if (b.Length > 0)
+                {
+                    lastWeekNumber = int.Parse(b);
+                }
+                weeks = lastWeekNumber - currentWeek ;
+                Console.WriteLine("CURRENT WEEK : " + currentWeek);
+                Console.WriteLine("LAST PLANNED WEEK : " + lastWeekNumber + "LAST WEEK NAME : "+lastWeek);
+                Console.WriteLine("DIFFERENCE : " + weeks);
+
+
+            }
+            weeks += (int)(Math.Ceiling(days) / 5) +1;
+            Console.WriteLine("MINUTES " + minutes+ " HOURS " + hours + " DAYS " + days);
+            Console.WriteLine("DIFFERENCE + NEW BIKES TO BUILD: " + weeks);
+
+            return weeks;
         }
 
         internal List<Bike> getStockBikesID()

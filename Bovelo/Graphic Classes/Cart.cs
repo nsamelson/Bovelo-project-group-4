@@ -102,7 +102,7 @@ namespace Bovelo
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//pass order
         {
             string client = textBox1.Text;        
             int RowCount = _currentUser.getCartList().Count();
@@ -110,7 +110,8 @@ namespace Bovelo
             if (client != ""&&RowCount!=0)
             {
                 string text ="";
-                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice());
+                int weeks = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(),weeks);
                 dataGridView1.Rows.Clear();
                 foreach(var elem in _currentUser.getCartList())
                 {                   
@@ -126,6 +127,8 @@ namespace Bovelo
                 _currentUser.emptyCart();
                 this.labelPrice.Text = "0€";               
                 textBox1.Text = "";
+                label5.Text = "0 Weeks";
+                MessageBox.Show("The order has been validated!");
             }
             else
             {
@@ -267,55 +270,12 @@ namespace Bovelo
         {
 
         }
-        private int getStockBikes()
-        {   
-            List<string> StockBikeID = new List<string>();
-            List<string> StockBikes = new List<string>();
-            int NumberOfBikes;
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
+        
 
-            conn.Open();
-            string sql = "SELECT Id_Order FROM Order_Bikes WHERE Customer_Name = 'stock';";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                for (int i = 0; i < rdr.FieldCount; i++)
-                {
-                    StockBikeID.Add(rdr[i].ToString());
-                    Console.WriteLine(string.Join("\t", StockBikeID));
-                }
-            }
-            rdr.Close();
-            conn.Close();
-            foreach (var bicycle in StockBikeID)
-            {
-                string connStr2 = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-                MySqlConnection conn2 = new MySqlConnection(connStr2);
-
-                conn2.Open();
-                string sql2 = "SELECT Bike_Type FROM Order_Details WHERE Id_Order ='" + bicycle + "' AND Bike_Status='Closed';";
-                MySqlCommand cmd2 = new MySqlCommand(sql2, conn2);
-                MySqlDataReader rdr2 = cmd2.ExecuteReader();
-                
-            
-                while (rdr2.Read())
-                {
-                                        
-                    for (int j = 0; j < rdr2.FieldCount; j++)
-                    {                        
-                        StockBikes.Add(rdr2[j].ToString());
-                        //StockBikes.Add(type);
-                        Console.WriteLine(string.Join("\t", StockBikes));
-                    }
-                }
-                rdr2.Close();
-                conn2.Close();
-            }
-            NumberOfBikes = StockBikes.Count();
-            return NumberOfBikes;
-
-        }//end of getstock
+        private void button6_Click(object sender, EventArgs e)//estimate Time
+        {
+            int weeks = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+            label5.Text = weeks + "Weeks";
+        }
     }
 }

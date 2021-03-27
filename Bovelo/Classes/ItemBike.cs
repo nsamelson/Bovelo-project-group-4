@@ -18,6 +18,10 @@ namespace Bovelo
         {
             return quantity * bike.Price;
         }
+        public int getTotalTime()
+        {
+            return quantity * bike.TotalTime;
+        }
 
     }
 }
