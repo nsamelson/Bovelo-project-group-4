@@ -158,6 +158,30 @@ namespace Bovelo
             conn.Close();
             return listInnerJoin;
         }
+        internal string getFromDBLastIdFromColumn(string table,string column)
+        {
+            string id = "0";
+            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
+            string sql = "SELECT Id_Order FROM Order_Bikes ORDER BY Id_Order DESC LIMIT 1;";
+
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var col = new List<string>();
+                for (int j = 0; j < rdr.FieldCount; j++)
+                {
+                    col.Add(rdr[j].ToString());
+                }
+                id = col[0];
+            }
+            
+            rdr.Close();
+            conn.Close();
+            return id;
+        }
         /*internal List<List<string>> getFromDbInnerJoin(string week)
         {
             var listInnerJoin = new List<List<string>>();
@@ -220,42 +244,55 @@ namespace Bovelo
 
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice,int shippingWeek) //is used to pass a new order
         {
-            updateOrderBikeList();//updates the list
-            //first request
+            //updateOrderBikeList();//updates the list of orderBike
+
+            
             int orderId;
-
             var daysToAdd = shippingWeek * 7;
-            Console.WriteLine("ship " + shippingWeek);
-            Console.WriteLine("daysToAdd " + daysToAdd);
+            string values = "";
+            int i = 0;
 
+            //first request
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(daysToAdd).ToString() + "');";
             sendToDB(queryOB);
-
+            string id = getFromDBLastIdFromColumn("Order_Bikes", "Id_Order");
             //second request
-            if (orderBikeList.Count == 0)
+            if (id ==string.Empty || id =="0")//if orderList is empty
             {
                 orderId = 1;
             }
             else
             {
-                orderId = orderBikeList.Last().orderId + 1;
+                orderId = Int32.Parse(id);
             }
             foreach (var element in newOrder)
             {
-                //Console.WriteLine("type in APP : " + element[0] + " size in APP: " + element[1] + " color: in APP " + element[2] + " quantity in APP : " + element[3] + " price in APP : " + element[4]);
                 string type = element[0];
                 int size = Int32.Parse(element[1]);
                 string color = element[2];
                 int quantity = Int32.Parse(element[3]);
                 int price = Int32.Parse(element[4]) / quantity;
+                
                 for (int q = 0; q < quantity; q++)
                 {
-                    string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "'); ";
-                    sendToDB(queryOD);
-                    //Console.WriteLine("New order detail has been added to DB");
+                    /*string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "'); ";
+                    sendToDB(queryOD);*/
+                    values += "('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "')";
+                    if (i ==newOrder.Count-1 &&q ==quantity-1)
+                    {
+                        values += ";";
+                    }
+                    else
+                    {
+                        values += ",";
+                    }
+                    
                 }
+                i++;
             }
-            orderBikeList = getOrderBikeList();//updates the list 
+            string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES" + values;
+            sendToDB(queryOD);
+            //orderBikeList = getOrderBikeList();//updates the list 
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
@@ -796,7 +833,7 @@ namespace Bovelo
                     //stock.Add(string.Join("\t", row));                   
                 }
             }
-            Console.WriteLine(string.Join("\n", test[0].Size));
+            //Console.WriteLine(string.Join("\n", test[0].Size));
             return test;
         }
 

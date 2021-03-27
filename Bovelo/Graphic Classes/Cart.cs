@@ -30,36 +30,39 @@ namespace Bovelo
 
         private App app = new App();
         List<Bike> stockBike;
+        private int _estimatedShippingWeek= 0;
 
         internal Cart(ref User incomingUser)
         {
-            _currentUser = incomingUser;
             InitializeComponent();
-            //getStockBikes();
+
+            _currentUser = incomingUser;
             stockBike = app.getStockBikesID();
             
         }
         private void Cart_Load() 
         {
-            dataGridView1.Rows.Clear();
             int i = 0;
             int quantity = 0;
-            foreach (ItemBike elem in _currentUser.cart)
+            dataGridView1.Rows.Clear();//clear the grid
+           
+            foreach (ItemBike elem in _currentUser.cart)//for each item in cart
             {   
                 var stock =  stockBike.FindAll(x=> x.Type == elem.bike.Type && x.Color == elem.bike.Color && x.Size == elem.bike.Size);
                 quantity = stock.Count();
-                dataGridView1.Rows.Add();
                 int price = elem.getPrice();
+
+                dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
                 dataGridView1.Rows[i].Cells[4].Value = quantity;
-                dataGridView1.Rows[i].Cells[5].Value = price.ToString();
+                dataGridView1.Rows[i].Cells[5].Value = price;
                 i++;
             }
             Decimal B = _currentUser.getCartPrice();
-            this.labelPrice.Text = B.ToString() + "€";
+            this.labelPrice.Text = B.ToString() + " €";
 
         }
 
@@ -69,7 +72,7 @@ namespace Bovelo
             Cart_Load();            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//login button
         {
             this.Hide();
             var login = new Login();// create new window
@@ -77,19 +80,14 @@ namespace Bovelo
             login.Show();// Showing the Login window
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//set a new quantity
         {
             int i = dataGridView1.CurrentCell.RowIndex;
-            Console.WriteLine(i);
-            Console.WriteLine(_currentUser.cart[i].quantity);
-            Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
-            Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()).GetType());
             _currentUser.cart[i].setQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));                
             this.Cart_Load();
-            
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)//mainhome button
         {
             this.Hide();// Hiding the Explorerbike Window
             var MainHome = new MainHome(_currentUser);// create new window
@@ -97,22 +95,29 @@ namespace Bovelo
             MainHome.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//cart reload
         {
-
+            Cart_Load();
         }
 
         private void button4_Click(object sender, EventArgs e)//pass order
         {
             string client = textBox1.Text;        
-            int RowCount = _currentUser.getCartList().Count();
+            int RowCount = _currentUser.cart.Count();
 
             if (client != ""&&RowCount!=0)
             {
                 string text ="";
-                int weeks = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
-                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(),weeks);
-                dataGridView1.Rows.Clear();
+                if(_estimatedShippingWeek == 0)
+                {
+                    _estimatedShippingWeek = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+                }
+
+                //pass order
+                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(), _estimatedShippingWeek);
+                MessageBox.Show("The order has been validated!");
+
+                //print an invoice
                 foreach(var elem in _currentUser.getCartList())
                 {                   
                     foreach(var value in elem)
@@ -124,11 +129,14 @@ namespace Bovelo
                 string path = @"../../Classes/list_part.csv";               
                 File.WriteAllText(path, text);
                 printInvoice(client);
+
+                //Reset the cart
                 _currentUser.emptyCart();
-                this.labelPrice.Text = "0€";               
+                Cart_Load();
+                //this.labelPrice.Text = "0 €";               
                 textBox1.Text = "";
                 label5.Text = "0 Weeks";
-                MessageBox.Show("The order has been validated!");
+                
             }
             else
             {
@@ -222,12 +230,8 @@ namespace Bovelo
         }
 
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//order button
         {
             this.Hide();
             Order order = new Order(ref _currentUser);// create new window
@@ -235,47 +239,16 @@ namespace Bovelo
             order.Show();// Showing the Order window
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
             _currentUser.emptyCart();
-            this.labelPrice.Text = "0€";
+            Cart_Load();
         }
-
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-        
-
         private void button6_Click(object sender, EventArgs e)//estimate Time
         {
-            int weeks = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
-            label5.Text = weeks + "Weeks";
+            _estimatedShippingWeek = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+            label5.Text = _estimatedShippingWeek + " Weeks";
         }
     }
 }
