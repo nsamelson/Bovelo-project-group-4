@@ -44,10 +44,10 @@ namespace Bovelo
             this.label4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -153,9 +153,9 @@ namespace Bovelo
             // builderPlaning
             // 
             this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.builderPlaning.BackColor = System.Drawing.Color.Transparent;
+            this.builderPlaning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.builderPlaning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.builderPlaning.Location = new System.Drawing.Point(755, 373);
             this.builderPlaning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.builderPlaning.Name = "builderPlaning";
@@ -267,6 +267,20 @@ namespace Bovelo
             this.panel2.Size = new System.Drawing.Size(200, 593);
             this.panel2.TabIndex = 20;
             // 
+            // button7
+            // 
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button7.Location = new System.Drawing.Point(1, 404);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(200, 88);
+            this.button7.TabIndex = 17;
+            this.button7.Text = "Assembler works";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -307,20 +321,6 @@ namespace Bovelo
             this.label6.Size = new System.Drawing.Size(166, 79);
             this.label6.TabIndex = 1;
             this.label6.Text = "Home";
-            // 
-            // button7
-            // 
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button7.Location = new System.Drawing.Point(1, 404);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 88);
-            this.button7.TabIndex = 17;
-            this.button7.Text = "Assembler works";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // Manager_MainHome
             // 

@@ -35,14 +35,6 @@ namespace Bovelo
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +45,14 @@ namespace Bovelo
             this.Order_State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Receive = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Remove_Order = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +67,7 @@ namespace Bovelo
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(0, 438);
-            this.button2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 93);
             this.button2.TabIndex = 7;
@@ -81,7 +81,7 @@ namespace Bovelo
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button4.Location = new System.Drawing.Point(0, 351);
-            this.button4.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button4.Margin = new System.Windows.Forms.Padding(5);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(200, 88);
             this.button4.TabIndex = 6;
@@ -95,7 +95,7 @@ namespace Bovelo
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button7.Location = new System.Drawing.Point(0, 175);
-            this.button7.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button7.Margin = new System.Windows.Forms.Padding(5);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(200, 86);
             this.button7.TabIndex = 5;
@@ -110,7 +110,7 @@ namespace Bovelo
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button3.Location = new System.Drawing.Point(0, 260);
-            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button3.Margin = new System.Windows.Forms.Padding(5);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(200, 92);
             this.button3.TabIndex = 4;
@@ -126,7 +126,7 @@ namespace Bovelo
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(0, 89);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.button1.Margin = new System.Windows.Forms.Padding(5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(200, 87);
             this.button1.TabIndex = 2;
@@ -140,6 +140,7 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -154,127 +155,12 @@ namespace Bovelo
             this.Receive,
             this.Remove_Order});
             this.dataGridView1.Location = new System.Drawing.Point(210, 108);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1543, 667);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1574, 90);
-            this.panel1.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(1465, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 33);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Manager";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(459, 10);
-            this.label3.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(374, 79);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Provider orders";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(5, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 79);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Bovelo";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 795);
-            this.panel2.TabIndex = 19;
-            // 
-            // panel4
-            // 
-            this.panel4.AccessibleDescription = "Release 3.0";
-            this.panel4.AccessibleName = "hello";
-            this.panel4.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 752);
-            this.panel4.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 43);
-            this.panel4.TabIndex = 16;
-            this.panel4.Tag = "";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(47, 1);
-            this.label4.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 39);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "release 3.0";
-            // 
-            // panel3
-            // 
-            this.panel3.AccessibleDescription = "Release 3.0";
-            this.panel3.AccessibleName = "hello";
-            this.panel3.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 90);
-            this.panel3.TabIndex = 15;
-            this.panel3.Tag = "";
             // 
             // Order_Id
             // 
@@ -342,6 +228,121 @@ namespace Bovelo
             this.Remove_Order.ToolTipText = "Remove";
             this.Remove_Order.UseColumnTextForButtonValue = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(200, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(13);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1574, 90);
+            this.panel1.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label1.Location = new System.Drawing.Point(1465, 7);
+            this.label1.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 33);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Manager";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(459, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(374, 79);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Provider orders";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label5.Location = new System.Drawing.Point(5, 5);
+            this.label5.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 79);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Bovelo";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(13);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 795);
+            this.panel2.TabIndex = 19;
+            // 
+            // panel4
+            // 
+            this.panel4.AccessibleDescription = "Release 3.0";
+            this.panel4.AccessibleName = "hello";
+            this.panel4.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel4.Location = new System.Drawing.Point(0, 752);
+            this.panel4.Margin = new System.Windows.Forms.Padding(13);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 43);
+            this.panel4.TabIndex = 16;
+            this.panel4.Tag = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label4.Location = new System.Drawing.Point(47, 1);
+            this.label4.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 39);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "release 3.0";
+            // 
+            // panel3
+            // 
+            this.panel3.AccessibleDescription = "Release 3.0";
+            this.panel3.AccessibleName = "hello";
+            this.panel3.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(13);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 90);
+            this.panel3.TabIndex = 15;
+            this.panel3.Tag = "";
+            // 
             // Manager__Provider_orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -352,7 +353,7 @@ namespace Bovelo
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager__Provider_orders";
             this.Text = "Provider_orders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
