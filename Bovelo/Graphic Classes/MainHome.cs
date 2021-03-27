@@ -121,7 +121,7 @@ namespace Bovelo
         private void button5_Click_1(object sender, EventArgs e)
         {
 
-            if (_currentUser.userType[1] == true )
+            if (_currentUser.userType["Production Manager"] == true )
             {
                 this.Hide();
                 Manager_MainHome mmh = new Manager_MainHome(_currentUser);// create new window
