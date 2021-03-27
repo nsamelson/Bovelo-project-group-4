@@ -18,8 +18,9 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
-            orderLoad();
             newApp.updateBikePartList();
+            orderLoad();
+
         }
 
         private void Manager__Provider_orders_Load(object sender, EventArgs e)
@@ -85,6 +86,12 @@ namespace Bovelo
                     int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
                     query = "UPDATE Bike_Parts SET Quantity="+quantity+" WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
                     newApp.sendToDB(query);
+                    MessageBox.Show(@"Changed State :" +
+                        "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value +
+                        "\nId_Order= " + dataGridView1.Rows[e.RowIndex].Cells[0].Value +
+                        "\nId_Order_Detailed_Part = " + dataGridView1.Rows[e.RowIndex].Cells[1].Value +
+                        "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
+                        "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
                 }
                 orderLoad();
             }
