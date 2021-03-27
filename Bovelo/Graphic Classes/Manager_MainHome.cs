@@ -102,5 +102,13 @@ namespace Bovelo
             maw.FormClosed += (s, args) => this.Close(); // close the login Form
             maw.Show();
         }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            this.Hide(); //hides the current form
+            Manager_AssemblerWork maw = new Manager_AssemblerWork(user);
+            maw.FormClosed += (s, args) => this.Close(); // close the login Form
+            maw.Show();
+        }
     }
 }
