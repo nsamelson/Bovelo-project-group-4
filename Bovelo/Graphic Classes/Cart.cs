@@ -29,25 +29,32 @@ namespace Bovelo
         private User _currentUser;
 
         private App app = new App();
+        List<Bike> stockBike;
+
         internal Cart(ref User incomingUser)
         {
             _currentUser = incomingUser;
             InitializeComponent();
             //getStockBikes();
+            stockBike = app.getStockBikesID();
+            
         }
         private void Cart_Load() 
         {
             dataGridView1.Rows.Clear();
             int i = 0;
+            int quantity = 0;
             foreach (ItemBike elem in _currentUser.cart)
-            {
+            {   
+                var stock =  stockBike.FindAll(x=> x.Type == elem.bike.Type && x.Color == elem.bike.Color && x.Size == elem.bike.Size);
+                quantity = stock.Count();
                 dataGridView1.Rows.Add();
                 int price = elem.getPrice();
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
                 dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
                 dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
-                dataGridView1.Rows[i].Cells[4].Value = getStockBikes();
+                dataGridView1.Rows[i].Cells[4].Value = quantity;
                 dataGridView1.Rows[i].Cells[5].Value = price.ToString();
                 i++;
             }
