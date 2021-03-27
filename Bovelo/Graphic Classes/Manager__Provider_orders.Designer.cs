@@ -35,16 +35,6 @@ namespace Bovelo
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Order_State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Receive = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Remove_Order = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -53,6 +43,16 @@ namespace Bovelo
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name_part = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Receive = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Remove_Order = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -146,7 +146,7 @@ namespace Bovelo
             this.Order_Id,
             this.Customer_Name,
             this.Id_Bike_Part,
-            this.Name,
+            this.Name_part,
             this.Quantity,
             this.Total_Price,
             this.Order_Date,
@@ -160,72 +160,6 @@ namespace Bovelo
             this.dataGridView1.Size = new System.Drawing.Size(1087, 453);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Order_Id
-            // 
-            this.Order_Id.HeaderText = "Order_Id";
-            this.Order_Id.MinimumWidth = 6;
-            this.Order_Id.Name = "Order_Id";
-            this.Order_Id.ReadOnly = true;
-            // 
-            // Customer_Name
-            // 
-            this.Customer_Name.HeaderText = "Id_Detailed";
-            this.Customer_Name.MinimumWidth = 6;
-            this.Customer_Name.Name = "Customer_Name";
-            this.Customer_Name.ReadOnly = true;
-            // 
-            // Id_Bike_Part
-            // 
-            this.Id_Bike_Part.HeaderText = "Id_Bike_Part";
-            this.Id_Bike_Part.Name = "Id_Bike_Part";
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Total_Price
-            // 
-            this.Total_Price.HeaderText = "Total_Price";
-            this.Total_Price.MinimumWidth = 6;
-            this.Total_Price.Name = "Total_Price";
-            this.Total_Price.ReadOnly = true;
-            // 
-            // Order_Date
-            // 
-            this.Order_Date.HeaderText = "Order_Date";
-            this.Order_Date.MinimumWidth = 6;
-            this.Order_Date.Name = "Order_Date";
-            this.Order_Date.ReadOnly = true;
-            // 
-            // Order_State
-            // 
-            this.Order_State.HeaderText = "Order_State";
-            this.Order_State.Name = "Order_State";
-            // 
-            // Receive
-            // 
-            this.Receive.HeaderText = "Change_State";
-            this.Receive.Name = "Receive";
-            this.Receive.Text = "Received";
-            this.Receive.ToolTipText = "Received";
-            this.Receive.UseColumnTextForButtonValue = true;
-            // 
-            // Remove_Order
-            // 
-            this.Remove_Order.HeaderText = "Remove";
-            this.Remove_Order.Name = "Remove_Order";
-            this.Remove_Order.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Remove_Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Remove_Order.Text = "Remove";
-            this.Remove_Order.ToolTipText = "Remove";
-            this.Remove_Order.UseColumnTextForButtonValue = true;
             // 
             // panel1
             // 
@@ -342,6 +276,72 @@ namespace Bovelo
             this.panel3.TabIndex = 15;
             this.panel3.Tag = "";
             // 
+            // Order_Id
+            // 
+            this.Order_Id.HeaderText = "Order_Id";
+            this.Order_Id.MinimumWidth = 6;
+            this.Order_Id.Name = "Order_Id";
+            this.Order_Id.ReadOnly = true;
+            // 
+            // Customer_Name
+            // 
+            this.Customer_Name.HeaderText = "Id_Detailed";
+            this.Customer_Name.MinimumWidth = 6;
+            this.Customer_Name.Name = "Customer_Name";
+            this.Customer_Name.ReadOnly = true;
+            // 
+            // Id_Bike_Part
+            // 
+            this.Id_Bike_Part.HeaderText = "Id_Bike_Part";
+            this.Id_Bike_Part.Name = "Id_Bike_Part";
+            // 
+            // Name_part
+            // 
+            this.Name_part.HeaderText = "Name_part";
+            this.Name_part.Name = "Name_part";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Total_Price
+            // 
+            this.Total_Price.HeaderText = "Total_Price";
+            this.Total_Price.MinimumWidth = 6;
+            this.Total_Price.Name = "Total_Price";
+            this.Total_Price.ReadOnly = true;
+            // 
+            // Order_Date
+            // 
+            this.Order_Date.HeaderText = "Order_Date";
+            this.Order_Date.MinimumWidth = 6;
+            this.Order_Date.Name = "Order_Date";
+            this.Order_Date.ReadOnly = true;
+            // 
+            // Order_State
+            // 
+            this.Order_State.HeaderText = "Order_State";
+            this.Order_State.Name = "Order_State";
+            // 
+            // Receive
+            // 
+            this.Receive.HeaderText = "Change_State";
+            this.Receive.Name = "Receive";
+            this.Receive.Text = "Received";
+            this.Receive.ToolTipText = "Received";
+            this.Receive.UseColumnTextForButtonValue = true;
+            // 
+            // Remove_Order
+            // 
+            this.Remove_Order.HeaderText = "Remove";
+            this.Remove_Order.Name = "Remove_Order";
+            this.Remove_Order.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Remove_Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Remove_Order.Text = "Remove";
+            this.Remove_Order.ToolTipText = "Remove";
+            this.Remove_Order.UseColumnTextForButtonValue = true;
+            // 
             // Manager__Provider_orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -376,16 +376,6 @@ namespace Bovelo
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Bike_Part;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Order_State;
-        private System.Windows.Forms.DataGridViewButtonColumn Receive;
-        private System.Windows.Forms.DataGridViewButtonColumn Remove_Order;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
@@ -394,5 +384,15 @@ namespace Bovelo
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Customer_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Bike_Part;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name_part;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order_State;
+        private System.Windows.Forms.DataGridViewButtonColumn Receive;
+        private System.Windows.Forms.DataGridViewButtonColumn Remove_Order;
     }
 }
