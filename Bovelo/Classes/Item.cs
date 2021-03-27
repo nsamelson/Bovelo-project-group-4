@@ -7,7 +7,7 @@ namespace Bovelo
 {
     class Item //: Bike should maybe put it that way because of composition
     {
-        public int quantity;
+        public int quantity ;
         public int price = 0;
 
         public Item(int quantity)
