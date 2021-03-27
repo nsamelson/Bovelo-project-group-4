@@ -47,6 +47,7 @@ namespace Bovelo
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -201,7 +202,7 @@ namespace Bovelo
             this.panel3.Controls.Add(this.label5);
             this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.panel3.Margin = new System.Windows.Forms.Padding(13);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 90);
             this.panel3.TabIndex = 15;
@@ -243,7 +244,7 @@ namespace Bovelo
             this.panel4.Controls.Add(this.label4);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel4.Location = new System.Drawing.Point(0, 550);
-            this.panel4.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.panel4.Margin = new System.Windows.Forms.Padding(13);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
             this.panel4.TabIndex = 16;
@@ -252,6 +253,7 @@ namespace Bovelo
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.button1);
@@ -260,7 +262,7 @@ namespace Bovelo
             this.panel2.Controls.Add(this.button5);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.panel2.Margin = new System.Windows.Forms.Padding(13);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 593);
             this.panel2.TabIndex = 20;
@@ -273,7 +275,7 @@ namespace Bovelo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(13, 13, 13, 13);
+            this.panel1.Margin = new System.Windows.Forms.Padding(13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1062, 90);
             this.panel1.TabIndex = 21;
@@ -305,6 +307,20 @@ namespace Bovelo
             this.label6.Size = new System.Drawing.Size(166, 79);
             this.label6.TabIndex = 1;
             this.label6.Text = "Home";
+            // 
+            // button7
+            // 
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button7.Location = new System.Drawing.Point(1, 404);
+            this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(200, 88);
+            this.button7.TabIndex = 17;
+            this.button7.Text = "Assembler works";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // Manager_MainHome
             // 
@@ -359,5 +375,6 @@ namespace Bovelo
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button7;
     }
 }
