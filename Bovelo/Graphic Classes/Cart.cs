@@ -66,7 +66,7 @@ namespace Bovelo
         private void Cart_Load(object sender, EventArgs e)
         {
 
-            Cart_Load();
+            Cart_Load();            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace Bovelo
             Console.WriteLine(_currentUser.cart[i].quantity);
             Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
             Console.WriteLine(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()).GetType());
-            _currentUser.cart[i].quantity = Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            _currentUser.cart[i].setQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));                
             this.Cart_Load();
             
         }
