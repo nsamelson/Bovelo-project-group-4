@@ -49,18 +49,26 @@ namespace Bovelo
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine("TRY");
+            string name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+            int quantity = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+            string location = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+            int price = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+            string provider = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+            int time = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
             if (dataGridView1.CurrentCell.Value == "Set")
             {
                 Console.WriteLine("CATCH");
-                string name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                int quantity = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                string location = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                int price = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
-                string provider = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                int time = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
                 string query = "UPDATE Bike_Parts SET Bike_Parts_Name='" + name + "',Quantity=" + quantity + ",Location='" + location + "',Price=" + price + ",Provider='" + provider + "',Time_To_Build=" + time + " WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 newApp.sendToDB(query);
             }
+            MessageBox.Show(@"New State :"+ 
+                "\nName    = " + name +
+                "\nQuantity= " + quantity +
+                "\nLocation= " + location +
+                "\nPrice   = " + price +
+                "\nProvider= " + provider +
+                "\nTime_To_Build = " + time +
+                "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
         }
 
         private void button4_Click(object sender, EventArgs e)
