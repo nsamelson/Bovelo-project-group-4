@@ -130,9 +130,24 @@ namespace Bovelo
             int _i = Convert.ToInt32(i);
 
             var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == TypeOfBike);
-            Bike BikeToAdd = new Bike(0,_model);//id is set to 0 MAYBE NEED TO CHANGE
-            _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
 
+            Bike BikeToAdd = new Bike(0,_model);//id is set to 0 MAYBE NEED TO CHANGE
+
+            bool isInCart = false;
+            foreach (var elem in _currentUser.cart)
+            {
+                if (elem.bike.Type == BikeToAdd.Type && elem.bike.Color == BikeToAdd.Color && elem.bike.Size == BikeToAdd.Size)
+                {
+                    Console.WriteLine("Already in cart");
+                    isInCart = true;
+                }
+                
+                
+            }
+            if (!isInCart)
+            {
+                _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
+            }
         }
 
 
