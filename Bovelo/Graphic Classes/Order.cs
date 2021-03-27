@@ -65,11 +65,6 @@ namespace Bovelo
             cart.Show();// Showing the Cart window
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
