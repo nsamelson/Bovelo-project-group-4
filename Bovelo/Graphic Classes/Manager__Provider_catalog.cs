@@ -227,8 +227,31 @@ namespace Bovelo
                 query = "INSERT INTO Bovelo.Order_Detailed_Part(Id_Order,Id_Bike_Parts,Quantity,Price,State) VALUES('" + result[0][0] +"'," + elem.part.part_Id +","+elem.quantity+ ","+elem.price+","+"'Not Received'"+");";
                 newApp.sendToDB(query);
             }
+            printInvoice("Manager");
             user.cartPart.Clear();
             cartLoad();
+        }
+
+        private void printInvoice(string client)
+        {
+            List<string> column = new List<string>();
+            column.Add("ID Part");
+            column.Add("Name");
+            column.Add("Provider");
+            column.Add("Quantity");
+            column.Add("Price");
+            List<List<string>> selectedData = new List<List<string>>();
+            foreach (var elem in user.cartPart)
+            {
+                List<string> row = new List<string>();
+                row.Add(elem.part.part_Id.ToString());
+                row.Add(elem.part.name);
+                row.Add(elem.part.provider);
+                row.Add(elem.quantity.ToString());
+                row.Add(elem.price.ToString());
+                selectedData.Add(row);
+            }
+            newApp.createInvoice(client, column, selectedData);
         }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo

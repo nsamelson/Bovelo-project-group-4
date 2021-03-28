@@ -157,86 +157,25 @@ namespace Bovelo
 
         private void printInvoice(string client)
         {
-            string FileName = DateTime.Now.ToString();
-            FileName = FileName.Replace('/', '_');
-            FileName = FileName.Replace(' ', '_');
-            FileName = FileName.Replace(':', '_');
-            string path = Environment.CurrentDirectory;
-            PdfWriter writer = new PdfWriter(@"../../facture/" + client + FileName + ".pdf");
-            PdfDocument pdf = new PdfDocument(writer);
-            Document document = new Document(pdf);
-
-            // Header
-            Paragraph header = new Paragraph("Bovelo")
-                .SetTextAlignment(TextAlignment.CENTER)
-                .SetFontSize(20);
-
-            // New line
-            Paragraph newline = new Paragraph(new Text("\n"));
-            document.Add(newline);
-            document.Add(header);
-            // Add sub-header
-            Paragraph subheader = new Paragraph(client)
-               .SetTextAlignment(TextAlignment.CENTER)
-               .SetFontSize(15);
-            document.Add(subheader);
-            // Line separator
-            LineSeparator ls = new LineSeparator(new SolidLine());
-            document.Add(ls);
-            // Add paragraph1
-            Paragraph paragraph1 = new Paragraph("Récapitulatif de commande");
-            paragraph1.SetTextAlignment(TextAlignment.CENTER);
-            document.Add(paragraph1);
-            document.Add(ls);
-            document.Add(newline);
-            // Table
-            Table table = new Table(5, false);
             List<string> column = new List<string>();
             column.Add("Bike");
             column.Add("Size");
             column.Add("Color");
             column.Add("Quantity");
             column.Add("Price");
-            foreach (var elem in column)
+            var unselectedData = _currentUser.getCartList();
+            List<List<string>> selectedData= new List<List<string>>();
+            foreach (var elem in unselectedData)
             {
-                Cell cell = new Cell(1, 1)
-                    .SetBackgroundColor(ColorConstants.GRAY)
-                    .SetTextAlignment(TextAlignment.CENTER)
-                    .SetWidth(100)
-                    .Add(new Paragraph(elem));
-                table.AddCell(cell);
+                List<string> row = new List<string>();
+                row.Add(elem[0]);
+                row.Add(elem[1]);
+                row.Add(elem[2]);
+                row.Add(elem[3]);
+                row.Add(elem[4]);
+                selectedData.Add(row);
             }
-            foreach (var item in _currentUser.getCartList())
-            {
-                for (int e = 0; e < 5; e++)
-                {
-
-                    Cell cell = new Cell(1, 1)
-                        .SetTextAlignment(TextAlignment.CENTER)
-                        .Add(new Paragraph(item[e]));
-                    table.AddCell(cell);
-                }
-            }
-            document.Add(table);
-            //Total
-            document.Add(newline);
-            document.Add(ls);
-            document.Add(newline);
-            Paragraph paragraph2 = new Paragraph("Total : " + this.labelPrice.Text);
-            paragraph2.SetTextAlignment(TextAlignment.RIGHT);
-            document.Add(paragraph2);
-            // Page numbers
-            int n = pdf.GetNumberOfPages();
-            for (int i = 1; i <= n; i++)
-            {
-                document.ShowTextAligned(new Paragraph(String
-                   .Format(i + "/" + n)),
-                   559, 806, i, TextAlignment.RIGHT,
-                   VerticalAlignment.TOP, 0);
-            }
-
-            // Close document
-            document.Close();
+            app.createInvoice(client, column, selectedData);
         }
 
 
