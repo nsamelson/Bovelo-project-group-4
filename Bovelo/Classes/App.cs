@@ -460,32 +460,53 @@ namespace Bovelo
         }
         internal List<Planning> getPlanningList() //gets all plannings
         {
+            updateBikeModelList();
             List<Planning> plannings = new List<Planning>();
             var detailedSchedules = getFromDB("Detailed_Schedules");
             var allorders = getOrderDetails();
-            Dictionary<string, List<string>> weeks = new Dictionary<string, List<string>>();
-            int id = 0;//I don't know if it's usefull, maybe delete later
-            foreach (var row in detailedSchedules)
+            /*Dictionary<string, List<string>> weeks = new Dictionary<string, List<string>>();//dictionnary of WeekName as key and List of id_OrderDetails as value
+            Dictionary<string, string> assemblerPerBikeId = new Dictionary<string, string>();*/
+            Dictionary<string, Dictionary<string,string>> schedules = new Dictionary<string, Dictionary<string, string>>();//<weekName,<idOrderDetails,AssemblerName>>
+            int id = 0;
+
+            foreach (var row in detailedSchedules)//each bike in Detailed_Schedules <weekName,id_Order_Details,Assebled_By,Started,Finnished>
             {
-                if (!weeks.ContainsKey(row[0]))
+                if (!schedules.ContainsKey(row[0]))
+                {
+                    schedules.Add(row[0], new Dictionary<string, string>() { {row[1], row[2]} });
+                }
+                else
+                {
+                    var values = schedules.FirstOrDefault(x => x.Key == row[0]).Value;
+                    values.Add(row[1], row[2]);
+                    schedules[row[0]] = values;
+                }
+                /*if (!weeks.ContainsKey(row[0]))//if weekName does not exist yet
                 {
                     weeks.Add(row[0], new List<string>() { row[1] });
                 }
-                else
+                else //if it exists
                 {
                     var values = weeks.FirstOrDefault(k => k.Key == row[0]).Value;
                     values.Add(row[1]);
                     weeks[row[0]] = values;
                 }
+                assemblerPerBikeId.Add(row[1], row[2]);//adds every orderBike to a dictionnary with an assembler name*/
             }
-            foreach (var row in weeks)
+            foreach(var row in schedules)
             {
-
-                var bikes = allorders.FindAll(x => row.Value.Contains(x[0]));
-                plannings.Add(new Planning(bikes, row.Key, id));
-
+                var bikes = allorders.FindAll(x => row.Value.Keys.Contains(x[0]));
+                plannings.Add(new Planning(bikes, row.Key, id, row.Value, bikeModels));
                 id++;
             }
+            /*foreach (var row in weeks)//foreach planning created
+            {
+                var bikes = allorders.FindAll(x => row.Value.Contains(x[0]));//matching the id_OrderDetails from all the orders and the ones from row.Value
+                plannings.Add(new Planning(bikes, row.Key, id, assemblerPerBikeId, bikeModels));
+                Console.WriteLine(bikes.Count);
+
+                id++;
+            }*/
             return plannings;
 
         }

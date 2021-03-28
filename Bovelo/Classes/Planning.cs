@@ -11,23 +11,16 @@ namespace Bovelo
         public string weekName;
         public int planningId;
         public List<Bike> bikesToBuild= new List<Bike>();
-        public List<List<string>> planningDetails;
         public int workingMinute;
-        public int maxWorkingMinute = 3 * 8 * 5 * 60;// number of hours per week : 3 workers working 8 hours per day and 5 days a week
-        public Planning(List<List<string>> planningDetails, string weekName,int planningId)
+        public int maxWorkingMinute = 3 * 8 * 5 * 60;// number of min per week : 3 workers working 8 hours per day and 5 days a week
+        public Planning(List<List<string>> planningDetails, string weekName,int planningId,Dictionary<string,string> assemblerNames,List<BikeModel> bikeModels)
         {
             this.weekName = weekName;
             this.planningId = planningId;
-            this.planningDetails = planningDetails;
-            this.bikesToBuild = getBikesToBuild();
+            setBikesToBuild(planningDetails,bikeModels, assemblerNames);
         }
-        public List<Bike> getBikesToBuild()
+        private void setBikesToBuild(List<List<string>> planningDetails, List<BikeModel> bikeModels, Dictionary<string, string> assemblerNames)
         {
-            App newApp = new App();
-            var bikeModels = newApp.getBikeModelList();//get the model list
-
-            var bikes = new List<Bike>();
-            
             foreach (var elem in planningDetails)
             {
                 int idOrderDetails = Int32.Parse(elem[0]);
@@ -35,22 +28,21 @@ namespace Bovelo
                 int bikeSize = Int32.Parse(elem[2]);
                 string bikeColor = elem[3];
                 string status = elem[5];
-                string assemblerName = elem[6];
+                string assemblerName = assemblerNames.FirstOrDefault(x => Int32.Parse(x.Key) == idOrderDetails).Value;
                 //takes Corresponding model, creates a bike, adds a status and assembler's name, adds bike to the list
                 BikeModel model = bikeModels.FirstOrDefault(x => x.Color == bikeColor && x.Size == bikeSize && x.Type == bikeType);//gets the specific model
-                var newBike = new Bike(idOrderDetails,model) { assembler = assemblerName };
+                var newBike = new Bike(idOrderDetails, model) { assembler = assemblerName };
                 newBike.setNewState(status);
-                bikes.Add(newBike);
+                bikesToBuild.Add(newBike);
 
 
                 workingMinute += newBike.TotalTime;
             }
-            return bikes;
         }
-        public void refreshBikes(List<List<string>> refreshedBikes)
+        public List<Bike> getBikesToBuild()
         {
-            planningDetails.Clear();
-            planningDetails = refreshedBikes;
+            return bikesToBuild;
         }
+       
     }
 }
