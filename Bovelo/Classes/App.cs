@@ -244,9 +244,7 @@ namespace Bovelo
 
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice,int shippingWeek) //is used to pass a new order
         {
-            //updateOrderBikeList();//updates the list of orderBike
 
-            
             int orderId;
             var daysToAdd = shippingWeek * 7;
             string values = "";
@@ -256,6 +254,7 @@ namespace Bovelo
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(daysToAdd).ToString() + "');";
             sendToDB(queryOB);
             string id = getFromDBLastIdFromColumn("Order_Bikes", "Id_Order");
+
             //second request
             if (id ==string.Empty || id =="0")//if orderList is empty
             {
@@ -485,23 +484,21 @@ namespace Bovelo
         internal List<OrderBike> getOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
             List<OrderBike> orderBikeList = new List<OrderBike>();
-            List<List<string>> orderList = getFromDB("Order_Bikes");
+            var orderList = getFromDB("Order_Bikes");
             var orderDetailList = getFromDB("Order_Details");
+            updateBikeModelList();
 
             foreach (var row in orderList)
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[6] == row[0]));//takes each lists with the same order_Id
-                OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]));
+                OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]), Convert.ToDateTime(row[3]), Convert.ToDateTime(row[4]), Int32.Parse(row[2]),bikeModels);
 
                 //maybe put those 3 into a SET method inside orderBike
-                newOrder.orderDate = Convert.ToDateTime(row[3]);
+                /*newOrder.orderDate = Convert.ToDateTime(row[3]);
                 newOrder.shippingDate = Convert.ToDateTime(row[4]);
-                newOrder.totalPrice = Int32.Parse(row[2]);
+                newOrder.totalPrice = Int32.Parse(row[2]);*/
 
                 orderBikeList.Add(newOrder);//row[1] is the column where the name of the client is put
-
-                //OrderBike order = new OrderBike(row[1], details,Int32.Parse(row[0])); 
-                //Console.WriteLine(" Order : " + order.getBikeList());
 
             }
 

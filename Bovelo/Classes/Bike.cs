@@ -44,7 +44,7 @@ namespace Bovelo
             
 
         }
-        public void setNewState(string status,string assemblerName ="")
+        public void setNewState(string status)
         {
             state[getCurrentState()] = false;// change the actual state to false
             if (status == "New" || status == "Active" || status == "Closed")
@@ -52,10 +52,10 @@ namespace Bovelo
                 state[status] = true;
             }
             else { }//error
-            if (assemblerName != "")
+            /*if (assemblerName != "")
             {
                 assembler = assemblerName;
-            }
+            }*/
             
         }
         public string getCurrentState()
