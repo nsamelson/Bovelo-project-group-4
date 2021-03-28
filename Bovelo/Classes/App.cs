@@ -468,10 +468,21 @@ namespace Bovelo
             Dictionary<string, string> assemblerPerBikeId = new Dictionary<string, string>();*/
             Dictionary<string, Dictionary<string,string>> schedules = new Dictionary<string, Dictionary<string, string>>();//<weekName,<idOrderDetails,AssemblerName>>
             int id = 0;
-
+            Dictionary<string, List<List<string>>> test = new Dictionary<string, List<List<string>>>(); //<weekName,<weekName,id_Order_Details,Assebled_By,Started,Finnished>
             foreach (var row in detailedSchedules)//each bike in Detailed_Schedules <weekName,id_Order_Details,Assebled_By,Started,Finnished>
             {
-                if (!schedules.ContainsKey(row[0]))
+                if (!test.ContainsKey(row[0]))
+                {
+                    test.Add(row[0], new List<List<string>>() { row }); //adds the detailed schedule to the corresponding week 
+                }
+                else
+                {
+                    var values = test.FirstOrDefault(x => x.Key == row[0]).Value;
+                    values.Add(row);
+                    test[row[0]] = values;
+                }
+
+                /*if (!schedules.ContainsKey(row[0]))
                 {
                     schedules.Add(row[0], new Dictionary<string, string>() { {row[1], row[2]} });
                 }
@@ -480,7 +491,7 @@ namespace Bovelo
                     var values = schedules.FirstOrDefault(x => x.Key == row[0]).Value;
                     values.Add(row[1], row[2]);
                     schedules[row[0]] = values;
-                }
+                }*/
                 /*if (!weeks.ContainsKey(row[0]))//if weekName does not exist yet
                 {
                     weeks.Add(row[0], new List<string>() { row[1] });
@@ -493,10 +504,21 @@ namespace Bovelo
                 }
                 assemblerPerBikeId.Add(row[1], row[2]);//adds every orderBike to a dictionnary with an assembler name*/
             }
-            foreach(var row in schedules)
+            /*foreach(var row in schedules)
             {
-                var bikes = allorders.FindAll(x => row.Value.Keys.Contains(x[0]));
+                var bikes = allorders.FindAll(x => row.Value.Keys.Contains(x[0]));//finds all the bikesid added in a schedule
                 plannings.Add(new Planning(bikes, row.Key, id, row.Value, bikeModels));
+                id++;
+            }*/
+            foreach (var week in test)
+            {
+                List<List<string>> bikes = new List<List<string>>();
+                foreach(var row in week.Value)
+                {
+                    bikes.Add(allorders.FirstOrDefault(x=>x[0] ==row[1]));
+                    //Console.WriteLine(string.Join("\t", bikes.Last()) + week.Key);
+                }
+                plannings.Add(new Planning(bikes, week.Key, id, week.Value, bikeModels));
                 id++;
             }
             /*foreach (var row in weeks)//foreach planning created

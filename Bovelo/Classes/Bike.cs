@@ -21,6 +21,8 @@ namespace Bovelo
         public List<BikePart> bikeParts;
         private BikeModel _model;
         public string assembler;
+        public string startBuildTime;
+        public string endBuildTime;
         public Bike(int bikeId,BikeModel bikeModel) //ID OF THE BIKE NOT BIKEMODEL
         {
             this.bikeId = bikeId;

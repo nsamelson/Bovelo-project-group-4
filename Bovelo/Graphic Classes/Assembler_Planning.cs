@@ -20,7 +20,7 @@ namespace Bovelo
             this.user = user;
             //this.planningWeek = planning; Was in constructor
             InitializeComponent();
-            newApp.planningList = newApp.getPlanningList();
+            //newApp.planningList = newApp.getPlanningList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -98,11 +98,12 @@ namespace Bovelo
         }
 
 
-        private void Assembler_Planning_Load_1(object sender, EventArgs e)
+        private void Assembler_Planning_Load_1(object sender, EventArgs e)//loading the page
         {
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            newApp.updatePlanningList();
             var plans = newApp.planningList.Select(x => x.weekName).ToList();
-            comboBox1.DataSource = plans;
+            comboBox1.DataSource = plans; //shows the existing schedules
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -138,26 +139,29 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[4].Value = "Click to see parts";
                 dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
                 dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
+                dataGridView1.Rows[i].Cells[6].Value = week;
                 dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
                 comp = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 if (comp == "Closed")
                 {
-                    Console.WriteLine("voila : " + dataGridView1.Rows[i].Cells[0].Value);
+                    Console.WriteLine("id : " + dataGridView1.Rows[i].Cells[0].Value);
                     DataGridViewTextBoxCell startCell = new DataGridViewTextBoxCell();
                     DataGridViewTextBoxCell finishCell = new DataGridViewTextBoxCell();
                     DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
 
                     newCell.Value = string.Empty;
-                    startCell.Value = newApp.getPlanifiedBikesByWeekName(week)[i][10];
-                    finishCell.Value = newApp.getPlanifiedBikesByWeekName(week)[i][11];
+                    /*startCell.Value = newApp.getPlanifiedBikesByWeekName(week)[i][10];
+                    finishCell.Value = newApp.getPlanifiedBikesByWeekName(week)[i][11];*/
+                    startCell.Value = bike.startBuildTime;
+                    finishCell.Value = bike.endBuildTime;
 
-                    Console.WriteLine("finsihed at : " + newApp.getPlanifiedBikesByWeekName(week)[i][11] + "started at  : " + newApp.getPlanifiedBikesByWeekName(week)[i][10]);
-                    
+                    //Console.WriteLine("finsihed at : " + newApp.getPlanifiedBikesByWeekName(week)[i][11] + "started at  : " + newApp.getPlanifiedBikesByWeekName(week)[i][10]);
+
                     dataGridView1.Rows[i].Cells[8] = startCell;
                     dataGridView1.Rows[i].Cells[9] = finishCell;
                     dataGridView1.Rows[i].Cells[10] = newCell;
                 }
-                dataGridView1.Rows[i].Cells[6].Value = week;
+                
                 //dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikesByWeekName(week)[i][9];
                 i++;
             }
