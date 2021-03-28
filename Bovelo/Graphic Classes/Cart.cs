@@ -83,8 +83,18 @@ namespace Bovelo
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)//set a new quantity
         {
             int i = dataGridView1.CurrentCell.RowIndex;
-            _currentUser.cart[i].setQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));                
-            this.Cart_Load();
+            int bikeQuantity = Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString());
+            Console.WriteLine(bikeQuantity);
+            if (bikeQuantity != 0)
+            {
+                _currentUser.cart[i].setQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
+                this.Cart_Load();
+            }
+            else
+            {
+                _currentUser.deleteItem(bikeQuantity);
+                this.Cart_Load();
+            }
         }
 
         private void button7_Click(object sender, EventArgs e)//mainhome button
