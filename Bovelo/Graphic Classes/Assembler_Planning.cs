@@ -95,14 +95,8 @@ namespace Bovelo
                 MessageBox.Show(partsToShow);
             }
             newApp.planningList = newApp.getPlanningList();
-
-
-
         }
-        public void assembler_Planning_Load(object sender, EventArgs e)
-        {
 
-        }
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)
         {
@@ -119,17 +113,8 @@ namespace Bovelo
             amh.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//get planning button
         {
             //newApp.planningList = newApp.getPlanningList();
             dataGridView1.Rows.Clear();
@@ -153,6 +138,7 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[4].Value = "Click to see parts";
                 dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
                 dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
+                dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
                 comp = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 if (comp == "Closed")
                 {
@@ -172,7 +158,7 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[10] = newCell;
                 }
                 dataGridView1.Rows[i].Cells[6].Value = week;
-                dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikesByWeekName(week)[i][9];
+                //dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikesByWeekName(week)[i][9];
                 i++;
             }
         }
