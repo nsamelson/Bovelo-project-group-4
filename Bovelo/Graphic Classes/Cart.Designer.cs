@@ -34,6 +34,13 @@ namespace Bovelo
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Set = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,13 +59,6 @@ namespace Bovelo
             this.button6 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Set = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -153,6 +153,53 @@ namespace Bovelo
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Bike";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Size";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Color";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Quantity";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            // 
+            // Column5
+            // 
+            this.Column5.HeaderText = "Quantity in stock";
+            this.Column5.MinimumWidth = 6;
+            this.Column5.Name = "Column5";
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            // 
+            // Set
+            // 
+            this.Set.HeaderText = "Set New Quantity";
+            this.Set.MinimumWidth = 6;
+            this.Set.Name = "Set";
+            this.Set.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Set.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Set.Text = "Set";
+            this.Set.ToolTipText = "Set";
+            this.Set.UseColumnTextForButtonValue = true;
+            // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -187,7 +234,7 @@ namespace Bovelo
             this.label2.Location = new System.Drawing.Point(36, 167);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(159, 31);
+            this.label2.Size = new System.Drawing.Size(127, 25);
             this.label2.TabIndex = 5;
             this.label2.Text = "Total Price :";
             // 
@@ -199,7 +246,7 @@ namespace Bovelo
             this.labelPrice.Location = new System.Drawing.Point(46, 221);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(51, 31);
+            this.labelPrice.Size = new System.Drawing.Size(42, 25);
             this.labelPrice.TabIndex = 6;
             this.labelPrice.Text = "0 €";
             // 
@@ -211,7 +258,7 @@ namespace Bovelo
             this.label8.Location = new System.Drawing.Point(420, 572);
             this.label8.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 25);
+            this.label8.Size = new System.Drawing.Size(116, 20);
             this.label8.TabIndex = 38;
             this.label8.Text = "Client Name :";
             // 
@@ -221,19 +268,19 @@ namespace Bovelo
             this.textBox1.Location = new System.Drawing.Point(544, 568);
             this.textBox1.Margin = new System.Windows.Forms.Padding(5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(232, 30);
+            this.textBox1.Size = new System.Drawing.Size(232, 26);
             this.textBox1.TabIndex = 39;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(4, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(281, 91);
+            this.label1.Size = new System.Drawing.Size(189, 79);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
@@ -247,7 +294,7 @@ namespace Bovelo
             this.label3.Location = new System.Drawing.Point(904, 5);
             this.label3.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(246, 39);
+            this.label3.Size = new System.Drawing.Size(198, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Representative";
             // 
@@ -261,7 +308,7 @@ namespace Bovelo
             this.label9.Location = new System.Drawing.Point(379, 5);
             this.label9.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(190, 91);
+            this.label9.Size = new System.Drawing.Size(153, 73);
             this.label9.TabIndex = 1;
             this.label9.Text = "Cart";
             // 
@@ -334,7 +381,7 @@ namespace Bovelo
             this.label10.Location = new System.Drawing.Point(42, 3);
             this.label10.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(216, 46);
+            this.label10.Size = new System.Drawing.Size(174, 37);
             this.label10.TabIndex = 1;
             this.label10.Text = "release 3.0";
             // 
@@ -376,7 +423,7 @@ namespace Bovelo
             this.label5.Location = new System.Drawing.Point(36, 84);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 31);
+            this.label5.Size = new System.Drawing.Size(96, 25);
             this.label5.TabIndex = 8;
             this.label5.Text = "0 Weeks";
             // 
@@ -388,60 +435,13 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(36, 35);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(217, 31);
+            this.label4.Size = new System.Drawing.Size(172, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "Estimated Time :";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Bike";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Size";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Color";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Quantity";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Quantity in stock";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            // 
-            // Set
-            // 
-            this.Set.HeaderText = "Set New Quantity";
-            this.Set.MinimumWidth = 6;
-            this.Set.Name = "Set";
-            this.Set.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Set.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Set.Text = "Set";
-            this.Set.ToolTipText = "Set";
-            this.Set.UseColumnTextForButtonValue = true;
-            // 
             // Cart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1269, 625);
