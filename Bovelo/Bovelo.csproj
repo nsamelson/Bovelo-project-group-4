@@ -93,6 +93,7 @@
     <Compile Include="Classes\Bike.cs" />
     <Compile Include="Classes\BikeModel.cs" />
     <Compile Include="Classes\BikePart.cs" />
+    <Compile Include="Classes\DataBase.cs" />
     <Compile Include="Classes\ItemBike.cs" />
     <Compile Include="Classes\ItemPart.cs" />
     <Compile Include="Classes\OrderBikePart.cs" />

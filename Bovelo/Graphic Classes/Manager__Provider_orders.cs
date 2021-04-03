@@ -101,8 +101,8 @@ namespace Bovelo
         private void orderLoad()
         {
             int i = 0;
-            List<List<string>> result = newApp.getFromDB("Order_Detailed_Part");
-            List<List<string>> result2 = newApp.getFromDB("Order_Part");
+            List<List<string>> result = DataBase.GetFromDB("Order_Detailed_Part");
+            List<List<string>> result2 = DataBase.GetFromDB("Order_Part");
             int currentOrder = Int32.Parse(result[i][1]);
             int previousOrder = 0;
             dataGridView1.Rows.Clear();

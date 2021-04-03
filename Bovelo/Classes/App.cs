@@ -44,30 +44,7 @@ namespace Bovelo
         }
 
         //methods connecting to the DB
-        internal List<List<string>> getFromDB(string DBTable) //is used to get anything from a database
-        {
-            var listFromDB = new List<List<string>>();
 
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
-            conn.Open();
-            string sql = "SELECT * FROM " + DBTable + ";";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                listFromDB.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return listFromDB;
-        }
         public List<List<string>> getFromDBSelect(string DBTable, List<string> argumentList)
         {
             var listFromDB = new List<List<string>>();
@@ -436,12 +413,12 @@ namespace Bovelo
         //GET from the DB methods
         internal List<List<string>> getLinkingPartList()
         {
-            return getFromDB("Parts");
+            return DataBase.GetFromDB("Parts");
         }
         internal List<BikePart> getBikePartList()
         {
             List<BikePart> bikeParts = new List<BikePart>();
-            var BikePartsFromDB = getFromDB("Bike_Parts");
+            var BikePartsFromDB = DataBase.GetFromDB("Bike_Parts");
 
             foreach (var row in BikePartsFromDB)
             {
@@ -462,7 +439,7 @@ namespace Bovelo
         {
             updateBikeModelList();
             List<Planning> plannings = new List<Planning>();
-            var detailedSchedules = getFromDB("Detailed_Schedules");
+            var detailedSchedules = DataBase.GetFromDB("Detailed_Schedules");
             var allorders = getOrderDetails();
             /*Dictionary<string, List<string>> weeks = new Dictionary<string, List<string>>();//dictionnary of WeekName as key and List of id_OrderDetails as value
             Dictionary<string, string> assemblerPerBikeId = new Dictionary<string, string>();*/
@@ -535,8 +512,8 @@ namespace Bovelo
         internal List<OrderBike> getOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
             List<OrderBike> orderBikeList = new List<OrderBike>();
-            var orderList = getFromDB("Order_Bikes");
-            var orderDetailList = getFromDB("Order_Details");
+            var orderList = DataBase.GetFromDB("Order_Bikes");
+            var orderDetailList = DataBase.GetFromDB("Order_Details");
             updateBikeModelList();
 
             foreach (var row in orderList)
@@ -557,7 +534,7 @@ namespace Bovelo
         }
         internal List<List<string>> getOrderDetails()
         {
-            var orderDetailList = getFromDB("Order_Details");
+            var orderDetailList = DataBase.GetFromDB("Order_Details");
             return orderDetailList;
         }
         internal List<List<string>> getPlanifiedBikes()
@@ -595,7 +572,7 @@ namespace Bovelo
         {
             var userFromDB = new List<User>();
             //createBikeModel();
-            List<List<string>> orderList = getFromDB("Users");
+            List<List<string>> orderList = DataBase.GetFromDB("Users");
             foreach (var row in orderList)
             {
                 string login = row[1];
@@ -621,7 +598,7 @@ namespace Bovelo
         internal List<BikeModel> getBikeModelList() //is used to get all bike models
         {
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
-            List<List<string>> modelList = getFromDB("Bike_Model");//bikemodels from db
+            List<List<string>> modelList = DataBase.GetFromDB("Bike_Model");//bikemodels from db
             if(_linkingPartList.Count == 0)
             {
                 updateLinkingPartList();

@@ -24,7 +24,7 @@ namespace Bovelo
         private void stockLoad()
         {
             int i = 0;
-            var result = newApp.getFromDB("Bike_Parts");
+            var result = DataBase.GetFromDB("Bike_Parts");
             dataGridView1.Rows.Clear();
             foreach (var elem in result)
             {
