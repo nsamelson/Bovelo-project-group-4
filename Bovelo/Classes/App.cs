@@ -43,47 +43,6 @@ namespace Bovelo
             }
         }
 
-        //methods connecting to the DB
-
-        
-
-        /*internal List<List<string>> getFromDbInnerJoin(string week)
-        {
-            var listInnerJoin = new List<List<string>>();
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-
-            conn.Open();
-            string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Detailed_Schedules.Week_Name = '" + week + "';";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                listInnerJoin.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return listInnerJoin;
-        }*/
-
-
-        internal void sendToDB(string query) //is used to send anything to the database
-        {
-            string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            //Console.WriteLine("Connecting to MySQL to send new element...");
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            cmd.Dispose();
-            conn.Close();
-        }
-
         //SET To the DB methods
 
         internal void setNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice,int shippingWeek) //is used to pass a new order
@@ -144,13 +103,6 @@ namespace Bovelo
             updateUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
-        /*internal void setNewBikeModel(string type, int price, string time)//is used to add a new model (for ex: Electric)
-        {
-
-            string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
-            DataBase.SendToDB(query);
-            //bikeModel = getBikeModelList();//At the end of set, put a get to update App class
-        }*/
         internal void setNewBikeModel(string type, int size, string color)//is used to add a new model (for ex: Electric)
         {
             string query = "INSERT INTO Bike_Model (Color,Size,Type_Model) VALUES ('" + color + "','" + size + "', '" + type + "')";
@@ -414,7 +366,6 @@ namespace Bovelo
             var assemblerWork = DataBase.GetPlanifiedOrderDetails(sql);
             return assemblerWork;
         }
-
         internal List<List<string>> getAssembler()
         {
             string sql = "SELECT Login FROM Bovelo.Users where Role = 'Assembler';";
@@ -638,7 +589,6 @@ namespace Bovelo
             }
             return partOrderQuantity;
         }
-
         internal int getEstimatedTimeBeforeShipping(List<ItemBike> bikesToOrder)//WORKING ON IT
         {
             float days = 0;
@@ -700,7 +650,6 @@ namespace Bovelo
 
             return weeks;
         }
-
         internal List<Bike> getStockBikesID()
         {
             var stockBikeID = DataBase.GetFromDBWhere("Order_Bikes", new List<string>() { "Id_Order" }, "Customer_Name='Stock'");
@@ -722,7 +671,6 @@ namespace Bovelo
             //Console.WriteLine(string.Join("\n", test[0].Size));
             return test;
         }
-
         internal void createInvoice(string client,List<string> column,List<List<String>> Data)
         {
             string date = DateTime.Now.ToString();
