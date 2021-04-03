@@ -55,11 +55,11 @@ namespace Bovelo
             int price = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
             string provider = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
             int time = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
-            if (dataGridView1.CurrentCell.Value == "Set")
+            if (dataGridView1.CurrentCell.Value.ToString() == "Set")
             {
                 Console.WriteLine("CATCH");
                 string query = "UPDATE Bike_Parts SET Bike_Parts_Name='" + name + "',Quantity=" + quantity + ",Location='" + location + "',Price=" + price + ",Provider='" + provider + "',Time_To_Build=" + time + " WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                newApp.sendToDB(query);
+                DataBase.SendToDB(query);
             }
             MessageBox.Show(@"New State :"+ 
                 "\nName    = " + name +

@@ -30,7 +30,7 @@ namespace Bovelo
         public void setQuantity(ref App newApp,int quantity)
         {
             string query = "UPDATE Bike_Parts SET Quantity=" + quantity + " WHERE Id_Bike_Parts = " + this.part_Id;
-            newApp.sendToDB(query);
+            DataBase.SendToDB(query);
         }
 
     }//end class BikePart

@@ -14,28 +14,26 @@ namespace Bovelo
 {
     public static class DataBase
     {
-        private static (MySqlDataReader, MySqlConnection) OpenConnection(string sql)
+
+        public static void SendToDB(string query) //is used to send anything to the database
         {
+            string connStr = "server=193.191.240.67;user=USER3;database=Bovelo;port=63304;password=USER3";
+            MySqlConnection conn = new MySqlConnection(connStr);
+            conn.Open();
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            MySqlDataReader rdr = cmd.ExecuteReader();
+            cmd.Dispose();
+            conn.Close();
+        }
+
+        private static List<List<string>> ConnectToDB(string sql)
+        {
+            var listFromDB = new List<List<string>>();
             var connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
             MySqlConnection conn = new MySqlConnection(connStr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader rdr = cmd.ExecuteReader();
-            var connection =(rdr,conn);
-
-            return connection;
-        }
-        private static void CloseConnection(MySqlDataReader rdr, MySqlConnection conn)
-        {
-            rdr.Close();
-            conn.Close();
-        }
-        public static List<List<string>> GetFromDB(string DBTable)
-        {
-            var listFromDB = new List<List<string>>();
-            string sql = "SELECT * FROM " + DBTable + ";";
-            var (rdr,conn) = OpenConnection(sql);
-
             while (rdr.Read())
             {
                 var col = new List<string>();
@@ -45,9 +43,63 @@ namespace Bovelo
                 }
                 listFromDB.Add(col);
             }
-            CloseConnection(rdr, conn);
+            rdr.Close();
+            conn.Close();
             return listFromDB;
         }
 
+        public static List<List<string>> GetFromDB(string DBTable)
+        {
+            string sql = "SELECT * FROM " + DBTable + ";";
+            return ConnectToDB(sql);
+        }
+        public static List<List<string>> GetFromDBSelect(string DBTable, List<string> argumentList)
+        {
+            string sql = "SELECT ";
+            for (int i = 0; i < argumentList.Count; i++)
+            {
+                if (i != argumentList.Count - 1)
+                {
+                    sql += argumentList[i] + ",";
+                }
+                else
+                {
+                    sql += argumentList[i];
+                }
+            }
+            sql += " FROM " + DBTable + ";";
+            return ConnectToDB(sql);
+        }
+        public static List<List<string>> GetFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
+        {
+            string sql = "SELECT ";
+            for (int i = 0; i < argumentList.Count; i++)
+            {
+                if (i != argumentList.Count - 1)
+                {
+                    sql += argumentList[i] + ",";
+                }
+                else
+                {
+                    sql += argumentList[i];
+                }
+            }
+            sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
+            return ConnectToDB(sql);
+        }
+        public static List<List<string>> GetFromDBInnerJoin(string selectTable, string innerJoinCondition, string whereColumn, string whereCondition)
+        {
+            string sql = "SELECT * FROM " + selectTable + "inner join  " + innerJoinCondition + " where " + whereColumn + " = '" + whereCondition + "';";
+            return ConnectToDB(sql);
+        }
+        public static string GetFromDBLastIdFromColumn(string table, string column)
+        {
+            string sql = "SELECT Id_Order FROM "+table+" ORDER BY "+ column + " DESC LIMIT 1;";
+            return ConnectToDB(sql).Last()[0];//returns the last id
+        }
+        public static List<List<string>> GetPlanifiedOrderDetails(string sql)
+        {
+            return ConnectToDB(sql);
+        }
     }
 }

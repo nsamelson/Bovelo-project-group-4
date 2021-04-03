@@ -63,7 +63,7 @@ namespace Bovelo
             {
                 string query = "DELETE FROM Order_Detailed_Part WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + ";";
                 Console.WriteLine(query);
-                newApp.sendToDB(query);
+                DataBase.SendToDB(query);
                 orderLoad();
                 MessageBox.Show(@"Deleted :" +
                     "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value+
@@ -79,13 +79,13 @@ namespace Bovelo
                 {
                     string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " ;";
                     //Console.WriteLine(query);
-                    newApp.sendToDB(query);
+                    DataBase.SendToDB(query);
                     var field = new List<string>();
                     field.Add("Quantity");
-                    var result = newApp.getFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    var result = DataBase.GetFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
                     int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
                     query = "UPDATE Bike_Parts SET Quantity="+quantity+" WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    newApp.sendToDB(query);
+                    DataBase.SendToDB(query);
                     MessageBox.Show(@"Changed State :" +
                         "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value +
                         "\nId_Order= " + dataGridView1.Rows[e.RowIndex].Cells[0].Value +
@@ -116,7 +116,7 @@ namespace Bovelo
                 currentOrder = Int32.Parse(result[i][1]);
                 if (currentOrder != previousOrder)
                 {
-                    result2 = newApp.getFromDBWhere("Order_Part", all, "id_Order_Part=" + currentOrder);
+                    result2 = DataBase.GetFromDBWhere("Order_Part", all, "id_Order_Part=" + currentOrder);
                     previousOrder = currentOrder;
                 }
                 dataGridView1.Rows[i].Cells[0].Value = result[i][1];

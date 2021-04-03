@@ -45,128 +45,8 @@ namespace Bovelo
 
         //methods connecting to the DB
 
-        public List<List<string>> getFromDBSelect(string DBTable, List<string> argumentList)
-        {
-            var listFromDB = new List<List<string>>();
+        
 
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
-            conn.Open();
-            string sql = "SELECT ";
-            for (int i = 0; i < argumentList.Count; i++)
-            {
-                if (i != argumentList.Count - 1)
-                {
-                    sql += argumentList[i] + ",";
-                }
-                else
-                {
-                    sql += argumentList[i];
-                }
-            }
-
-            sql += " FROM " + DBTable + ";";
-            //Console.WriteLine(sql);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                listFromDB.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return listFromDB;
-        }
-        public List<List<string>> getFromDBWhere(string DBTable, List<string> argumentList, string whereClause)
-        {
-            var listFromDB = new List<List<string>>();
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-            //Console.WriteLine("Connecting to MySQL at table " + DBTable + "...");
-            conn.Open();
-            string sql = "SELECT ";
-            for (int i = 0; i < argumentList.Count; i++)
-            {
-                if (i != argumentList.Count - 1)
-                {
-                    sql += argumentList[i] + ",";
-                }
-                else
-                {
-                    sql += argumentList[i];
-                }
-            }
-
-            sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
-            Console.WriteLine(sql);
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                listFromDB.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return listFromDB;
-        }
-        internal List<List<string>> getFromDBInnerJoin(string selectTable, string innerJoinCondition,string whereColumn,string whereCondition)
-        {
-            var listInnerJoin = new List<List<string>>();
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
-
-            conn.Open();
-            string sql = "SELECT * FROM "+ selectTable + "inner join  "+innerJoinCondition + " where "+whereColumn+" = '" + whereCondition + "';";
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                listInnerJoin.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return listInnerJoin;
-        }
-        internal string getFromDBLastIdFromColumn(string table,string column)
-        {
-            string id = "0";
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            string sql = "SELECT Id_Order FROM Order_Bikes ORDER BY Id_Order DESC LIMIT 1;";
-
-            MySqlConnection conn = new MySqlConnection(connStr);
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                id = col[0];
-            }
-            
-            rdr.Close();
-            conn.Close();
-            return id;
-        }
         /*internal List<List<string>> getFromDbInnerJoin(string week)
         {
             var listInnerJoin = new List<List<string>>();
@@ -190,28 +70,7 @@ namespace Bovelo
             conn.Close();
             return listInnerJoin;
         }*/
-        internal List<List<string>> getPanifiedOrderDetails(string sql)
-        {
-            var OrderDetails = new List<List<string>>();
-            string connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
-            MySqlConnection conn = new MySqlConnection(connStr);
 
-            conn.Open();
-            MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
-                {
-                    col.Add(rdr[j].ToString());
-                }
-                OrderDetails.Add(col);
-            }
-            rdr.Close();
-            conn.Close();
-            return OrderDetails;
-        }
 
         internal void sendToDB(string query) //is used to send anything to the database
         {
@@ -237,8 +96,8 @@ namespace Bovelo
 
             //first request
             string queryOB = "INSERT INTO Order_Bikes(Customer_Name,Total_Price,Order_Date,Shipping_Time) VALUES('" + clientName + "', '" + totPrice + "' ,'" + DateTime.Now.ToString() + "','" + DateTime.Today.AddDays(daysToAdd).ToString() + "');";
-            sendToDB(queryOB);
-            string id = getFromDBLastIdFromColumn("Order_Bikes", "Id_Order");
+            DataBase.SendToDB(queryOB);
+            string id = DataBase.GetFromDBLastIdFromColumn("Order_Bikes", "Id_Order");
 
             //second request
             if (id ==string.Empty || id =="0")//if orderList is empty
@@ -260,7 +119,7 @@ namespace Bovelo
                 for (int q = 0; q < quantity; q++)
                 {
                     /*string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "'); ";
-                    sendToDB(queryOD);*/
+                    DataBase.SendToDB(queryOD);*/
                     values += "('" + type + "', '" + size + "','" + color + "' , '" + price + "', 'New' , '" + orderId + "')";
                     if (i ==newOrder.Count-1 &&q ==quantity-1)
                     {
@@ -275,13 +134,13 @@ namespace Bovelo
                 i++;
             }
             string queryOD = "INSERT INTO Order_Details (Bike_Type,Bike_Size,Bike_Color,Price,Bike_Status,Id_Order) VALUES" + values;
-            sendToDB(queryOD);
+            DataBase.SendToDB(queryOD);
             //orderBikeList = getOrderBikeList();//updates the list 
         }
         internal void setNewUser(User user) //is used to add a new user (for ex: a new Assembler joins the team)
         {
             string query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "','NULL','" + user.userType.FirstOrDefault(x => x.Value == true).Key + "')";
-            sendToDB(query);
+            DataBase.SendToDB(query);
             updateUserList(); //At the end of set, put a get to update App class
             //userList.Add(user); //if latency problems, uncomment this line and comment "userList = getUserList();"
         }
@@ -289,13 +148,13 @@ namespace Bovelo
         {
 
             string query = "INSERT INTO Bikes (Bike_Type,Price,Bike_total_time) VALUES ('" + type + "', " + price + ", '" + time + "')";
-            sendToDB(query);
+            DataBase.SendToDB(query);
             //bikeModel = getBikeModelList();//At the end of set, put a get to update App class
         }*/
         internal void setNewBikeModel(string type, int size, string color)//is used to add a new model (for ex: Electric)
         {
             string query = "INSERT INTO Bike_Model (Color,Size,Type_Model) VALUES ('" + color + "','" + size + "', '" + type + "')";
-            sendToDB(query);
+            DataBase.SendToDB(query);
             updateBikeModelList();//At the end of set, put a get to update App class
         }
         internal void setLinkBikePartsToBikeModel(int idBikeModel, List<int> idBikeParts)//id of the bikeModel and List of id's of BikeParts
@@ -303,7 +162,7 @@ namespace Bovelo
             foreach (var idPart in idBikeParts)
             {
                 string query = "INSERT INTO Parts (Id_Bike_Parts,Bikes_Id) VALUES ('" + idPart + "',' " + idBikeModel + "')";
-                sendToDB(query);
+                DataBase.SendToDB(query);
             }
             updateBikeModelList();//At the end of set, put a get to update App class
         }
@@ -326,7 +185,7 @@ namespace Bovelo
                 string size = bikesToBuild[2];
                 string color = bikesToBuild[3];*/
                 string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
-                sendToDB(queryPD);
+                DataBase.SendToDB(queryPD);
 
             }
 
@@ -371,17 +230,17 @@ namespace Bovelo
             else if (color != "null" && size != 0) { bikePartName += "_" + color + "_" + size.ToString(); }
 
             query = "INSERT INTO Bike_Parts (Bike_Parts_Name,Quantity,Location,Price,Provider,Time_To_Build) VALUES('" + bikePartName + "' , '" + 0 + "' , '" + location + "' , '" + partPrice + "' , '" + provider + "' , '" + timeToBuild + "'); ";
-            sendToDB(query);
+            DataBase.SendToDB(query);
         }
         internal void deletePlanifiedBike(int idOrderDetail, string week)
         {
             string deleteQuery = "delete from Detailed_Schedules where Week_Name = '" + week + "' and Id_Order_Details='" + idOrderDetail + "';";
-            sendToDB(deleteQuery);
+            DataBase.SendToDB(deleteQuery);
         }
         internal void updateSchedule(int id, string newWeek, string currentWeek)
         {
             string modifyQuery = "UPDATE Detailed_Schedules SET Week_name = '" + newWeek + "' WHERE Id_Order_Details = '" + id + "' and Week_Name = '" + currentWeek + "';";
-            sendToDB(modifyQuery);
+            DataBase.SendToDB(modifyQuery);
         }
 
         //UPDATE lists from DB
@@ -433,7 +292,7 @@ namespace Bovelo
             string query = "UPDATE Order_Details SET Bike_Status = '" + status + "'  WHERE Id_Order_Details = '" + id + "' ;" +
                            "UPDATE Detailed_Schedules SET Assembled_by = '" + user + "', Started = '" + started + "', Finished = '" + finished + "'  WHERE Id_Order_Details = '" + id + "' ;";
 
-            sendToDB(query);
+            DataBase.SendToDB(query);
         }
         internal List<Planning> getPlanningList() //gets all plannings
         {
@@ -540,32 +399,32 @@ namespace Bovelo
         internal List<List<string>> getPlanifiedBikes()
         {
             string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules);";
-            var Planified = getPanifiedOrderDetails(sql);
+            var Planified = DataBase.GetPlanifiedOrderDetails(sql);
             return Planified;
         }
         internal List<List<string>> getPlanifiedBikesByWeekName(string week)
         {
             string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules) and Week_Name = '" +week+ "';";
-            var planifiedByWeek = getPanifiedOrderDetails(sql);
+            var planifiedByWeek = DataBase.GetPlanifiedOrderDetails(sql);
             return planifiedByWeek;
         }
         internal List<List<string>> getAssemblerWork(string assemblerName)
         {
             string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules) and Assembled_by = '" + assemblerName + "';";
-            var assemblerWork = getPanifiedOrderDetails(sql);
+            var assemblerWork = DataBase.GetPlanifiedOrderDetails(sql);
             return assemblerWork;
         }
 
         internal List<List<string>> getAssembler()
         {
             string sql = "SELECT Login FROM Bovelo.Users where Role = 'Assembler';";
-            var Assemblers = getPanifiedOrderDetails(sql);
+            var Assemblers = DataBase.GetPlanifiedOrderDetails(sql);
             return Assemblers;
         }
         internal List<List<string>> getNonPlanifiedBikes()
         {
             string sql = "Select * from Order_Details where Id_Order_Details Not In (select Id_Order_Details from Detailed_Schedules);";
-            var nonPlanified = getPanifiedOrderDetails(sql);
+            var nonPlanified = DataBase.GetPlanifiedOrderDetails(sql);
             return nonPlanified;
         }
         internal List<User> getUserList() //is used to get all users 
@@ -701,7 +560,7 @@ namespace Bovelo
             List<string> query = new List<string>();
             query.Add("*");
             List<List<string>> bikePart = new List<List<string>>();
-            bikePart = getFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '" + TypeSizeColor[2] + "' AND Type_Model = '" + TypeSizeColor[0] + "' AND Size = '" + TypeSizeColor[1] + "'))");
+            bikePart = DataBase.GetFromDBWhere("Bike_Parts", query, "Id_Bike_Parts IN ( SELECT Id_Bike_Parts FROM Parts WHERE Bikes_Id IN(SELECT idBike_Model FROM Bike_Model WHERE Color = '" + TypeSizeColor[2] + "' AND Type_Model = '" + TypeSizeColor[0] + "' AND Size = '" + TypeSizeColor[1] + "'))");
             List<BikePart> bikePartList = new List<BikePart>();
             foreach (var line in bikePart)
             {
@@ -747,14 +606,14 @@ namespace Bovelo
         {
             int quantity = getQuantity(part_Id);
             quantity += value;
-            sendToDB("UPDATE Bike_Parts SET Quantity =" + quantity + " WHERE Id_Bike_Parts = " + part_Id + ";");
+            DataBase.SendToDB("UPDATE Bike_Parts SET Quantity =" + quantity + " WHERE Id_Bike_Parts = " + part_Id + ";");
         }
         public int getQuantity(int part_Id)
         {
             List<string> argumentList = new List<string>();
             argumentList.Add("Quantity");
             string whereclause = "Id_Bike_Parts =" + part_Id;
-            List<List<string>> result = getFromDBWhere("Bike_Parts", argumentList, whereclause);
+            List<List<string>> result = DataBase.GetFromDBWhere("Bike_Parts", argumentList, whereclause);
             int quantity = Int32.Parse(result[0][0]);
             return quantity;
         }
@@ -844,11 +703,11 @@ namespace Bovelo
 
         internal List<Bike> getStockBikesID()
         {
-            var stockBikeID = getFromDBWhere("Order_Bikes", new List<string>() { "Id_Order" }, "Customer_Name='Stock'");
+            var stockBikeID = DataBase.GetFromDBWhere("Order_Bikes", new List<string>() { "Id_Order" }, "Customer_Name='Stock'");
             List<string> bikes = stockBikeID.SelectMany(x => x).ToList();
             Console.WriteLine(string.Join("\t", bikes));
 
-            var stockBike = getFromDBWhere("Order_Details", new List<string>() { "Bike_Type", "Bike_Size", "Bike_Color","Id_Order"}, "Bike_Status = 'Closed'");
+            var stockBike = DataBase.GetFromDBWhere("Order_Details", new List<string>() { "Bike_Type", "Bike_Size", "Bike_Color","Id_Order"}, "Bike_Status = 'Closed'");
 
             //List<string> stock = new List<string>();
             List<Bike> test = new List<Bike>();

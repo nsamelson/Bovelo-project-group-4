@@ -217,15 +217,15 @@ namespace Bovelo
         {
             DateTime OrderTime = DateTime.Now;
             string query = "INSERT INTO Bovelo.Order_Part(Week_Name,Total_Price,Order_Date) VALUES('" + plannedWeek + "'," + cartPrice +",'"+ OrderTime.ToString() + "');";
-            newApp.sendToDB(query);
+            DataBase.SendToDB(query);
             List<string> all = new List<string>();
             all.Add("*");
-            List<List<string>> result = newApp.getFromDBWhere("Order_Part", all, "Week_Name='" + plannedWeek + "' AND " + " Total_Price=" + cartPrice +" AND Order_Date= '"+OrderTime.ToString()+"'"); // récupérer l'id de la commande que l'on vient d'ajouter à  modifier ?
+            List<List<string>> result = DataBase.GetFromDBWhere("Order_Part", all, "Week_Name='" + plannedWeek + "' AND " + " Total_Price=" + cartPrice +" AND Order_Date= '"+OrderTime.ToString()+"'"); // récupérer l'id de la commande que l'on vient d'ajouter à  modifier ?
             Console.WriteLine(result);
             foreach (var elem in user.cartPart)
             {
                 query = "INSERT INTO Bovelo.Order_Detailed_Part(Id_Order,Id_Bike_Parts,Quantity,Price,State) VALUES('" + result[0][0] +"'," + elem.part.part_Id +","+elem.quantity+ ","+elem.price+","+"'Not Received'"+");";
-                newApp.sendToDB(query);
+                DataBase.SendToDB(query);
             }
             printInvoice("Manager");
             user.cartPart.Clear();
