@@ -89,158 +89,158 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\App.cs" />
-    <Compile Include="Classes\Bike.cs" />
-    <Compile Include="Classes\BikeModel.cs" />
-    <Compile Include="Classes\BikePart.cs" />
-    <Compile Include="Classes\DataBase.cs" />
-    <Compile Include="Classes\ItemBike.cs" />
-    <Compile Include="Classes\ItemPart.cs" />
-    <Compile Include="Classes\OrderBikePart.cs" />
-    <Compile Include="Classes\Planning.cs" />
-    <Compile Include="Classes\Item.cs" />
-    <Compile Include="Classes\OrderBike.cs" />
-    <Compile Include="Classes\User.cs" />
-    <Compile Include="Graphic Classes\Assembler_Planning.cs">
+    <Compile Include="Controller\App.cs" />
+    <Compile Include="Model\Bike.cs" />
+    <Compile Include="Model\BikeModel.cs" />
+    <Compile Include="Model\BikePart.cs" />
+    <Compile Include="Controller\DataBase.cs" />
+    <Compile Include="Model\ItemBike.cs" />
+    <Compile Include="Model\ItemPart.cs" />
+    <Compile Include="Model\OrderBikePart.cs" />
+    <Compile Include="Model\Planning.cs" />
+    <Compile Include="Model\Item.cs" />
+    <Compile Include="Model\OrderBike.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Assembler_Planning.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Assembler_Planning.Designer.cs">
+    <Compile Include="View\Assembler_Planning.Designer.cs">
       <DependentUpon>Assembler_Planning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Cart.cs">
+    <Compile Include="View\Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Cart.Designer.cs">
+    <Compile Include="View\Cart.Designer.cs">
       <DependentUpon>Cart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Assembler_MainHome.cs">
+    <Compile Include="View\Assembler_MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Assembler_MainHome.Designer.cs">
+    <Compile Include="View\Assembler_MainHome.Designer.cs">
       <DependentUpon>Assembler_MainHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Manager_Stock.cs">
+    <Compile Include="View\Manager_Manager_Stock.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Manager_Stock.Designer.cs">
+    <Compile Include="View\Manager_Manager_Stock.Designer.cs">
       <DependentUpon>Manager_Manager_Stock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Login.cs">
+    <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Login.Designer.cs">
+    <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\MainHome.cs">
+    <Compile Include="View\MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\MainHome.Designer.cs">
+    <Compile Include="View\MainHome.Designer.cs">
       <DependentUpon>MainHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Create_Model.cs">
+    <Compile Include="View\Manager_Create_Model.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Create_Model.Designer.cs">
+    <Compile Include="View\Manager_Create_Model.Designer.cs">
       <DependentUpon>Manager_Create_Model.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_MainHome.cs">
+    <Compile Include="View\Manager_MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_MainHome.Designer.cs">
+    <Compile Include="View\Manager_MainHome.Designer.cs">
       <DependentUpon>Manager_MainHome.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Make_Planning.cs">
+    <Compile Include="View\Manager_Make_Planning.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_Make_Planning.Designer.cs">
+    <Compile Include="View\Manager_Make_Planning.Designer.cs">
       <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Order.cs">
+    <Compile Include="View\Order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Order.Designer.cs">
+    <Compile Include="View\Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager__Provider_catalog.cs">
+    <Compile Include="View\Manager__Provider_catalog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager__Provider_catalog.Designer.cs">
+    <Compile Include="View\Manager__Provider_catalog.Designer.cs">
       <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager__Provider_orders.cs">
+    <Compile Include="View\Manager__Provider_orders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager__Provider_orders.Designer.cs">
+    <Compile Include="View\Manager__Provider_orders.Designer.cs">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\ShowBike.cs">
+    <Compile Include="View\ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\ShowBike.Designer.cs">
+    <Compile Include="View\ShowBike.Designer.cs">
       <DependentUpon>ShowBike.cs</DependentUpon>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_AssemblerWork.cs">
+    <Compile Include="View\Manager_AssemblerWork.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Graphic Classes\Manager_AssemblerWork.Designer.cs">
+    <Compile Include="View\Manager_AssemblerWork.Designer.cs">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Controller\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Graphic Classes\Assembler_MainHome.resx">
+    <EmbeddedResource Include="View\Assembler_MainHome.resx">
       <DependentUpon>Assembler_MainHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Assembler_Planning.resx">
+    <EmbeddedResource Include="View\Assembler_Planning.resx">
       <DependentUpon>Assembler_Planning.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Cart.resx">
+    <EmbeddedResource Include="View\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager_Manager_Stock.resx">
+    <EmbeddedResource Include="View\Manager_Manager_Stock.resx">
       <DependentUpon>Manager_Manager_Stock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Login.resx">
+    <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\MainHome.resx">
+    <EmbeddedResource Include="View\MainHome.resx">
       <DependentUpon>MainHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager_Create_Model.resx">
+    <EmbeddedResource Include="View\Manager_Create_Model.resx">
       <DependentUpon>Manager_Create_Model.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager_MainHome.resx">
+    <EmbeddedResource Include="View\Manager_MainHome.resx">
       <DependentUpon>Manager_MainHome.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager_Make_Planning.resx">
+    <EmbeddedResource Include="View\Manager_Make_Planning.resx">
       <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager__Provider_orders.resx">
+    <EmbeddedResource Include="View\Manager__Provider_orders.resx">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Order.resx">
+    <EmbeddedResource Include="View\Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager__Provider_catalog.resx">
+    <EmbeddedResource Include="View\Manager__Provider_catalog.resx">
       <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\ShowBike.resx">
+    <EmbeddedResource Include="View\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Graphic Classes\Manager_AssemblerWork.resx">
+    <EmbeddedResource Include="View\Manager_AssemblerWork.resx">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="Classes\list_part.csv" />
+    <None Include="Data\list_part.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -256,11 +256,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Graphic Classes\Pictures\icones\settings.png" />
-    <None Include="Graphic Classes\Pictures\icones\profile.jpg" />
-    <None Include="Graphic Classes\Pictures\icones\profile.png" />
-    <None Include="Graphic Classes\Pictures\icones\tprofile.jpg" />
-    <None Include="Graphic Classes\Pictures\icones\home.JPG" />
+    <None Include="View\Pictures\icones\settings.png" />
+    <None Include="View\Pictures\icones\profile.jpg" />
+    <None Include="View\Pictures\icones\profile.png" />
+    <None Include="View\Pictures\icones\tprofile.jpg" />
+    <None Include="View\Pictures\icones\home.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
