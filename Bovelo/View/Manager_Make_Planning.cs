@@ -62,7 +62,7 @@ namespace Bovelo
                 int id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
                 string week = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
                 Console.WriteLine("id : " + id + "week : " + week);
-                newApp.deletePlanifiedBike(id,week);
+                Manager.DeletePlanifiedBike(id,week);
                 MessageBox.Show("Bike has been delted from schedule");
                 Manager_Make_Planning_Load(sender, e);
                 
@@ -75,8 +75,8 @@ namespace Bovelo
             
             int i = 0;
             int t = 0;
-            Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
-            foreach (var planifiedOrderDetails in newApp.getPlanifiedBikes())
+            //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
+            foreach (var planifiedOrderDetails in Manager.GetPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
                 Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
@@ -100,7 +100,7 @@ namespace Bovelo
            /* Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
             i = 0;
-            foreach (var nonPlanifiedOrderDetails in newApp.getNonPlanifiedBikes())
+            foreach (var nonPlanifiedOrderDetails in Manager.GetNonPlanifiedBikes())
             {
                 BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == nonPlanifiedOrderDetails[3] && x.Size == Int32.Parse(nonPlanifiedOrderDetails[2]) && x.Type == nonPlanifiedOrderDetails[1]);//gets the specific model
                 Bike newBike = new Bike(Int32.Parse(nonPlanifiedOrderDetails[0]), model);
@@ -147,7 +147,7 @@ namespace Bovelo
             else
             {
                 string weekName = textBox1.Text;
-                newApp.setNewPlanning(user.planningCart, weekName);
+                Manager.SetNewPlanning(user.planningCart, weekName);
             }
             
         } 
@@ -175,7 +175,7 @@ namespace Bovelo
             int id = Int32.Parse(idBike.Text.ToString());
             string newWeek = newWeekToAssign.Text.ToString();
             string currentWeek = weekToModify.Text.ToString();
-            newApp.updateSchedule(id, newWeek, currentWeek);
+            Manager.UpdateSchedule(id, newWeek, currentWeek);
             Manager_Make_Planning_Load(sender, e);
         }
 

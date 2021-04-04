@@ -66,7 +66,7 @@ namespace Bovelo
                     start = row.Cells[8].Value.ToString();
                     finish = row.Cells[9].Value.ToString();
                     row.Cells[7].Value = Builder;
-                    newApp.updateSatus(id, status, Builder, start, finish);
+                    Assembler.UpdateSatus(id, status, Builder, start, finish);
                 }    
             }
 
@@ -86,7 +86,7 @@ namespace Bovelo
                     start = string.Empty;
                     finish = string.Empty;
                     row.Cells[7].Value = Builder;
-                    newApp.updateSatus(id, status, Builder, start, finish);
+                    Assembler.UpdateSatus(id, status, Builder, start, finish);
                 }   
             }
             else if(dataGridView1.CurrentCell.Value.ToString() == "Click to see parts")

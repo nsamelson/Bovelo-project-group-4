@@ -3,12 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MySql.Data.MySqlClient;
 using System.Globalization;
-using iText.Kernel.Colors;
-using iText.Kernel.Pdf;
-using iText.Kernel.Pdf.Canvas.Draw;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
+
 
 namespace Bovelo
 {
@@ -26,7 +21,7 @@ namespace Bovelo
             conn.Close();
         }
 
-        private static List<List<string>> ConnectToDB(string sql)
+        public static List<List<string>> ConnectToDB(string sql)
         {
             var listFromDB = new List<List<string>>();
             var connStr = "server=193.191.240.67;user=USER2;database=Bovelo;port=63304;password=USER2";
@@ -97,9 +92,6 @@ namespace Bovelo
             string sql = "SELECT Id_Order FROM "+table+" ORDER BY "+ column + " DESC LIMIT 1;";
             return ConnectToDB(sql).Last()[0];//returns the last id
         }
-        public static List<List<string>> GetPlanifiedOrderDetails(string sql)
-        {
-            return ConnectToDB(sql);
-        }
+        
     }
 }

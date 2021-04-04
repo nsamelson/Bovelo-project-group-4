@@ -22,7 +22,7 @@ namespace Bovelo
 
         private void Manager_AssemblerWork_Load(object sender, EventArgs e)
         {
-            var users = newApp.getAssembler().Select(x=> x[0]).ToList();
+            var users = Manager.GetAssemblers().Select(x=> x[0]).ToList();
             comboBox1.DataSource = users;
         }
 
@@ -40,7 +40,7 @@ namespace Bovelo
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = 0;
-            foreach (var bikestoAssign in newApp.getPlanifiedBikes())
+            foreach (var bikestoAssign in Manager.GetPlanifiedBikes())
             {
                 if (e.RowIndex == i)
                 {
@@ -69,7 +69,7 @@ namespace Bovelo
             string builder = comboBox1.SelectedItem.ToString();
             int i = 0;
             dataGridView1.Rows.Clear();
-            foreach (var assemblerWork in newApp.getAssemblerWork(builder))
+            foreach (var assemblerWork in Manager.GetAssemblerWork(builder))
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
                 //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 
 namespace Bovelo
 {
@@ -85,8 +86,7 @@ namespace Bovelo
                 {
                     foreach (var size in sizes)
                     {
-                        app.setNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
-                        //Console.WriteLine(type + " Size : "+Int32.Parse(size.ToString()) + " Color : " + color.ToString());
+                        Manager.SetNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
                     }
                 }
             }
@@ -95,6 +95,7 @@ namespace Bovelo
         private void button8_Click(object sender, EventArgs e)//create BikePart
         {
             string name = textBox2.Text;
+            string location = textBox4.Text;
             var colors = checkedListBox4.CheckedItems;
             var sizes = checkedListBox3.CheckedItems;
             int price;
@@ -104,7 +105,8 @@ namespace Bovelo
             }
             else
             {
-                price = 0;
+                string test = Interaction.InputBox("Please insert a correct price : ", "Price");
+                price = Int32.Parse(test);
             }
             if (colors.Count != 0 && sizes.Count != 0)
             {
@@ -112,7 +114,7 @@ namespace Bovelo
                 {
                     foreach (var size in sizes)
                     {
-                        app.setNewBikePart(name, price,Int32.Parse(size.ToString()), color.ToString());
+                        Manager.SetNewBikePart(name,location, price,Int32.Parse(size.ToString()), color.ToString());
                     }
                 }
             }
@@ -120,19 +122,19 @@ namespace Bovelo
             {
                 foreach (var color in colors)
                 {
-                    app.setNewBikePart(name,price, 0, color.ToString());
+                    Manager.SetNewBikePart(name, location, price, 0, color.ToString());
                 }
             }
             else if (colors.Count == 0 && sizes.Count != 0)
             {
                 foreach (var size in sizes)
                 {
-                    app.setNewBikePart(name, price,Int32.Parse(size.ToString()));
+                    Manager.SetNewBikePart(name, location, price,Int32.Parse(size.ToString()));
                 }
             }
             else
             {
-                app.setNewBikePart(name,price);
+                Manager.SetNewBikePart(name, location, price);
             }
 
         }
@@ -188,7 +190,7 @@ namespace Bovelo
                         row.Cells[3].Value = "0";
                     }
                 }
-                app.setLinkBikePartsToBikeModel(idModel, partsToLink);
+                Manager.SetLinkBikePartsToBikeModel(idModel, partsToLink);
             }
         }
 

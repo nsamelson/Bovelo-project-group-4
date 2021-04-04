@@ -77,6 +77,8 @@ namespace Bovelo
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -150,8 +152,8 @@ namespace Bovelo
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -160,9 +162,9 @@ namespace Bovelo
             this.groupBox1.Controls.Add(this.checkedListBox1);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(208, 100);
-            this.groupBox1.MaximumSize = new System.Drawing.Size(405, 808);
+            this.groupBox1.MaximumSize = new System.Drawing.Size(500, 808);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(405, 377);
+            this.groupBox1.Size = new System.Drawing.Size(500, 377);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add a new Bike Model To the Database";
@@ -183,7 +185,7 @@ namespace Bovelo
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 216);
+            this.label4.Location = new System.Drawing.Point(27, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 21);
             this.label4.TabIndex = 5;
@@ -192,7 +194,7 @@ namespace Bovelo
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 107);
+            this.label3.Location = new System.Drawing.Point(27, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 21);
             this.label3.TabIndex = 4;
@@ -202,7 +204,7 @@ namespace Bovelo
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 68);
+            this.label2.Location = new System.Drawing.Point(27, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 21);
             this.label2.TabIndex = 3;
@@ -215,7 +217,7 @@ namespace Bovelo
             this.checkedListBox2.Items.AddRange(new object[] {
             "26",
             "28"});
-            this.checkedListBox2.Location = new System.Drawing.Point(137, 216);
+            this.checkedListBox2.Location = new System.Drawing.Point(202, 181);
             this.checkedListBox2.Name = "checkedListBox2";
             this.checkedListBox2.Size = new System.Drawing.Size(247, 70);
             this.checkedListBox2.TabIndex = 2;
@@ -228,14 +230,14 @@ namespace Bovelo
             "Red",
             "Black",
             "Blue"});
-            this.checkedListBox1.Location = new System.Drawing.Point(137, 107);
+            this.checkedListBox1.Location = new System.Drawing.Point(202, 78);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.Size = new System.Drawing.Size(247, 92);
             this.checkedListBox1.TabIndex = 1;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(137, 68);
+            this.textBox1.Location = new System.Drawing.Point(202, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(247, 27);
             this.textBox1.TabIndex = 0;
@@ -247,9 +249,9 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(619, 100);
+            this.groupBox2.Location = new System.Drawing.Point(714, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1426, 813);
+            this.groupBox2.Size = new System.Drawing.Size(1331, 813);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Existing models";
@@ -285,7 +287,7 @@ namespace Bovelo
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1413, 582);
+            this.dataGridView1.Size = new System.Drawing.Size(1318, 582);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -449,7 +451,8 @@ namespace Bovelo
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.textBox3);
@@ -461,9 +464,9 @@ namespace Bovelo
             this.groupBox4.Controls.Add(this.checkedListBox4);
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Location = new System.Drawing.Point(208, 483);
-            this.groupBox4.MaximumSize = new System.Drawing.Size(405, 808);
+            this.groupBox4.MaximumSize = new System.Drawing.Size(500, 808);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(405, 430);
+            this.groupBox4.Size = new System.Drawing.Size(500, 430);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add a new Bike Part to the Database";
@@ -471,7 +474,7 @@ namespace Bovelo
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(38, 302);
+            this.label9.Location = new System.Drawing.Point(33, 300);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 21);
             this.label9.TabIndex = 8;
@@ -479,7 +482,7 @@ namespace Bovelo
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(137, 302);
+            this.textBox3.Location = new System.Drawing.Point(202, 302);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(247, 27);
             this.textBox3.TabIndex = 7;
@@ -529,7 +532,7 @@ namespace Bovelo
             this.checkedListBox3.Items.AddRange(new object[] {
             "26",
             "28"});
-            this.checkedListBox3.Location = new System.Drawing.Point(137, 216);
+            this.checkedListBox3.Location = new System.Drawing.Point(202, 216);
             this.checkedListBox3.Name = "checkedListBox3";
             this.checkedListBox3.Size = new System.Drawing.Size(247, 70);
             this.checkedListBox3.TabIndex = 2;
@@ -541,14 +544,14 @@ namespace Bovelo
             "red",
             "black",
             "blue"});
-            this.checkedListBox4.Location = new System.Drawing.Point(137, 107);
+            this.checkedListBox4.Location = new System.Drawing.Point(202, 107);
             this.checkedListBox4.Name = "checkedListBox4";
             this.checkedListBox4.Size = new System.Drawing.Size(247, 92);
             this.checkedListBox4.TabIndex = 1;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(137, 68);
+            this.textBox2.Location = new System.Drawing.Point(202, 68);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(247, 27);
             this.textBox2.TabIndex = 0;
@@ -667,6 +670,22 @@ namespace Bovelo
             this.label12.TabIndex = 1;
             this.label12.Text = "release 3.0";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(27, 270);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(152, 21);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Storage Location :";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(202, 270);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(247, 27);
+            this.textBox4.TabIndex = 8;
+            // 
             // Manager_Create_Model
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -752,5 +771,7 @@ namespace Bovelo
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label13;
     }
 }

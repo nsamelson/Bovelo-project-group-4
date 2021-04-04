@@ -69,6 +69,7 @@
     <Reference Include="itext.svg, Version=7.1.14.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.14\lib\net40\itext.svg.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=8.0.16.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>SQL\MySql.Data.DLL</HintPath>
@@ -90,6 +91,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\App.cs" />
+    <Compile Include="Controller\Assembler.cs" />
+    <Compile Include="Controller\Manager.cs" />
+    <Compile Include="Controller\Representative.cs" />
     <Compile Include="Model\Bike.cs" />
     <Compile Include="Model\BikeModel.cs" />
     <Compile Include="Model\BikePart.cs" />

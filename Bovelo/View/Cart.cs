@@ -124,7 +124,7 @@ namespace Bovelo
                 }
 
                 //pass order
-                app.setNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(), _estimatedShippingWeek);
+                Representative.SetNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(), _estimatedShippingWeek);
                 MessageBox.Show("The order has been validated!");
 
                 //print an invoice
