@@ -33,6 +33,7 @@ namespace Bovelo
             button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
             button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
             button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
+            numericUpDown1.Value = 1;
             isChecked();
         }
 
@@ -43,7 +44,7 @@ namespace Bovelo
        }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {            
             isChecked();
         }
 
@@ -106,8 +107,8 @@ namespace Bovelo
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            
+        {            
+            numericUpDown1.Minimum = 1;
             Decimal B = this.numericUpDown1.Value * getBikePrice();
             this.label6.Text = B.ToString();
             isChecked();
@@ -121,7 +122,7 @@ namespace Bovelo
             if (radioButton1.Checked)
             {
                 color = radioButton1.Text;
-                button4.Enabled = true;
+                
             }
             else if (radioButton2.Checked)
             {
@@ -212,9 +213,9 @@ namespace Bovelo
         {            
             if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
             {
-                if (numericUpDown1 != null && comboBox1 != null)
-                {
-                    button4.Enabled = true;
+                if (numericUpDown1 != null && comboBox1.SelectedItem != null)
+                {                 
+                    button4.Enabled = true;                    
                 }
             }
             else
