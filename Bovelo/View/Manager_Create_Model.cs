@@ -87,6 +87,8 @@ namespace Bovelo
                     foreach (var size in sizes)
                     {
                         Manager.SetNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
+                        MessageBox.Show("Model created");
+                        reloadPage();
                     }
                 }
             }
@@ -115,6 +117,7 @@ namespace Bovelo
                     foreach (var size in sizes)
                     {
                         Manager.SetNewBikePart(name,location, price,Int32.Parse(size.ToString()), color.ToString());
+                        reloadPage();
                     }
                 }
             }
@@ -123,6 +126,7 @@ namespace Bovelo
                 foreach (var color in colors)
                 {
                     Manager.SetNewBikePart(name, location, price, 0, color.ToString());
+                    reloadPage();
                 }
             }
             else if (colors.Count == 0 && sizes.Count != 0)
@@ -130,11 +134,13 @@ namespace Bovelo
                 foreach (var size in sizes)
                 {
                     Manager.SetNewBikePart(name, location, price,Int32.Parse(size.ToString()));
+                    reloadPage();
                 }
             }
             else
             {
                 Manager.SetNewBikePart(name, location, price);
+                reloadPage();
             }
 
         }
@@ -190,7 +196,12 @@ namespace Bovelo
                         row.Cells[3].Value = "0";
                     }
                 }
-                Manager.SetLinkBikePartsToBikeModel(idModel, partsToLink);
+                DialogResult result = MessageBox.Show("Are you sure you want to add this part to this bike?", "Confirmation", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    Manager.SetLinkBikePartsToBikeModel(idModel, partsToLink);
+                    reloadPage();
+                }
             }
         }
 
@@ -219,6 +230,14 @@ namespace Bovelo
         {
             string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
             MessageBox.Show(partsToShow);
+        }
+
+        private void reloadPage()
+        {
+            this.Hide(); //hides the current form                    
+            Manager_Create_Model mpc = new Manager_Create_Model(user);
+            mpc.FormClosed += (s, args) => this.Close();
+            mpc.Show();
         }
     }
 }

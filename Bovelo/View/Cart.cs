@@ -207,5 +207,10 @@ namespace Bovelo
             _estimatedShippingWeek = app.GetEstimatedTimeBeforeShipping(_currentUser.cart);
             label5.Text = _estimatedShippingWeek + " Weeks";
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
