@@ -63,6 +63,14 @@ namespace Bovelo
             }
             Decimal B = _currentUser.getCartPrice();
             this.labelPrice.Text = B.ToString() + " €";
+            if (_currentUser.login == "Manager")
+            {
+                textBox1.Text = "Stock";
+            }
+            else
+            {
+                textBox1.Text = "";
+            }
 
         }
 
