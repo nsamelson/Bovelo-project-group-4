@@ -110,5 +110,10 @@ namespace Bovelo
             maw.FormClosed += (s, args) => this.Close(); // close the login Form
             maw.Show();
         }
+
+        private void button9_Click_1(object sender, EventArgs e)
+        {
+            DataBase.Backup();
+        }
     }
 }

@@ -74,6 +74,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>SQL\MySql.Data.DLL</HintPath>
     </Reference>
+    <Reference Include="mysqlbackup, Version=2.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SQL\mysqlbackup.dll</HintPath>
+    </Reference>
     <Reference Include="Renci.SshNet, Version=2020.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
       <HintPath>..\packages\SSH.NET.2020.0.1\lib\net40\Renci.SshNet.dll</HintPath>
     </Reference>
@@ -266,6 +270,9 @@
     <None Include="View\Pictures\icones\profile.png" />
     <None Include="View\Pictures\icones\tprofile.jpg" />
     <None Include="View\Pictures\icones\home.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SQL\mysqlbackup.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

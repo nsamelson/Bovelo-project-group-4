@@ -89,6 +89,26 @@ namespace Bovelo
         {
             string sql = "SELECT Id_Order FROM "+table+" ORDER BY "+ column + " DESC LIMIT 1;";
             return ConnectToDB(sql).Last()[0];//returns the last id
-        }    
+        }
+        public static void Backup()
+        {
+            string MachineName1 = Environment.MachineName;
+            Console.WriteLine("Your Machine Name: " + MachineName1);
+            string file = "C:\\Users\\"+MachineName1+"\\Documents\\backup_"+DateTime.Today.DayOfWeek+".sql";
+            using (MySqlConnection conn = new MySqlConnection(_connStr))
+            {
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    using (MySqlBackup mb = new MySqlBackup(cmd))
+                    {
+                        cmd.Connection = conn;
+                        conn.Open();
+                        mb.ExportToFile(@file);
+                        conn.Close();
+                    }
+                }
+
+            }
+        }
     }
 }
