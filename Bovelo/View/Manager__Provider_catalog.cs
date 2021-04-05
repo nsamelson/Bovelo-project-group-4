@@ -54,8 +54,8 @@ namespace Bovelo
         {
             dataGridView1.Rows.Clear();
             int i = 0;
-            Dictionary<int, int> resultWeek = newApp.getWeekPieces(this.plannedWeek);
-            Dictionary<int, int> resultCompute = newApp.computeMissingPieces(ref resultWeek);
+            Dictionary<int, int> resultWeek = newApp.GetWeekPieces(this.plannedWeek);
+            Dictionary<int, int> resultCompute = newApp.ComputeMissingPieces(ref resultWeek);
             /*foreach(var elem in resultWeek)
             {
                 Console.WriteLine("Key " +elem.Key +" Value : "+ elem.Value);
@@ -170,8 +170,8 @@ namespace Bovelo
         {
             user.cartPart.Clear();
             dataGridView2.Rows.Clear();
-            Dictionary<int, int> resultWeek = newApp.getWeekPieces(this.plannedWeek);
-            Dictionary<int, int> resultCompute = newApp.computeMissingPieces(ref resultWeek);
+            Dictionary<int, int> resultWeek = newApp.GetWeekPieces(this.plannedWeek);
+            Dictionary<int, int> resultCompute = newApp.ComputeMissingPieces(ref resultWeek);
             int i = 0;
             
             foreach (var elem in resultCompute)

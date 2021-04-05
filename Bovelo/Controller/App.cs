@@ -53,25 +53,24 @@ namespace Bovelo
         }
         internal void SetBikeModelList()
         {
-            bikeModels = getBikeModelList();
+            bikeModels = GetBikeModelList();
         }
         internal void SetBikePartList()
         {
-            bikePartList = getBikePartList();
+            bikePartList = GetBikePartList();
         }
         internal void SetOrderBikeList()
         {
-            orderBikeList = getOrderBikeList();
+            orderBikeList = GetOrderBikeList();
         }
         internal void SetPlanningList()
         {
-            planningList = getPlanningList();
+            planningList = GetPlanningList();
         }
         internal void SetLinkingPartList()
         {
-            _linkingPartList = getLinkingPartList();
+            _linkingPartList = GetLinkingPartList();
         }
-
 
         //GET METHODS
         internal List<User> GetUserList() //is used to get all users 
@@ -100,13 +99,11 @@ namespace Bovelo
             }
             return userFromDB;
         }
-
-
-        internal List<List<string>> getLinkingPartList()
+        internal List<List<string>> GetLinkingPartList()
         {
             return DataBase.GetFromDB("Parts");
         }
-        internal List<BikePart> getBikePartList()
+        internal List<BikePart> GetBikePartList()
         {
             List<BikePart> bikeParts = new List<BikePart>();
             var BikePartsFromDB = DataBase.GetFromDB("Bike_Parts");
@@ -118,14 +115,12 @@ namespace Bovelo
 
             return bikeParts;
         }
-        internal List<Planning> getPlanningList() //maybe transfer into Assembler Controller
+        internal List<Planning> GetPlanningList() //maybe transfer into Assembler Controller
         {
             SetBikeModelList();
             List<Planning> plannings = new List<Planning>();
             var detailedSchedules = DataBase.GetFromDB("Detailed_Schedules");
-            var allorders = getOrderDetails();
-            /*Dictionary<string, List<string>> weeks = new Dictionary<string, List<string>>();//dictionnary of WeekName as key and List of id_OrderDetails as value
-            Dictionary<string, string> assemblerPerBikeId = new Dictionary<string, string>();*/
+            var allorders = DataBase.GetFromDB("Order_Details");
             Dictionary<string, Dictionary<string,string>> schedules = new Dictionary<string, Dictionary<string, string>>();//<weekName,<idOrderDetails,AssemblerName>>
             int id = 0;
             Dictionary<string, List<List<string>>> test = new Dictionary<string, List<List<string>>>(); //<weekName,<weekName,id_Order_Details,Assebled_By,Started,Finnished>
@@ -141,25 +136,20 @@ namespace Bovelo
                     values.Add(row);
                     test[row[0]] = values;
                 }
-
             }
-
             foreach (var week in test)
             {
                 List<List<string>> bikes = new List<List<string>>();
                 foreach(var row in week.Value)
                 {
                     bikes.Add(allorders.FirstOrDefault(x=>x[0] ==row[1]));
-                    //Console.WriteLine(string.Join("\t", bikes.Last()) + week.Key);
                 }
                 plannings.Add(new Planning(bikes, week.Key, id, week.Value, bikeModels));
                 id++;
             }
-
             return plannings;
-
         }
-        internal List<OrderBike> getOrderBikeList() //is used to get all Bike Orders NEED TO TRY
+        internal List<OrderBike> GetOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
             List<OrderBike> orderBikeList = new List<OrderBike>();
             var orderList = DataBase.GetFromDB("Order_Bikes");
@@ -177,12 +167,7 @@ namespace Bovelo
 
             return orderBikeList;
         }
-        internal List<List<string>> getOrderDetails()
-        {
-            var orderDetailList = DataBase.GetFromDB("Order_Details");
-            return orderDetailList;
-        }   
-        internal List<BikeModel> getBikeModelList() //is used to get all bike models
+        internal List<BikeModel> GetBikeModelList() //is used to get all bike models
         {
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
             List<List<string>> modelList = DataBase.GetFromDB("Bike_Model");//bikemodels from db
@@ -218,12 +203,12 @@ namespace Bovelo
             }
             return bikeList;
         }
-        internal Dictionary<int, int> getWeekPieces(string weekName) //really with weekName ?!
+        internal Dictionary<int, int> GetWeekPieces(string weekName) //really with weekName ?!
         {
 
             List<Bike> BikesToGetPieces = new List<Bike>();
 
-            foreach (var planning in this.getPlanningList())
+            foreach (var planning in this.GetPlanningList())
             {
                 if (planning.weekName == weekName)
                 {
@@ -252,28 +237,7 @@ namespace Bovelo
             }
             return PartIdQuantity;
         }
-        internal Dictionary<int, int> computeMissingPieces(ref Dictionary<int, int> PartIdQuantity)
-        {
-            SetBikePartList();
-            int stockQuantity = 0;
-            int quantityNeeded = 0;
-            Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
-            foreach (var elem in PartIdQuantity)
-            {
-                //stockQuantity = getQuantity(elem.Key);
-                stockQuantity = bikePartList.FirstOrDefault(x => x.part_Id == elem.Key).quantity;
-                quantityNeeded = elem.Value;            // just to be clear
-                int orderQuantity = 0;
-                orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
-                if (orderQuantity > 0) //means there is enough stock
-                {
-                    partOrderQuantity.Add(elem.Key, orderQuantity);
-                }
-                //NEED TO ADD THIS ORDER WITH THE ID TO A LIST         
-            }
-            return partOrderQuantity;
-        }
-        internal int getEstimatedTimeBeforeShipping(List<ItemBike> bikesToOrder)//Maybe transfer it into Representative controller
+        internal int GetEstimatedTimeBeforeShipping(List<ItemBike> bikesToOrder)//Maybe transfer it into Representative controller
         {
             float days = 0;
             int weeks = 0;
@@ -337,7 +301,34 @@ namespace Bovelo
             return weeks;
         }
 
-        /*internal List<BikeModel> getBikeModelList() //is used to get all bike models
+        //OTHER METHODS
+        internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> PartIdQuantity)
+        {
+            SetBikePartList();
+            int stockQuantity = 0;
+            int quantityNeeded = 0;
+            Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
+            foreach (var elem in PartIdQuantity)
+            {
+                //stockQuantity = getQuantity(elem.Key);
+                stockQuantity = bikePartList.FirstOrDefault(x => x.part_Id == elem.Key).quantity;
+                quantityNeeded = elem.Value;            // just to be clear
+                int orderQuantity = 0;
+                orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
+                if (orderQuantity > 0) //means there is enough stock
+                {
+                    partOrderQuantity.Add(elem.Key, orderQuantity);
+                }
+                //NEED TO ADD THIS ORDER WITH THE ID TO A LIST         
+            }
+            return partOrderQuantity;
+        }
+        /*internal List<List<string>> GetOrderDetails()
+        {
+            var orderDetailList = DataBase.GetFromDB("Order_Details");
+            return orderDetailList;
+        }   */
+        /*internal List<BikeModel> GetBikeModelList() //is used to get all bike models
         {
             List<BikeModel> bikeList = new List<BikeModel>();
             List<List<string>> modelList = getFromDB("Bikes");
@@ -345,7 +336,7 @@ namespace Bovelo
             {
                 string Type = row[1];
                 var newBikeModel = new BikeModel(Int32.Parse(row[0]), Type);
-                newBikeModel.setBikeParts(getBikePartList());
+                newBikeModel.setBikeParts(GetBikePartList());
                 bikeList.Add(newBikeModel);
             }
             return bikeList;

@@ -94,7 +94,7 @@ namespace Bovelo
                 string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
                 MessageBox.Show(partsToShow);
             }
-            newApp.planningList = newApp.getPlanningList();
+            newApp.SetPlanningList();
         }
 
 
