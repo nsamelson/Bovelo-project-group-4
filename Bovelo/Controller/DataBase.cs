@@ -94,7 +94,8 @@ namespace Bovelo
         {
             string MachineName1 = Environment.MachineName;
             Console.WriteLine("Your Machine Name: " + MachineName1);
-            string file = "C:\\Users\\"+MachineName1+"\\Documents\\backup_"+DateTime.Today.DayOfWeek+".sql";
+            //string file = "C:\\Users\\"+MachineName1+"\\Documents\\backup_"+DateTime.Today.DayOfWeek+".sql";
+            string file = "../../Backup/backup_" + DateTime.Today.ToShortDateString().Replace("/", "_") + ".sql";
             using (MySqlConnection conn = new MySqlConnection(_connStr))
             {
                 using (MySqlCommand cmd = new MySqlCommand())
@@ -103,7 +104,7 @@ namespace Bovelo
                     {
                         cmd.Connection = conn;
                         conn.Open();
-                        mb.ExportToFile(@file);
+                        mb.ExportToFile(file);
                         conn.Close();
                     }
                 }

@@ -274,5 +274,8 @@
   <ItemGroup>
     <Content Include="SQL\mysqlbackup.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Backup\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
