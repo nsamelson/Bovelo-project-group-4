@@ -21,8 +21,8 @@ namespace Bovelo
             this.user = currentUser;
             InitializeComponent();
 
-            newApp.updatePlanningList();
-            newApp.updateBikePartList();
+            newApp.SetPlanningList();
+            newApp.SetBikePartList();
             var plans = newApp.planningList.Select(x => x.weekName).ToList();
             comboBox1.DataSource = plans;
             plannedWeek = comboBox1.Text;
@@ -251,7 +251,7 @@ namespace Bovelo
                 row.Add(elem.price.ToString());
                 selectedData.Add(row);
             }
-            newApp.createInvoice(client, column, selectedData);
+            ExportData.CreateInvoice(client, column, selectedData);
         }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo

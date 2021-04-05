@@ -19,8 +19,8 @@ namespace Bovelo
         {
             this.user = user;
             InitializeComponent();
-            app.updateBikeModelList();
-            app.updateBikePartList();
+            app.SetBikeModelList();
+            app.SetBikePartList();
         }
 
         private void button3_Click(object sender, EventArgs e)//orders
@@ -197,7 +197,7 @@ namespace Bovelo
         private void button9_Click(object sender, EventArgs e)//Load bikeParts
         {
             dataGridView2.Rows.Clear();
-            app.updateBikePartList();
+            app.SetBikePartList();
             var parts = app.bikePartList;
             int i = 0;
             foreach (var part in parts)

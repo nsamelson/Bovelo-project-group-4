@@ -8,7 +8,7 @@ namespace Bovelo
 {
     public static class Representative
     {
-        public static void SetNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice, int shippingWeek)
+        public static void SetNewOrderBike(List<List<string>> newOrder, string clientName, int totPrice, int shippingWeek)//Pass a new OrderBike
         {
             var orderId =1;
             var daysToAdd = shippingWeek * 7;
@@ -53,7 +53,22 @@ namespace Bovelo
             DataBase.SendToDB(queryOD);
 
         }
+        internal static List<Bike> GetBikesInStock()
+        {
+            var stockBikeID = DataBase.GetFromDBWhere("Order_Bikes", new List<string>() { "Id_Order" }, "Customer_Name='Stock'");
+            var stockBike = DataBase.GetFromDBWhere("Order_Details", new List<string>() { "Bike_Type", "Bike_Size", "Bike_Color", "Id_Order" }, "Bike_Status = 'Closed'");
+            List<string> bikes = stockBikeID.SelectMany(x => x).ToList();
+            List<Bike> bikesInStock = new List<Bike>();
 
-        //maybe transfer "App.getEstimatedTimeBeforeShipping()" here
+            foreach (var row in stockBike)
+            {
+                if (bikes.Any(x => x == row[3]))
+                {
+                    bikesInStock.Add(new Bike(0, new BikeModel(row[0], row[2], Int32.Parse(row[1]))));
+                }
+            }
+            return bikesInStock;
+        }
+
     }
 }

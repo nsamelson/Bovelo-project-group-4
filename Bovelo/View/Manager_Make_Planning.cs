@@ -19,8 +19,8 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
-            newApp.updateBikePartList();
-            newApp.updateBikeModelList();
+            newApp.SetBikePartList();
+            newApp.SetBikeModelList();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -170,7 +170,7 @@ namespace Bovelo
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)//update schedule
         {
             int id = Int32.Parse(idBike.Text.ToString());
             string newWeek = newWeekToAssign.Text.ToString();

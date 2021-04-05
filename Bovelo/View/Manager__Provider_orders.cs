@@ -18,7 +18,7 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
-            newApp.updateBikePartList();
+            newApp.SetBikePartList();
             orderLoad();
 
         }

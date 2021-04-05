@@ -37,7 +37,7 @@ namespace Bovelo
             InitializeComponent();
 
             _currentUser = incomingUser;
-            stockBike = app.getStockBikesID();
+            stockBike =Representative.GetBikesInStock();
             
         }
         private void Cart_Load() 
@@ -183,7 +183,7 @@ namespace Bovelo
                 row.Add(elem[4]);
                 selectedData.Add(row);
             }
-            app.createInvoice(client, column, selectedData);
+            ExportData.CreateInvoice(client, column, selectedData);
         }
 
 

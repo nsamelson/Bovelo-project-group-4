@@ -92,6 +92,7 @@
   <ItemGroup>
     <Compile Include="Controller\App.cs" />
     <Compile Include="Controller\Assembler.cs" />
+    <Compile Include="Controller\ExportData.cs" />
     <Compile Include="Controller\Manager.cs" />
     <Compile Include="Controller\Representative.cs" />
     <Compile Include="Model\Bike.cs" />
@@ -194,7 +195,7 @@
     <Compile Include="View\Manager_AssemblerWork.Designer.cs">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controller\Program.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="View\Assembler_MainHome.resx">
       <DependentUpon>Assembler_MainHome.cs</DependentUpon>
