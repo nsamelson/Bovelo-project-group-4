@@ -17,7 +17,7 @@ namespace Bovelo
         public Login()
         {
             InitializeComponent();
-
+            app.SetUserList();
         }
 
         private void Login_Load(object sender, EventArgs e)
@@ -33,32 +33,32 @@ namespace Bovelo
             //elif Product manager
             string userType = comboBox1.Text;
             string userName = textBox1.Text;
-            Console.WriteLine("user List prob : " + app.getUserList().Count); ;
-            bool isExisting = app.getUserList().Any(login => login.login == userName);
+            Console.WriteLine("user List prob : " + app.userList.Count); ;
+            bool isExisting = app.userList.Any(login => login.login == userName);
             if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again or create a new user!"); }
             else
             {
                 if (userType == "Representative")
                 {
-                    int index = app.getUserList().FindIndex(a => a.login == userName);
+                    int index = app.userList.FindIndex(a => a.login == userName);
                     this.Hide(); //hides the current form
-                    MainHome mh = new MainHome(app.getUserList()[index]);// maybe send the userType with it
+                    MainHome mh = new MainHome(app.userList[index]);// maybe send the userType with it
                     mh.FormClosed += (s, args) => this.Close(); // close the login Form
                     mh.Show();
                 }
                 if (userType == "Assembler")
                 {
-                    int index = app.getUserList().FindIndex(a => a.login == userName);
+                    int index = app.userList.FindIndex(a => a.login == userName);
                     this.Hide(); //hides the current form
-                    Assembler_MainHome amh = new Assembler_MainHome(app.getUserList()[index]);// maybe send the userType with it
+                    Assembler_MainHome amh = new Assembler_MainHome(app.userList[index]);// maybe send the userType with it
                     amh.FormClosed += (s, args) => this.Close(); // close the login Form
                     amh.Show();
                 }
                 if (userType == "Production Manager")
                 {
-                    int index = app.getUserList().FindIndex(a => a.login == userName);
+                    int index = app.userList.FindIndex(a => a.login == userName);
                     this.Hide(); //hides the current form
-                    Manager_MainHome mmh = new Manager_MainHome(app.getUserList()[index]);// maybe send the userType with it
+                    Manager_MainHome mmh = new Manager_MainHome(app.userList[index]);// maybe send the userType with it
                     mmh.FormClosed += (s, args) => this.Close(); // close the login Form
                     mmh.Show();
                 }
@@ -80,17 +80,17 @@ namespace Bovelo
             {
                 if (comboBox1.Text == "Representative")
                 {
-                    app.setNewUser(new User(userName, true, false, false));
+                    app.SetNewUser(new User(userName, true, false, false));
                     MessageBox.Show("A new Representative was created!");
                 }
                 else if (comboBox1.Text == "ProductionManager")
                 {
-                    app.setNewUser(new User(userName,false,true,false));
+                    app.SetNewUser(new User(userName,false,true,false));
                     MessageBox.Show("A new Production Manager was created!");
                 }
                 else if (comboBox1.Text == "Assembler")
                 {
-                    app.setNewUser(new User(userName, false, false, true));
+                    app.SetNewUser(new User(userName, false, false, true));
                     MessageBox.Show("A new Assembler was created!");
                 }
                 else { MessageBox.Show("Please select a valid user Type"); }

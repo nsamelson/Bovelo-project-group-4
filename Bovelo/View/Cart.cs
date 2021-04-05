@@ -37,7 +37,7 @@ namespace Bovelo
             InitializeComponent();
 
             _currentUser = incomingUser;
-            stockBike = app.getStockBikesID();
+            stockBike =Representative.GetBikesInStock();
             
         }
         private void Cart_Load() 
@@ -128,7 +128,7 @@ namespace Bovelo
                 string text ="";
                 if(_estimatedShippingWeek == 0)
                 {
-                    _estimatedShippingWeek = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+                    _estimatedShippingWeek = app.GetEstimatedTimeBeforeShipping(_currentUser.cart);
                 }
 
                 //pass order
@@ -183,7 +183,7 @@ namespace Bovelo
                 row.Add(elem[4]);
                 selectedData.Add(row);
             }
-            app.createInvoice(client, column, selectedData);
+            ExportData.CreateInvoice(client, column, selectedData);
         }
 
 
@@ -204,7 +204,7 @@ namespace Bovelo
         }
         private void button6_Click(object sender, EventArgs e)//estimate Time
         {
-            _estimatedShippingWeek = app.getEstimatedTimeBeforeShipping(_currentUser.cart);
+            _estimatedShippingWeek = app.GetEstimatedTimeBeforeShipping(_currentUser.cart);
             label5.Text = _estimatedShippingWeek + " Weeks";
         }
     }

@@ -27,7 +27,7 @@ namespace Bovelo
             this.provider = provider;
         }
 
-        public void setQuantity(ref App newApp,int quantity)
+        public void setQuantity(ref App newApp,int quantity)//should avoid passing App here
         {
             string query = "UPDATE Bike_Parts SET Quantity=" + quantity + " WHERE Id_Bike_Parts = " + this.part_Id;
             DataBase.SendToDB(query);

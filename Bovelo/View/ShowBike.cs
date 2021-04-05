@@ -23,7 +23,7 @@ namespace Bovelo
         {
             TypeOfBike = TypeBike;
             _currentUser = current_user;
-            app.updateBikeModelList();
+            app.SetBikeModelList();
             // bikeToAdd = new Bike(0, TypeBike, "black", 26);
             InitializeComponent();
             // display the first bykeview at the first time

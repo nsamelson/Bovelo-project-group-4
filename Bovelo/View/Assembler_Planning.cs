@@ -94,14 +94,14 @@ namespace Bovelo
                 string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
                 MessageBox.Show(partsToShow);
             }
-            newApp.planningList = newApp.getPlanningList();
+            newApp.SetPlanningList();
         }
 
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)//loading the page
         {
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            newApp.updatePlanningList();
+            newApp.SetPlanningList();
             var plans = newApp.planningList.Select(x => x.weekName).ToList();
             comboBox1.DataSource = plans; //shows the existing schedules
         }
