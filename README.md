@@ -1,4 +1,5 @@
-# **Bovelo-project-group-4**  
+# **Bovelo-project-group-4** 
+[![Build Status](https://dev.azure.com/ECAM3BE/Groupe4/_apis/build/status/wasanico.Bovelo-project-group-4?branchName=main)](https://dev.azure.com/ECAM3BE/Groupe4/_build/latest?definitionId=1&branchName=main)
 
 Software engineering 2 project
 
