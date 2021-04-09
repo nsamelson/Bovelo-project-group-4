@@ -80,12 +80,7 @@ namespace Bovelo
                     string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " ;";
                     //Console.WriteLine(query);
                     DataBase.SendToDB(query);
-                    var field = new List<string>();
-                    field.Add("Quantity");
-                    var result = DataBase.GetFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
-                    int quantity= Int32.Parse(result[0][0]) + Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
-                    query = "UPDATE Bike_Parts SET Quantity="+quantity+" WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                    DataBase.SendToDB(query);
+                    BikePart.addReceivedBikePart(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString()));
                     MessageBox.Show(@"Changed State :" +
                         "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value +
                         "\nId_Order= " + dataGridView1.Rows[e.RowIndex].Cells[0].Value +

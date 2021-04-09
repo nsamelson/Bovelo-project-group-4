@@ -39,13 +39,13 @@ namespace Bovelo
 
         static public void substractClosedBike(string data)
         {
-            string[] partsToUpdate = data.Split('|','\n');
+            string[] partsToUpdate = data.Split('|', '\n');
             int i = 0;
             int quantity = 0;
             foreach (var elem in partsToUpdate)
             {
-                Console.WriteLine("substring :" + elem +", i value :"+i);
-                if (i==0 && elem != "")
+                Console.WriteLine("substring :" + elem + ", i value :" + i);
+                if (i == 0 && elem != "")
                 {
                     quantity = getQuantity(Int32.Parse(elem));
                     quantity--;
@@ -53,8 +53,18 @@ namespace Bovelo
                     DataBase.SendToDB(query);
                 }
                 i++;
-                if (i == 3) { i = 0; }               
+                if (i == 3) { i = 0; }
             }
+        }
+
+        static public void addReceivedBikePart(int idBikePart,int quantityToAdd)
+        {
+            var field = new List<string>();
+            field.Add("Quantity");
+            var result = DataBase.GetFromDBWhere("Bike_Parts", field, "Id_Bike_Parts=" + idBikePart);
+            int quantity = Int32.Parse(result[0][0]) + quantityToAdd;
+            string query = "UPDATE Bike_Parts SET Quantity=" + quantity + " WHERE Id_Bike_Parts = " + idBikePart;
+            DataBase.SendToDB(query);
         }
     }//end class BikePart
 
