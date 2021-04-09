@@ -53,11 +53,11 @@ namespace Bovelo
                 cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
                 dataGridView1.Rows[e.RowIndex].Cells[9] = cell;
                 cell.ReadOnly = true;
-
                 DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
                 newCell.Value = string.Empty;
                 dataGridView1.Rows[e.RowIndex].Cells[10] = newCell;
                 newCell.ReadOnly = true;
+                BikePart.substractClosedBike(dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString());
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     id = Int32.Parse(row.Cells[0].Value.ToString());
@@ -67,7 +67,7 @@ namespace Bovelo
                     finish = row.Cells[9].Value.ToString();
                     row.Cells[7].Value = Builder;
                     Assembler.UpdateSatus(id, status, Builder, start, finish);
-                }    
+                }
             }
 
             else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new")
