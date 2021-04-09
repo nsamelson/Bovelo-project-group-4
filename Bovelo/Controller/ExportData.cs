@@ -22,10 +22,14 @@ namespace Bovelo
             date = date.Replace(' ', '_');
             date = date.Replace(':', '_');
             string path = Environment.CurrentDirectory;
-            PdfWriter writer = new PdfWriter(@"../../facture/" + client + "_" + date + ".pdf");
+            string directory = @"../../facture/bike/" + client + "_" + date + ".pdf";
+            if (client == "Manager")
+            {
+                directory = @"../../facture/part/" + client + "_" + date + ".pdf";
+            }
+            PdfWriter writer = new PdfWriter(directory);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
-
             // Header
             Paragraph header = new Paragraph("Bovelo")
                 .SetTextAlignment(TextAlignment.CENTER)

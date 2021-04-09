@@ -53,11 +53,18 @@ namespace Bovelo
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.getDetails = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clear = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -158,7 +165,7 @@ namespace Bovelo
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1543, 667);
+            this.dataGridView1.Size = new System.Drawing.Size(1368, 667);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -179,16 +186,19 @@ namespace Bovelo
             // Id_Bike_Part
             // 
             this.Id_Bike_Part.HeaderText = "Id_Bike_Part";
+            this.Id_Bike_Part.MinimumWidth = 6;
             this.Id_Bike_Part.Name = "Id_Bike_Part";
             // 
             // Name_
             // 
             this.Name_.HeaderText = "Name_";
+            this.Name_.MinimumWidth = 6;
             this.Name_.Name = "Name_";
             // 
             // Quantity
             // 
             this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
             this.Quantity.Name = "Quantity";
             // 
             // Total_Price
@@ -208,11 +218,13 @@ namespace Bovelo
             // Order_State
             // 
             this.Order_State.HeaderText = "Order_State";
+            this.Order_State.MinimumWidth = 6;
             this.Order_State.Name = "Order_State";
             // 
             // Receive
             // 
             this.Receive.HeaderText = "Change_State";
+            this.Receive.MinimumWidth = 6;
             this.Receive.Name = "Receive";
             this.Receive.Text = "Received";
             this.Receive.ToolTipText = "Received";
@@ -221,6 +233,7 @@ namespace Bovelo
             // Remove_Order
             // 
             this.Remove_Order.HeaderText = "Remove";
+            this.Remove_Order.MinimumWidth = 6;
             this.Remove_Order.Name = "Remove_Order";
             this.Remove_Order.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Remove_Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
@@ -251,7 +264,7 @@ namespace Bovelo
             this.label1.Location = new System.Drawing.Point(1465, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 33);
+            this.label1.Size = new System.Drawing.Size(127, 41);
             this.label1.TabIndex = 2;
             this.label1.Text = "Manager";
             // 
@@ -265,7 +278,7 @@ namespace Bovelo
             this.label3.Location = new System.Drawing.Point(459, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(374, 79);
+            this.label3.Size = new System.Drawing.Size(467, 97);
             this.label3.TabIndex = 1;
             this.label3.Text = "Provider orders";
             // 
@@ -278,7 +291,7 @@ namespace Bovelo
             this.label5.Location = new System.Drawing.Point(5, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 79);
+            this.label5.Size = new System.Drawing.Size(235, 97);
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
@@ -324,7 +337,7 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(47, 1);
             this.label4.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 39);
+            this.label4.Size = new System.Drawing.Size(170, 49);
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
@@ -343,12 +356,83 @@ namespace Bovelo
             this.panel3.TabIndex = 15;
             this.panel3.Tag = "";
             // 
+            // getDetails
+            // 
+            this.getDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.getDetails.Location = new System.Drawing.Point(1605, 199);
+            this.getDetails.Name = "getDetails";
+            this.getDetails.Size = new System.Drawing.Size(133, 39);
+            this.getDetails.TabIndex = 21;
+            this.getDetails.Text = "Get Details";
+            this.getDetails.UseVisualStyleBackColor = true;
+            this.getDetails.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(1605, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(136, 32);
+            this.textBox1.TabIndex = 22;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(1601, 121);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 29);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "ID Details";
+            this.label2.Click += new System.EventHandler(this.label2_Click_1);
+            // 
+            // clear
+            // 
+            this.clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.clear.Location = new System.Drawing.Point(1605, 260);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(133, 39);
+            this.clear.TabIndex = 24;
+            this.clear.Text = "Clear";
+            this.clear.UseVisualStyleBackColor = true;
+            this.clear.Click += new System.EventHandler(this.button5_Click_1);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
+            this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1});
+            this.dataGridView2.Location = new System.Drawing.Point(1591, 307);
+            this.dataGridView2.Margin = new System.Windows.Forms.Padding(5);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.Size = new System.Drawing.Size(169, 472);
+            this.dataGridView2.TabIndex = 25;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Order_Id";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
             // Manager__Provider_orders
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1774, 795);
+            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.clear);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.getDetails);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
@@ -366,7 +450,9 @@ namespace Bovelo
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -395,5 +481,11 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Order_State;
         private System.Windows.Forms.DataGridViewButtonColumn Receive;
         private System.Windows.Forms.DataGridViewButtonColumn Remove_Order;
+        private System.Windows.Forms.Button getDetails;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button clear;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
     }
 }
