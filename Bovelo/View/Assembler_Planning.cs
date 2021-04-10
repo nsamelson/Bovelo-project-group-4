@@ -46,7 +46,8 @@ namespace Bovelo
                 dataGridView1.Refresh();
             }
 
-            else if (dataGridView1.CurrentCell.Value.ToString() == "set on close")
+            else if (dataGridView1.CurrentCell.Value.ToString() == "set on close" &&
+                dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString() == "Active")
             {
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
                 DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
@@ -70,7 +71,8 @@ namespace Bovelo
                 }
             }
 
-            else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new")
+            else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new" &&
+                dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString() == "Active")
             {
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value = "New";
                 DataGridViewButtonCell activeCell = new DataGridViewButtonCell();
