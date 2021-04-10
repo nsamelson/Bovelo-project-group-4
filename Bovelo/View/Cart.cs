@@ -144,10 +144,9 @@ namespace Bovelo
                     }
                     text += "\n";
                 }
-                string path = @"../../Data/list_part.csv";               
-                File.WriteAllText(path, text);
+                /*string path = @"../../Data/list_part.csv";               
+                File.WriteAllText(path, text);*/
                 printInvoice(client);
-
                 //Reset the cart
                 _currentUser.emptyCart();
                 Cart_Load();
@@ -165,22 +164,12 @@ namespace Bovelo
 
         private void printInvoice(string client)
         {
-            List<string> column = new List<string>();
-            column.Add("Bike");
-            column.Add("Size");
-            column.Add("Color");
-            column.Add("Quantity");
-            column.Add("Price");
+            List<string> column = new List<string>{"Bike", "Size", "Color", "Quantity", "Price"};
             var unselectedData = _currentUser.getCartList();
             List<List<string>> selectedData= new List<List<string>>();
             foreach (var elem in unselectedData)
             {
-                List<string> row = new List<string>();
-                row.Add(elem[0]);
-                row.Add(elem[1]);
-                row.Add(elem[2]);
-                row.Add(elem[3]);
-                row.Add(elem[4]);
+                List<string> row = new List<string> {elem[0], elem[1], elem[2], elem[3], elem[4] };
                 selectedData.Add(row);
             }
             ExportData.CreateInvoice(client, column, selectedData);

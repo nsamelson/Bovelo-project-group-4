@@ -58,6 +58,7 @@ namespace Bovelo
 
             Button Bt = (Button)sender;
             this.Hide();
+
             switch (Convert.ToString(Bt.Tag)) //Needs to be linked with database
             {
                 case "City":
