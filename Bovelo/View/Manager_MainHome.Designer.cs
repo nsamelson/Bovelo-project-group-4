@@ -60,10 +60,10 @@ namespace Bovelo
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button4.Location = new System.Drawing.Point(0, 164);
+            this.button4.Location = new System.Drawing.Point(0, 147);
             this.button4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(201, 76);
+            this.button4.Size = new System.Drawing.Size(201, 54);
             this.button4.TabIndex = 6;
             this.button4.Text = "Provider Catalog";
             this.button4.UseVisualStyleBackColor = true;
@@ -74,10 +74,10 @@ namespace Bovelo
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button3.Location = new System.Drawing.Point(0, 239);
+            this.button3.Location = new System.Drawing.Point(0, 204);
             this.button3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(200, 73);
+            this.button3.Size = new System.Drawing.Size(200, 56);
             this.button3.TabIndex = 4;
             this.button3.Text = "Provider Orders";
             this.button3.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@ namespace Bovelo
             this.button1.Location = new System.Drawing.Point(0, 89);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 76);
+            this.button1.Size = new System.Drawing.Size(201, 54);
             this.button1.TabIndex = 2;
             this.button1.Text = "Profile/Login";
             this.button1.UseVisualStyleBackColor = true;
@@ -101,11 +101,13 @@ namespace Bovelo
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(432, 199);
+            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button2.Location = new System.Drawing.Point(-1, 509);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(263, 113);
+            this.button2.Size = new System.Drawing.Size(202, 59);
             this.button2.TabIndex = 7;
             this.button2.Text = "Make Planning";
             this.button2.UseVisualStyleBackColor = true;
@@ -116,10 +118,10 @@ namespace Bovelo
             this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button5.Location = new System.Drawing.Point(0, 311);
+            this.button5.Location = new System.Drawing.Point(-1, 264);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(200, 88);
+            this.button5.Size = new System.Drawing.Size(200, 55);
             this.button5.TabIndex = 8;
             this.button5.Text = "Browse Catalog";
             this.button5.UseVisualStyleBackColor = true;
@@ -128,24 +130,29 @@ namespace Bovelo
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(755, 199);
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Location = new System.Drawing.Point(0, 639);
             this.button6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(279, 113);
+            this.button6.Size = new System.Drawing.Size(200, 75);
             this.button6.TabIndex = 9;
             this.button6.Text = "Add a new bike model";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button8
             // 
             this.button8.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(432, 373);
+            this.button8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button8.Location = new System.Drawing.Point(-1, 438);
             this.button8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(263, 113);
+            this.button8.Size = new System.Drawing.Size(202, 66);
             this.button8.TabIndex = 10;
             this.button8.Text = "Manage Stock";
             this.button8.UseVisualStyleBackColor = true;
@@ -154,13 +161,15 @@ namespace Bovelo
             // builderPlaning
             // 
             this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.builderPlaning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
+            this.builderPlaning.BackColor = System.Drawing.Color.Transparent;
+            this.builderPlaning.FlatAppearance.BorderSize = 0;
             this.builderPlaning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.builderPlaning.Location = new System.Drawing.Point(755, 373);
+            this.builderPlaning.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.builderPlaning.Location = new System.Drawing.Point(-1, 572);
             this.builderPlaning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.builderPlaning.Name = "builderPlaning";
-            this.builderPlaning.Size = new System.Drawing.Size(279, 113);
+            this.builderPlaning.Size = new System.Drawing.Size(202, 60);
             this.builderPlaning.TabIndex = 10;
             this.builderPlaning.Text = "Builders Planning";
             this.builderPlaning.UseVisualStyleBackColor = false;
@@ -244,7 +253,7 @@ namespace Bovelo
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel4.Controls.Add(this.label4);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 550);
+            this.panel4.Location = new System.Drawing.Point(0, 716);
             this.panel4.Margin = new System.Windows.Forms.Padding(13);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
@@ -254,10 +263,15 @@ namespace Bovelo
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button7);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.builderPlaning);
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.button2);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button5);
@@ -265,7 +279,7 @@ namespace Bovelo
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(13);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 593);
+            this.panel2.Size = new System.Drawing.Size(200, 759);
             this.panel2.TabIndex = 20;
             // 
             // button7
@@ -273,10 +287,10 @@ namespace Bovelo
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button7.Location = new System.Drawing.Point(1, 404);
+            this.button7.Location = new System.Drawing.Point(-1, 323);
             this.button7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(200, 88);
+            this.button7.Size = new System.Drawing.Size(200, 55);
             this.button7.TabIndex = 17;
             this.button7.Text = "Assembler works";
             this.button7.UseVisualStyleBackColor = true;
@@ -325,10 +339,12 @@ namespace Bovelo
             // 
             // button9
             // 
+            this.button9.FlatAppearance.BorderSize = 0;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(216, 199);
+            this.button9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button9.Location = new System.Drawing.Point(-1, 383);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(192, 113);
+            this.button9.Size = new System.Drawing.Size(201, 56);
             this.button9.TabIndex = 22;
             this.button9.Text = "Create a Backup";
             this.button9.UseVisualStyleBackColor = true;
@@ -339,16 +355,11 @@ namespace Bovelo
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1262, 593);
-            this.Controls.Add(this.button9);
+            this.ClientSize = new System.Drawing.Size(1262, 759);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.builderPlaning);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button2);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Manager_MainHome";

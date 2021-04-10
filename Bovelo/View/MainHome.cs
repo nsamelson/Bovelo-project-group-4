@@ -133,5 +133,13 @@ namespace Bovelo
             }
             
         }
+
+        private void button7_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            Showbike_other sbo = new Showbike_other(_currentUser);// create new window
+            sbo.FormClosed += (s, args) => this.Close();
+            sbo.Show();// Showing the Login window
+        }
     }
 }
