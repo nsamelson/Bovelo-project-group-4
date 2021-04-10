@@ -305,16 +305,44 @@ namespace Bovelo
         internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> PartIdQuantity)
         {
             SetBikePartList();
+            SetBikeModelList();
             int stockQuantity = 0;
             int quantityNeeded = 0;
+            int numberNeededByBike = 1;
+            Dictionary<int, int> partOrderDuplicateQuantity = new Dictionary<int, int>();          
+            foreach (var bikeModel in bikeModels)
+            {
+                numberNeededByBike = 1;
+                foreach (var bikePart in bikeModel.bikeParts)
+                {
+                    
+                    if (!partOrderDuplicateQuantity.ContainsKey(bikePart.part_Id))
+                    {
+                        numberNeededByBike = bikeModel.bikeParts.Count(elem => elem.part_Id == bikePart.part_Id);
+                        //Console.WriteLine(numberNeededByBike+"\t"+ bikePart.part_Id);
+                        partOrderDuplicateQuantity.Add(bikePart.part_Id, numberNeededByBike);
+                    }
+                    else
+                    {
+                        numberNeededByBike = bikeModel.bikeParts.Count(elem => elem.part_Id == bikePart.part_Id);
+                        //Console.WriteLine(numberNeededByBike + "\t" + bikePart.part_Id);
+                        if (partOrderDuplicateQuantity[bikePart.part_Id]< numberNeededByBike)
+                        {
+                            partOrderDuplicateQuantity[bikePart.part_Id] = numberNeededByBike;
+                        }                      
+                    }
+                }
+            }
             Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
+            int currentNumberPartNeeded = 0;
             foreach (var elem in PartIdQuantity)
             {
                 //stockQuantity = getQuantity(elem.Key);
                 stockQuantity = bikePartList.FirstOrDefault(x => x.part_Id == elem.Key).quantity;
+                currentNumberPartNeeded = partOrderDuplicateQuantity[elem.Key];
                 quantityNeeded = elem.Value;            // just to be clear
                 int orderQuantity = 0;
-                orderQuantity = quantityNeeded - stockQuantity + 10; //ex : I have 5, need 20 => order 25
+                orderQuantity = quantityNeeded - stockQuantity + 10 * currentNumberPartNeeded; //ex : I have 5, need 20 => order 25
                 if (orderQuantity > 0) //means there is enough stock
                 {
                     partOrderQuantity.Add(elem.Key, orderQuantity);

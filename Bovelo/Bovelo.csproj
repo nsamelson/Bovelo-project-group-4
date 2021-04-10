@@ -261,6 +261,7 @@
     <EmbeddedResource Include="View\Showbike_other.resx">
       <DependentUpon>Showbike_other.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bin\Debug\Bovelo.exe.config" />
     <None Include="Data\list_part.csv" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -285,6 +286,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bike_23739.ico" />
+    <Content Include="bin\Debug\Bovelo.exe" />
+    <Content Include="bin\Debug\Bovelo.pdb" />
     <Content Include="SQL\mysqlbackup.dll" />
   </ItemGroup>
   <ItemGroup>
