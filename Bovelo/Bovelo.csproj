@@ -281,7 +281,6 @@
     <None Include="View\Pictures\icones\home.JPG" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Bovelo_icone.ico" />
     <Content Include="SQL\mysqlbackup.dll" />
   </ItemGroup>
   <ItemGroup>
