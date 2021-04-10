@@ -61,8 +61,7 @@ namespace Bovelo
                     Manager_MainHome mmh = new Manager_MainHome(app.userList[index]);// maybe send the userType with it
                     mmh.FormClosed += (s, args) => this.Close(); // close the login Form
                     mmh.Show();
-                }
-                    
+                }                    
             }
         }
 
