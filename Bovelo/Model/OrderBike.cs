@@ -26,8 +26,9 @@ namespace Bovelo
             this.orderDate = orderDate;
             this.shippingDate = shippingDate;
             this.totalPrice = totalPrice;
-            this.isReadyToShip = getOrderState();
             setBikeList(bikeModels, orderDetail);
+            this.isReadyToShip = getOrderState();
+            
         }
 
         public float getTotalBuildingTime()
