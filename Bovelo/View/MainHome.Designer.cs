@@ -46,6 +46,7 @@ namespace Bovelo
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -193,7 +194,7 @@ namespace Bovelo
             this.label2.Location = new System.Drawing.Point(787, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 33);
+            this.label2.Size = new System.Drawing.Size(197, 41);
             this.label2.TabIndex = 2;
             this.label2.Text = "Representative";
             // 
@@ -207,7 +208,7 @@ namespace Bovelo
             this.label1.Location = new System.Drawing.Point(346, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(166, 79);
+            this.label1.Size = new System.Drawing.Size(205, 97);
             this.label1.TabIndex = 1;
             this.label1.Text = "Home";
             // 
@@ -220,7 +221,7 @@ namespace Bovelo
             this.label5.Location = new System.Drawing.Point(6, 6);
             this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 79);
+            this.label5.Size = new System.Drawing.Size(235, 97);
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
@@ -242,6 +243,7 @@ namespace Bovelo
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button8);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.button1);
@@ -280,7 +282,7 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(29, 4);
             this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 39);
+            this.label4.Size = new System.Drawing.Size(170, 49);
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
@@ -297,9 +299,24 @@ namespace Bovelo
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
+            // button8
+            // 
+            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button8.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button8.Location = new System.Drawing.Point(0, 330);
+            this.button8.Margin = new System.Windows.Forms.Padding(5);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(200, 77);
+            this.button8.TabIndex = 17;
+            this.button8.Text = "Catalog";
+            this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
+            // 
             // MainHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1151, 603);
@@ -346,6 +363,7 @@ namespace Bovelo
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
     }
 }
 

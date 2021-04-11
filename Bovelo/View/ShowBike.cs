@@ -82,7 +82,16 @@ namespace Bovelo
 
         private void Explorerbike_Load(object sender, EventArgs e)
         {
+            var all_models = new List<string>();
 
+            foreach(var model in app.bikeModels)
+            {
+                if (!all_models.Contains(model.Type))
+                {
+                    all_models.Add(model.Type);
+                }
+            }
+            comboBox2.DataSource = all_models;
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -222,6 +231,11 @@ namespace Bovelo
             {
                 button4.Enabled = false;
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

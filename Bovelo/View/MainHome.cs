@@ -55,24 +55,26 @@ namespace Bovelo
 
         private void button_Click(object sender, EventArgs e)
         {
-
+            /*//Button Bt = new Button();
             Button Bt = (Button)sender;
-            this.Hide();
+            Bt.Tag = "null";*/
 
-            switch (Convert.ToString(Bt.Tag)) //Needs to be linked with database
+            /*switch (Convert.ToString(Bt.Tag)) //Needs to be linked with database
             {
                 case "City":
-
+                    this.Hide();
                     ShowBike citybike = new ShowBike("City", ref _currentUser);
                     citybike.FormClosed += (s, args) => this.Close();
                     citybike.Show();
                     break;
                 case "Adventure":
+                    this.Hide();
                     ShowBike adventure = new ShowBike("Adventure", ref _currentUser);
                     adventure.FormClosed += (s, args) => this.Close();
                     adventure.Show();
                     break;
                 case "Explorer":
+                    this.Hide();
                     ShowBike explorerbike = new ShowBike("Explorer", ref _currentUser);
                     explorerbike.FormClosed += (s, args) => this.Close();
                     explorerbike.Show();
@@ -83,7 +85,7 @@ namespace Bovelo
                 default:
                     //Bt.Enabled = false;
                     break;
-            }
+            }*/
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -141,6 +143,14 @@ namespace Bovelo
             Showbike_other sbo = new Showbike_other(_currentUser);// create new window
             sbo.FormClosed += (s, args) => this.Close();
             sbo.Show();// Showing the Login window
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ShowBike explorerbike = new ShowBike("Explorer", ref _currentUser);
+            explorerbike.FormClosed += (s, args) => this.Close();
+            explorerbike.Show();
         }
     }
 }
