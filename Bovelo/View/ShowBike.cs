@@ -15,10 +15,8 @@ namespace Bovelo
     {
         public string TypeOfBike;
         public string path = @"../../View";
-        //public string path = Directory.GetCurrentDirectory();// recup the position in repositories
         private User _currentUser;
         private App app = new App();
-        //private Bike bikeToAdd;
         internal ShowBike(string TypeBike,ref User current_user)
         {
             TypeOfBike = TypeBike;
@@ -26,15 +24,12 @@ namespace Bovelo
             app.SetBikeModelList();
             // bikeToAdd = new Bike(0, TypeBike, "black", 26);
             InitializeComponent();
+            comboBox2.DataSource = app.GetDifferentModels();
             // display the first bykeview at the first time
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
-            button5.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilicone.jpg");// assign to bykeimg an image
-            button6.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
-            button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
-            button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
-            button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
+            Load_Pictures();
             numericUpDown1.Value = 1;
             isChecked();
+            
         }
 
        public int getBikePrice()
@@ -82,16 +77,9 @@ namespace Bovelo
 
         private void Explorerbike_Load(object sender, EventArgs e)
         {
-            var all_models = new List<string>();
 
-            foreach(var model in app.bikeModels)
-            {
-                if (!all_models.Contains(model.Type))
-                {
-                    all_models.Add(model.Type);
-                }
-            }
-            comboBox2.DataSource = all_models;
+            //comboBox2.DataSource = app.GetDifferentModels();
+            //comboBox2.SelectedValue = comboBox2.DataSource[0];
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -237,5 +225,59 @@ namespace Bovelo
         {
 
         }
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            TypeOfBike = comboBox2.SelectedValue.ToString();
+            numericUpDown1_ValueChanged( sender,  e);//load the correct price
+            Load_Pictures();
+            
+        }
+        private void Load_Pictures()
+        {
+            string dir = Environment.CurrentDirectory;
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
+                button5.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilicone.jpg");// assign to bykeimg an image
+                button6.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
+                button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
+                button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
+                button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
+            }
+            catch
+            {
+                MessageBox.Show("No image or repository in path : '" + path + @".\Pictures\" + TypeOfBike + "' found! "+ dir);
+            }
+            
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            /* ComboBox cmb = sender as ComboBox;
+             handle = !cmb.IsDropDownOpen;
+             Handle();*/
+        }
+
+        /*private void ComboBox2_DropDownClosed(object sender, EventArgs e)
+        {
+            if (handle) Handle();
+            handle = true;
+        }
+        private void Handle()
+        {
+            switch (comboBox2.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
+            {
+                case "1":
+                    //Handle for the first combobox
+                    break;
+                case "2":
+                    //Handle for the second combobox
+                    break;
+                case "3":
+                    //Handle for the third combobox
+                    break;
+            }
+        }*/
     }
 }
