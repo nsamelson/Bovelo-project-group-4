@@ -300,6 +300,20 @@ namespace Bovelo
 
             return weeks;
         }
+        internal List<string> GetDifferentModels()
+        {
+            SetBikeModelList();
+            var diffModels = new List<string>();
+
+            foreach (var model in bikeModels)
+            {
+                if (!diffModels.Contains(model.Type))
+                {
+                    diffModels.Add(model.Type);
+                }
+            }
+            return diffModels;
+        }
 
         //OTHER METHODS
         internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> PartIdQuantity)

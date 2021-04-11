@@ -33,6 +33,13 @@ namespace Bovelo
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Shipping_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.isReadyToShip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Details = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,13 +48,6 @@ namespace Bovelo
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.Order_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Order_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Shipping_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.isReadyToShip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Details = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -65,7 +65,7 @@ namespace Bovelo
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(200, 83);
             this.button7.TabIndex = 5;
-            this.button7.Text = "Catalogue";
+            this.button7.Text = "Main Home";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
@@ -125,119 +125,6 @@ namespace Bovelo
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(944, 8);
-            this.label3.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(197, 41);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Representative";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1109, 90);
-            this.panel1.TabIndex = 23;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(378, 8);
-            this.label6.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(200, 97);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Order";
-            // 
-            // panel3
-            // 
-            this.panel3.AccessibleDescription = "Release 3.0";
-            this.panel3.AccessibleName = "hello";
-            this.panel3.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 90);
-            this.panel3.TabIndex = 15;
-            this.panel3.Tag = "";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label5.Location = new System.Drawing.Point(6, 5);
-            this.label5.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(235, 97);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Bovelo";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.button7);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 545);
-            this.panel2.TabIndex = 22;
-            // 
-            // panel4
-            // 
-            this.panel4.AccessibleDescription = "Release 3.0";
-            this.panel4.AccessibleName = "hello";
-            this.panel4.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
-            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.panel4.Controls.Add(this.label4);
-            this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 502);
-            this.panel4.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(200, 43);
-            this.panel4.TabIndex = 16;
-            this.panel4.Tag = "";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label4.Location = new System.Drawing.Point(34, 2);
-            this.label4.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(170, 49);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "release 3.0";
-            // 
             // Order_Id
             // 
             this.Order_Id.FillWeight = 53.07182F;
@@ -294,9 +181,122 @@ namespace Bovelo
             this.Details.Name = "Details";
             this.Details.ReadOnly = true;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label3.Location = new System.Drawing.Point(944, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 33);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Representative";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Location = new System.Drawing.Point(200, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1109, 90);
+            this.panel1.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label6.Location = new System.Drawing.Point(378, 8);
+            this.label6.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(160, 79);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Order";
+            // 
+            // panel3
+            // 
+            this.panel3.AccessibleDescription = "Release 3.0";
+            this.panel3.AccessibleName = "hello";
+            this.panel3.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 90);
+            this.panel3.TabIndex = 15;
+            this.panel3.Tag = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label5.Location = new System.Drawing.Point(6, 5);
+            this.label5.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(189, 79);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Bovelo";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Controls.Add(this.button7);
+            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 545);
+            this.panel2.TabIndex = 22;
+            // 
+            // panel4
+            // 
+            this.panel4.AccessibleDescription = "Release 3.0";
+            this.panel4.AccessibleName = "hello";
+            this.panel4.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel4.Location = new System.Drawing.Point(0, 502);
+            this.panel4.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(200, 43);
+            this.panel4.TabIndex = 16;
+            this.panel4.Tag = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.SteelBlue;
+            this.label4.Location = new System.Drawing.Point(34, 2);
+            this.label4.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(133, 39);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "release 3.0";
+            // 
             // Order
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1309, 545);

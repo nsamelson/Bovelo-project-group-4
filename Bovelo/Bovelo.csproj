@@ -277,12 +277,43 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="bike_23739.ico" />
+    <Content Include="bin\Debug\BouncyCastle.Crypto.dll" />
+    <Content Include="bin\Debug\BouncyCastle.Crypto.xml" />
     <Content Include="bin\Debug\Bovelo.exe" />
     <Content Include="bin\Debug\Bovelo.pdb" />
+    <Content Include="bin\Debug\Common.Logging.Core.dll" />
+    <Content Include="bin\Debug\Common.Logging.Core.pdb" />
+    <Content Include="bin\Debug\Common.Logging.Core.xml" />
+    <Content Include="bin\Debug\Common.Logging.dll" />
+    <Content Include="bin\Debug\Common.Logging.pdb" />
+    <Content Include="bin\Debug\Common.Logging.xml" />
+    <Content Include="bin\Debug\itext.barcodes.dll" />
+    <Content Include="bin\Debug\itext.barcodes.xml" />
+    <Content Include="bin\Debug\itext.forms.dll" />
+    <Content Include="bin\Debug\itext.forms.xml" />
+    <Content Include="bin\Debug\itext.io.dll" />
+    <Content Include="bin\Debug\itext.io.xml" />
+    <Content Include="bin\Debug\itext.kernel.dll" />
+    <Content Include="bin\Debug\itext.kernel.xml" />
+    <Content Include="bin\Debug\itext.layout.dll" />
+    <Content Include="bin\Debug\itext.layout.xml" />
+    <Content Include="bin\Debug\itext.pdfa.dll" />
+    <Content Include="bin\Debug\itext.pdfa.xml" />
+    <Content Include="bin\Debug\itext.sign.dll" />
+    <Content Include="bin\Debug\itext.sign.xml" />
+    <Content Include="bin\Debug\itext.styledxmlparser.dll" />
+    <Content Include="bin\Debug\itext.styledxmlparser.xml" />
+    <Content Include="bin\Debug\itext.svg.dll" />
+    <Content Include="bin\Debug\itext.svg.xml" />
+    <Content Include="bin\Debug\MySql.Data.DLL" />
+    <Content Include="bin\Debug\mysqlbackup.dll" />
+    <Content Include="bin\Debug\Renci.SshNet.dll" />
+    <Content Include="bin\Debug\Renci.SshNet.xml" />
     <Content Include="SQL\mysqlbackup.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Backup\" />
+    <Folder Include="bin\Release\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
