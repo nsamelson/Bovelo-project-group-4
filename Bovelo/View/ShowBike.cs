@@ -13,21 +13,27 @@ namespace Bovelo
 {
     public partial class ShowBike : Form
     {
-        public string TypeOfBike;
-        public string path = @"../../View";
+        private string TypeOfBike;
+        private string path = @"../../View";
         private User _currentUser;
         private App app = new App();
+
         internal ShowBike(string TypeBike,ref User current_user)
         {
+            InitializeComponent();
+
             TypeOfBike = TypeBike;
             _currentUser = current_user;
+
             app.SetBikeModelList();
-            // bikeToAdd = new Bike(0, TypeBike, "black", 26);
-            InitializeComponent();
-            comboBox2.DataSource = app.GetDifferentModels();
-            // display the first bykeview at the first time
-            Load_Pictures();
+            comboBox2.DataSource = app.GetDifferentModels(); //gets a list of bikeModels
+            try
+            {
+                comboBox2.SelectedItem = TypeBike;
+            }
+            catch{ } ;
             numericUpDown1.Value = 1;
+            label6.Text = getBikePrice().ToString() +" €";
             isChecked();
             
         }
@@ -46,43 +52,70 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image and displaying into picturebox
-        }
-
-
-        private void label3_Click_1(object sender, EventArgs e)
-        {
-
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+            }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+            }
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleurv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleurv1.jpg");// assign to bykeimg an image and displaying into picturebox
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+            }
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
-            pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_rouev1.jpg");// assign to bykeimg an image and displaying into picturebox
+            try
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_rouev1.jpg");// assign to bykeimg an image and displaying into picturebox
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+            }
         }
 
         private void Explorerbike_Load(object sender, EventArgs e)
         {
 
-            //comboBox2.DataSource = app.GetDifferentModels();
-            //comboBox2.SelectedValue = comboBox2.DataSource[0];
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void button7_Click(object sender, EventArgs e)// go to mainhome
         {
             this.Hide();
             var MainHome = new MainHome(_currentUser);// create new window
@@ -90,7 +123,7 @@ namespace Bovelo
             MainHome.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//go to cart
         {
             this.Hide();// Hiding the MainHome Window
             Cart cart = new Cart(ref _currentUser);// create new window
@@ -107,11 +140,11 @@ namespace Bovelo
         {            
             numericUpDown1.Minimum = 1;
             Decimal B = this.numericUpDown1.Value * getBikePrice();
-            this.label6.Text = B.ToString();
+            this.label6.Text = B.ToString() + "€";
             isChecked();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//add to cart
         {
 
             string i = comboBox1.Text;
@@ -156,7 +189,7 @@ namespace Bovelo
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//see orders page
         {
             this.Hide();// Hiding the Explorer Bike Window
             Order order = new Order(ref _currentUser);// create new window
@@ -164,7 +197,7 @@ namespace Bovelo
             order.Show();// Showing the Order window
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//go back to login page
         {
             this.Hide();
             var login = new Login();// create new window
@@ -177,10 +210,6 @@ namespace Bovelo
             
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -235,7 +264,9 @@ namespace Bovelo
         }
         private void Load_Pictures()
         {
-            string dir = Environment.CurrentDirectory;
+            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))+@"\View\Pictures";
+            string new_path = wanted_path + @"\" + TypeOfBike;
+            string message = "The program could not find pictures of : '" + TypeOfBike + "' in the directory : " + wanted_path;
             try
             {
                 pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
@@ -247,37 +278,30 @@ namespace Bovelo
             }
             catch
             {
-                MessageBox.Show("No image or repository in path : '" + path + @".\Pictures\" + TypeOfBike + "' found! "+ dir);
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                if(_currentUser.userType["Production Manager"] == true)
+                {
+                    var result = MessageBox.Show(this.Owner, message + "\n \n\n Would you like to add pictures?", "No image found!", MessageBoxButtons.YesNo);
+                    switch (result)
+                    {
+                        case DialogResult.No:
+                            break;
+                        case DialogResult.Yes:
+                            Manager.AddNewFolder(new_path);
+                            System.Diagnostics.Process.Start(new_path);
+                            break;
+                    }
+                }
+                
             }
             
         }
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            /* ComboBox cmb = sender as ComboBox;
-             handle = !cmb.IsDropDownOpen;
-             Handle();*/
+           
         }
 
-        /*private void ComboBox2_DropDownClosed(object sender, EventArgs e)
-        {
-            if (handle) Handle();
-            handle = true;
-        }
-        private void Handle()
-        {
-            switch (comboBox2.SelectedItem.ToString().Split(new string[] { ": " }, StringSplitOptions.None).Last())
-            {
-                case "1":
-                    //Handle for the first combobox
-                    break;
-                case "2":
-                    //Handle for the second combobox
-                    break;
-                case "3":
-                    //Handle for the third combobox
-                    break;
-            }
-        }*/
+
     }
 }

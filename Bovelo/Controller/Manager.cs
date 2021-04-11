@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Bovelo
 {
@@ -74,6 +77,13 @@ namespace Bovelo
             int quantity = GetQuantity(part_Id);
             quantity += value;
             DataBase.SendToDB("UPDATE Bike_Parts SET Quantity =" + quantity + " WHERE Id_Bike_Parts = " + part_Id + ";");
+        }
+        public static void AddNewFolder(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
         }
 
         //GET METHODS
