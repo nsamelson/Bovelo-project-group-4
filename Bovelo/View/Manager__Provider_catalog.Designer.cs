@@ -162,11 +162,11 @@ namespace Bovelo
             this.QuantityToOrder,
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6});
-            this.dataGridView2.Location = new System.Drawing.Point(968, 104);
+            this.dataGridView2.Location = new System.Drawing.Point(968, 103);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 10;
-            this.dataGridView2.Size = new System.Drawing.Size(634, 539);
+            this.dataGridView2.Size = new System.Drawing.Size(634, 540);
             this.dataGridView2.TabIndex = 25;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 

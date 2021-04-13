@@ -337,7 +337,7 @@ namespace Bovelo
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(200, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.panel1.Margin = new System.Windows.Forms.Padding(14);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1123, 90);
             this.panel1.TabIndex = 38;
@@ -378,7 +378,7 @@ namespace Bovelo
             this.panel2.Controls.Add(this.button7);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.panel2.Margin = new System.Windows.Forms.Padding(14);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 610);
             this.panel2.TabIndex = 37;
@@ -393,7 +393,7 @@ namespace Bovelo
             this.panel4.Controls.Add(this.label10);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel4.Location = new System.Drawing.Point(0, 567);
-            this.panel4.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.panel4.Margin = new System.Windows.Forms.Padding(14);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
             this.panel4.TabIndex = 16;
@@ -421,7 +421,7 @@ namespace Bovelo
             this.panel3.Controls.Add(this.label1);
             this.panel3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(14, 14, 14, 14);
+            this.panel3.Margin = new System.Windows.Forms.Padding(14);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(200, 90);
             this.panel3.TabIndex = 15;
@@ -494,6 +494,7 @@ namespace Bovelo
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(516, 459);
             this.panel5.TabIndex = 34;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // panel6
             // 

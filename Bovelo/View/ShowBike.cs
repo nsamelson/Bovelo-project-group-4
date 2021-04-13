@@ -162,23 +162,42 @@ namespace Bovelo
 
             var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == TypeOfBike);
 
-            Bike BikeToAdd = new Bike(0, _model);//id is set to 0 MAYBE NEED TO CHANGE
-
-            bool isInCart = false;
-            foreach (var elem in _currentUser.cart)
+            /// exception if there is no model of this bike (bike wanted by the representative) in database 
+            var existing_bike_in_db = false;
+            foreach (var elem2 in app.GetBikeModelList())
             {
-                if (elem.bike.Type == BikeToAdd.Type && elem.bike.Color == BikeToAdd.Color && elem.bike.Size == BikeToAdd.Size)
+                Console.WriteLine("type = " + elem2.Type+", size = "+ elem2.Size+", color "+elem2.Color);
+                if(elem2.Color == color && elem2.Size == _i && elem2.Type == TypeOfBike)
                 {
-                    Console.WriteLine("Already in cart");
-                    isInCart = true;
+                    existing_bike_in_db = true;
                 }
             }
-            if (!isInCart)
+            Console.WriteLine(existing_bike_in_db);
+
+            if (existing_bike_in_db)// if bike model exist in db 
             {
-                _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
-                MessageBox.Show("Added to cart");
-            }       
-            
+                Bike BikeToAdd = new Bike(0, _model);//id is set to 0 MAYBE NEED TO CHANGE
+
+                bool isInCart = false;
+                foreach (var elem in _currentUser.cart)
+                {
+                    if (elem.bike.Type == BikeToAdd.Type && elem.bike.Color == BikeToAdd.Color && elem.bike.Size == BikeToAdd.Size)
+                    {
+                        Console.WriteLine("Already in cart");
+                        MessageBox.Show("Already in cart");
+                        isInCart = true;
+                    }
+                }
+                if (!isInCart)
+                {
+                    _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
+                    MessageBox.Show("Added to cart");
+                }
+            }
+            else
+            {
+                MessageBox.Show("This model don't exist , please contact the manager ");
+            }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -278,6 +297,9 @@ namespace Bovelo
            
         }
 
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
     }
 }
