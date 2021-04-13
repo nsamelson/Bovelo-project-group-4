@@ -32,7 +32,7 @@ namespace Bovelo
             {
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Active";
                 DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+                cell.Value = DateTime.Now.Day+"/"+DateTime.Now.Month+"/"+DateTime.Now.Year+" "+ DateTime.Now.Hour + ":" + DateTime.Now.Minute;
                 dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
                 cell.ReadOnly = true;
                 dataGridView1.Refresh();
@@ -43,7 +43,7 @@ namespace Bovelo
             {
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
                 DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = DateTime.Now.DayOfWeek + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
+                cell.Value = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year + " " + DateTime.Now.Hour + ":" + DateTime.Now.Minute;
                 dataGridView1.Rows[e.RowIndex].Cells[9] = cell;
                 cell.ReadOnly = true;
                 DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
