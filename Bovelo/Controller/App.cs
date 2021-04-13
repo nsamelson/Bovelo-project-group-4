@@ -41,9 +41,11 @@ namespace Bovelo
         }
 
         //SET METHODS
-        internal void SetNewUser(User user) //Creates a new User (for ex: a new Assembler joins the team)
+        internal void SetNewUser(List<string> loginRole) //Creates a new User (for ex: a new Assembler joins the team)
         {
-            string query = "INSERT INTO Users (Login, Password, Role) VALUES ('" + user.login + "','NULL','" + user.userType.FirstOrDefault(x => x.Value == true).Key + "')";
+            
+            string query = "INSERT INTO Users (Login,Role) VALUES(" + loginRole[1]+ "," + loginRole[0]+ ");";
+            Console.WriteLine(query);
             DataBase.SendToDB(query);
             SetUserList(); //At the end of set, put a get to update App class
         }

@@ -125,5 +125,11 @@ namespace Bovelo
             int quantity = Int32.Parse(result[0][0]);
             return quantity;
         }
+        public static List<List<string>> GetUser()
+        {
+            string sql = "SELECT Login,Role FROM  Users;";
+            var LoginRole = DataBase.ConnectToDB(sql);
+            return LoginRole;
+        }
     }
 }

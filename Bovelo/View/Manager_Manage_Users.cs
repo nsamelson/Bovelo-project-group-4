@@ -18,37 +18,54 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
+            LoadUser();
         }
 
+
+        internal void LoadUser()
+        {
+            var LoginRole = Manager.GetUser();
+            int i = 0;
+            dataGridView1.Rows.Clear();           
+            foreach (var elem in LoginRole)
+            {
+                dataGridView1.Rows.Add();
+                dataGridView1.Rows[i].Cells[0].Value = elem[1];
+                dataGridView1.Rows[i].Cells[1].Value = elem[0];
+                i++;
+            }
+        }
         private void signup_Click(object sender, EventArgs e)
         {
             //DONT NEED SIGNUP WINDOWS FORM, ONLY ENTER A NEW TYPE or maybe just a popup
-            /*
-            string userName = textBox1.Text;
-            bool isExisting = app.userList.Any(login => login.login == userName);
-            if (!isExisting && userName != "")
+
+            string userRole = comboBox1.Text;
+            string userLogin = textBox1.Text;
+            bool isExisting = newApp.userList.Any(login => login.login == userLogin);            
+            List<string> loginRole = new List<string> { userRole,userLogin};
+            if (!isExisting && userLogin != "")
             {
                 if (comboBox1.Text == "Representative")
                 {
-                    app.SetNewUser(new User(userName, true, false, false));
+                    newApp.SetNewUser(loginRole);
                     MessageBox.Show("A new Representative was created!");
                 }
                 else if (comboBox1.Text == "ProductionManager")
                 {
-                    app.SetNewUser(new User(userName,false,true,false));
+                    newApp.SetNewUser(loginRole);
                     MessageBox.Show("A new Production Manager was created!");
                 }
                 else if (comboBox1.Text == "Assembler")
                 {
-                    app.SetNewUser(new User(userName, false, false, true));
+                    newApp.SetNewUser(loginRole);
                     MessageBox.Show("A new Assembler was created!");
                 }
                 else { MessageBox.Show("Please select a valid user Type"); }
             }
-            else if (userName == "")
+            else if (userLogin == "")
             { MessageBox.Show("Please select a valid username "); }
             else { MessageBox.Show("The Username is already in use!"); }
-            */
+            LoadUser();
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -57,6 +74,21 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// create new window
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
