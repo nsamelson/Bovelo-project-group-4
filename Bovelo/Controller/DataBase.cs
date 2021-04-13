@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using System.Windows.Forms;
 
 
 namespace Bovelo
@@ -15,8 +16,16 @@ namespace Bovelo
         {
             MySqlConnection conn = new MySqlConnection(_connStr);
             conn.Open();
+
             MySqlCommand cmd = new MySqlCommand(query, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
+            try
+            {
+                MySqlDataReader rdr = cmd.ExecuteReader();
+            }
+            catch
+            {
+                MessageBox.Show("An error occured with the following request : \n " + query.ToString() + " \n please contact your administrator to fix it");
+            }
             cmd.Dispose();
             conn.Close();
         }
@@ -26,17 +35,24 @@ namespace Bovelo
             MySqlConnection conn = new MySqlConnection(_connStr);
             conn.Open();
             MySqlCommand cmd = new MySqlCommand(sql, conn);
-            MySqlDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
+            try
             {
-                var col = new List<string>();
-                for (int j = 0; j < rdr.FieldCount; j++)
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                while (rdr.Read())
                 {
-                    col.Add(rdr[j].ToString());
+                    var col = new List<string>();
+                    for (int j = 0; j < rdr.FieldCount; j++)
+                    {
+                        col.Add(rdr[j].ToString());
+                    }
+                    listFromDB.Add(col);
                 }
-                listFromDB.Add(col);
+                rdr.Close();
             }
-            rdr.Close();
+            catch
+            {
+                MessageBox.Show("An error occured with the following request : \n "+sql+" \n please contact your administrator to fix it" );
+            }
             conn.Close();
             return listFromDB;
         }
