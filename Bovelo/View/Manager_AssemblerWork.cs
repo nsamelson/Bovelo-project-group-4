@@ -89,36 +89,12 @@ namespace Bovelo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
             Manager_MainHome mmh = new Manager_MainHome(user);// create new window
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
-            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpo.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
-            mpc.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpc.Show();
         }
     }
 }

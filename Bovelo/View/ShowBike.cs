@@ -123,13 +123,6 @@ namespace Bovelo
             MainHome.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)//go to cart
-        {
-            this.Hide();// Hiding the MainHome Window
-            Cart cart = new Cart(ref _currentUser);// create new window
-            cart.FormClosed += (s, args) => this.Close();
-            cart.Show();// Showing the Cart window
-        }
 
         private void label4_Click(object sender, EventArgs e)
         {
@@ -186,23 +179,6 @@ namespace Bovelo
                 MessageBox.Show("Added to cart");
             }       
             
-        }
-
-
-        private void button3_Click(object sender, EventArgs e)//see orders page
-        {
-            this.Hide();// Hiding the Explorer Bike Window
-            Order order = new Order(ref _currentUser);// create new window
-            order.FormClosed += (s, args) => this.Close();
-            order.Show();// Showing the Order window
-        }
-
-        private void button1_Click(object sender, EventArgs e)//go back to login page
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

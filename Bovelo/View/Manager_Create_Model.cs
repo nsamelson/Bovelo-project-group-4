@@ -23,13 +23,6 @@ namespace Bovelo
             app.SetBikePartList();
         }
 
-        private void button3_Click(object sender, EventArgs e)//orders
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
-            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpo.Show();
-        }
 
         private void button7_Click(object sender, EventArgs e)//menu
         {
@@ -37,22 +30,6 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// maybe send the userType with it
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
-        }
-
-        private void button4_Click(object sender, EventArgs e)//catalog
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
-            mpc.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpc.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)//login
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

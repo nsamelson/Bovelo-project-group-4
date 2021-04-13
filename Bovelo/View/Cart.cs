@@ -113,11 +113,6 @@ namespace Bovelo
             MainHome.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)//cart reload
-        {
-            Cart_Load();
-        }
-
         private void button4_Click(object sender, EventArgs e)//pass order
         {
             string client = textBox1.Text;        
@@ -175,15 +170,6 @@ namespace Bovelo
             ExportData.CreateInvoice(client, column, selectedData);
         }
 
-
-
-        private void button3_Click(object sender, EventArgs e)//order button
-        {
-            this.Hide();
-            Order order = new Order(ref _currentUser);// create new window
-            order.FormClosed += (s, args) => this.Close();
-            order.Show();// Showing the Order window
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {

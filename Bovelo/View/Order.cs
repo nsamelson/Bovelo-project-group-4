@@ -52,10 +52,7 @@ namespace Bovelo
             }
          
         }
-        private void button3_Click(object sender, EventArgs e)//Order button => reload
-        {
-            Order_Load( sender, e);
-        }
+
 
         private void button7_Click(object sender, EventArgs e)//home button
         {
@@ -65,13 +62,6 @@ namespace Bovelo
             MainHome.Show();// Showing the Login window
         }
 
-        private void button2_Click(object sender, EventArgs e)//cart button
-        {
-            this.Hide();
-            Cart cart = new Cart(ref _currentUser);// create new window
-            cart.FormClosed += (s, args) => this.Close();
-            cart.Show();// Showing the Cart window
-        }
 
     }
 }

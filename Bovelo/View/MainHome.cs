@@ -36,7 +36,7 @@ namespace Bovelo
             Cart cart = new Cart(ref _currentUser);// create new window
             cart.FormClosed += (s, args) => this.Close();
             cart.Show();// Showing the Cart window
-            
+
         }
 
 
