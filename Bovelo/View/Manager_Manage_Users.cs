@@ -41,6 +41,7 @@ namespace Bovelo
 
             string userRole = comboBox1.Text;
             string userLogin = textBox1.Text;
+            newApp.SetUserList();
             bool isExisting = newApp.userList.Any(login => login.login == userLogin);            
             List<string> loginRole = new List<string> { userRole,userLogin};
             if (!isExisting && userLogin != "")
