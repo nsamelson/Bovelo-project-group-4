@@ -29,10 +29,6 @@ namespace Bovelo
             //cartLoad();
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -42,13 +38,6 @@ namespace Bovelo
             mmh.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
-        }
 
         private void catalogLoad()
         {
@@ -198,14 +187,6 @@ namespace Bovelo
         {
             user.cartPart.Clear();
             cartLoad();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
-            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpo.Show();
         }
 
         private void labelPrice_Click(object sender, EventArgs e)

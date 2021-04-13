@@ -42,14 +42,6 @@ namespace Bovelo
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
@@ -58,18 +50,6 @@ namespace Bovelo
             mmh.Show();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
-            mpc.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpc.Show();
-        }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -186,14 +166,6 @@ namespace Bovelo
         private void label2_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            this.Hide();
-            Manager_Manager_Stock mms = new Manager_Manager_Stock(user);// maybe send the userType with it
-            mms.FormClosed += (s, args) => this.Close(); // close the login Form
-            mms.Show();
         }
 
         private void button5_Click(object sender, EventArgs e)

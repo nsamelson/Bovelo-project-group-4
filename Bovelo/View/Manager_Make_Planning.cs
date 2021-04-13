@@ -23,27 +23,6 @@ namespace Bovelo
             newApp.SetBikeModelList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
-        }
-
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_catalog mpc = new Manager__Provider_catalog(ref user);// maybe send the userType with it
-            mpc.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpc.Show();
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -179,13 +158,6 @@ namespace Bovelo
             Manager_Make_Planning_Load(sender, e);
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide(); //hides the current form
-            Manager__Provider_orders mpo = new Manager__Provider_orders(user);// maybe send the userType with it
-            mpo.FormClosed += (s, args) => this.Close(); // close the login Form
-            mpo.Show();
-        }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

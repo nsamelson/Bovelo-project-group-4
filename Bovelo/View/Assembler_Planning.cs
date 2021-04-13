@@ -23,14 +23,6 @@ namespace Bovelo
             //newApp.planningList = newApp.getPlanningList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var login = new Login();// create new window
-            login.FormClosed += (s, args) => this.Close();
-            login.Show();// Showing the Login window
-        }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
