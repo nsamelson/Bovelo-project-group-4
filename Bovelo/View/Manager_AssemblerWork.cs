@@ -91,18 +91,22 @@ namespace Bovelo
                 i++;
             }
             label9.Text = result.ToString();
+            LoadWeek();
+        }
 
+        void LoadWeek()
+        {
             int min = Int32.Parse(dataGridView1.Rows[0].Cells[6].Value.ToString());
             int max = 0;
-            for (i = 0; i < dataGridView1.Rows.Count; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) < min) { min = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()); }
                 if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) > max) { max = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()); }
             }
 
-            List<int> values= new List<int> {};
+            List<int> values = new List<int> { };
             List<int> values2 = new List<int> { };
-            for (i = min;i <= max; i++)
+            for (int i = min; i <= max; i++)
             {
                 values.Add(i);
                 values2.Add(i);
@@ -111,6 +115,42 @@ namespace Bovelo
             comboBox3.DataSource = values2;
         }
 
+        void WorkLoad()
+        {
+            string builder = comboBox1.SelectedItem.ToString();
+            int i = 0;
+            TimeSpan result = new TimeSpan { };
+            dataGridView1.Rows.Clear();
+            foreach (var assemblerWork in Manager.GetAssemblerWork(builder))
+            {
+                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
+                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
+                if (Int32.Parse(assemblerWork[7]) >= Int32.Parse(comboBox2.Text.ToString()) && Int32.Parse(assemblerWork[7])<= Int32.Parse(comboBox3.Text.ToString())){
+                    //planified week
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[i].Cells[0].Value = assemblerWork[0];//id order details
+                    dataGridView1.Rows[i].Cells[1].Value = assemblerWork[1];//type
+                    dataGridView1.Rows[i].Cells[2].Value = assemblerWork[2];//size
+                    dataGridView1.Rows[i].Cells[3].Value = assemblerWork[3];//color
+                    dataGridView1.Rows[i].Cells[4].Value = assemblerWork[5];//status
+                    dataGridView1.Rows[i].Cells[5].Value = assemblerWork[6];//Id Order
+                    dataGridView1.Rows[i].Cells[6].Value = assemblerWork[7];//planified week
+                    dataGridView1.Rows[i].Cells[7].Value = assemblerWork[10];//started at
+                    dataGridView1.Rows[i].Cells[8].Value = assemblerWork[11];//finished at
+                    var splitedDate = assemblerWork[10].Split('/', ' ', ':');
+                    foreach (var elem in splitedDate) { Console.WriteLine(elem); };
+                    DateTime begin = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]), 0);
+                    splitedDate = assemblerWork[11].Split('/', ' ', ':');
+                    DateTime end = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]), 0); ;
+                    result += end - begin;
+                    i++;
+                }
+            }
+            label9.Text = result.ToString();
+        }
+
+
+        
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -141,7 +181,11 @@ namespace Bovelo
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WorkLoad();
         }
     }
 }
