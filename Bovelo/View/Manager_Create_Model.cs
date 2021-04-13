@@ -216,5 +216,10 @@ namespace Bovelo
             mpc.FormClosed += (s, args) => this.Close();
             mpc.Show();
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
