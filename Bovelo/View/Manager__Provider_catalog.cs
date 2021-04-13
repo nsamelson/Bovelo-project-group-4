@@ -234,5 +234,10 @@ namespace Bovelo
             }
             ExportData.CreateInvoice(client, column, selectedData);
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo
