@@ -70,35 +70,6 @@ namespace Bovelo
 
         }
 
-        private void signup_Click(object sender, EventArgs e)
-        {
-            //DONT NEED SIGNUP WINDOWS FORM, ONLY ENTER A NEW TYPE or maybe just a popup
-            string userName = textBox1.Text;
-            bool isExisting = app.userList.Any(login => login.login == userName);
-            if (!isExisting && userName != "")
-            {
-                if (comboBox1.Text == "Representative")
-                {
-                    app.SetNewUser(new User(userName, true, false, false));
-                    MessageBox.Show("A new Representative was created!");
-                }
-                else if (comboBox1.Text == "ProductionManager")
-                {
-                    app.SetNewUser(new User(userName,false,true,false));
-                    MessageBox.Show("A new Production Manager was created!");
-                }
-                else if (comboBox1.Text == "Assembler")
-                {
-                    app.SetNewUser(new User(userName, false, false, true));
-                    MessageBox.Show("A new Assembler was created!");
-                }
-                else { MessageBox.Show("Please select a valid user Type"); }
-            }
-            else if (userName == "")
-            { MessageBox.Show("Please select a valid username "); }
-            else { MessageBox.Show("The Username is already in use!"); }
-        }
-
         private void label4_Click(object sender, EventArgs e)
         {
 

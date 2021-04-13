@@ -38,7 +38,6 @@ namespace Bovelo
             this.label4 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.signup = new System.Windows.Forms.Button();
             this.signin = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
@@ -164,26 +163,13 @@ namespace Bovelo
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
-            // signup
-            // 
-            this.signup.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.signup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.signup.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.signup.Location = new System.Drawing.Point(371, 375);
-            this.signup.Name = "signup";
-            this.signup.Size = new System.Drawing.Size(138, 39);
-            this.signup.TabIndex = 1;
-            this.signup.Text = "Add new User";
-            this.signup.UseVisualStyleBackColor = true;
-            this.signup.Click += new System.EventHandler(this.signup_Click);
-            // 
             // signin
             // 
             this.signin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.signin.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.signin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.signin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.signin.Location = new System.Drawing.Point(548, 375);
+            this.signin.Location = new System.Drawing.Point(492, 375);
             this.signin.Name = "signin";
             this.signin.Size = new System.Drawing.Size(97, 39);
             this.signin.TabIndex = 2;
@@ -243,7 +229,6 @@ namespace Bovelo
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.signin);
-            this.Controls.Add(this.signup);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Name = "Login";
@@ -272,7 +257,6 @@ namespace Bovelo
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button signup;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;

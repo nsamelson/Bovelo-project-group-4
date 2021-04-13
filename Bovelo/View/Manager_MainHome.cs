@@ -120,5 +120,14 @@ namespace Bovelo
         {
 
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            this.Hide(); //hides the current form
+            Manager_Manage_Users mmu = new Manager_Manage_Users(user);
+            mmu.FormClosed += (s, args) => this.Close(); // close the login Form
+            mmu.Show();
+
+        }
     }
 }

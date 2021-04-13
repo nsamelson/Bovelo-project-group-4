@@ -172,6 +172,12 @@
     <Compile Include="View\Manager_Make_Planning.Designer.cs">
       <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager_Manage_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Manager_Manage_Users.Designer.cs">
+      <DependentUpon>Manager_Manage_Users.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -230,6 +236,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_Make_Planning.resx">
       <DependentUpon>Manager_Make_Planning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Manager_Manage_Users.resx">
+      <DependentUpon>Manager_Manage_Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager__Provider_orders.resx">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
