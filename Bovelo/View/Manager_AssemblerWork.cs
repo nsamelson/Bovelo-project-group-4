@@ -99,6 +99,7 @@ namespace Bovelo
 
         void LoadWeek()
         {
+            string builder = comboBox1.SelectedItem.ToString();
             int min = Int32.Parse(dataGridView1.Rows[0].Cells[6].Value.ToString());
             int max = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -115,10 +116,15 @@ namespace Bovelo
 
             List<int> values = new List<int> { };
             List<int> values2 = new List<int> { };
-            for (int i = min; i <= max; i++)
+            //for (int i = min; i <= max; i++)
+            //{
+            //    values.Add(i);
+            //    values2.Add(i);
+            //}
+            foreach(var week in Manager.getWeekName(builder))
             {
-                values.Add(i);
-                values2.Add(i);
+                values.Add(Int32.Parse(week[0]));
+                values2.Add(Int32.Parse(week[0]));
             }
             comboBox2.DataSource = values;
             comboBox3.DataSource = values2;
