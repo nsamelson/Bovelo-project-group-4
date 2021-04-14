@@ -91,7 +91,10 @@ namespace Bovelo
                 i++;
             }
             label9.Text = result.ToString();
-            LoadWeek();
+            if (dataGridView1.Rows.Count != 0)
+            {
+                LoadWeek();
+            }
         }
 
         void LoadWeek()
@@ -100,8 +103,14 @@ namespace Bovelo
             int max = 0;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) < min) { min = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()); }
-                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) > max) { max = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()); }
+                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) < min)
+                {
+                    min = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                }
+                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) > max)
+                { 
+                    max = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
+                }
             }
 
             List<int> values = new List<int> { };
