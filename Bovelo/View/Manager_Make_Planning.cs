@@ -83,7 +83,7 @@ namespace Bovelo
                     totalTime +=toAdd; 
                     i++;
                 }
-                label12.Text = totalTime.TotalHours.ToString();
+                
             }           
            /* Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
@@ -105,6 +105,10 @@ namespace Bovelo
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
+            label12.Text = totalTime.TotalHours.ToString();
+            var weekNameChoice = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
+            comboBox1.DataSource = weekNameChoice;
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
