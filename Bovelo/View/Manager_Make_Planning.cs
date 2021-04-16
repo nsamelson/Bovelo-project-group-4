@@ -58,6 +58,7 @@ namespace Bovelo
             int i = 0;
             int t = 0;
             dataGridView1.Rows.Clear();
+            TimeSpan totalTime=new TimeSpan();
             //dataGridView2.Rows.Clear();
             //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
             foreach (var planifiedOrderDetails in Manager.GetPlanifiedBikes())
@@ -78,10 +79,11 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//plannified week
                     dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//Id Order
                     dataGridView1.Rows[i].Cells[7].Value = newBike.TotalTime.ToString();
+                    TimeSpan toAdd = new TimeSpan(0,newBike.TotalTime,0);
+                    totalTime +=toAdd; 
                     i++;
                 }
-
-
+                label12.Text = totalTime.TotalHours.ToString();
             }           
            /* Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
@@ -216,6 +218,16 @@ namespace Bovelo
         private void button3_Click(object sender, EventArgs e)
         {
             Manager_Make_Planning_Load(sender,e);
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
