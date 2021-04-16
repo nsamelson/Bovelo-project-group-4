@@ -21,6 +21,9 @@ namespace Bovelo
             InitializeComponent();
             newApp.SetBikePartList();
             newApp.SetBikeModelList();
+            var weekNameChoice= Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
+            comboBox1.DataSource = weekNameChoice;
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -54,6 +57,8 @@ namespace Bovelo
             
             int i = 0;
             int t = 0;
+            dataGridView1.Rows.Clear();
+            //dataGridView2.Rows.Clear();
             //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
             foreach (var planifiedOrderDetails in Manager.GetPlanifiedBikes())
             {
@@ -62,19 +67,21 @@ namespace Bovelo
                 BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == planifiedOrderDetails[3] && x.Size == Int32.Parse(planifiedOrderDetails[2]) && x.Type == planifiedOrderDetails[1]);//gets the specific model
                 Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), model);
                 t += newBike.TotalTime;
+                if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
+                {
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
+                    dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
+                    dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
+                    dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
+                    dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
+                    dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//plannified week
+                    dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//Id Order
+                    dataGridView1.Rows[i].Cells[7].Value = newBike.TotalTime.ToString();
+                    i++;
+                }
 
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
-                dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
-                dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
-                dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
-                dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
-                dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//plannified week
-                dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//Id Order
-                dataGridView1.Rows[i].Cells[7].Value = newBike.TotalTime.ToString();
-                i++;
 
-                
             }           
            /* Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
@@ -199,6 +206,16 @@ namespace Bovelo
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Manager_Make_Planning_Load(sender,e);
         }
     }
 }

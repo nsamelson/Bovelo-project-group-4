@@ -117,6 +117,12 @@ namespace Bovelo
             var planifiedByWeek = DataBase.ConnectToDB(sql);
             return planifiedByWeek;
         }
+        public static List<List<string>> GetPlanifiedWeekName()
+        {
+            string sql = "SELECT DISTINCT Week_Name FROM Bovelo.Detailed_Schedules;";
+            var planifiedWeekName = DataBase.ConnectToDB(sql);
+            return planifiedWeekName;
+        }
         public static List<List<string>> getWeekName(string builder)
         {
             string sql = "SELECT distinct Week_Name FROM Bovelo.Detailed_Schedules where Assembled_by = '" + builder + "';";
