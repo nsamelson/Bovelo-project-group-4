@@ -332,6 +332,7 @@
   <ItemGroup>
     <Folder Include="Backup\" />
     <Folder Include="bin\Release\" />
+    <Folder Include="View\Pictures\Assembler\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
