@@ -149,5 +149,12 @@ namespace Bovelo
             var LoginRole = DataBase.ConnectToDB(sql);
             return LoginRole;
         }
+
+        public static List<List<string>> GetOrder(string IDOrder)
+        {
+            string sql = "SELECT * FROM  Order_Details WHERE Id_Order="+IDOrder+";";
+            var order = DataBase.ConnectToDB(sql);
+            return order;
+        }
     }
 }
