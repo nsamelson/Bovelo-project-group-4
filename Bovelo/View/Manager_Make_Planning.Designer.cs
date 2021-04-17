@@ -31,16 +31,6 @@ namespace Bovelo
         {
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id_order_details = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Planified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_Order_Bike = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Time_To_Build = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modify = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.newWeekToAssign = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -70,14 +60,25 @@ namespace Bovelo
             this.button3 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Client_ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_Order_Bike = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_order_details = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Time_To_Build = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Planified = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modify = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -112,90 +113,24 @@ namespace Bovelo
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Client_,
+            this.Id_Order_Bike,
             this.Id_order_details,
             this.Column2,
             this.Column3,
             this.Column4,
+            this.Time_To_Build,
             this.Column6,
             this.Planified,
-            this.Id_Order_Bike,
-            this.Time_To_Build,
             this.Modify,
             this.Delete});
             this.dataGridView1.Location = new System.Drawing.Point(11, 46);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(990, 109);
+            this.dataGridView1.RowHeadersWidth = 5;
+            this.dataGridView1.Size = new System.Drawing.Size(1014, 109);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Id_order_details
-            // 
-            this.Id_order_details.HeaderText = "Id order details";
-            this.Id_order_details.MinimumWidth = 6;
-            this.Id_order_details.Name = "Id_order_details";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Bike type :";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Bike Size";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Bike Color";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Bike Status :";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            // 
-            // Planified
-            // 
-            this.Planified.HeaderText = "Planified : ";
-            this.Planified.MinimumWidth = 6;
-            this.Planified.Name = "Planified";
-            // 
-            // Id_Order_Bike
-            // 
-            this.Id_Order_Bike.HeaderText = "Id Order Bike :";
-            this.Id_Order_Bike.MinimumWidth = 6;
-            this.Id_Order_Bike.Name = "Id_Order_Bike";
-            // 
-            // Time_To_Build
-            // 
-            this.Time_To_Build.HeaderText = "Time To Build";
-            this.Time_To_Build.MinimumWidth = 6;
-            this.Time_To_Build.Name = "Time_To_Build";
-            this.Time_To_Build.ReadOnly = true;
-            // 
-            // Modify
-            // 
-            this.Modify.HeaderText = "Modify Planning:";
-            this.Modify.MinimumWidth = 6;
-            this.Modify.Name = "Modify";
-            this.Modify.Text = "Modify";
-            this.Modify.ToolTipText = "Modify";
-            this.Modify.UseColumnTextForButtonValue = true;
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "Delete from planning :";
-            this.Delete.MinimumWidth = 6;
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.ToolTipText = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // monthCalendar1
             // 
@@ -346,18 +281,18 @@ namespace Bovelo
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
             this.dataGridViewButtonColumn1});
             this.dataGridView2.Location = new System.Drawing.Point(11, 30);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowHeadersWidth = 5;
             this.dataGridView2.Size = new System.Drawing.Size(981, 199);
             this.dataGridView2.TabIndex = 16;
             this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
@@ -584,9 +519,21 @@ namespace Bovelo
             this.label12.UseWaitCursor = true;
             this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Client";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Id Order";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Id order details";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id bike";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             // 
@@ -614,18 +561,6 @@ namespace Bovelo
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Id Order Bike :";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Client";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
             // dataGridViewButtonColumn1
             // 
             this.dataGridViewButtonColumn1.HeaderText = "Add to planning";
@@ -634,6 +569,80 @@ namespace Bovelo
             this.dataGridViewButtonColumn1.Text = "Add";
             this.dataGridViewButtonColumn1.ToolTipText = "Add";
             this.dataGridViewButtonColumn1.UseColumnTextForButtonValue = true;
+            // 
+            // Client_
+            // 
+            this.Client_.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Client_.HeaderText = "Client";
+            this.Client_.MinimumWidth = 20;
+            this.Client_.Name = "Client_";
+            // 
+            // Id_Order_Bike
+            // 
+            this.Id_Order_Bike.HeaderText = "Id Order";
+            this.Id_Order_Bike.MinimumWidth = 6;
+            this.Id_Order_Bike.Name = "Id_Order_Bike";
+            // 
+            // Id_order_details
+            // 
+            this.Id_order_details.HeaderText = "Id bike";
+            this.Id_order_details.MinimumWidth = 6;
+            this.Id_order_details.Name = "Id_order_details";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Bike type :";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Bike Size";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Bike Color";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            // 
+            // Time_To_Build
+            // 
+            this.Time_To_Build.HeaderText = "Time To Build";
+            this.Time_To_Build.MinimumWidth = 6;
+            this.Time_To_Build.Name = "Time_To_Build";
+            this.Time_To_Build.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.HeaderText = "Bike Status :";
+            this.Column6.MinimumWidth = 6;
+            this.Column6.Name = "Column6";
+            // 
+            // Planified
+            // 
+            this.Planified.HeaderText = "Planified : ";
+            this.Planified.MinimumWidth = 6;
+            this.Planified.Name = "Planified";
+            // 
+            // Modify
+            // 
+            this.Modify.HeaderText = "Modify Planning:";
+            this.Modify.MinimumWidth = 6;
+            this.Modify.Name = "Modify";
+            this.Modify.Text = "Modify";
+            this.Modify.ToolTipText = "Modify";
+            this.Modify.UseColumnTextForButtonValue = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "Delete from planning :";
+            this.Delete.MinimumWidth = 6;
+            this.Delete.Name = "Delete";
+            this.Delete.Text = "Delete";
+            this.Delete.ToolTipText = "Delete";
+            this.Delete.UseColumnTextForButtonValue = true;
             // 
             // Manager_Make_Planning
             // 
@@ -705,28 +714,29 @@ namespace Bovelo
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_order_details;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Planified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Order_Bike;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Time_To_Build;
-        private System.Windows.Forms.DataGridViewButtonColumn Modify;
-        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Client_;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_Order_Bike;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_order_details;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Time_To_Build;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Planified;
+        private System.Windows.Forms.DataGridViewButtonColumn Modify;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
     }
 }

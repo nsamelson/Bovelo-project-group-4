@@ -61,6 +61,8 @@ namespace Bovelo
             TimeSpan totalTime=new TimeSpan();
             //dataGridView2.Rows.Clear();
             //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
+            string clientName1 = "";
+            string previousOrder1 = "";
             foreach (var planifiedOrderDetails in Manager.GetPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
@@ -71,22 +73,29 @@ namespace Bovelo
                 if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
                 {
                     dataGridView1.Rows.Add();
-                    dataGridView1.Rows[i].Cells[0].Value = planifiedOrderDetails[0];//id order details
-                    dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[1];//type
-                    dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[2];//size
-                    dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[3];//color
-                    dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[5];//status
-                    dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[7];//plannified week
-                    dataGridView1.Rows[i].Cells[6].Value = planifiedOrderDetails[8];//Id Order
-                    dataGridView1.Rows[i].Cells[7].Value = newBike.TotalTime.ToString();
+                    dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[6];//Id Order 
+                    dataGridView1.Rows[i].Cells[2].Value = planifiedOrderDetails[0];//id bike 
+                    dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[1];//type 
+                    dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[2];//size 
+                    dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[3];//color 
+                    dataGridView1.Rows[i].Cells[6].Value = newBike.TotalTime.ToString(); 
+                    dataGridView1.Rows[i].Cells[7].Value = planifiedOrderDetails[5];//status 
+                    dataGridView1.Rows[i].Cells[8].Value = planifiedOrderDetails[7];//plannified week
+                    if (planifiedOrderDetails[7] == comboBox1.Text.ToString() && planifiedOrderDetails[6] != previousOrder1)
+                    {
+                        clientName1 = Manager.GetClientName(Int32.Parse(planifiedOrderDetails[6]));
+                        previousOrder1 = planifiedOrderDetails[6];
+                    }
+                    dataGridView1.Rows[i].Cells[0].Value = clientName1;//client 
                     TimeSpan toAdd = new TimeSpan(0,newBike.TotalTime,0);
-                    totalTime +=toAdd; 
+                    totalTime +=toAdd;
                     i++;
                 }
                 
-            }           
-           /* Console.WriteLine("index i : " + i);
-            Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
+                
+            }
+            /* Console.WriteLine("index i : " + i);
+             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
             i = 0;
             string clientName = "";
             string previousOrder = "";
@@ -96,18 +105,22 @@ namespace Bovelo
                 Bike newBike = new Bike(Int32.Parse(nonPlanifiedOrderDetails[0]), model);
                 t += newBike.TotalTime;
                 dataGridView2.Rows.Add();
-                dataGridView2.Rows[i].Cells[0].Value = nonPlanifiedOrderDetails[0];//id order details
-                dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
-                dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
-                dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
-                dataGridView2.Rows[i].Cells[4].Value = newBike.TotalTime.ToString();
-                dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[6];//Id Order
-                if (nonPlanifiedOrderDetails[6]!=previousOrder)
+
+
+                dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[6];//id order
+
+                dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[0];//id bike
+                dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[1];//type
+                dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[2];//size
+                dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[3];//color
+                dataGridView2.Rows[i].Cells[6].Value = newBike.TotalTime.ToString();// time
+                
+                if (nonPlanifiedOrderDetails[6] != previousOrder)
                 {
-                    clientName= Manager.GetClientName(Int32.Parse(nonPlanifiedOrderDetails[6]));
+                    clientName = Manager.GetClientName(Int32.Parse(nonPlanifiedOrderDetails[6]));
                     previousOrder = nonPlanifiedOrderDetails[6];
                 }
-                dataGridView2.Rows[i].Cells[6].Value = clientName;
+                dataGridView2.Rows[i].Cells[0].Value = clientName;//client 
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
@@ -189,7 +202,7 @@ namespace Bovelo
             string weekName = textBox1.Text;
             dataGridView1.Rows.Add();
             List<string> reset = new List<string>();
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView2.Rows[e.RowIndex].Cells[0].Value; //id order details
+            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView2.Rows[e.RowIndex].Cells[0].Value; //id bike 
             dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[1].Value = dataGridView2.Rows[e.RowIndex].Cells[1].Value; //type
             dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[2].Value = dataGridView2.Rows[e.RowIndex].Cells[2].Value;//size
             dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[3].Value = dataGridView2.Rows[e.RowIndex].Cells[3].Value;//color
