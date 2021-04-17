@@ -37,7 +37,7 @@ namespace Bovelo
             InitializeComponent();
 
             _currentUser = incomingUser;
-            stockBike =Representative.GetBikesInStock(); 
+            stockBike = Representative.GetBikesInStock(); 
         }
 
         private void Cart_Load() 

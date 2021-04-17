@@ -21,11 +21,6 @@ namespace Bovelo
             InitializeComponent();
         }
 
-        private void Builder_MainHome_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();// Hiding the MainHome Window

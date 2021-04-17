@@ -10,7 +10,6 @@ using System.Windows.Forms;
 
 namespace Bovelo
 {
-
     public partial class Assembler_Planning : Form
     {
         private App newApp = new App();
@@ -25,8 +24,7 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            string Builder, status, start, finish;
+            string builder, status, start, finish;
             int id;
             if (dataGridView1.CurrentCell.Value.ToString() == "set on active")
             {
@@ -54,15 +52,14 @@ namespace Bovelo
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     id = Int32.Parse(row.Cells[0].Value.ToString());
-                    Builder = user.login.ToString();
+                    builder = user.login.ToString();
                     status = row.Cells[5].Value.ToString();
                     start = row.Cells[8].Value.ToString();
                     finish = row.Cells[9].Value.ToString();
-                    row.Cells[7].Value = Builder;
-                    Assembler.UpdateSatus(id, status, Builder, start, finish);
+                    row.Cells[7].Value = builder;
+                    Assembler.UpdateSatus(id, status, builder, start, finish);
                 }
             }
-
             else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new" &&
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString() == "Active")
             {
@@ -75,12 +72,12 @@ namespace Bovelo
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     id = Int32.Parse(row.Cells[0].Value.ToString());
-                    Builder = string.Empty;
+                    builder = string.Empty;
                     status = row.Cells[5].Value.ToString();
                     start = string.Empty;
                     finish = string.Empty;
-                    row.Cells[7].Value = Builder;
-                    Assembler.UpdateSatus(id, status, Builder, start, finish);
+                    row.Cells[7].Value = builder;
+                    Assembler.UpdateSatus(id, status, builder, start, finish);
                 }   
             }
             else if(dataGridView1.CurrentCell.Value.ToString() == "Click to see parts")
@@ -90,7 +87,6 @@ namespace Bovelo
             }
             newApp.SetPlanningList();
         }
-
 
         private void Assembler_Planning_Load_1(object sender, EventArgs e)//loading the page
         {
@@ -107,7 +103,6 @@ namespace Bovelo
             amh.FormClosed += (s, args) => this.Close();
             amh.Show();// Showing the Login window
         }
-
 
         private void button3_Click(object sender, EventArgs e)//get planning button
         {
@@ -155,15 +150,9 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[9] = finishCell;
                     dataGridView1.Rows[i].Cells[10] = newCell;
                 }
-                
                 //dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikesByWeekName(week)[i][9];
                 i++;
             }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
