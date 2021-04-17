@@ -63,7 +63,7 @@ namespace Bovelo
             this.label6.Location = new System.Drawing.Point(264, 5);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(666, 108);
+            this.label6.Size = new System.Drawing.Size(449, 73);
             this.label6.TabIndex = 2;
             this.label6.Text = "Manage Users";
             // 
@@ -90,7 +90,7 @@ namespace Bovelo
             this.label3.Location = new System.Drawing.Point(900, 5);
             this.label3.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 47);
+            this.label3.Size = new System.Drawing.Size(120, 31);
             this.label3.TabIndex = 3;
             this.label3.Text = "Manager";
             // 
@@ -103,7 +103,7 @@ namespace Bovelo
             this.label5.Location = new System.Drawing.Point(2, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(337, 108);
+            this.label5.Size = new System.Drawing.Size(229, 73);
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
@@ -174,7 +174,7 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(45, 3);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(262, 55);
+            this.label4.Size = new System.Drawing.Size(174, 37);
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
@@ -229,7 +229,7 @@ namespace Bovelo
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(888, 103);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 29);
+            this.label2.Size = new System.Drawing.Size(77, 20);
             this.label2.TabIndex = 22;
             this.label2.Text = "User type";
             // 
@@ -238,22 +238,17 @@ namespace Bovelo
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(991, 168);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 35);
+            this.textBox1.Size = new System.Drawing.Size(196, 26);
             this.textBox1.TabIndex = 21;
             // 
             // comboBox1
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Assembler",
-            "Production Manager",
-            "Representative"});
             this.comboBox1.Location = new System.Drawing.Point(991, 100);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(196, 37);
+            this.comboBox1.Size = new System.Drawing.Size(196, 28);
             this.comboBox1.TabIndex = 20;
-            this.comboBox1.Text = "Representative";
             // 
             // label1
             // 
@@ -263,13 +258,13 @@ namespace Bovelo
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(909, 171);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 29);
+            this.label1.Size = new System.Drawing.Size(48, 20);
             this.label1.TabIndex = 19;
             this.label1.Text = "Login";
             // 
             // Manager_Manage_Users
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1213, 466);

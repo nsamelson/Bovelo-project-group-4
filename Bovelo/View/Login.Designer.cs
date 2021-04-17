@@ -65,15 +65,10 @@ namespace Bovelo
             // 
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Assembler",
-            "Production Manager",
-            "Representative"});
             this.comboBox1.Location = new System.Drawing.Point(440, 226);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(196, 29);
             this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "Representative";
             // 
             // textBox1
             // 

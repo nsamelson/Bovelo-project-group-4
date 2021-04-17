@@ -23,6 +23,7 @@ namespace Bovelo
 
         internal void LoadUser()
         {
+            comboBox1.DataSource= newApp.GetDifferentUserTypes();//set different user types in combobox
             var loginRole = Manager.GetUser();
             int i = 0;
             dataGridView1.Rows.Clear();           
