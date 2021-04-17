@@ -15,6 +15,7 @@ namespace Bovelo
     {
         private string typeOfBike;
         private string path = @"../../View";
+        private string broken_path = @"../../View\Pictures\" + "broken.png";
         private User _currentUser;
         private App app = new App();
 
@@ -56,7 +57,7 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                pictureBox1.Image = Image.FromFile(broken_path);
             }
         }
 
@@ -68,7 +69,7 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                pictureBox1.Image = Image.FromFile(broken_path);
             }
         }
 
@@ -80,7 +81,7 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                pictureBox1.Image = Image.FromFile(broken_path);
             }
         }
 
@@ -92,7 +93,7 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                pictureBox1.Image = Image.FromFile(broken_path);
             }
         }
 
@@ -104,7 +105,7 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
+                pictureBox1.Image = Image.FromFile(broken_path);
             }
         }
 
@@ -225,12 +226,21 @@ namespace Bovelo
 
         private void Load_Pictures()
         {
+            
             string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))+@"\View\Pictures";
             string new_path = wanted_path + @"\" + typeOfBike;
             string message = "The program could not find pictures of : '" + typeOfBike + "' in the directory : " + wanted_path;
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilv1.jpg");// assign to bykeimg an image       
+            }
+            catch
+            {
+                pictureBox1.Image = Image.FromFile(broken_path);
+                open_directory(message, new_path);
+            }
+            try
+            {
                 button5.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilicone.jpg");// assign to bykeimg an image
                 button6.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
                 button8.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
@@ -239,19 +249,27 @@ namespace Bovelo
             }
             catch
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + "broken.png");
-                if(_currentUser.userType["Production Manager"] == true)
+                button5.Image = Image.FromFile(broken_path);
+                button6.Image = Image.FromFile(broken_path);
+                button8.Image = Image.FromFile(broken_path);
+                button9.Image = Image.FromFile(broken_path);
+                button10.Image = Image.FromFile(broken_path);
+                open_directory(message, new_path);
+            }
+        }
+        private void open_directory(string message,string new_path)
+        {
+            if (_currentUser.userType["Production Manager"] == true)
+            {
+                var result = MessageBox.Show(this.Owner, message + "\n \n\n Would you like to add pictures?", "No image found!", MessageBoxButtons.YesNo);
+                switch (result)
                 {
-                    var result = MessageBox.Show(this.Owner, message + "\n \n\n Would you like to add pictures?", "No image found!", MessageBoxButtons.YesNo);
-                    switch (result)
-                    {
-                        case DialogResult.No:
-                            break;
-                        case DialogResult.Yes:
-                            Manager.AddNewFolder(new_path);
-                            System.Diagnostics.Process.Start(new_path);
-                            break;
-                    }
+                    case DialogResult.No:
+                        break;
+                    case DialogResult.Yes:
+                        Manager.AddNewFolder(new_path);
+                        System.Diagnostics.Process.Start(new_path);
+                        break;
                 }
             }
         }
