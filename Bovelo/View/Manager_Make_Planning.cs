@@ -126,17 +126,17 @@ namespace Bovelo
             var a = CultureInfo.CurrentCulture;
             var datetimeformat = a.DateTimeFormat;
             var calendarWeek = a.Calendar.GetWeekOfYear(monthCalendar1.SelectionStart, datetimeformat.CalendarWeekRule, datetimeformat.FirstDayOfWeek);
-            newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
-            textBox1.Text = "Week : " + calendarWeek.ToString();
+            newWeekToAssign.Text =  calendarWeek.ToString();
+            textBox1.Text =  calendarWeek.ToString();
             Console.WriteLine("Week number : " +  calendarWeek);
-            newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
+            newWeekToAssign.Text = calendarWeek.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             if (textBox1.Text == string.Empty)
             {
-                MessageBox.Show("Are you trying to planify a bike without choosing a week, Idiot Manager, You are fired !");
+                MessageBox.Show("To planify a bike you have to choose a week !");
             }
             else
             {
@@ -203,6 +203,11 @@ namespace Bovelo
         private void button3_Click(object sender, EventArgs e)
         {
             Manager_Make_Planning_Load(sender,e);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
