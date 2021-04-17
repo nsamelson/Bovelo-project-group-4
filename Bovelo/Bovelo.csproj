@@ -136,6 +136,12 @@
     <Compile Include="View\Assembler_MainHome.Designer.cs">
       <DependentUpon>Assembler_MainHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager_Stock_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Manager_Stock_Popup.Designer.cs">
+      <DependentUpon>Manager_Stock_Popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Manager_Manager_Stock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Cart.resx">
       <DependentUpon>Cart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Manager_Stock_Popup.resx">
+      <DependentUpon>Manager_Stock_Popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_Manager_Stock.resx">
       <DependentUpon>Manager_Manager_Stock.cs</DependentUpon>

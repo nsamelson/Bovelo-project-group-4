@@ -111,5 +111,10 @@ namespace Bovelo
             mrbs.FormClosed += (s, args) => this.Close(); // close the login Form
             mrbs.Show();
         }
+
+        private void Manager_MainHome_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
