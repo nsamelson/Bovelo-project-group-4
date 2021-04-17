@@ -23,12 +23,10 @@ namespace Bovelo
             newApp.SetBikeModelList();
             var weekNameChoice= Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
             comboBox1.DataSource = weekNameChoice;
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
+        {         
             if (dataGridView1.CurrentCell.Value.ToString() == "Modify")
             {
                 MessageBox.Show("Choose a week from the calendar ");
@@ -37,7 +35,6 @@ namespace Bovelo
                 weekToModify.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
                 idBike.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();   
             }
-
             if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
             {
                 Console.WriteLine("e.RowIndex : " + e.RowIndex);
@@ -47,14 +44,11 @@ namespace Bovelo
                 Manager.DeletePlanifiedBike(id,week);
                 MessageBox.Show("Bike has been delted from schedule");
                 Manager_Make_Planning_Load(sender, e);
-                
             }
-
         }
 
         private void Manager_Make_Planning_Load(object sender, EventArgs e)
         {
-            
             int i = 0;
             int t = 0;
             dataGridView1.Rows.Clear();
@@ -90,9 +84,7 @@ namespace Bovelo
                     TimeSpan toAdd = new TimeSpan(0,newBike.TotalTime,0);
                     totalTime +=toAdd;
                     i++;
-                }
-                
-                
+                }                
             }
             /* Console.WriteLine("index i : " + i);
              Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
@@ -106,9 +98,7 @@ namespace Bovelo
                 t += newBike.TotalTime;
                 dataGridView2.Rows.Add();
 
-
                 dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[6];//id order
-
                 dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[0];//id bike
                 dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[1];//type
                 dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[2];//size
@@ -127,7 +117,6 @@ namespace Bovelo
             label12.Text = totalTime.TotalHours.ToString();
             var weekNameChoice = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
             comboBox1.DataSource = weekNameChoice;
-
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -141,12 +130,6 @@ namespace Bovelo
             textBox1.Text = "Week : " + calendarWeek.ToString();
             Console.WriteLine("Week number : " +  calendarWeek);
             newWeekToAssign.Text = "Week : " + calendarWeek.ToString();
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -160,7 +143,6 @@ namespace Bovelo
                 string weekName = textBox1.Text;
                 Manager.SetNewPlanning(user.planningCart, weekName);
             }
-            
         } 
 
         private void button7_Click(object sender, EventArgs e)
@@ -169,16 +151,6 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// create new window
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button5_Click(object sender, EventArgs e)//update schedule
@@ -195,14 +167,10 @@ namespace Bovelo
                 Manager.UpdateSchedule(id, newWeek, currentWeek);
                 Manager_Make_Planning_Load(sender, e);
             }
-
-
         }
-
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString() && x.Size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString()) && x.Type == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString());//gets the specific model
             Bike bike = new Bike(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()), model);//Needs to be verified (id)
             user.addToPlanningCart(bike, Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()));
@@ -214,7 +182,6 @@ namespace Bovelo
             }
             else
             {
-
                 dataGridView1.Rows.Add();
                 List<string> reset = new List<string>();
                 dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView2.Rows[e.RowIndex].Cells[0].Value; //id bike 
@@ -231,48 +198,11 @@ namespace Bovelo
                 dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[8].Value = weekName;//plannified week
                 dataGridView2.Rows.RemoveAt(dataGridView2.CurrentRow.Index);
             }
-            
 
         }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelPrice_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button3_Click(object sender, EventArgs e)
         {
             Manager_Make_Planning_Load(sender,e);
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -43,7 +43,7 @@ namespace Bovelo
                 workingMinute += newBike.TotalTime;
             }
         }
-        public List<Bike> getBikesToBuild()
+        public List<Bike> GetBikesToBuild()
         {
             return bikesToBuild;
         }

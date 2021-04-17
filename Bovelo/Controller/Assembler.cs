@@ -10,13 +10,10 @@ namespace Bovelo
     {
         public static void UpdateSatus(int id, string status, string user, string started, string finished)//Changes the status of the bike an assembler is working on
         {
-
             string query = "UPDATE Order_Details SET Bike_Status = '" + status + "'  WHERE Id_Order_Details = '" + id + "' ;" +
                            "UPDATE Detailed_Schedules SET Assembled_by = '" + user + "', Started = '" + started + "', Finished = '" + 
                            finished + "'  WHERE Id_Order_Details = '" + id + "' ;";
-
             DataBase.SendToDB(query);
         }
-
     }
 }

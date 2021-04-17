@@ -15,7 +15,7 @@ namespace Bovelo
 {
     public static class ExportData
     {
-        public static void CreateInvoice(string client, List<string> column, List<List<String>> Data)
+        public static void CreateInvoice(string client, List<string> column, List<List<String>> data)
         {
             string date = DateTime.Now.ToString();
             date = date.Replace('/', '_');
@@ -67,7 +67,7 @@ namespace Bovelo
                 table.AddCell(cell);
             }
             int price = 0;
-            foreach (var item in Data)
+            foreach (var item in data)
             {
                 foreach (var value in item)
                 {
@@ -98,7 +98,6 @@ namespace Bovelo
                    559, 806, i, TextAlignment.RIGHT,
                    VerticalAlignment.TOP, 0);
             }
-
             // Close document
             document.Close();
         }

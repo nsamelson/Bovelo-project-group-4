@@ -26,7 +26,7 @@ namespace Bovelo
             this.Size = size;
             /*this.idBikeModel = idBikeModel;*/
         }
-        internal void setPriceAndTime()//is used to set the total price of a bike
+        internal void SetPriceAndTime()//is used to set the total price of a bike
         {
             foreach (var elem in bikeParts)
             {

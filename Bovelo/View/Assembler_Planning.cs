@@ -112,7 +112,7 @@ namespace Bovelo
             int i = 0;
             string comp;
             var planningWeek = newApp.planningList.FirstOrDefault(x => x.weekName == week);
-            foreach (var bike in planningWeek.getBikesToBuild())
+            foreach (var bike in planningWeek.GetBikesToBuild())
             {
                 string parts = "";
                 foreach (var part in bike.bikeParts)

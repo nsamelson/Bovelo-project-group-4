@@ -13,9 +13,9 @@ namespace Bovelo
         {
             this.quantity = quantity;
             this.part = part;
-            price = getPrice();
+            price = GetPrice();
         }
-        public override int getPrice()
+        public override int GetPrice()
         {
             return quantity * part.price;
         }

@@ -43,32 +43,37 @@ namespace Bovelo
         //SET METHODS
         internal void SetNewUser(List<string> loginRole) //Creates a new User (for ex: a new Assembler joins the team)
         {
-            
             string query = "INSERT INTO Users (Login,Role) VALUES('" + loginRole[1]+ "','" + loginRole[0]+ "');";
             Console.WriteLine(query);
             DataBase.SendToDB(query);
             SetUserList(); //At the end of set, put a get to update App class
         }
+
         internal void SetUserList()
         {
             userList = GetUserList();
         }
+
         internal void SetBikeModelList()
         {
             bikeModels = GetBikeModelList();
         }
+
         internal void SetBikePartList()
         {
             bikePartList = GetBikePartList();
         }
+
         internal void SetOrderBikeList()
         {
             orderBikeList = GetOrderBikeList();
         }
+
         internal void SetPlanningList()
         {
             planningList = GetPlanningList();
         }
+
         internal void SetLinkingPartList()
         {
             _linkingPartList = GetLinkingPartList();
@@ -101,22 +106,24 @@ namespace Bovelo
             }
             return userFromDB;
         }
+
         internal List<List<string>> GetLinkingPartList()
         {
             return DataBase.GetFromDB("Parts");
         }
+
         internal List<BikePart> GetBikePartList()
         {
             List<BikePart> bikeParts = new List<BikePart>();
-            var BikePartsFromDB = DataBase.GetFromDB("Bike_Parts");
+            var bikePartsFromDB = DataBase.GetFromDB("Bike_Parts");
 
-            foreach (var row in BikePartsFromDB)
+            foreach (var row in bikePartsFromDB)
             {
                 bikeParts.Add(new BikePart(Int32.Parse(row[0]), row[1], row[3], Int32.Parse(row[4]), row[5], Int32.Parse(row[6])) { quantity = Int32.Parse(row[2])});
             }
-
             return bikeParts;
         }
+
         internal List<Planning> GetPlanningList() //maybe transfer into Assembler Controller
         {
             SetBikeModelList();
@@ -151,6 +158,7 @@ namespace Bovelo
             }
             return plannings;
         }
+
         internal List<OrderBike> GetOrderBikeList() //is used to get all Bike Orders NEED TO TRY
         {
             List<OrderBike> orderBikeList = new List<OrderBike>();
@@ -162,13 +170,12 @@ namespace Bovelo
             {
                 List<List<string>> details = new List<List<string>>(orderDetailList.FindAll(x => x[6] == row[0]));//takes each lists with the same order_Id
                 OrderBike newOrder = new OrderBike(row[1], details, Int32.Parse(row[0]), Convert.ToDateTime(row[3]), Convert.ToDateTime(row[4]), Int32.Parse(row[2]),bikeModels);
-
+               
                 orderBikeList.Add(newOrder);//row[1] is the column where the name of the client is put
-
             }
-
             return orderBikeList;
         }
+
         internal List<BikeModel> GetBikeModelList() //is used to get all bike models
         {
             List<BikeModel> bikeList = new List<BikeModel>();//list to return
@@ -200,26 +207,26 @@ namespace Bovelo
                 bikePartsIds.Sort();
                 newBikeModel.bikeParts = bikePartsIds.Select(x => bikePartList.First(part => part.part_Id == x)).ToList(); //FOR DUPLICATES 
                 //newBikeModel.bikeParts = bikePartList.FindAll(part => bikePartsIds.Contains(part.part_Id));
-                newBikeModel.setPriceAndTime();
+                newBikeModel.SetPriceAndTime();
                 bikeList.Add(newBikeModel);
             }
             return bikeList;
         }
+
         internal Dictionary<int, int> GetWeekPieces(string weekName) //really with weekName ?!
         {
-
-            List<Bike> BikesToGetPieces = new List<Bike>();
+            List<Bike> bikesToGetPieces = new List<Bike>();
 
             foreach (var planning in this.GetPlanningList())
             {
                 if (planning.weekName == weekName)
                 {
-                    BikesToGetPieces = planning.getBikesToBuild();
+                    bikesToGetPieces = planning.GetBikesToBuild();
                 }
             }
             List<int> differentPartsId = new List<int>();
             List<int> allPartsId = new List<int>();
-            foreach (var bike in BikesToGetPieces)
+            foreach (var bike in bikesToGetPieces)
             {
                 foreach (var bikepart in bike.bikeParts)
                 {
@@ -239,6 +246,7 @@ namespace Bovelo
             }
             return PartIdQuantity;
         }
+
         internal int GetEstimatedTimeBeforeShipping(List<ItemBike> bikesToOrder)//Maybe transfer it into Representative controller
         {
             float days = 0;
@@ -262,7 +270,7 @@ namespace Bovelo
             }
             foreach(var elem in bikesToOrder)
             {
-                minutes += elem.getTotalTime();
+                minutes += elem.GetTotalTime();
             }
             hours = minutes/ 60;
             days = hours / 24; //because 3 builders working 8 hours a day
@@ -293,8 +301,6 @@ namespace Bovelo
                 Console.WriteLine("CURRENT WEEK : " + currentWeek);
                 Console.WriteLine("LAST PLANNED WEEK : " + lastWeekNumber + "LAST WEEK NAME : "+lastWeek);
                 Console.WriteLine("DIFFERENCE : " + weeks);
-
-
             }
             weeks += (int)(Math.Ceiling(days) / 5) +1;
             Console.WriteLine("MINUTES " + minutes+ " HOURS " + hours + " DAYS " + days);
@@ -302,6 +308,7 @@ namespace Bovelo
 
             return weeks;
         }
+
         internal List<string> GetDifferentModels()
         {
             SetBikeModelList();
@@ -318,7 +325,7 @@ namespace Bovelo
         }
 
         //OTHER METHODS
-        internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> PartIdQuantity)
+        internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> partIdQuantity)
         {
             SetBikePartList();
             SetBikeModelList();
@@ -330,8 +337,7 @@ namespace Bovelo
             {
                 numberNeededByBike = 1;
                 foreach (var bikePart in bikeModel.bikeParts)
-                {
-                    
+                { 
                     if (!partOrderDuplicateQuantity.ContainsKey(bikePart.part_Id))
                     {
                         numberNeededByBike = bikeModel.bikeParts.Count(elem => elem.part_Id == bikePart.part_Id);
@@ -351,7 +357,7 @@ namespace Bovelo
             }
             Dictionary<int, int> partOrderQuantity = new Dictionary<int, int>();
             int currentNumberPartNeeded = 0;
-            foreach (var elem in PartIdQuantity)
+            foreach (var elem in partIdQuantity)
             {
                 //stockQuantity = getQuantity(elem.Key);
                 stockQuantity = bikePartList.FirstOrDefault(x => x.part_Id == elem.Key).quantity;

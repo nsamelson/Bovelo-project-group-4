@@ -62,6 +62,7 @@ namespace Bovelo
             string sql = "SELECT * FROM " + DBTable + ";";
             return ConnectToDB(sql);
         }
+
         public static List<List<string>> GetFromDBSelect(string DBTable, List<string> argumentList)//Gets all the the specified columns from the specified Table
         {
             string sql = "SELECT ";
@@ -79,6 +80,7 @@ namespace Bovelo
             sql += " FROM " + DBTable + ";";
             return ConnectToDB(sql);
         }
+
         public static List<List<string>> GetFromDBWhere(string DBTable, List<string> argumentList, string whereClause)//Gets all the the specified columns from the specified Table with a condition
         {
             string sql = "SELECT ";
@@ -96,20 +98,23 @@ namespace Bovelo
             sql += " FROM " + DBTable + " WHERE " + whereClause + ";";
             return ConnectToDB(sql);
         }
+
         public static List<List<string>> GetFromDBInnerJoin(string selectTable, string innerJoinCondition, string whereColumn, string whereCondition)
         {
             string sql = "SELECT * FROM " + selectTable + "inner join  " + innerJoinCondition + " where " + whereColumn + " = '" + whereCondition + "';";
             return ConnectToDB(sql);
         }
+
         public static string GetFromDBLastIdFromColumn(string table, string column)//Gets the last id of a selected table
         {
             string sql = "SELECT Id_Order FROM "+table+" ORDER BY "+ column + " DESC LIMIT 1;";
             return ConnectToDB(sql).Last()[0];//returns the last id
         }
+
         public static void Backup()
         {
-            string MachineName1 = Environment.MachineName;
-            Console.WriteLine("Your Machine Name: " + MachineName1);
+            string machineName1 = Environment.MachineName;
+            Console.WriteLine("Your Machine Name: " + machineName1);
             //string file = "C:\\Users\\"+MachineName1+"\\Documents\\backup_"+DateTime.Today.DayOfWeek+".sql";
             string file = "../../Backup/backup_" + DateTime.Today.ToShortDateString().Replace("/", "_") + ".sql";
             using (MySqlConnection conn = new MySqlConnection(_connStr))
@@ -124,7 +129,6 @@ namespace Bovelo
                         conn.Close();
                     }
                 }
-
             }
         }
     }

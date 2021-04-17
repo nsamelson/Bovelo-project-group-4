@@ -18,14 +18,14 @@ namespace Bovelo
         public void increment()
         {
             quantity++;
-            price = getPrice();
+            price = GetPrice();
         }
         public void decrement()
         {
             quantity--;
-            price = getPrice();
+            price = GetPrice();
         }
-        public virtual int getPrice()
+        public virtual int GetPrice()
         {
             return price;
         }

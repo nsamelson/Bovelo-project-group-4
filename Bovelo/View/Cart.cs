@@ -50,7 +50,7 @@ namespace Bovelo
             {   
                 var stock =  stockBike.FindAll(x=> x.Type == elem.bike.Type && x.Color == elem.bike.Color && x.Size == elem.bike.Size);
                 quantity = stock.Count();
-                int price = elem.getPrice();
+                int price = elem.GetPrice();
 
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
@@ -85,7 +85,7 @@ namespace Bovelo
             Console.WriteLine(bikeQuantity);
             if (bikeQuantity != 0)
             {
-                _currentUser.cart[i].setQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
+                _currentUser.cart[i].SetQuantity(Int32.Parse(dataGridView1.Rows[i].Cells[3].Value.ToString()));
                 this.Cart_Load();
             }
             else

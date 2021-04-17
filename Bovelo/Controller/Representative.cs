@@ -45,7 +45,6 @@ namespace Bovelo
                     {
                         values += ",";
                     }
-
                 }
                 i++;
             }

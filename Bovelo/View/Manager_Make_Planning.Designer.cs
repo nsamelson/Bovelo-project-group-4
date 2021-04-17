@@ -150,7 +150,6 @@ namespace Bovelo
             this.newWeekToAssign.Name = "newWeekToAssign";
             this.newWeekToAssign.Size = new System.Drawing.Size(154, 27);
             this.newWeekToAssign.TabIndex = 6;
-            this.newWeekToAssign.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // button2
             // 
@@ -188,7 +187,6 @@ namespace Bovelo
             this.label2.Size = new System.Drawing.Size(68, 21);
             this.label2.TabIndex = 9;
             this.label2.Text = "Id Bike :";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // idBike
             // 
@@ -248,7 +246,6 @@ namespace Bovelo
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Non Planified Bikes";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label5
             // 
@@ -269,7 +266,6 @@ namespace Bovelo
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(197, 27);
             this.textBox1.TabIndex = 17;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // dataGridView2
             // 
@@ -330,7 +326,6 @@ namespace Bovelo
             this.labelTime.Size = new System.Drawing.Size(24, 25);
             this.labelTime.TabIndex = 17;
             this.labelTime.Text = "0";
-            this.labelTime.Click += new System.EventHandler(this.labelPrice_Click);
             // 
             // label6
             // 
@@ -343,7 +338,6 @@ namespace Bovelo
             this.label6.Size = new System.Drawing.Size(125, 25);
             this.label6.TabIndex = 16;
             this.label6.Text = "Total Time :";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label1
             // 
@@ -465,7 +459,6 @@ namespace Bovelo
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 29);
             this.comboBox1.TabIndex = 26;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -503,7 +496,6 @@ namespace Bovelo
             this.label11.Size = new System.Drawing.Size(86, 16);
             this.label11.TabIndex = 27;
             this.label11.Text = "Week Time :";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label12
             // 
@@ -517,7 +509,6 @@ namespace Bovelo
             this.label12.TabIndex = 6;
             this.label12.Text = "0";
             this.label12.UseWaitCursor = true;
-            this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // dataGridViewTextBoxColumn7
             // 

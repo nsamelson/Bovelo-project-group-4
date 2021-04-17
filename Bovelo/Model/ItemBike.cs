@@ -12,17 +12,17 @@ namespace Bovelo
         {
             this.quantity = quantity;
             this.bike = bike;
-            price = getPrice();
+            price = GetPrice();
         }
-        public override int getPrice()
+        public override int GetPrice()
         {
             return quantity * bike.Price;
         }
-        public int getTotalTime()
+        public int GetTotalTime()
         {
             return quantity * bike.TotalTime;
         }
-        public void setQuantity(int quantity)
+        public void SetQuantity(int quantity)
         {
             this.quantity = quantity;
             this.price = quantity * this.bike.Price;
