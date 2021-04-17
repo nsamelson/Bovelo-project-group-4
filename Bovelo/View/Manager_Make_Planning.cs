@@ -183,11 +183,20 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)//update schedule
         {
-            int id = Int32.Parse(idBike.Text.ToString());
-            string newWeek = newWeekToAssign.Text.ToString();
-            string currentWeek = weekToModify.Text.ToString();
-            Manager.UpdateSchedule(id, newWeek, currentWeek);
-            Manager_Make_Planning_Load(sender, e);
+            if(idBike.Text.ToString() == string.Empty || newWeekToAssign.Text.ToString() == string.Empty || weekToModify.Text.ToString() == string.Empty)
+            {
+                MessageBox.Show("fill the cases");
+            }
+            else
+            {
+                int id = Int32.Parse(idBike.Text.ToString());
+                string newWeek = newWeekToAssign.Text.ToString();
+                string currentWeek = weekToModify.Text.ToString();
+                Manager.UpdateSchedule(id, newWeek, currentWeek);
+                Manager_Make_Planning_Load(sender, e);
+            }
+
+
         }
 
 
