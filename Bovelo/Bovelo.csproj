@@ -178,6 +178,12 @@
     <Compile Include="View\Manager_Manage_Users.Designer.cs">
       <DependentUpon>Manager_Manage_Users.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Manager_Replace_bike_from_stock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Manager_Replace_bike_from_stock.Designer.cs">
+      <DependentUpon>Manager_Replace_bike_from_stock.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_Manage_Users.resx">
       <DependentUpon>Manager_Manage_Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Manager_Replace_bike_from_stock.resx">
+      <DependentUpon>Manager_Replace_bike_from_stock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager__Provider_orders.resx">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>

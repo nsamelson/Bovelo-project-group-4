@@ -52,10 +52,11 @@ namespace Bovelo
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button10 = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -371,6 +372,7 @@ namespace Bovelo
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Controls.Add(this.groupBox6);
             this.groupBox3.Controls.Add(this.groupBox5);
@@ -384,6 +386,20 @@ namespace Bovelo
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manager";
+            // 
+            // button10
+            // 
+            this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button10.Location = new System.Drawing.Point(24, 134);
+            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(202, 55);
+            this.button10.TabIndex = 28;
+            this.button10.Text = "Manage Users";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // groupBox6
             // 
@@ -419,19 +435,19 @@ namespace Bovelo
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Planning";
             // 
-            // button10
+            // button11
             // 
-            this.button10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button10.Location = new System.Drawing.Point(127, 134);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(202, 55);
-            this.button10.TabIndex = 28;
-            this.button10.Text = "Manage Users";
-            this.button10.UseVisualStyleBackColor = true;
-            this.button10.Click += new System.EventHandler(this.button10_Click);
+            this.button11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button11.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button11.Location = new System.Drawing.Point(234, 134);
+            this.button11.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(202, 55);
+            this.button11.TabIndex = 29;
+            this.button11.Text = "Replace bike from stock";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // Manager_MainHome
             // 
@@ -500,5 +516,6 @@ namespace Bovelo
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
