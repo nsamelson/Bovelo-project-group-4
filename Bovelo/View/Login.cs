@@ -22,46 +22,44 @@ namespace Bovelo
 
         private void Login_Load(object sender, EventArgs e)
         {
-            // to complete
+            comboBox1.DataSource = app.GetDifferentUserTypes();
         }
 
         private void signin_Click(object sender, EventArgs e) // login button
         {
-            //NOT OPTIMAL
-            //if Assembler : select which one (id, name)?
-            //elif representative
-            //elif Product manager
             string userType = comboBox1.Text;
             string userName = textBox1.Text;
-            Console.WriteLine("user List prob : " + app.userList.Count); ;
             bool isExisting = app.userList.Any(login => login.login == userName);
-            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again or create a new user!"); }
+            if (!isExisting) { MessageBox.Show("The Username or password is incorrect, please try again !"); }
             else
             {
-                if (userType == "Representative")
+                var user = app.userList.FirstOrDefault(x => x.login == userName);
+                var type = user.userType.FirstOrDefault(x => x.Value == true).Key;
+                if (type == userType)
                 {
-                    int index = app.userList.FindIndex(a => a.login == userName);
                     this.Hide(); //hides the current form
-                    MainHome mh = new MainHome(app.userList[index]);// maybe send the userType with it
-                    mh.FormClosed += (s, args) => this.Close(); // close the login Form
-                    mh.Show();
+                    switch (type)
+                    {
+                        case "Representative":
+                            MainHome mh = new MainHome(user);// maybe send the userType with it
+                            mh.FormClosed += (s, args) => this.Close(); // close the login Form
+                            mh.Show();
+                            break;
+                        case "Assembler":
+                            Assembler_MainHome amh = new Assembler_MainHome(user);// maybe send the userType with it
+                            amh.FormClosed += (s, args) => this.Close(); // close the login Form
+                            amh.Show();
+                            break;
+                        case "Production Manager":
+                            Manager_MainHome mmh = new Manager_MainHome(user);// maybe send the userType with it
+                            mmh.FormClosed += (s, args) => this.Close(); // close the login Form
+                            mmh.Show();
+                            break;
+                    }
+                    
                 }
-                if (userType == "Assembler")
-                {
-                    int index = app.userList.FindIndex(a => a.login == userName);
-                    this.Hide(); //hides the current form
-                    Assembler_MainHome amh = new Assembler_MainHome(app.userList[index]);// maybe send the userType with it
-                    amh.FormClosed += (s, args) => this.Close(); // close the login Form
-                    amh.Show();
-                }
-                if (userType == "Production Manager")
-                {
-                    int index = app.userList.FindIndex(a => a.login == userName);
-                    this.Hide(); //hides the current form
-                    Manager_MainHome mmh = new Manager_MainHome(app.userList[index]);// maybe send the userType with it
-                    mmh.FormClosed += (s, args) => this.Close(); // close the login Form
-                    mmh.Show();
-                }                    
+                else { MessageBox.Show("You didn't chose the correct userType !"); }
+
             }
         }
     }

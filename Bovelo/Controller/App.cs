@@ -323,6 +323,20 @@ namespace Bovelo
             }
             return diffModels;
         }
+        internal List<string> GetDifferentUserTypes()
+        {
+            SetUserList();
+            List<string> users = new List<string>();
+            foreach (var user in userList)
+            {
+                var type = user.userType.FirstOrDefault(x => x.Value == true).Key;
+                if (!users.Contains(type))
+                {
+                    users.Add(type);
+                }
+            }
+            return users;
+        }
 
         //OTHER METHODS
         internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> partIdQuantity)
