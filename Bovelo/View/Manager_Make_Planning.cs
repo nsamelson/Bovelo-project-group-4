@@ -34,15 +34,15 @@ namespace Bovelo
                 MessageBox.Show("Choose a week from the calendar ");
                 
                 //dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Week  " + calendarWeek.ToString();
-                weekToModify.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                idBike.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();   
+                weekToModify.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
+                idBike.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();   
             }
 
             if (dataGridView1.CurrentCell.Value.ToString() == "Delete")
             {
                 Console.WriteLine("e.RowIndex : " + e.RowIndex);
-                int id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
-                string week = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
+                int id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                string week = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
                 Console.WriteLine("id : " + id + "week : " + week);
                 Manager.DeletePlanifiedBike(id,week);
                 MessageBox.Show("Bike has been delted from schedule");
