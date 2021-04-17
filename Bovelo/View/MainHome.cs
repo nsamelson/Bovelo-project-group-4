@@ -21,7 +21,6 @@ namespace Bovelo
             _currentUser = incomingUser;
         }
 
-
         private void button1_Click(object sender, EventArgs e)//go to login page
         {
             this.Hide();
@@ -36,15 +35,7 @@ namespace Bovelo
             Cart cart = new Cart(ref _currentUser);// create new window
             cart.FormClosed += (s, args) => this.Close();
             cart.Show();// Showing the Cart window
-
         }
-
-
-        private void button_Click(object sender, EventArgs e)
-        {
-            
-        }
-
 
         private void button3_Click(object sender, EventArgs e)//go to orders page
         {
@@ -52,7 +43,6 @@ namespace Bovelo
             Order order = new Order(ref _currentUser);// create new window
             order.FormClosed += (s, args) => this.Close();
             order.Show();// Showing the Order window
-            
         }
 
         private void MainHome_Load(object sender, EventArgs e)//Load
@@ -77,7 +67,6 @@ namespace Bovelo
                 {
                     button.BackgroundImage = Image.FromFile(path + @".\Pictures\" + model + @"\" + model + "_profilv1.jpg");
                     button.BackgroundImageLayout = ImageLayout.Zoom;
-                    
                 }
                 catch
                 {
@@ -96,6 +85,7 @@ namespace Bovelo
             }
             this.Controls.Add(buttonPanel);
         }
+
         void ButtonClickOneEvent(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -115,9 +105,7 @@ namespace Bovelo
                     explorerbike.FormClosed += (s, args) => this.Close();
                     explorerbike.Show();
                 }
-                
             }
-            
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -130,23 +118,12 @@ namespace Bovelo
                 mmh.FormClosed += (s, args) => this.Close();
                 mmh.Show();// Showing the Login window
             }
-            
         }
 
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ShowBike explorerbike = new ShowBike("Explorer", ref _currentUser);
-            explorerbike.FormClosed += (s, args) => this.Close();
-            explorerbike.Show();
-        }
         private void MainHome_ResizeEnd(Object sender, EventArgs e)
         {
             this.Controls.RemoveAt(this.Controls.Count - 1);
             MainHome_Load(sender, e);
         }
-
-
     }
 }

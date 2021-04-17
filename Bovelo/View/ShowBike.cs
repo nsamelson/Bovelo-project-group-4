@@ -13,34 +13,33 @@ namespace Bovelo
 {
     public partial class ShowBike : Form
     {
-        private string TypeOfBike;
+        private string typeOfBike;
         private string path = @"../../View";
         private User _currentUser;
         private App app = new App();
 
-        internal ShowBike(string TypeBike,ref User current_user)
+        internal ShowBike(string typeBike,ref User current_user)
         {
             InitializeComponent();
 
-            TypeOfBike = TypeBike;
+            typeOfBike = typeBike;
             _currentUser = current_user;
 
             app.SetBikeModelList();
             comboBox2.DataSource = app.GetDifferentModels(); //gets a list of bikeModels
             try
             {
-                comboBox2.SelectedItem = TypeBike;
+                comboBox2.SelectedItem = typeBike;
             }
             catch{ } ;
             numericUpDown1.Value = 1;
             label6.Text = getBikePrice().ToString() +" €";
             isChecked();
-            
         }
 
        public int getBikePrice()
-        {
-            int price = app.bikeModels.FirstOrDefault(x=> x.Type == TypeOfBike).Price;
+       {
+            int price = app.bikeModels.FirstOrDefault(x=> x.Type == typeOfBike).Price;
             return price;
        }
 
@@ -49,12 +48,11 @@ namespace Bovelo
             isChecked();
         }
 
-
         private void button5_Click(object sender, EventArgs e)
         {
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image and displaying into picturebox
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilv1.jpg");// assign to bykeimg an image and displaying into picturebox
             }
             catch
             {
@@ -66,7 +64,7 @@ namespace Bovelo
         {
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisv1.jpg");// assign to bykeimg an image and displaying into picturebox
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_biaisv1.jpg");// assign to bykeimg an image and displaying into picturebox
             }
             catch
             {
@@ -78,7 +76,7 @@ namespace Bovelo
         {
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonv1.jpg");// assign to bykeimg an image and displaying into picturebox
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_guidonv1.jpg");// assign to bykeimg an image and displaying into picturebox
             }
             catch
             {
@@ -90,7 +88,7 @@ namespace Bovelo
         {
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleurv1.jpg");// assign to bykeimg an image and displaying into picturebox
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_derailleurv1.jpg");// assign to bykeimg an image and displaying into picturebox
             }
             catch
             {
@@ -102,7 +100,7 @@ namespace Bovelo
         {
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_rouev1.jpg");// assign to bykeimg an image and displaying into picturebox
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_rouev1.jpg");// assign to bykeimg an image and displaying into picturebox
             }
             catch
             {
@@ -110,30 +108,19 @@ namespace Bovelo
             }
         }
 
-        private void Explorerbike_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button7_Click(object sender, EventArgs e)// go to mainhome
         {
             this.Hide();
-            var MainHome = new MainHome(_currentUser);// create new window
-            MainHome.FormClosed += (s, args) => this.Close();
-            MainHome.Show();// Showing the Login window
-        }
-
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
+            var mainHome = new MainHome(_currentUser);// create new window
+            mainHome.FormClosed += (s, args) => this.Close();
+            mainHome.Show();// Showing the Login window
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {            
             numericUpDown1.Minimum = 1;
-            Decimal B = this.numericUpDown1.Value * getBikePrice();
-            this.label6.Text = B.ToString() + "€";
+            Decimal b = this.numericUpDown1.Value * getBikePrice();
+            this.label6.Text = b.ToString() + "€";
             isChecked();
         }
 
@@ -145,29 +132,25 @@ namespace Bovelo
             if (radioButton1.Checked)
             {
                 color = radioButton1.Text;
-                
             }
             else if (radioButton2.Checked)
             {
                 color = radioButton2.Text;
-                
             }
             else if (radioButton3.Checked)
             {
                 color = radioButton3.Text;
-                
             }
             
             int _i = Convert.ToInt32(i);
-
-            var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == TypeOfBike);
+            var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == typeOfBike);
 
             /// exception if there is no model of this bike (bike wanted by the representative) in database 
             var existing_bike_in_db = false;
             foreach (var elem2 in app.GetBikeModelList())
             {
                 Console.WriteLine("type = " + elem2.Type+", size = "+ elem2.Size+", color "+elem2.Color);
-                if(elem2.Color == color && elem2.Size == _i && elem2.Type == TypeOfBike)
+                if(elem2.Color == color && elem2.Size == _i && elem2.Type == typeOfBike)
                 {
                     existing_bike_in_db = true;
                 }
@@ -176,12 +159,12 @@ namespace Bovelo
 
             if (existing_bike_in_db)// if bike model exist in db 
             {
-                Bike BikeToAdd = new Bike(0, _model);//id is set to 0 MAYBE NEED TO CHANGE
+                Bike bikeToAdd = new Bike(0, _model);//id is set to 0 MAYBE NEED TO CHANGE
 
                 bool isInCart = false;
                 foreach (var elem in _currentUser.cart)
                 {
-                    if (elem.bike.Type == BikeToAdd.Type && elem.bike.Color == BikeToAdd.Color && elem.bike.Size == BikeToAdd.Size)
+                    if (elem.bike.Type == bikeToAdd.Type && elem.bike.Color == bikeToAdd.Color && elem.bike.Size == bikeToAdd.Size)
                     {
                         Console.WriteLine("Already in cart");
                         MessageBox.Show("Already in cart");
@@ -190,7 +173,7 @@ namespace Bovelo
                 }
                 if (!isInCart)
                 {
-                    _currentUser.addToCart(BikeToAdd, Convert.ToInt32(numericUpDown1.Value));
+                    _currentUser.addToCart(bikeToAdd, Convert.ToInt32(numericUpDown1.Value));
                     MessageBox.Show("Added to cart");
                 }
             }
@@ -199,12 +182,6 @@ namespace Bovelo
                 MessageBox.Show("This model don't exist , please contact the manager ");
             }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
@@ -224,12 +201,6 @@ namespace Bovelo
             isChecked();
         }
 
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void isChecked()
         {            
             if (radioButton1.Checked || radioButton2.Checked || radioButton3.Checked)
@@ -245,31 +216,26 @@ namespace Bovelo
             }
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
-
-            TypeOfBike = comboBox2.SelectedValue.ToString();
+            typeOfBike = comboBox2.SelectedValue.ToString();
             numericUpDown1_ValueChanged( sender,  e);//load the correct price
             Load_Pictures();
-            
         }
+
         private void Load_Pictures()
         {
             string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory()))+@"\View\Pictures";
-            string new_path = wanted_path + @"\" + TypeOfBike;
-            string message = "The program could not find pictures of : '" + TypeOfBike + "' in the directory : " + wanted_path;
+            string new_path = wanted_path + @"\" + typeOfBike;
+            string message = "The program could not find pictures of : '" + typeOfBike + "' in the directory : " + wanted_path;
             try
             {
-                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
-                button5.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_profilicone.jpg");// assign to bykeimg an image
-                button6.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
-                button8.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
-                button9.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
-                button10.Image = Image.FromFile(path + @".\Pictures\" + TypeOfBike + @"\" + TypeOfBike + "_roueicone.jpg");// assign to bykeimg an image
+                pictureBox1.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilv1.jpg");// assign to bykeimg an image 
+                button5.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_profilicone.jpg");// assign to bykeimg an image
+                button6.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_biaisicone.jpg");// assign to bykeimg an image
+                button8.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_guidonicone.jpg");// assign to bykeimg an image
+                button9.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_derailleuricone.jpg");// assign to bykeimg an image
+                button10.Image = Image.FromFile(path + @".\Pictures\" + typeOfBike + @"\" + typeOfBike + "_roueicone.jpg");// assign to bykeimg an image
             }
             catch
             {
@@ -287,19 +253,7 @@ namespace Bovelo
                             break;
                     }
                 }
-                
             }
-            
-        }
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-           
-        }
-
-        private void panel5_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

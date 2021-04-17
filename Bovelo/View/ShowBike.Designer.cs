@@ -105,7 +105,7 @@ namespace Bovelo
             "28"});
             this.comboBox1.Location = new System.Drawing.Point(237, 87);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 29);
+            this.comboBox1.Size = new System.Drawing.Size(173, 37);
             this.comboBox1.TabIndex = 16;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -116,17 +116,16 @@ namespace Bovelo
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(28, 90);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 20);
+            this.label5.Size = new System.Drawing.Size(122, 29);
             this.label5.TabIndex = 17;
             this.label5.Text = "Size in \" :";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // numericUpDown1
             // 
             this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.numericUpDown1.Location = new System.Drawing.Point(236, 144);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(174, 27);
+            this.numericUpDown1.Size = new System.Drawing.Size(174, 35);
             this.numericUpDown1.TabIndex = 18;
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
@@ -139,7 +138,7 @@ namespace Bovelo
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(28, 146);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(122, 29);
             this.label2.TabIndex = 19;
             this.label2.Text = "Quantity :";
             // 
@@ -227,10 +226,9 @@ namespace Bovelo
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(28, 199);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 20);
+            this.label4.Size = new System.Drawing.Size(95, 29);
             this.label4.TabIndex = 26;
             this.label4.Text = "Price  :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label6
             // 
@@ -238,7 +236,7 @@ namespace Bovelo
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(232, 199);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 21);
+            this.label6.Size = new System.Drawing.Size(45, 29);
             this.label6.TabIndex = 27;
             this.label6.Text = "0 €";
             // 
@@ -249,7 +247,7 @@ namespace Bovelo
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(28, 253);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 20);
+            this.label7.Size = new System.Drawing.Size(91, 29);
             this.label7.TabIndex = 29;
             this.label7.Text = "Color :";
             // 
@@ -260,7 +258,6 @@ namespace Bovelo
             this.pictureBox1.Size = new System.Drawing.Size(364, 333);
             this.pictureBox1.TabIndex = 33;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // radioButton1
             // 
@@ -320,12 +317,12 @@ namespace Bovelo
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(6, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(14, 0, 14, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 79);
+            this.label1.Size = new System.Drawing.Size(337, 108);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
@@ -347,12 +344,12 @@ namespace Bovelo
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.SteelBlue;
             this.label8.Location = new System.Drawing.Point(934, 5);
             this.label8.Margin = new System.Windows.Forms.Padding(14, 0, 14, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(184, 39);
+            this.label8.Size = new System.Drawing.Size(348, 55);
             this.label8.TabIndex = 2;
             this.label8.Text = "Representative";
             // 
@@ -361,12 +358,12 @@ namespace Bovelo
             this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.SteelBlue;
             this.label9.Location = new System.Drawing.Point(404, 5);
             this.label9.Margin = new System.Windows.Forms.Padding(14, 0, 14, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(137, 79);
+            this.label9.Size = new System.Drawing.Size(231, 108);
             this.label9.TabIndex = 1;
             this.label9.Text = "Bike";
             // 
@@ -403,12 +400,12 @@ namespace Bovelo
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SteelBlue;
             this.label10.Location = new System.Drawing.Point(41, 2);
             this.label10.Margin = new System.Windows.Forms.Padding(14, 0, 14, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(133, 39);
+            this.label10.Size = new System.Drawing.Size(262, 55);
             this.label10.TabIndex = 1;
             this.label10.Text = "release 3.0";
             // 
@@ -458,10 +455,9 @@ namespace Bovelo
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(28, 35);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(158, 20);
+            this.label3.Size = new System.Drawing.Size(235, 29);
             this.label3.TabIndex = 40;
             this.label3.Text = "Choose Bike Type:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // comboBox2
             // 
@@ -469,9 +465,8 @@ namespace Bovelo
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(237, 26);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(173, 29);
+            this.comboBox2.Size = new System.Drawing.Size(173, 37);
             this.comboBox2.TabIndex = 41;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             // 
             // panel5
@@ -494,7 +489,6 @@ namespace Bovelo
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(516, 459);
             this.panel5.TabIndex = 34;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // panel6
             // 
@@ -512,7 +506,7 @@ namespace Bovelo
             // 
             // ShowBike
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1323, 610);
@@ -520,13 +514,12 @@ namespace Bovelo
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ShowBike";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bovelo V2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Explorerbike_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);

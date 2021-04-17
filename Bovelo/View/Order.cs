@@ -15,6 +15,7 @@ namespace Bovelo
         private App newApp = new App();
         private User _currentUser;
         //private List<List<string>> orderList;
+
         internal Order(ref User incomingUser)
         {
             _currentUser = incomingUser;
@@ -23,11 +24,10 @@ namespace Bovelo
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            {
-                string details = dataGridView1.Rows[e.RowIndex].Cells[6].ToolTipText.ToString();
-                MessageBox.Show(this,"BIKES :\n\n"+details,"ORDER DETAILS");
-            }
+            string details = dataGridView1.Rows[e.RowIndex].Cells[6].ToolTipText.ToString();
+            MessageBox.Show(this,"BIKES :\n\n"+details,"ORDER DETAILS");
         }
+
         private void Order_Load(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
@@ -50,18 +50,14 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[6].ToolTipText = orderDetails;
                 i++;
             }
-         
         }
-
 
         private void button7_Click(object sender, EventArgs e)//home button
         {
             this.Hide();
-            var MainHome = new MainHome(_currentUser);// create new window
-            MainHome.FormClosed += (s, args) => this.Close();
-            MainHome.Show();// Showing the Login window
+            var mainHome = new MainHome(_currentUser);// create new window
+            mainHome.FormClosed += (s, args) => this.Close();
+            mainHome.Show();// Showing the Login window
         }
-
-
     }
 }

@@ -60,7 +60,6 @@ namespace Bovelo
             this.label1.Size = new System.Drawing.Size(51, 21);
             this.label1.TabIndex = 5;
             this.label1.Text = "Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // comboBox1
             // 
@@ -75,7 +74,6 @@ namespace Bovelo
             this.comboBox1.Size = new System.Drawing.Size(196, 29);
             this.comboBox1.TabIndex = 9;
             this.comboBox1.Text = "Representative";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // textBox1
             // 
@@ -84,7 +82,6 @@ namespace Bovelo
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(196, 27);
             this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -96,7 +93,6 @@ namespace Bovelo
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 11;
             this.label2.Text = "User type";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -149,7 +145,6 @@ namespace Bovelo
             this.panel3.Size = new System.Drawing.Size(200, 90);
             this.panel3.TabIndex = 15;
             this.panel3.Tag = "";
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label5
             // 
@@ -212,7 +207,6 @@ namespace Bovelo
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Login
             // 

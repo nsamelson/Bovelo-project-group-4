@@ -239,7 +239,6 @@ namespace Bovelo
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainHome_Load);
             this.ResizeEnd += new System.EventHandler(this.MainHome_ResizeEnd);
-            this.Click += new System.EventHandler(this.button_Click);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel3.ResumeLayout(false);
