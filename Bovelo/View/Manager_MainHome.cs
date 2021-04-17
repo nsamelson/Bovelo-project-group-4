@@ -129,5 +129,14 @@ namespace Bovelo
             mmu.Show();
 
         }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide(); //hides the current form
+            Manager_Replace_bike_from_stock mrbs = new Manager_Replace_bike_from_stock(user);
+            mrbs.FormClosed += (s, args) => this.Close(); // close the login Form
+            mrbs.Show();
+        }
     }
 }

@@ -78,5 +78,10 @@ namespace Bovelo
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
         }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

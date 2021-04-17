@@ -181,6 +181,7 @@ namespace Bovelo
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 90);
             this.panel1.TabIndex = 23;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // label6
             // 
