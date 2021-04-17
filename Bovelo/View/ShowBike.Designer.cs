@@ -67,6 +67,7 @@ namespace Bovelo
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -370,6 +371,7 @@ namespace Bovelo
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(53)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.button7);
@@ -504,6 +506,19 @@ namespace Bovelo
             this.panel6.Size = new System.Drawing.Size(509, 459);
             this.panel6.TabIndex = 44;
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(0, 165);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(200, 69);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Cart";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ShowBike
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
@@ -579,5 +594,6 @@ namespace Bovelo
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Button button1;
     }
 }

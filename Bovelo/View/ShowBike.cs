@@ -255,5 +255,12 @@ namespace Bovelo
                 }
             }
         }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();// Hiding the MainHome Window
+            Cart cart = new Cart(ref _currentUser);// create new window
+            cart.FormClosed += (s, args) => this.Close();
+            cart.Show();// Showing the Cart window
+        }
     }
 }
