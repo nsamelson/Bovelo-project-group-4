@@ -111,6 +111,12 @@ namespace Bovelo
             var nonPlanified = DataBase.ConnectToDB(sql);
             return nonPlanified;
         }
+        public static string GetClientName(int idOrder)
+        {
+            string sql = "SELECT Customer_Name from Order_Bikes where Id_Order="+idOrder+";";
+            var Name = DataBase.ConnectToDB(sql);
+            return Name[0][0];
+        }
         public static List<List<string>> GetPlanifiedBikesByWeekName(string week)
         {
             string sql = "SELECT * FROM Order_Details inner join  Bovelo.Detailed_Schedules on Detailed_Schedules.Id_Order_Details = Order_Details.Id_Order_Details where Order_Details.Id_Order_Details In (select Id_Order_Details from Detailed_Schedules) and Week_Name = '" + week + "';";

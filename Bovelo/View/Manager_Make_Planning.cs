@@ -88,6 +88,8 @@ namespace Bovelo
            /* Console.WriteLine("index i : " + i);
             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
             i = 0;
+            string clientName = "";
+            string previousOrder = "";
             foreach (var nonPlanifiedOrderDetails in Manager.GetNonPlanifiedBikes())
             {
                 BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == nonPlanifiedOrderDetails[3] && x.Size == Int32.Parse(nonPlanifiedOrderDetails[2]) && x.Type == nonPlanifiedOrderDetails[1]);//gets the specific model
@@ -98,10 +100,14 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[1];//type
                 dataGridView2.Rows[i].Cells[2].Value = nonPlanifiedOrderDetails[2];//size
                 dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[3];//color
-                dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[5];//status
+                dataGridView2.Rows[i].Cells[4].Value = newBike.TotalTime.ToString();
                 dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[6];//Id Order
-                dataGridView2.Rows[i].Cells[6].Value = newBike.TotalTime.ToString() ;
-                
+                if (nonPlanifiedOrderDetails[6]!=previousOrder)
+                {
+                    clientName= Manager.GetClientName(Int32.Parse(nonPlanifiedOrderDetails[6]));
+                    previousOrder = nonPlanifiedOrderDetails[6];
+                }
+                dataGridView2.Rows[i].Cells[6].Value = clientName;
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
