@@ -18,25 +18,17 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
+            
         }
 
         private void Manager_AssemblerWork_Load(object sender, EventArgs e)
         {
             var users = Manager.GetAssemblers().Select(x=> x[0]).ToList();
             comboBox1.DataSource = users;
+            LoadWeek();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        List<List<string>> Assign = new List<List<string>>();
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int i = 0;
@@ -52,82 +44,13 @@ namespace Bovelo
             }
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            string builder = comboBox1.SelectedItem.ToString();
-            int i = 0;
-            TimeSpan result= new TimeSpan{};
-            dataGridView1.Rows.Clear();
-            foreach (var assemblerWork in Manager.GetAssemblerWork(builder))
-            {
-                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
-                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
-                dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = assemblerWork[0];//id order details
-                dataGridView1.Rows[i].Cells[1].Value = assemblerWork[1];//type
-                dataGridView1.Rows[i].Cells[2].Value = assemblerWork[2];//size
-                dataGridView1.Rows[i].Cells[3].Value = assemblerWork[3];//color
-                dataGridView1.Rows[i].Cells[4].Value = assemblerWork[5];//status
-                dataGridView1.Rows[i].Cells[5].Value = assemblerWork[6];//Id Order
-                dataGridView1.Rows[i].Cells[6].Value = assemblerWork[7];//planified week
-                dataGridView1.Rows[i].Cells[7].Value = assemblerWork[10];//started at
-                dataGridView1.Rows[i].Cells[8].Value = assemblerWork[11];//finished at
-                var splitedDate = assemblerWork[10].Split('/', ' ', ':');
-                foreach (var elem in splitedDate) { Console.WriteLine(elem); };
-                DateTime begin = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]),0);
-                splitedDate = assemblerWork[11].Split('/',' ', ':');
-                DateTime end   = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]),0); ;
-                result += end - begin;
-                i++;
-            }
-            label9.Text = result.ToString();
-            if (dataGridView1.Rows.Count != 0)
-            {
-                LoadWeek();
-            }
-        }
-
         void LoadWeek()
         {
-            string builder = comboBox1.SelectedItem.ToString();
-            int min = Int32.Parse(dataGridView1.Rows[0].Cells[6].Value.ToString());
-            int max = 0;
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) < min)
-                {
-                    min = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-                }
-                if (Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString()) > max)
-                { 
-                    max = Int32.Parse(dataGridView1.Rows[i].Cells[6].Value.ToString());
-                }
-            }
-
-            List<int> values = new List<int> { };
-            List<int> values2 = new List<int> { };
-            //for (int i = min; i <= max; i++)
-            //{
-            //    values.Add(i);
-            //    values2.Add(i);
-            //}
-            foreach(var week in Manager.getWeekName(builder))
-            {
-                values.Add(Int32.Parse(week[0]));
-                values2.Add(Int32.Parse(week[0]));
-            }
-            comboBox2.DataSource = values;
-            comboBox3.DataSource = values2;
+            newApp.SetPlanningList();
+            var plans1 = newApp.planningList.Select(x => x.weekName).ToList();
+            var plans2 = newApp.planningList.Select(x => x.weekName).ToList();
+            comboBox2.DataSource = plans1; //shows the existing schedules
+            comboBox3.DataSource = plans2; //shows the existing schedules
         }
 
         void WorkLoad()
@@ -138,9 +61,9 @@ namespace Bovelo
             dataGridView1.Rows.Clear();
             foreach (var assemblerWork in Manager.GetAssemblerWork(builder))
             {
-                //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
-                //Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
-                if (Int32.Parse(assemblerWork[7]) >= Int32.Parse(comboBox2.Text.ToString()) && Int32.Parse(assemblerWork[7])<= Int32.Parse(comboBox3.Text.ToString())){
+           
+                if (Int32.Parse(assemblerWork[7]) >= Int32.Parse(comboBox2.Text.ToString()) && Int32.Parse(assemblerWork[7]) <= Int32.Parse(comboBox3.Text.ToString()))
+                {
                     //planified week
                     dataGridView1.Rows.Add();
                     dataGridView1.Rows[i].Cells[0].Value = assemblerWork[0];//id order details
@@ -153,19 +76,17 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[7].Value = assemblerWork[10];//started at
                     dataGridView1.Rows[i].Cells[8].Value = assemblerWork[11];//finished at
                     var splitedDate = assemblerWork[10].Split('/', ' ', ':');
-                    foreach (var elem in splitedDate) { Console.WriteLine(elem); };
                     DateTime begin = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]), 0);
                     splitedDate = assemblerWork[11].Split('/', ' ', ':');
                     DateTime end = new DateTime(Int32.Parse(splitedDate[2]), Int32.Parse(splitedDate[1]), Int32.Parse(splitedDate[0]), Int32.Parse(splitedDate[3]), Int32.Parse(splitedDate[4]), 0); ;
                     result += end - begin;
+                    Console.WriteLine("BEGIN : " + begin + " END : " + end + "RESULT : " + result);
                     i++;
                 }
             }
-            label9.Text = result.ToString();
+            label9.Text = Math.Round(result.TotalHours,2).ToString() + " hours";
         }
-
-
-        
+       
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -173,31 +94,6 @@ namespace Bovelo
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             WorkLoad();
