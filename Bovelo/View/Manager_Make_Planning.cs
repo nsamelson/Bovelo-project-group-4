@@ -202,24 +202,37 @@ namespace Bovelo
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString() && x.Size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()) && x.Type == dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString());//gets the specific model
-            Bike bike = new Bike(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString()), model);//Needs to be verified (id)
-            user.addToPlanningCart(bike, Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString()));
-            // NEED TO MODIFY THE DATAGRIDVIEW AND THE NON PLANNIFIEDBIKES
 
+            BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString() && x.Size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString()) && x.Type == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString());//gets the specific model
+            Bike bike = new Bike(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()), model);//Needs to be verified (id)
+            user.addToPlanningCart(bike, Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()));
+            // NEED TO MODIFY THE DATAGRIDVIEW AND THE NON PLANNIFIEDBIKES
             string weekName = textBox1.Text;
-            dataGridView1.Rows.Add();
-            List<string> reset = new List<string>();
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView2.Rows[e.RowIndex].Cells[0].Value; //id bike 
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[1].Value = dataGridView2.Rows[e.RowIndex].Cells[1].Value; //type
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[2].Value = dataGridView2.Rows[e.RowIndex].Cells[2].Value;//size
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[3].Value = dataGridView2.Rows[e.RowIndex].Cells[3].Value;//color
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[4].Value = dataGridView2.Rows[e.RowIndex].Cells[4].Value;//status
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[5].Value = weekName;//plannified week
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[6].Value = dataGridView2.Rows[e.RowIndex].Cells[5].Value;
-            dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[7].Value = dataGridView2.Rows[e.RowIndex].Cells[6].Value;
-            dataGridView2.Rows.RemoveAt(dataGridView2.CurrentRow.Index);
+            if (weekName == string.Empty)
+            {
+                MessageBox.Show("choose the week");
+            }
+            else
+            {
+
+                dataGridView1.Rows.Add();
+                List<string> reset = new List<string>();
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[0].Value = dataGridView2.Rows[e.RowIndex].Cells[0].Value; //id bike 
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[1].Value = dataGridView2.Rows[e.RowIndex].Cells[1].Value; //type
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[2].Value = dataGridView2.Rows[e.RowIndex].Cells[2].Value;//size
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[3].Value = dataGridView2.Rows[e.RowIndex].Cells[3].Value;//color
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[4].Value = dataGridView2.Rows[e.RowIndex].Cells[4].Value;//status
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[5].Value = dataGridView2.Rows[e.RowIndex].Cells[5].Value;
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[6].Value = dataGridView2.Rows[e.RowIndex].Cells[6].Value;
+                foreach (var nonPlanifiedOrderDetails in Manager.GetNonPlanifiedBikes())
+                {
+                    dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[7].Value = nonPlanifiedOrderDetails[5];// status (new ...)state of building
+                }
+                dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[8].Value = weekName;//plannified week
+                dataGridView2.Rows.RemoveAt(dataGridView2.CurrentRow.Index);
+            }
+            
+
         }
 
         private void textBox1_TextChanged_1(object sender, EventArgs e)
