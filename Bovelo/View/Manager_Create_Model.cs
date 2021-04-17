@@ -23,34 +23,13 @@ namespace Bovelo
             app.SetBikePartList();
         }
 
-
         private void button7_Click(object sender, EventArgs e)//menu
         {
             this.Hide(); //hides the current form
             Manager_MainHome mmh = new Manager_MainHome(user);// maybe send the userType with it
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkedListBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+        }     
 
         private void button2_Click(object sender, EventArgs e)//Create a model
         {
@@ -215,11 +194,6 @@ namespace Bovelo
             Manager_Create_Model mpc = new Manager_Create_Model(user);
             mpc.FormClosed += (s, args) => this.Close();
             mpc.Show();
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

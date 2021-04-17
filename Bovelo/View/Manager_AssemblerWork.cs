@@ -18,7 +18,6 @@ namespace Bovelo
         {
             this.user = currentUser;
             InitializeComponent();
-            
         }
 
         private void Manager_AssemblerWork_Load(object sender, EventArgs e)
@@ -27,7 +26,6 @@ namespace Bovelo
             comboBox1.DataSource = users;
             LoadWeek();
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -61,7 +59,6 @@ namespace Bovelo
             dataGridView1.Rows.Clear();
             foreach (var assemblerWork in Manager.GetAssemblerWork(builder))
             {
-           
                 if (Int32.Parse(assemblerWork[7]) >= Int32.Parse(comboBox2.Text.ToString()) && Int32.Parse(assemblerWork[7]) <= Int32.Parse(comboBox3.Text.ToString()))
                 {
                     //planified week

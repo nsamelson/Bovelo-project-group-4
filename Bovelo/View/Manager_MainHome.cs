@@ -19,11 +19,6 @@ namespace Bovelo
             InitializeComponent();
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,11 +33,6 @@ namespace Bovelo
             Manager_Make_Planning mmp = new Manager_Make_Planning(user);// create new window
             mmp.FormClosed += (s, args) => this.Close();
             mmp.Show();// Showing the manager make planning window
-        }
-
-        private void Manager_MainHome_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -77,16 +67,6 @@ namespace Bovelo
             mpc.Show();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button8_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -116,23 +96,16 @@ namespace Bovelo
             DataBase.Backup();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void button10_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
             Manager_Manage_Users mmu = new Manager_Manage_Users(user);
             mmu.FormClosed += (s, args) => this.Close(); // close the login Form
             mmu.Show();
-
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            
             this.Hide(); //hides the current form
             Manager_Replace_bike_from_stock mrbs = new Manager_Replace_bike_from_stock(user);
             mrbs.FormClosed += (s, args) => this.Close(); // close the login Form

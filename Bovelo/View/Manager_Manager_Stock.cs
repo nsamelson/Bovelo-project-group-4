@@ -41,11 +41,6 @@ namespace Bovelo
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
             Console.WriteLine("TRY");
@@ -77,11 +72,6 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// maybe send the userType with it
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
-        }
-
-        private void panel1_Paint_1(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

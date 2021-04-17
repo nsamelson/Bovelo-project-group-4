@@ -16,7 +16,6 @@ namespace Bovelo
         private App newApp = new App();//because i need part name
         private List<string> currentOrder = new List<string>();
         
-
         internal Manager__Provider_orders(User currentUser)
         {
             currentOrder.Add("0");
@@ -37,11 +36,6 @@ namespace Bovelo
             }
         }
 
-        private void Manager__Provider_orders_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
@@ -49,7 +43,6 @@ namespace Bovelo
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -65,8 +58,8 @@ namespace Bovelo
                     "\nId_Order_Detailed_Part = " + dataGridView1.Rows[e.RowIndex].Cells[1].Value +
                     "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
                     "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
-
             }
+
             if (dataGridView1.CurrentCell.Value.ToString() == "Received")
             {
                 if (dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString() == "Not Received")
@@ -84,7 +77,6 @@ namespace Bovelo
                 }
                 orderLoad();
             }
-
         }
 
         private void orderLoad()
@@ -103,28 +95,28 @@ namespace Bovelo
                 }
             }
             //Console.WriteLine(whereCondiction);
-            var OrderPartDetails = DataBase.GetFromDBWhere("Order_Detailed_Part",all, whereCondiction);
+            var orderPartDetails = DataBase.GetFromDBWhere("Order_Detailed_Part",all, whereCondiction);
             dataGridView1.Rows.Clear();
-            foreach(var elem in OrderPartDetails)
+            foreach(var elem in orderPartDetails)
             {
                 dataGridView1.Rows.Add();
                 //Console.WriteLine(elem);
-                dataGridView1.Rows[i].Cells[0].Value = OrderPartDetails[i][1];
-                dataGridView1.Rows[i].Cells[1].Value = OrderPartDetails[i][0];
-                dataGridView1.Rows[i].Cells[2].Value = OrderPartDetails[i][2];
+                dataGridView1.Rows[i].Cells[0].Value = orderPartDetails[i][1];
+                dataGridView1.Rows[i].Cells[1].Value = orderPartDetails[i][0];
+                dataGridView1.Rows[i].Cells[2].Value = orderPartDetails[i][2];
                 
                 foreach (var value in newApp.bikePartList)
                 {
-                    if (value.part_Id == Int32.Parse(OrderPartDetails[i][2]))
+                    if (value.part_Id == Int32.Parse(orderPartDetails[i][2]))
                     {
                         dataGridView1.Rows[i].Cells[3].Value = value.name.ToString();
                     }
                 }
-                var OrderPart = DataBase.GetFromDBWhere("Order_Part", all, "id_Order_Part =" + OrderPartDetails[i][1]);
-                dataGridView1.Rows[i].Cells[4].Value = OrderPartDetails[i][3];
-                dataGridView1.Rows[i].Cells[5].Value = OrderPartDetails[i][4];
-                dataGridView1.Rows[i].Cells[6].Value = OrderPart[0][3];
-                dataGridView1.Rows[i].Cells[7].Value = OrderPartDetails[i][5];
+                var orderPart = DataBase.GetFromDBWhere("Order_Part", all, "id_Order_Part =" + orderPartDetails[i][1]);
+                dataGridView1.Rows[i].Cells[4].Value = orderPartDetails[i][3];
+                dataGridView1.Rows[i].Cells[5].Value = orderPartDetails[i][4];
+                dataGridView1.Rows[i].Cells[6].Value = orderPart[0][3];
+                dataGridView1.Rows[i].Cells[7].Value = orderPartDetails[i][5];
                 i++;
             }
             /*List <List<string>> result = DataBase.GetFromDB("Order_Detailed_Part");
@@ -163,14 +155,9 @@ namespace Bovelo
             }*/
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
-            string Order = textBox1.Text.ToString();
+            string order = textBox1.Text.ToString();
             //Console.WriteLine(Order);
             currentOrder.Add(textBox1.Text.ToString());
             //Console.WriteLine(currentOrder[1]);
@@ -185,27 +172,11 @@ namespace Bovelo
             textBox1.Clear();
         }
 
-        private void label2_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click_1(object sender, EventArgs e)
         {
             currentOrder.Clear();
             currentOrder.Add("0");
             orderLoad();
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

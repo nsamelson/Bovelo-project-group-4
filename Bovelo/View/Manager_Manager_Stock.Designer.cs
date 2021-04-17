@@ -122,6 +122,7 @@ namespace Bovelo
             // location
             // 
             this.location.HeaderText = "Location";
+            this.location.MinimumWidth = 8;
             this.location.Name = "location";
             // 
             // Column3
@@ -141,6 +142,7 @@ namespace Bovelo
             // Time_to_build
             // 
             this.Time_to_build.HeaderText = "Time to build";
+            this.Time_to_build.MinimumWidth = 8;
             this.Time_to_build.Name = "Time_to_build";
             // 
             // Set
@@ -160,12 +162,12 @@ namespace Bovelo
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
             this.label3.Location = new System.Drawing.Point(949, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 33);
+            this.label3.Size = new System.Drawing.Size(183, 47);
             this.label3.TabIndex = 2;
             this.label3.Text = "Manager";
             // 
@@ -181,19 +183,18 @@ namespace Bovelo
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1059, 90);
             this.panel1.TabIndex = 23;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint_1);
             // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
             this.label6.Location = new System.Drawing.Point(232, 7);
             this.label6.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(377, 79);
+            this.label6.Size = new System.Drawing.Size(688, 108);
             this.label6.TabIndex = 1;
             this.label6.Text = "Manager Stock";
             // 
@@ -216,12 +217,12 @@ namespace Bovelo
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.SteelBlue;
             this.label5.Location = new System.Drawing.Point(6, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 79);
+            this.label5.Size = new System.Drawing.Size(337, 108);
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
@@ -258,25 +259,25 @@ namespace Bovelo
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.SteelBlue;
             this.label4.Location = new System.Drawing.Point(34, 1);
             this.label4.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(133, 39);
+            this.label4.Size = new System.Drawing.Size(262, 55);
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
             // Manager_Manager_Stock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1259, 504);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.dataGridView1);
-            this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager_Manager_Stock";
             this.ShowIcon = false;

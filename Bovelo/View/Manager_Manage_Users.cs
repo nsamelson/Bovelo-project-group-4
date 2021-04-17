@@ -21,13 +21,12 @@ namespace Bovelo
             LoadUser();
         }
 
-
         internal void LoadUser()
         {
-            var LoginRole = Manager.GetUser();
+            var loginRole = Manager.GetUser();
             int i = 0;
             dataGridView1.Rows.Clear();           
-            foreach (var elem in LoginRole)
+            foreach (var elem in loginRole)
             {
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = elem[1];
@@ -35,10 +34,10 @@ namespace Bovelo
                 i++;
             }
         }
+
         private void signup_Click(object sender, EventArgs e)
         {
             //DONT NEED SIGNUP WINDOWS FORM, ONLY ENTER A NEW TYPE or maybe just a popup
-
             string userRole = comboBox1.Text;
             string userLogin = textBox1.Text;
             newApp.SetUserList();
@@ -75,21 +74,6 @@ namespace Bovelo
             Manager_MainHome mmh = new Manager_MainHome(user);// create new window
             mmh.FormClosed += (s, args) => this.Close();
             mmh.Show();// Showing the Login window
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

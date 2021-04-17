@@ -29,7 +29,6 @@ namespace Bovelo
             //cartLoad();
         }
 
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide(); //hides the current form
@@ -37,7 +36,6 @@ namespace Bovelo
             mmh.FormClosed += (s, args) => this.Close(); // close the login Form
             mmh.Show();
         }
-
 
         private void catalogLoad()
         {
@@ -82,13 +80,12 @@ namespace Bovelo
                 i++;
             }
         }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
             Console.WriteLine(dataGridView1.CurrentCell.Value);
             if (dataGridView1.CurrentCell.Value.ToString()== "Add")
             {
-
                 foreach (var elem in newApp.bikePartList)
                 {
                     if (elem.part_Id == Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString()))
@@ -102,11 +99,11 @@ namespace Bovelo
                 cartLoad();
             }
         }
+
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridView2.CurrentCell.Value.ToString() == "Remove")
             {
-
                 foreach (var elem in user.cartPart)
                 {
                     if (elem.part.part_Id == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString()))
@@ -117,8 +114,8 @@ namespace Bovelo
                 }
                 cartLoad();
             }
-
         }
+
         public void cartLoad()
         {
             int i = 0;
@@ -140,6 +137,7 @@ namespace Bovelo
             }
             this.labelPrice.Text = cartPrice.ToString() +" € ";
         }      
+
         private void button2_Click(object sender, EventArgs e)
         { 
             for(int i = 0;i<user.cartPart.Count();i++ )
@@ -189,19 +187,14 @@ namespace Bovelo
             cartLoad();
         }
 
-        private void labelPrice_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click_1(object sender, EventArgs e)
         {
-            DateTime OrderTime = DateTime.Now;
-            string query = "INSERT INTO Bovelo.Order_Part(Week_Name,Total_Price,Order_Date) VALUES('" + plannedWeek + "'," + cartPrice +",'"+ OrderTime.ToString() + "');";
+            DateTime orderTime = DateTime.Now;
+            string query = "INSERT INTO Bovelo.Order_Part(Week_Name,Total_Price,Order_Date) VALUES('" + plannedWeek + "'," + cartPrice +",'"+ orderTime.ToString() + "');";
             DataBase.SendToDB(query);
             List<string> all = new List<string>();
             all.Add("*");
-            List<List<string>> result = DataBase.GetFromDBWhere("Order_Part", all, "Week_Name='" + plannedWeek + "' AND " + " Total_Price=" + cartPrice +" AND Order_Date= '"+OrderTime.ToString()+"'"); // récupérer l'id de la commande que l'on vient d'ajouter à  modifier ?
+            List<List<string>> result = DataBase.GetFromDBWhere("Order_Part", all, "Week_Name='" + plannedWeek + "' AND " + " Total_Price=" + cartPrice +" AND Order_Date= '"+orderTime.ToString()+"'"); // récupérer l'id de la commande que l'on vient d'ajouter à  modifier ?
             Console.WriteLine(result);
             foreach (var elem in user.cartPart)
             {
@@ -233,11 +226,6 @@ namespace Bovelo
                 selectedData.Add(row);
             }
             ExportData.CreateInvoice(client, column, selectedData);
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
         }
     }// end of Manager__Provider_catalog : Form
 }//end of namespace Bovelo

@@ -306,7 +306,6 @@ namespace Bovelo
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(136, 27);
             this.textBox1.TabIndex = 22;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -317,7 +316,6 @@ namespace Bovelo
             this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 23;
             this.label2.Text = "ID Details";
-            this.label2.Click += new System.EventHandler(this.label2_Click_1);
             // 
             // clear
             // 
@@ -345,7 +343,6 @@ namespace Bovelo
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.Size = new System.Drawing.Size(169, 472);
             this.dataGridView2.TabIndex = 25;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -373,7 +370,6 @@ namespace Bovelo
             this.Name = "Manager__Provider_orders";
             this.Text = "Provider_orders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Manager__Provider_orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
