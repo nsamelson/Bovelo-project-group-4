@@ -17,9 +17,10 @@ namespace Bovelo
         {
             this.weekName = weekName;
             this.planningId = planningId;
-            setBikesToBuild(bikeDetails,bikeModels, planningDetails);
+            SetBikesToBuild(bikeDetails,bikeModels, planningDetails);
         }
-        private void setBikesToBuild(List<List<string>> bikeDetails, List<BikeModel> bikeModels, List<List<string>> planningDetails)
+
+        private void SetBikesToBuild(List<List<string>> bikeDetails, List<BikeModel> bikeModels, List<List<string>> planningDetails)
         {
             foreach (var elem in bikeDetails)
             {
@@ -34,13 +35,13 @@ namespace Bovelo
                 string startDate = planningDetails[findIndex][3];
                 string endDate = planningDetails[findIndex][4];
                 //takes Corresponding model, creates a bike, adds a status and assembler's name, adds bike to the list
-                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == bikeColor && x.Size == bikeSize && x.Type == bikeType);//gets the specific model
+                BikeModel model = bikeModels.FirstOrDefault(x => x.color == bikeColor && x.size == bikeSize && x.type == bikeType);//gets the specific model
                 var newBike = new Bike(idOrderDetails, model) { assembler = assemblerName,startBuildTime = startDate,endBuildTime=endDate };
-                newBike.setNewState(status);
+                newBike.SetNewState(status);
                 bikesToBuild.Add(newBike);
 
 
-                workingMinute += newBike.TotalTime;
+                workingMinute += newBike.totalTime;
             }
         }
         public List<Bike> GetBikesToBuild()

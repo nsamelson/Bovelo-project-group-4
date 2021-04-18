@@ -26,18 +26,20 @@ namespace Bovelo
             this.part_Id = part_Id;
             this.provider = provider;
         }
-        static public int getQuantity(int ID)
+
+        static public int GetQuantity(int ID)
         {
             List<List<string>> result = DataBase.GetFromDBWhere("Bike_Parts",new List<string>{ "Quantity" }, "Id_Bike_Parts =" + ID);
             return Int32.Parse(result[0][0]);
         }
-        public void setQuantity(ref App newApp,int quantity)//should avoid passing App here
+
+        public void SetQuantity(ref App newApp,int quantity)//should avoid passing App here
         {
             string query = "UPDATE Bike_Parts SET Quantity=" + quantity + " WHERE Id_Bike_Parts = " + this.part_Id;
             DataBase.SendToDB(query);
         }
 
-        static public void substractClosedBike(string data)
+        static public void SubstractClosedBike(string data)
         {
             string[] partsToUpdate = data.Split('|', '\n');
             int i = 0;
@@ -47,7 +49,7 @@ namespace Bovelo
                 Console.WriteLine("substring :" + elem + ", i value :" + i);
                 if (i == 0 && elem != "")
                 {
-                    quantity = getQuantity(Int32.Parse(elem));
+                    quantity = GetQuantity(Int32.Parse(elem));
                     quantity--;
                     string query = "UPDATE Bike_Parts SET Quantity=" + quantity + " WHERE Id_Bike_Parts = " + elem;
                     DataBase.SendToDB(query);
@@ -57,7 +59,7 @@ namespace Bovelo
             }
         }
 
-        static public void addReceivedBikePart(int idBikePart,int quantityToAdd)
+        static public void AddReceivedBikePart(int idBikePart,int quantityToAdd)
         {
             var field = new List<string>();
             field.Add("Quantity");

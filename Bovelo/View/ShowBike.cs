@@ -40,7 +40,7 @@ namespace Bovelo
 
        public int getBikePrice()
        {
-            int price = app.bikeModels.FirstOrDefault(x=> x.Type == typeOfBike).Price;
+            int price = app.bikeModels.FirstOrDefault(x=> x.type == typeOfBike).price;
             return price;
        }
 
@@ -144,14 +144,14 @@ namespace Bovelo
             }
             
             int _i = Convert.ToInt32(i);
-            var _model = app.bikeModels.FirstOrDefault(x => x.Color == color && x.Size == _i && x.Type == typeOfBike);
+            var _model = app.bikeModels.FirstOrDefault(x => x.color == color && x.size == _i && x.type == typeOfBike);
 
             /// exception if there is no model of this bike (bike wanted by the representative) in database 
             var existing_bike_in_db = false;
             foreach (var elem2 in app.GetBikeModelList())
             {
-                Console.WriteLine("type = " + elem2.Type+", size = "+ elem2.Size+", color "+elem2.Color);
-                if(elem2.Color == color && elem2.Size == _i && elem2.Type == typeOfBike)
+                Console.WriteLine("type = " + elem2.type+", size = "+ elem2.size+", color "+elem2.color);
+                if(elem2.color == color && elem2.size == _i && elem2.type == typeOfBike)
                 {
                     existing_bike_in_db = true;
                 }
@@ -165,7 +165,7 @@ namespace Bovelo
                 bool isInCart = false;
                 foreach (var elem in _currentUser.cart)
                 {
-                    if (elem.bike.Type == bikeToAdd.Type && elem.bike.Color == bikeToAdd.Color && elem.bike.Size == bikeToAdd.Size)
+                    if (elem.bike.type == bikeToAdd.type && elem.bike.color == bikeToAdd.color && elem.bike.size == bikeToAdd.size)
                     {
                         Console.WriteLine("Already in cart");
                         MessageBox.Show("Already in cart");
@@ -174,7 +174,7 @@ namespace Bovelo
                 }
                 if (!isInCart)
                 {
-                    _currentUser.addToCart(bikeToAdd, Convert.ToInt32(numericUpDown1.Value));
+                    _currentUser.AddToCart(bikeToAdd, Convert.ToInt32(numericUpDown1.Value));
                     MessageBox.Show("Added to cart");
                 }
             }

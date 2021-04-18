@@ -261,12 +261,12 @@ namespace Bovelo
             //var order = orderBikeList.FirstOrDefault(x => x.orderId == orderId);
             foreach(var bike in nonPlannified)
             {
-                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == bike[3] && x.Size == Int32.Parse(bike[2]) && x.Type == bike[1]);//gets the specific model
+                BikeModel model = bikeModels.FirstOrDefault(x => x.color == bike[3] && x.size == Int32.Parse(bike[2]) && x.type == bike[1]);//gets the specific model
                 nonPlannifiedBikes.Add(new Bike(Int32.Parse(bike[0]), model));//adds a corresponding Bike
             }
             foreach(var bike in nonPlannifiedBikes)
             {
-                minutes += bike.TotalTime;
+                minutes += bike.totalTime;
             }
             foreach(var elem in bikesToOrder)
             {
@@ -316,9 +316,9 @@ namespace Bovelo
 
             foreach (var model in bikeModels)
             {
-                if (!diffModels.Contains(model.Type))
+                if (!diffModels.Contains(model.type))
                 {
-                    diffModels.Add(model.Type);
+                    diffModels.Add(model.type);
                 }
             }
             return diffModels;

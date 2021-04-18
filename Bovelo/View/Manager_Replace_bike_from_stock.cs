@@ -41,8 +41,8 @@ namespace Bovelo
             List<List<string>> rows =new List<List<string>>();
             foreach (var elem in newApp.bikeModels)//for each item in cart
             {
-                var bike = Order.FindAll(x => x[1] == elem.Type && x[3] == elem.Color && x[2]==elem.Size.ToString());
-                rows.Add(new List<string> {elem.Type, elem.Color, elem.Size.ToString(), bike.Count().ToString() });
+                var bike = Order.FindAll(x => x[1] == elem.type && x[3] == elem.color && x[2]==elem.size.ToString());
+                rows.Add(new List<string> {elem.type, elem.color, elem.size.ToString(), bike.Count().ToString() });
                 i++;
             }
             i = 0;
@@ -68,12 +68,12 @@ namespace Bovelo
             int i = 0;
             foreach (var elem in newApp.bikeModels)//for each item in cart
             {
-                var stock = stockBike.FindAll(x => x.Type == elem.Type && x.Color == elem.Color && x.Size == elem.Size);
+                var stock = stockBike.FindAll(x => x.type == elem.type && x.color == elem.color && x.size == elem.size);
                 int quantity = stock.Count();
                 dataGridView3.Rows.Add();
-                dataGridView3.Rows[i].Cells[0].Value = elem.Type;
-                dataGridView3.Rows[i].Cells[1].Value = elem.Size;
-                dataGridView3.Rows[i].Cells[2].Value = elem.Color;
+                dataGridView3.Rows[i].Cells[0].Value = elem.type;
+                dataGridView3.Rows[i].Cells[1].Value = elem.size;
+                dataGridView3.Rows[i].Cells[2].Value = elem.color;
                 dataGridView3.Rows[i].Cells[3].Value = quantity;
                 i++;
             }

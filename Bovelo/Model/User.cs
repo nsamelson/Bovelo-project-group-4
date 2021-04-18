@@ -31,11 +31,12 @@ namespace Bovelo
 
 
         //REPRESENTATIVE METHODS
-        public void addToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
+        public void AddToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
         {
             cart.Add(new ItemBike(bike, quantity));
         }
-        public List<List<string>> getCartList() //returns the cart into a list of list of string
+
+        public List<List<string>> GetCartList() //returns the cart into a list of list of string
         {
             var cartAsList = new List<List<string>>();
             int i = 1;
@@ -43,9 +44,9 @@ namespace Bovelo
             {
                 var bikeInfo = new List<string>();
                 //bikeInfo.Add(i.ToString()); //I used this to have a corresponding list between orderBike when we pass orders from the cart and when we take from DB
-                bikeInfo.Add(item.bike.Type);             //elem 0
-                bikeInfo.Add(item.bike.Size.ToString());  //elem 1
-                bikeInfo.Add(item.bike.Color);            //elem 2
+                bikeInfo.Add(item.bike.type);             //elem 0
+                bikeInfo.Add(item.bike.size.ToString());  //elem 1
+                bikeInfo.Add(item.bike.color);            //elem 2
                 bikeInfo.Add(item.quantity.ToString());   //elem 3
                 bikeInfo.Add(item.GetPrice().ToString()); //elem 4
                 cartAsList.Add(bikeInfo);
@@ -54,7 +55,8 @@ namespace Bovelo
 
             return cartAsList;
         }
-        public int getCartPrice()
+
+        public int GetCartPrice()
         {
             int price = 0;
             foreach(var item in cart)
@@ -63,43 +65,45 @@ namespace Bovelo
             }
             return price;
         }
-        public void incrementItem(int idList) //increment the quantity of a bike in cart
+        public void IncrementItem(int idList) //increment the quantity of a bike in cart
         {
             if (cart[idList].quantity < 100)
             {
-                cart[idList].increment();
+                cart[idList].Increment();
             }
             else
             {
-                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.Type);
+                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.type);
             }
         }
-        public void decrementItem(int idList) //decrement the quantity of a bike in cart
+        public void DecrementItem(int idList) //decrement the quantity of a bike in cart
         {
             if (cart[idList].quantity > 0)
             {
-                cart[idList].decrement();
+                cart[idList].Decrement();
             }
             else
             {
-                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.Type);
+                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.type);
             }
         }
-        public void deleteItem(int idList) //deletes an item from the cart
+
+        public void DeleteItem(int idList) //deletes an item from the cart
         {
             cart.RemoveAt(idList);
         }
-        public void emptyCart() //empty the cart
+
+        public void EmptyCart() //empty the cart
         {
             cart.Clear();
         }
-        public void getTimeBeforeShipping() { }
+        public void GetTimeBeforeShipping() { }
 
 
         //PRODUCTION MANAGER METHODS
 
         
-        public List<List<string>> getPlanningCartList()
+        public List<List<string>> GetPlanningCartList()
         {
             /*var planningAsList = new List<List<string>>();
             int id = 0;
@@ -118,22 +122,23 @@ namespace Bovelo
 
             return Plan;
         }
-        public void addToPlanningCart(Bike bike,int id)//adds a bike from an order to the planning of the week
+
+        public void AddToPlanningCart(Bike bike,int id)//adds a bike from an order to the planning of the week
         {
-            List<string> newBike = new List<string>() { id.ToString(), bike.Type, bike.Size.ToString(), bike.Color  };
+            List<string> newBike = new List<string>() { id.ToString(), bike.type, bike.size.ToString(), bike.color  };
             planningCart.Add(newBike);
         }
-        public void emptyPlanningCart()
+        public void EmptyPlanningCart()
         {
             planningCart.Clear();
         }
-        public void getBikePartInvoice() { }//Maybe in app
-        public void addBikePartToCart() { } //and create a bikePart cart
+        public void GetBikePartInvoice() { }//Maybe in app
+        public void AddBikePartToCart() { } //and create a bikePart cart
 
         //ASSEMBLER METHODS
-        public void getPlanning() { }//already in app
-        public void getBikeParts() { }//location of the bikeParts
-        public void setBikeState() { }//Maybe better in the planning class
+        public void GetPlanning() { }//already in app
+        public void GetBikeParts() { }//location of the bikeParts
+        public void SetBikeState() { }//Maybe better in the planning class
 
     }
 }

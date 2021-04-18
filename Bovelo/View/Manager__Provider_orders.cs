@@ -67,7 +67,7 @@ namespace Bovelo
                     string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " ;";
                     //Console.WriteLine(query);
                     DataBase.SendToDB(query);
-                    BikePart.addReceivedBikePart(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString()));
+                    BikePart.AddReceivedBikePart(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString()));
                     MessageBox.Show(@"Changed State :" +
                         "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value +
                         "\nId_Order= " + dataGridView1.Rows[e.RowIndex].Cells[0].Value +

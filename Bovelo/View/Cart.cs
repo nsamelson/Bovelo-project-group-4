@@ -48,20 +48,20 @@ namespace Bovelo
            
             foreach (ItemBike elem in _currentUser.cart)//for each item in cart
             {   
-                var stock =  stockBike.FindAll(x=> x.Type == elem.bike.Type && x.Color == elem.bike.Color && x.Size == elem.bike.Size);
+                var stock =  stockBike.FindAll(x=> x.type == elem.bike.type && x.color == elem.bike.color && x.size == elem.bike.size);
                 quantity = stock.Count();
                 int price = elem.GetPrice();
 
                 dataGridView1.Rows.Add();
-                dataGridView1.Rows[i].Cells[0].Value = elem.bike.Type;
-                dataGridView1.Rows[i].Cells[1].Value = elem.bike.Size;
-                dataGridView1.Rows[i].Cells[2].Value = elem.bike.Color;
+                dataGridView1.Rows[i].Cells[0].Value = elem.bike.type;
+                dataGridView1.Rows[i].Cells[1].Value = elem.bike.size;
+                dataGridView1.Rows[i].Cells[2].Value = elem.bike.color;
                 dataGridView1.Rows[i].Cells[3].Value = elem.quantity;
                 dataGridView1.Rows[i].Cells[4].Value = quantity;
                 dataGridView1.Rows[i].Cells[5].Value = price;
                 i++;
             }
-            Decimal b = _currentUser.getCartPrice();
+            Decimal b = _currentUser.GetCartPrice();
             this.labelPrice.Text = b.ToString() + " €";
             if (_currentUser.login == "Manager")
             {
@@ -90,7 +90,7 @@ namespace Bovelo
             }
             else
             {
-                _currentUser.deleteItem(bikeQuantity);
+                _currentUser.DeleteItem(bikeQuantity);
                 this.Cart_Load();
             }
         }
@@ -117,11 +117,11 @@ namespace Bovelo
                 }
 
                 //pass order
-                Representative.SetNewOrderBike(_currentUser.getCartList(), client, _currentUser.getCartPrice(), _estimatedShippingWeek);
+                Representative.SetNewOrderBike(_currentUser.GetCartList(), client, _currentUser.GetCartPrice(), _estimatedShippingWeek);
                 MessageBox.Show("The order has been validated!");
 
                 //print an invoice
-                foreach(var elem in _currentUser.getCartList())
+                foreach(var elem in _currentUser.GetCartList())
                 {                   
                     foreach(var value in elem)
                     {
@@ -133,7 +133,7 @@ namespace Bovelo
                 File.WriteAllText(path, text);*/
                 printInvoice(client);
                 //Reset the cart
-                _currentUser.emptyCart();
+                _currentUser.EmptyCart();
                 Cart_Load();
                 //this.labelPrice.Text = "0 €";               
                 textBox1.Text = "";
@@ -148,7 +148,7 @@ namespace Bovelo
         private void printInvoice(string client)
         {
             List<string> column = new List<string>{"Bike", "Size", "Color", "Quantity", "Price"};
-            var unselectedData = _currentUser.getCartList();
+            var unselectedData = _currentUser.GetCartList();
             List<List<string>> selectedData= new List<List<string>>();
             foreach (var elem in unselectedData)
             {
@@ -161,7 +161,7 @@ namespace Bovelo
         private void button5_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            _currentUser.emptyCart();
+            _currentUser.EmptyCart();
             Cart_Load();
         }
 

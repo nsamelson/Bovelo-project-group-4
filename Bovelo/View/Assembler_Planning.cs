@@ -48,7 +48,7 @@ namespace Bovelo
                 newCell.Value = string.Empty;
                 dataGridView1.Rows[e.RowIndex].Cells[10] = newCell;
                 newCell.ReadOnly = true;
-                BikePart.substractClosedBike(dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString());
+                BikePart.SubstractClosedBike(dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString());
                 foreach (DataGridViewRow row in dataGridView1.SelectedRows)
                 {
                     id = Int32.Parse(row.Cells[0].Value.ToString());
@@ -122,12 +122,12 @@ namespace Bovelo
                 dataGridView1.Rows.Add();
                 dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 dataGridView1.Rows[i].Cells[0].Value = bike.bikeId;
-                dataGridView1.Rows[i].Cells[1].Value = bike.Type;
-                dataGridView1.Rows[i].Cells[2].Value = bike.Size;
-                dataGridView1.Rows[i].Cells[3].Value = bike.Color; // must be order date and date add to planning
+                dataGridView1.Rows[i].Cells[1].Value = bike.type;
+                dataGridView1.Rows[i].Cells[2].Value = bike.size;
+                dataGridView1.Rows[i].Cells[3].Value = bike.color; // must be order date and date add to planning
                 dataGridView1.Rows[i].Cells[4].Value = "Click to see parts";
                 dataGridView1.Rows[i].Cells[4].ToolTipText = parts;
-                dataGridView1.Rows[i].Cells[5].Value = bike.getCurrentState();
+                dataGridView1.Rows[i].Cells[5].Value = bike.GetCurrentState();
                 dataGridView1.Rows[i].Cells[6].Value = week;
                 dataGridView1.Rows[i].Cells[7].Value = bike.assembler;
                 comp = dataGridView1.Rows[i].Cells[5].Value.ToString();

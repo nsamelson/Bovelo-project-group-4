@@ -26,25 +26,27 @@ namespace Bovelo
             this.orderDate = orderDate;
             this.shippingDate = shippingDate;
             this.totalPrice = totalPrice;
-            setBikeList(bikeModels, orderDetail);
-            this.isReadyToShip = getOrderState();
+            SetBikeList(bikeModels, orderDetail);
+            this.isReadyToShip = GetOrderState();
             
         }
 
-        public float getTotalBuildingTime()
+        public float GetTotalBuildingTime()
         {
             int hours = 0;
             foreach(var bike in bikeList)
             {
-                hours += bike.TotalTime;
+                hours += bike.totalTime;
             }
             return hours / 60;
         }
-        public List<Bike> getBikeList()
+
+        public List<Bike> GetBikeList()
         {
             return bikeList;
         }
-        private void setBikeList(List<BikeModel> bikeModels,List<List<string>> orderDetail)
+
+        private void SetBikeList(List<BikeModel> bikeModels,List<List<string>> orderDetail)
         {
             foreach(var elem in orderDetail)
             {
@@ -54,15 +56,15 @@ namespace Bovelo
                 string color = elem[3];
                 //int price = Int32.Parse(elem[4]);
 
-                BikeModel model = bikeModels.FirstOrDefault(x => x.Color == color && x.Size == size && x.Type == type);//gets the specific model
+                BikeModel model = bikeModels.FirstOrDefault(x => x.color == color && x.size == size && x.type == type);//gets the specific model
                 Bike bike = new Bike(id, model);
-                bike.setNewState(elem[5]);
+                bike.SetNewState(elem[5]);
                 bikeList.Add(bike );//adds a corresponding Bike
             }
             
         }
         
-        public bool getOrderState()//needs to be tested
+        public bool GetOrderState()//needs to be tested
         {
             if (bikeList.TrueForAll(x => x.state["Closed"]))
             {

@@ -10,28 +10,28 @@ namespace Bovelo
 {
 	public class BikeModel
 	{
-		public string Type;
-		public int Price = 0;
-        public int Size;
-        public string Color;
-		public int TotalTime;//time to build a bike
+		public string type;
+		public int price = 0;
+        public int size;
+        public string color;
+		public int totalTime;//time to build a bike
 		public int idBikeModel;
 		internal List<BikePart> bikeParts;
 
 
 		public BikeModel( string type,string color,int size)
 		{
-			this.Type = type;
-            this.Color = color;
-            this.Size = size;
+			this.type = type;
+            this.color = color;
+            this.size = size;
             /*this.idBikeModel = idBikeModel;*/
         }
         internal void SetPriceAndTime()//is used to set the total price of a bike
         {
             foreach (var elem in bikeParts)
             {
-                this.Price += elem.price;
-                this.TotalTime += elem.timeToBuild;
+                this.price += elem.price;
+                this.totalTime += elem.timeToBuild;
                 
             }
             //Console.WriteLine(this.type +" | Price : "+this.Price+" | Time : "+this.totalTime);

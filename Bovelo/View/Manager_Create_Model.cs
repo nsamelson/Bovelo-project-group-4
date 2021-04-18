@@ -115,9 +115,9 @@ namespace Bovelo
                     parts += part.part_Id + " | " + part.name + " | " + part.location + " \n";
                 }
                 int id = bike.idBikeModel;
-                string type = bike.Type;
-                string color = bike.Color;
-                int size = bike.Size;
+                string type = bike.type;
+                string color = bike.color;
+                int size = bike.size;
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = id;
                 dataGridView1.Rows[i].Cells[1].Value = type;

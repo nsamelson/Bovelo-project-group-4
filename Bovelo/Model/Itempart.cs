@@ -24,6 +24,5 @@ namespace Bovelo
             this.quantity = quantity;
             this.price = quantity * this.part.price;
         }
-
     }
 }

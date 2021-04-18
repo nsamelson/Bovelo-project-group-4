@@ -38,7 +38,7 @@ namespace Bovelo
                 string orderDetails = "";
                 foreach(var detail in orders.bikeList)
                 {
-                    orderDetails += detail.bikeId + " | " + detail.Type + " | " + detail.Color + " | " + detail.Size + " | " + detail.Price + " | " + detail.state.First(x=>x.Value ==true).Key + "\n";
+                    orderDetails += detail.bikeId + " | " + detail.type + " | " + detail.color + " | " + detail.size + " | " + detail.price + " | " + detail.state.First(x=>x.Value ==true).Key + "\n";
                 }
                 dataGridView1.Rows.Add();
                 dataGridView1.Rows[i].Cells[0].Value = orders.orderId.ToString();

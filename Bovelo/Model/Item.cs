@@ -15,21 +15,21 @@ namespace Bovelo
             this.quantity = quantity;
         }
 
-        public void increment()
+        public void Increment()
         {
             quantity++;
             price = GetPrice();
         }
-        public void decrement()
+
+        public void Decrement()
         {
             quantity--;
             price = GetPrice();
         }
+
         public virtual int GetPrice()
         {
             return price;
         }
-
-
     }
 }

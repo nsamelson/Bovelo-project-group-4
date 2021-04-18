@@ -16,16 +16,16 @@ namespace Bovelo
         }
         public override int GetPrice()
         {
-            return quantity * bike.Price;
+            return quantity * bike.price;
         }
         public int GetTotalTime()
         {
-            return quantity * bike.TotalTime;
+            return quantity * bike.totalTime;
         }
         public void SetQuantity(int quantity)
         {
             this.quantity = quantity;
-            this.price = quantity * this.bike.Price;
+            this.price = quantity * this.bike.price;
         }
     }
 }

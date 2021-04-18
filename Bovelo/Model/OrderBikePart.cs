@@ -20,9 +20,10 @@ namespace Bovelo
         {
             this.orderId = id;
             this.partListQuantity = partListQuantity;
-            getPrice();
+            GetPrice();
         }
-        public void getPrice()
+
+        public void GetPrice()
         {
             foreach(var elem in this.partListQuantity)
             {

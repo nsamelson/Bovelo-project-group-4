@@ -12,11 +12,11 @@ namespace Bovelo
     class Bike 
     {
         public Dictionary<string, bool> state = new Dictionary<string, bool>() { { "New",true},{ "Active", false },{ "Closed", false } };
-        public string Color;
-        public int Size;
-        public string Type;
-        public int Price;
-        public int TotalTime;
+        public string color;
+        public int size;
+        public string type;
+        public int price;
+        public int totalTime;
         public int bikeId;//MAYBE REMOVE
         public List<BikePart> bikeParts;
         private BikeModel _model;
@@ -37,18 +37,18 @@ namespace Bovelo
             var bikeModels = newApp.getBikeModelList();
             _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);*/
 
-            Type = _model.Type;
-            Color = _model.Color;
-            Size = _model.Size;
-            Price = _model.Price;
-            TotalTime = _model.TotalTime;
+            type = _model.type;
+            color = _model.color;
+            size = _model.size;
+            price = _model.price;
+            totalTime = _model.totalTime;
             bikeParts = _model.bikeParts;
             
 
         }
-        public void setNewState(string status)
+        public void SetNewState(string status)
         {
-            state[getCurrentState()] = false;// change the actual state to false
+            state[GetCurrentState()] = false;// change the actual state to false
             if (status == "New" || status == "Active" || status == "Closed")
             {
                 state[status] = true;
@@ -60,7 +60,7 @@ namespace Bovelo
             }*/
             
         }
-        public string getCurrentState()
+        public string GetCurrentState()
         {
             var status = state.FirstOrDefault(x => x.Value == true).Key;
             return status;

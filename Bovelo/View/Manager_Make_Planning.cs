@@ -61,9 +61,9 @@ namespace Bovelo
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
                 Console.WriteLine(planifiedOrderDetails[0] + "|" + planifiedOrderDetails[1] + "|" + planifiedOrderDetails[2] + "|" + planifiedOrderDetails[3] + "|" + planifiedOrderDetails[4] + "|" + planifiedOrderDetails[5] + "|" + planifiedOrderDetails[6] + "|" + planifiedOrderDetails[7] + "|" + planifiedOrderDetails[8]);
-                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == planifiedOrderDetails[3] && x.Size == Int32.Parse(planifiedOrderDetails[2]) && x.Type == planifiedOrderDetails[1]);//gets the specific model
+                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.color == planifiedOrderDetails[3] && x.size == Int32.Parse(planifiedOrderDetails[2]) && x.type == planifiedOrderDetails[1]);//gets the specific model
                 Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), model);
-                t += newBike.TotalTime;
+                t += newBike.totalTime;
                 if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
                 {
                     dataGridView1.Rows.Add();
@@ -72,7 +72,7 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[3].Value = planifiedOrderDetails[1];//type 
                     dataGridView1.Rows[i].Cells[4].Value = planifiedOrderDetails[2];//size 
                     dataGridView1.Rows[i].Cells[5].Value = planifiedOrderDetails[3];//color 
-                    dataGridView1.Rows[i].Cells[6].Value = newBike.TotalTime.ToString(); 
+                    dataGridView1.Rows[i].Cells[6].Value = newBike.totalTime.ToString(); 
                     dataGridView1.Rows[i].Cells[7].Value = planifiedOrderDetails[5];//status 
                     dataGridView1.Rows[i].Cells[8].Value = planifiedOrderDetails[7];//plannified week
                     if (planifiedOrderDetails[7] == comboBox1.Text.ToString() && planifiedOrderDetails[6] != previousOrder1)
@@ -81,7 +81,7 @@ namespace Bovelo
                         previousOrder1 = planifiedOrderDetails[6];
                     }
                     dataGridView1.Rows[i].Cells[0].Value = clientName1;//client 
-                    TimeSpan toAdd = new TimeSpan(0,newBike.TotalTime,0);
+                    TimeSpan toAdd = new TimeSpan(0,newBike.totalTime,0);
                     totalTime +=toAdd;
                     i++;
                 }                
@@ -93,9 +93,9 @@ namespace Bovelo
             string previousOrder = "";
             foreach (var nonPlanifiedOrderDetails in Manager.GetNonPlanifiedBikes())
             {
-                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == nonPlanifiedOrderDetails[3] && x.Size == Int32.Parse(nonPlanifiedOrderDetails[2]) && x.Type == nonPlanifiedOrderDetails[1]);//gets the specific model
+                BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.color == nonPlanifiedOrderDetails[3] && x.size == Int32.Parse(nonPlanifiedOrderDetails[2]) && x.type == nonPlanifiedOrderDetails[1]);//gets the specific model
                 Bike newBike = new Bike(Int32.Parse(nonPlanifiedOrderDetails[0]), model);
-                t += newBike.TotalTime;
+                t += newBike.totalTime;
                 dataGridView2.Rows.Add();
 
                 dataGridView2.Rows[i].Cells[1].Value = nonPlanifiedOrderDetails[6];//id order
@@ -103,7 +103,7 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[3].Value = nonPlanifiedOrderDetails[1];//type
                 dataGridView2.Rows[i].Cells[4].Value = nonPlanifiedOrderDetails[2];//size
                 dataGridView2.Rows[i].Cells[5].Value = nonPlanifiedOrderDetails[3];//color
-                dataGridView2.Rows[i].Cells[6].Value = newBike.TotalTime.ToString();// time
+                dataGridView2.Rows[i].Cells[6].Value = newBike.totalTime.ToString();// time
                 
                 if (nonPlanifiedOrderDetails[6] != previousOrder)
                 {
@@ -171,9 +171,9 @@ namespace Bovelo
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.Color == dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString() && x.Size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString()) && x.Type == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString());//gets the specific model
+            BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.color == dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString() && x.size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString()) && x.type == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString());//gets the specific model
             Bike bike = new Bike(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()), model);//Needs to be verified (id)
-            user.addToPlanningCart(bike, Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()));
+            user.AddToPlanningCart(bike, Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()));
             // NEED TO MODIFY THE DATAGRIDVIEW AND THE NON PLANNIFIEDBIKES
             string weekName = textBox1.Text;
             if (weekName == string.Empty)
