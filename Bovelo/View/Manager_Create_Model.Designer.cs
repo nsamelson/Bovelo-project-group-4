@@ -126,7 +126,7 @@ namespace Bovelo
             // 
             this.textBox4.Location = new System.Drawing.Point(99, 235);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(172, 35);
+            this.textBox4.Size = new System.Drawing.Size(172, 26);
             this.textBox4.TabIndex = 8;
             // 
             // label13
@@ -134,7 +134,7 @@ namespace Bovelo
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(7, 218);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 58);
+            this.label13.Size = new System.Drawing.Size(78, 40);
             this.label13.TabIndex = 7;
             this.label13.Text = "Storage\r\nLocation :";
             // 
@@ -156,7 +156,7 @@ namespace Bovelo
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(13, 159);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 29);
+            this.label4.Size = new System.Drawing.Size(56, 20);
             this.label4.TabIndex = 5;
             this.label4.Text = "Sizes :";
             // 
@@ -165,7 +165,7 @@ namespace Bovelo
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(11, 74);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 29);
+            this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Colors :";
             // 
@@ -174,7 +174,7 @@ namespace Bovelo
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(12, 31);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 29);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 3;
             this.label2.Text = "Type :";
             // 
@@ -186,7 +186,7 @@ namespace Bovelo
             "28"});
             this.checkedListBox2.Location = new System.Drawing.Point(99, 159);
             this.checkedListBox2.Name = "checkedListBox2";
-            this.checkedListBox2.Size = new System.Drawing.Size(172, 36);
+            this.checkedListBox2.Size = new System.Drawing.Size(172, 25);
             this.checkedListBox2.TabIndex = 2;
             // 
             // checkedListBox1
@@ -198,14 +198,14 @@ namespace Bovelo
             "Blue"});
             this.checkedListBox1.Location = new System.Drawing.Point(99, 71);
             this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(172, 68);
+            this.checkedListBox1.Size = new System.Drawing.Size(172, 67);
             this.checkedListBox1.TabIndex = 1;
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(99, 28);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(172, 35);
+            this.textBox1.Size = new System.Drawing.Size(172, 26);
             this.textBox1.TabIndex = 0;
             // 
             // groupBox2
@@ -409,7 +409,7 @@ namespace Bovelo
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(1336, 696);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 37);
+            this.comboBox1.Size = new System.Drawing.Size(151, 28);
             this.comboBox1.TabIndex = 10;
             // 
             // label5
@@ -418,7 +418,7 @@ namespace Bovelo
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(1234, 699);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(119, 29);
+            this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Model id :";
             // 
@@ -448,7 +448,7 @@ namespace Bovelo
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(11, 213);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(81, 29);
+            this.label9.Size = new System.Drawing.Size(52, 20);
             this.label9.TabIndex = 8;
             this.label9.Text = "Price :";
             // 
@@ -457,7 +457,7 @@ namespace Bovelo
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox3.Location = new System.Drawing.Point(99, 210);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(172, 35);
+            this.textBox3.Size = new System.Drawing.Size(172, 26);
             this.textBox3.TabIndex = 7;
             // 
             // button8
@@ -478,7 +478,7 @@ namespace Bovelo
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(11, 152);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 29);
+            this.label6.Size = new System.Drawing.Size(56, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "Sizes :";
             // 
@@ -487,7 +487,7 @@ namespace Bovelo
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(7, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 29);
+            this.label7.Size = new System.Drawing.Size(62, 20);
             this.label7.TabIndex = 4;
             this.label7.Text = "Colors :";
             // 
@@ -496,7 +496,7 @@ namespace Bovelo
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(7, 33);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 29);
+            this.label8.Size = new System.Drawing.Size(59, 20);
             this.label8.TabIndex = 3;
             this.label8.Text = "Name :";
             // 
@@ -509,7 +509,7 @@ namespace Bovelo
             "28"});
             this.checkedListBox3.Location = new System.Drawing.Point(99, 152);
             this.checkedListBox3.Name = "checkedListBox3";
-            this.checkedListBox3.Size = new System.Drawing.Size(172, 36);
+            this.checkedListBox3.Size = new System.Drawing.Size(172, 25);
             this.checkedListBox3.TabIndex = 2;
             // 
             // checkedListBox4
@@ -522,7 +522,7 @@ namespace Bovelo
             "blue"});
             this.checkedListBox4.Location = new System.Drawing.Point(99, 68);
             this.checkedListBox4.Name = "checkedListBox4";
-            this.checkedListBox4.Size = new System.Drawing.Size(172, 68);
+            this.checkedListBox4.Size = new System.Drawing.Size(172, 67);
             this.checkedListBox4.TabIndex = 1;
             // 
             // textBox2
@@ -530,7 +530,7 @@ namespace Bovelo
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.textBox2.Location = new System.Drawing.Point(99, 33);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 35);
+            this.textBox2.Size = new System.Drawing.Size(172, 26);
             this.textBox2.TabIndex = 0;
             // 
             // label1
@@ -543,7 +543,7 @@ namespace Bovelo
             this.label1.Location = new System.Drawing.Point(1187, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(183, 47);
+            this.label1.Size = new System.Drawing.Size(120, 31);
             this.label1.TabIndex = 2;
             this.label1.Text = "Manager";
             // 
@@ -570,7 +570,7 @@ namespace Bovelo
             this.label10.Location = new System.Drawing.Point(472, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(618, 108);
+            this.label10.Size = new System.Drawing.Size(417, 73);
             this.label10.TabIndex = 1;
             this.label10.Text = "Create Model";
             // 
@@ -598,7 +598,7 @@ namespace Bovelo
             this.label11.Location = new System.Drawing.Point(6, 6);
             this.label11.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(337, 108);
+            this.label11.Size = new System.Drawing.Size(229, 73);
             this.label11.TabIndex = 0;
             this.label11.Text = "Bovelo";
             // 
@@ -640,13 +640,13 @@ namespace Bovelo
             this.label12.Location = new System.Drawing.Point(33, 2);
             this.label12.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(262, 55);
+            this.label12.Size = new System.Drawing.Size(174, 37);
             this.label12.TabIndex = 1;
             this.label12.Text = "release 3.0";
             // 
             // Manager_Create_Model
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1500, 735);
@@ -660,6 +660,7 @@ namespace Bovelo
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Manager_Create_Model";
+            this.ShowIcon = false;
             this.Text = "Manager_Create_Model";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);

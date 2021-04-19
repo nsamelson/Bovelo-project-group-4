@@ -323,6 +323,24 @@ namespace Bovelo
             }
             return diffModels;
         }
+
+        internal List<string> GetDifferentsSize()
+        {
+            //SetBikeModelList();
+            var diffSizes = new List<string>();
+
+            /*foreach (var model in bikeModels)
+            {
+                if (!diffSizes.Contains(model.type))
+                {
+                    diffSizes.Add(model.type);
+                }
+            }*/
+            diffSizes.Add("26");
+            diffSizes.Add("28");
+            return diffSizes;
+        }
+
         internal List<string> GetDifferentUserTypes()
         {
             SetUserList();
@@ -337,6 +355,8 @@ namespace Bovelo
             }
             return users;
         }
+
+
 
         //OTHER METHODS
         internal Dictionary<int, int> ComputeMissingPieces(ref Dictionary<int, int> partIdQuantity)
