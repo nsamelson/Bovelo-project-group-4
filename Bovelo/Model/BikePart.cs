@@ -46,7 +46,7 @@ namespace Bovelo
             int quantity = 0;
             foreach (var elem in partsToUpdate)
             {
-                Console.WriteLine("substring :" + elem + ", i value :" + i);
+                //Console.WriteLine("substring :" + elem + ", i value :" + i);
                 if (i == 0 && elem != "")
                 {
                     quantity = GetQuantity(Int32.Parse(elem));

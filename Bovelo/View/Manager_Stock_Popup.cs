@@ -14,11 +14,16 @@ namespace Bovelo
     {
         internal List<string> bikeType = new List<string>();
         int orderId;
-        internal Manager_Stock_Popup(List<string> bikeToChange,int incomingOrder)
+        int maxValue;
+        Manager_Replace_bike_from_stock window;
+        internal Manager_Stock_Popup(Manager_Replace_bike_from_stock incomingWindow,List<string> bikeToChange,int incomingOrder,int incomingMaxValue)
         {
             InitializeComponent();
             bikeType = bikeToChange;
             orderId = incomingOrder;
+            maxValue = incomingMaxValue;
+            label1.Text = " Please enter number of bike to use from the stock :\n maximum value = " + maxValue;
+            window = incomingWindow;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -34,9 +39,18 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(bikeType[0] + " " + bikeType[1] + " " + bikeType[2] + "|" + Int32.Parse(textBox1.Text) + "|"+orderId);
-            Manager.ReplaceBikeFromTheStock(bikeType,Int32.Parse(textBox1.Text),orderId);
-
-            this.Hide();
+            if (Int32.Parse(textBox1.Text) > maxValue)
+            {
+                textBox1.Text = maxValue.ToString();
+                MessageBox.Show("Stock quantity must be higher or bike already satisfied");
+            }
+            else
+            {
+                Manager.ReplaceBikeFromTheStock(bikeType, Int32.Parse(textBox1.Text), orderId);
+                this.Hide();
+            }
+            window.LoadBikeStock();
+            window.LoadBikeOrder();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

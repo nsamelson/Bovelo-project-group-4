@@ -31,7 +31,7 @@ namespace Bovelo
             mmh.Show();// Showing the Login window
         }
 
-        void LoadBikeOrder()
+        public void LoadBikeOrder()
         {
             dataGridView2.Rows.Clear();
             var Order = Manager.GetOrder(textBox1.Text);
@@ -60,7 +60,7 @@ namespace Bovelo
                 }
             }
         }
-        void LoadBikeStock()
+        public void LoadBikeStock()
         {
             dataGridView3.Rows.Clear();
             var stockBike = Representative.GetBikesInStock();
@@ -117,8 +117,19 @@ namespace Bovelo
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Console.WriteLine(dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString() + "|" + dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString() + "|" + dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() + "|" + Int32.Parse(textBox1.Text));
-            Manager_Stock_Popup msp = new Manager_Stock_Popup(new List<string> {dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString()},Int32.Parse(textBox1.Text));
+            string bikeTypeStock = dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string bikeColorStock = dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string bikeSizeStock = dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString();
+            int maxValue = 0;
+            for (int i = 0; i < dataGridView2.Rows.Count; i++)
+            {
+                if (bikeTypeStock == dataGridView2.Rows[i].Cells[0].Value.ToString() && bikeColorStock == dataGridView2.Rows[i].Cells[1].Value.ToString() && bikeSizeStock == dataGridView2.Rows[i].Cells[2].Value.ToString())
+                {
+                    maxValue = Math.Min(Int32.Parse(dataGridView3.Rows[e.RowIndex].Cells[3].Value.ToString()),(Int32.Parse(dataGridView2.Rows[i].Cells[3].Value.ToString())-Int32.Parse(dataGridView2.Rows[i].Cells[4].Value.ToString())));
+                }
+                i++;
+            }
+            Manager_Stock_Popup msp = new Manager_Stock_Popup(this,new List<string> { dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() }, Int32.Parse(textBox1.Text), maxValue);
             msp.Show();// Showing the Login window
         }
 

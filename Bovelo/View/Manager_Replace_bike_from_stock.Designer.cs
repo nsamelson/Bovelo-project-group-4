@@ -46,6 +46,7 @@ namespace Bovelo
             this.size = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityDone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.type_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.size_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,7 +56,6 @@ namespace Bovelo
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.QuantityDone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -268,6 +268,11 @@ namespace Bovelo
             this.quantity.HeaderText = "Quantity";
             this.quantity.Name = "quantity";
             // 
+            // QuantityDone
+            // 
+            this.QuantityDone.HeaderText = "Quantity Done";
+            this.QuantityDone.Name = "QuantityDone";
+            // 
             // dataGridView3
             // 
             this.dataGridView3.AllowUserToAddRows = false;
@@ -288,6 +293,7 @@ namespace Bovelo
             this.dataGridView3.Location = new System.Drawing.Point(212, 334);
             this.dataGridView3.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersWidth = 5;
             this.dataGridView3.Size = new System.Drawing.Size(707, 191);
             this.dataGridView3.TabIndex = 30;
@@ -297,26 +303,31 @@ namespace Bovelo
             // 
             this.type_stock.HeaderText = "Type";
             this.type_stock.Name = "type_stock";
+            this.type_stock.ReadOnly = true;
             // 
             // size_stock
             // 
             this.size_stock.HeaderText = "Color";
             this.size_stock.Name = "size_stock";
+            this.size_stock.ReadOnly = true;
             // 
             // color_stock
             // 
             this.color_stock.HeaderText = "Size";
             this.color_stock.Name = "color_stock";
+            this.color_stock.ReadOnly = true;
             // 
             // quantity_stock
             // 
             this.quantity_stock.HeaderText = "Quantity";
             this.quantity_stock.Name = "quantity_stock";
+            this.quantity_stock.ReadOnly = true;
             // 
             // replace
             // 
             this.replace.HeaderText = "Replace";
             this.replace.Name = "replace";
+            this.replace.ReadOnly = true;
             // 
             // button2
             // 
@@ -353,11 +364,6 @@ namespace Bovelo
             this.label2.TabIndex = 33;
             this.label2.Text = "Order ID";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // QuantityDone
-            // 
-            this.QuantityDone.HeaderText = "Quantity Done";
-            this.QuantityDone.Name = "QuantityDone";
             // 
             // Manager_Replace_bike_from_stock
             // 
