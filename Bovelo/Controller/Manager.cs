@@ -54,7 +54,7 @@ namespace Bovelo
         }
         public static void SetNewPlanning(List<List<string>> planningCartList, string week)//Sets a new planning of the week
         {
-            int orderDetailsId; 
+            int orderDetailsId;
             foreach (var bikesToBuild in planningCartList)
             {
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
@@ -113,7 +113,7 @@ namespace Bovelo
         }
         public static string GetClientName(int idOrder)
         {
-            string sql = "SELECT Customer_Name from Order_Bikes where Id_Order="+idOrder+";";
+            string sql = "SELECT Customer_Name from Order_Bikes where Id_Order=" + idOrder + ";";
             var Name = DataBase.ConnectToDB(sql);
             return Name[0][0];
         }
@@ -137,7 +137,7 @@ namespace Bovelo
         }
         public static int GetQuantity(int part_Id)
         {
-            List<string> argumentList = new List<string>(){"Quantity"};
+            List<string> argumentList = new List<string>() { "Quantity" };
             string whereclause = "Id_Bike_Parts =" + part_Id;
             List<List<string>> result = DataBase.GetFromDBWhere("Bike_Parts", argumentList, whereclause);
             int quantity = Int32.Parse(result[0][0]);
@@ -152,9 +152,83 @@ namespace Bovelo
 
         public static List<List<string>> GetOrder(string IDOrder)
         {
-            string sql = "SELECT * FROM  Order_Details WHERE Id_Order="+IDOrder+";";
+            string sql = "SELECT * FROM  Order_Details WHERE Id_Order=" + IDOrder + ";";
             var order = DataBase.ConnectToDB(sql);
             return order;
+        }
+        public static void SwapIdBike(int IdBikeStock, int IdBikeOrder)
+        {
+            string sql_1 = "SELECT * FROM Order_Details WHERE ID_Order_Details=" + IdBikeStock + ";";
+            var bikeStock = DataBase.ConnectToDB(sql_1);
+            string sql_0 = "DELETE FROM Order_Details WHERE Id_Order_Details=" + IdBikeStock + ";";
+            DataBase.SendToDB(sql_0);
+            if (bikeStock.Count() != 0)
+            {
+                string sql_2 = "UPDATE Order_Details SET " +
+                                                  "Id_Order_Details =" + bikeStock[0][0] +
+                                                  ",Bike_Type ='" + bikeStock[0][1] +
+                                                  "',Bike_Size ='" + bikeStock[0][2] +
+                                                  "',Bike_Color ='" + bikeStock[0][3] +
+                                                  "',Price =" + bikeStock[0][4] +
+                                                  ",Bike_Status ='" + bikeStock[0][5] +
+                                                  "' WHERE Id_Order_Details = " + IdBikeOrder + ";";
+                DataBase.SendToDB(sql_2);
+            }
+
+        }
+        internal static List<Bike> GetBikesInStock()
+        {
+            string sql = "SELECT * FROM Bovelo.Order_Details WHERE Id_Order IN (SELECT Id_Order from Order_Bikes WHERE Customer_Name='Stock');";
+            var stockOfBike = DataBase.ConnectToDB(sql);
+            List<Bike> bikesInStock = new List<Bike>();
+            foreach (var row in stockOfBike)
+            {
+                bikesInStock.Add(new Bike(Int32.Parse(row[0]), new BikeModel(row[1], row[3], Int32.Parse(row[2]))));
+            }
+            return bikesInStock;
+        }
+        internal static int GetQuantityNotClosed(string type,int size,string color,string idOrder)
+        {
+            string sql = "SELECT COUNT(*) FROM Bovelo.Order_Details WHERE Bike_Type='"+type+"' AND Bike_Size="+size+" AND Bike_Color ='"+color+ "' AND Bike_Status='Closed' AND Id_Order="+idOrder+";";
+            var stockOfBike = DataBase.ConnectToDB(sql);
+            Console.WriteLine(sql+Int32.Parse(stockOfBike[0][0]));
+            return Int32.Parse(stockOfBike[0][0]);
+        }
+        public static void ReplaceBikeFromTheStock(List<string> bikeType, int numberOfBike, int orderId)
+        {
+            var stockOfBikes = Manager.GetBikesInStock();
+            var Order = Manager.GetOrder(orderId.ToString());
+            Dictionary<int, int> toSwap = new Dictionary<int, int>();
+            foreach (var bikeInStock in stockOfBikes)
+            {
+                if (bikeInStock.type == bikeType[0] && bikeInStock.color == bikeType[1] && bikeInStock.size.ToString() == bikeType[2])
+                {
+                    foreach (var bikeOrder in Order)
+                    {
+                        if (bikeOrder[1].Equals(bikeType[0]) && bikeOrder[2].Equals(bikeType[2]) && bikeOrder[3].Equals(bikeType[1]))
+                        {
+                            if (!toSwap.ContainsKey(bikeInStock.bikeId))
+                            {
+                                if (!toSwap.ContainsValue(Int32.Parse(bikeOrder[0])))
+                                {
+                                    toSwap.Add(bikeInStock.bikeId, Int32.Parse(bikeOrder[0]));
+                                }
+                                
+                            }
+                        }
+                    }
+                }              
+            }
+            int i = 0;
+            foreach (var elem in toSwap)
+            {
+                if (i < numberOfBike)
+                {
+                    Console.WriteLine(elem.Key + " | " + elem.Value);
+                    SwapIdBike(elem.Key, elem.Value);
+                    i++;
+                }
+            }
         }
     }
 }

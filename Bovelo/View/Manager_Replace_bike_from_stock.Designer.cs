@@ -55,6 +55,7 @@ namespace Bovelo
             this.button2 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.QuantityDone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -237,7 +238,8 @@ namespace Bovelo
             this.type,
             this.size,
             this.color,
-            this.quantity});
+            this.quantity,
+            this.QuantityDone});
             this.dataGridView2.Location = new System.Drawing.Point(212, 116);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView2.Name = "dataGridView2";
@@ -253,12 +255,12 @@ namespace Bovelo
             // 
             // size
             // 
-            this.size.HeaderText = "Size";
+            this.size.HeaderText = "Color";
             this.size.Name = "size";
             // 
             // color
             // 
-            this.color.HeaderText = "Color";
+            this.color.HeaderText = "Size";
             this.color.Name = "color";
             // 
             // quantity
@@ -298,12 +300,12 @@ namespace Bovelo
             // 
             // size_stock
             // 
-            this.size_stock.HeaderText = "Size";
+            this.size_stock.HeaderText = "Color";
             this.size_stock.Name = "size_stock";
             // 
             // color_stock
             // 
-            this.color_stock.HeaderText = "Color";
+            this.color_stock.HeaderText = "Size";
             this.color_stock.Name = "color_stock";
             // 
             // quantity_stock
@@ -337,6 +339,7 @@ namespace Bovelo
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(239, 27);
             this.textBox1.TabIndex = 32;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -350,6 +353,11 @@ namespace Bovelo
             this.label2.TabIndex = 33;
             this.label2.Text = "Order ID";
             this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // QuantityDone
+            // 
+            this.QuantityDone.HeaderText = "Quantity Done";
+            this.QuantityDone.Name = "QuantityDone";
             // 
             // Manager_Replace_bike_from_stock
             // 
@@ -407,14 +415,15 @@ namespace Bovelo
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn size;
+        private System.Windows.Forms.DataGridViewTextBoxColumn color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn type_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn size_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn color_stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn quantity_stock;
         private System.Windows.Forms.DataGridViewButtonColumn replace;
-        private System.Windows.Forms.DataGridViewTextBoxColumn type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn size;
-        private System.Windows.Forms.DataGridViewTextBoxColumn color;
-        private System.Windows.Forms.DataGridViewTextBoxColumn quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityDone;
     }
 }

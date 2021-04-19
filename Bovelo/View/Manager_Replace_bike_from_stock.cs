@@ -55,6 +55,7 @@ namespace Bovelo
                     dataGridView2.Rows[i].Cells[1].Value = row[1];
                     dataGridView2.Rows[i].Cells[2].Value = row[2];
                     dataGridView2.Rows[i].Cells[3].Value = row[3];
+                    dataGridView2.Rows[i].Cells[4].Value = Manager.GetQuantityNotClosed(row[0], Int32.Parse(row[2]), row[1],textBox1.Text);
                     i++;
                 }
             }
@@ -72,17 +73,14 @@ namespace Bovelo
                 int quantity = stock.Count();
                 dataGridView3.Rows.Add();
                 dataGridView3.Rows[i].Cells[0].Value = elem.type;
-                dataGridView3.Rows[i].Cells[1].Value = elem.size;
-                dataGridView3.Rows[i].Cells[2].Value = elem.color;
+                dataGridView3.Rows[i].Cells[1].Value = elem.color;
+                dataGridView3.Rows[i].Cells[2].Value = elem.size;
                 dataGridView3.Rows[i].Cells[3].Value = quantity;
                 i++;
             }
         }
 
-        void ReplaceBikeFromTheStock()
-        {
-            
-        }
+
         void LoadClientName()
         {
             dataGridView1.Rows.Clear();
@@ -119,7 +117,8 @@ namespace Bovelo
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            Manager_Stock_Popup msp = new Manager_Stock_Popup();
+            Console.WriteLine(dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString() + "|" + dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString() + "|" + dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() + "|" + Int32.Parse(textBox1.Text));
+            Manager_Stock_Popup msp = new Manager_Stock_Popup(new List<string> {dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString()},Int32.Parse(textBox1.Text));
             msp.Show();// Showing the Login window
         }
 
@@ -129,6 +128,11 @@ namespace Bovelo
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

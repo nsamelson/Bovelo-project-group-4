@@ -12,9 +12,13 @@ namespace Bovelo
 {
     public partial class Manager_Stock_Popup : Form
     {
-        internal Manager_Stock_Popup()
+        internal List<string> bikeType = new List<string>();
+        int orderId;
+        internal Manager_Stock_Popup(List<string> bikeToChange,int incomingOrder)
         {
             InitializeComponent();
+            bikeType = bikeToChange;
+            orderId = incomingOrder;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -29,7 +33,9 @@ namespace Bovelo
 
         private void button1_Click(object sender, EventArgs e)
         {
-            label1.Text.ToString();
+            //Console.WriteLine(bikeType[0] + " " + bikeType[1] + " " + bikeType[2] + "|" + Int32.Parse(textBox1.Text) + "|"+orderId);
+            Manager.ReplaceBikeFromTheStock(bikeType,Int32.Parse(textBox1.Text),orderId);
+
             this.Hide();
         }
 

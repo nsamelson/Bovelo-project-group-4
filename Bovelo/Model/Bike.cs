@@ -17,7 +17,7 @@ namespace Bovelo
         public string type;
         public int price;
         public int totalTime;
-        public int bikeId;//MAYBE REMOVE
+        public int bikeId;  //I Used to swap stock
         public List<BikePart> bikeParts;
         private BikeModel _model;
         public string assembler;
