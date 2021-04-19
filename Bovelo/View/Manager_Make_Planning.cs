@@ -114,7 +114,12 @@ namespace Bovelo
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
-            label12.Text = totalTime.TotalHours.ToString();
+
+            double minutes = totalTime.TotalMinutes % 60;
+            double time = (totalTime.TotalMinutes - minutes) / 60;
+            Console.WriteLine(minutes.ToString());
+            label12.Text = time.ToString() + " hours and " + minutes.ToString() + " Minutes" ;
+            //label12.Text = totalTime.TotalHours.ToString();
             var weekNameChoice = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
             comboBox1.DataSource = weekNameChoice;
         }
