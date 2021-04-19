@@ -28,6 +28,7 @@ namespace Bovelo
 
             app.SetBikeModelList();
             comboBox2.DataSource = app.GetDifferentModels(); //gets a list of bikeModels
+            comboBox1.DataSource = app.GetDifferentsSize();// get a list of sizes
             try
             {
                 comboBox2.SelectedItem = typeBike;
@@ -279,6 +280,11 @@ namespace Bovelo
             Cart cart = new Cart(ref _currentUser);// create new window
             cart.FormClosed += (s, args) => this.Close();
             cart.Show();// Showing the Cart window
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
