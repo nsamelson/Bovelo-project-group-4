@@ -80,7 +80,7 @@ namespace Bovelo
             this.idBike.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.idBike.Name = "idBike";
             this.idBike.ReadOnly = true;
-            this.idBike.Size = new System.Drawing.Size(187, 35);
+            this.idBike.Size = new System.Drawing.Size(187, 26);
             this.idBike.TabIndex = 21;
             // 
             // label2
@@ -90,7 +90,7 @@ namespace Bovelo
             this.label2.Location = new System.Drawing.Point(-317, 471);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(99, 29);
+            this.label2.Size = new System.Drawing.Size(66, 20);
             this.label2.TabIndex = 20;
             this.label2.Text = "Id Bike :";
             // 
@@ -290,7 +290,7 @@ namespace Bovelo
             this.comboBox1.Location = new System.Drawing.Point(1617, 122);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 37);
+            this.comboBox1.Size = new System.Drawing.Size(180, 28);
             this.comboBox1.TabIndex = 26;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -302,7 +302,7 @@ namespace Bovelo
             this.label3.Location = new System.Drawing.Point(1613, 98);
             this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 29);
+            this.label3.Size = new System.Drawing.Size(85, 20);
             this.label3.TabIndex = 28;
             this.label3.Text = "Week Id :";
             // 
@@ -367,7 +367,7 @@ namespace Bovelo
             this.labelPrice.Location = new System.Drawing.Point(1756, 287);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(62, 37);
+            this.labelPrice.Size = new System.Drawing.Size(42, 25);
             this.labelPrice.TabIndex = 34;
             this.labelPrice.Text = "0 €";
             // 
@@ -379,7 +379,7 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(1614, 286);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(188, 37);
+            this.label4.Size = new System.Drawing.Size(127, 25);
             this.label4.TabIndex = 33;
             this.label4.Text = "Total Price :";
             // 
@@ -392,7 +392,7 @@ namespace Bovelo
             this.label1.Location = new System.Drawing.Point(6, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 108);
+            this.label1.Size = new System.Drawing.Size(229, 73);
             this.label1.TabIndex = 0;
             this.label1.Text = "Bovelo";
             // 
@@ -406,7 +406,7 @@ namespace Bovelo
             this.label8.Location = new System.Drawing.Point(1475, 5);
             this.label8.Margin = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(183, 47);
+            this.label8.Size = new System.Drawing.Size(120, 31);
             this.label8.TabIndex = 2;
             this.label8.Text = "Manager";
             // 
@@ -420,7 +420,7 @@ namespace Bovelo
             this.label9.Location = new System.Drawing.Point(454, 6);
             this.label9.Margin = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(756, 108);
+            this.label9.Size = new System.Drawing.Size(510, 73);
             this.label9.TabIndex = 1;
             this.label9.Text = "Provider Catalog";
             // 
@@ -490,13 +490,13 @@ namespace Bovelo
             this.label10.Location = new System.Drawing.Point(48, 4);
             this.label10.Margin = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(262, 55);
+            this.label10.Size = new System.Drawing.Size(174, 37);
             this.label10.TabIndex = 1;
             this.label10.Text = "release 3.0";
             // 
             // Manager__Provider_catalog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1802, 657);
@@ -519,6 +519,7 @@ namespace Bovelo
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.Name = "Manager__Provider_catalog";
+            this.ShowIcon = false;
             this.Text = "Provider_catalog";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

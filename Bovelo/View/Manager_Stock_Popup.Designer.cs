@@ -77,6 +77,7 @@ namespace Bovelo
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "Manager_Stock_Popup";
+            this.ShowIcon = false;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Manager_Stock_Popup_Load);
             this.ResumeLayout(false);
