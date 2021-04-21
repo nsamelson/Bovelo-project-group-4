@@ -15,6 +15,7 @@ namespace Bovelo
         private User user = new User("Manager", false, false, false);
         private App newApp = new App();//because i need part name
         private List<string> currentOrder = new List<string>();
+        int ligne;
         
         internal Manager__Provider_orders(User currentUser)
         {
@@ -58,6 +59,7 @@ namespace Bovelo
                     "\nId_Order_Detailed_Part = " + dataGridView1.Rows[e.RowIndex].Cells[1].Value +
                     "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
                     "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                    
             }
 
             if (dataGridView1.CurrentCell.Value.ToString() == "Received")
@@ -78,6 +80,7 @@ namespace Bovelo
                 orderLoad();
             }
         }
+        
 
         private void orderLoad()
         {
@@ -157,19 +160,28 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string order = textBox1.Text.ToString();
-            //Console.WriteLine(Order);
-            currentOrder.Add(textBox1.Text.ToString());
-            //Console.WriteLine(currentOrder[1]);
-            try
+            if (textBox1.Text == string.Empty)
             {
-                orderLoad();
+                MessageBox.Show("Choose an Order_ID from the table below");
             }
-            catch
+            else
             {
-                MessageBox.Show("Must have ID Order");
+                string order = textBox1.Text.ToString();
+                //Console.WriteLine(Order);
+                currentOrder.Add(textBox1.Text.ToString());
+
+                //Console.WriteLine(currentOrder[1]);
+                try
+                {
+                    orderLoad();
+                }
+                catch
+                {
+                    MessageBox.Show("Must have ID Order");
+                }
+                textBox1.Clear();
             }
-            textBox1.Clear();
+            
         }
 
         private void button5_Click_1(object sender, EventArgs e)
@@ -177,6 +189,24 @@ namespace Bovelo
             currentOrder.Clear();
             currentOrder.Add("0");
             orderLoad();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Manager__Provider_orders_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+
+
         }
     }
 }

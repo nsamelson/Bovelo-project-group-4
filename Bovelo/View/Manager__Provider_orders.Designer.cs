@@ -55,12 +55,14 @@ namespace Bovelo
             this.clear = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button7
@@ -79,6 +81,7 @@ namespace Bovelo
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -97,11 +100,11 @@ namespace Bovelo
             this.Order_State,
             this.Receive,
             this.Remove_Order});
-            this.dataGridView1.Location = new System.Drawing.Point(210, 108);
+            this.dataGridView1.Location = new System.Drawing.Point(8, 28);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1368, 667);
+            this.dataGridView1.Size = new System.Drawing.Size(770, 566);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -187,7 +190,7 @@ namespace Bovelo
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1574, 90);
+            this.panel1.Size = new System.Drawing.Size(965, 90);
             this.panel1.TabIndex = 20;
             // 
             // label1
@@ -197,7 +200,7 @@ namespace Bovelo
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(1465, 7);
+            this.label1.Location = new System.Drawing.Point(856, 7);
             this.label1.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 33);
@@ -211,7 +214,7 @@ namespace Bovelo
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label3.Location = new System.Drawing.Point(459, 10);
+            this.label3.Location = new System.Drawing.Point(154, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(374, 79);
@@ -241,7 +244,7 @@ namespace Bovelo
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(13);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 795);
+            this.panel2.Size = new System.Drawing.Size(200, 749);
             this.panel2.TabIndex = 19;
             // 
             // panel4
@@ -253,7 +256,7 @@ namespace Bovelo
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel4.Controls.Add(this.label4);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 752);
+            this.panel4.Location = new System.Drawing.Point(0, 706);
             this.panel4.Margin = new System.Windows.Forms.Padding(13);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
@@ -291,9 +294,9 @@ namespace Bovelo
             // getDetails
             // 
             this.getDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.getDetails.Location = new System.Drawing.Point(1605, 199);
+            this.getDetails.Location = new System.Drawing.Point(788, 114);
             this.getDetails.Name = "getDetails";
-            this.getDetails.Size = new System.Drawing.Size(133, 39);
+            this.getDetails.Size = new System.Drawing.Size(149, 39);
             this.getDetails.TabIndex = 21;
             this.getDetails.Text = "Get Details";
             this.getDetails.UseVisualStyleBackColor = true;
@@ -302,16 +305,18 @@ namespace Bovelo
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(1605, 153);
+            this.textBox1.Location = new System.Drawing.Point(788, 68);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(136, 27);
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(149, 27);
             this.textBox1.TabIndex = 22;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(1601, 121);
+            this.label2.Location = new System.Drawing.Point(788, 36);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 21);
             this.label2.TabIndex = 23;
@@ -320,9 +325,9 @@ namespace Bovelo
             // clear
             // 
             this.clear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.clear.Location = new System.Drawing.Point(1605, 260);
+            this.clear.Location = new System.Drawing.Point(788, 179);
             this.clear.Name = "clear";
-            this.clear.Size = new System.Drawing.Size(133, 39);
+            this.clear.Size = new System.Drawing.Size(149, 39);
             this.clear.TabIndex = 24;
             this.clear.Text = "Clear";
             this.clear.UseVisualStyleBackColor = true;
@@ -330,6 +335,7 @@ namespace Bovelo
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -337,12 +343,14 @@ namespace Bovelo
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1});
-            this.dataGridView2.Location = new System.Drawing.Point(1591, 307);
+            this.dataGridView2.Location = new System.Drawing.Point(788, 274);
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.Size = new System.Drawing.Size(169, 472);
+            this.dataGridView2.Size = new System.Drawing.Size(149, 170);
             this.dataGridView2.TabIndex = 25;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -351,26 +359,40 @@ namespace Bovelo
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.Controls.Add(this.clear);
+            this.groupBox1.Controls.Add(this.dataGridView2);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.getDetails);
+            this.groupBox1.Location = new System.Drawing.Point(208, 119);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(945, 618);
+            this.groupBox1.TabIndex = 26;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Provider Orders";
+            // 
             // Manager__Provider_orders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1774, 795);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.clear);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.getDetails);
+            this.ClientSize = new System.Drawing.Size(1165, 749);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager__Provider_orders";
             this.ShowIcon = false;
             this.Text = "Provider_orders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Manager__Provider_orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -380,8 +402,9 @@ namespace Bovelo
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -412,5 +435,6 @@ namespace Bovelo
         private System.Windows.Forms.Button clear;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
