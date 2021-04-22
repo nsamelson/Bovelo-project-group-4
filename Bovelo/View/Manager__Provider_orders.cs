@@ -15,8 +15,9 @@ namespace Bovelo
         private User user = new User("Manager", false, false, false);
         private App newApp = new App();//because i need part name
         private List<string> currentOrder = new List<string>();
-        int ligne;
-        
+        private List<List<string>> updatedSatusts = new List<List<string>>();
+
+
         internal Manager__Provider_orders(User currentUser)
         {
             currentOrder.Add("0");
@@ -64,11 +65,15 @@ namespace Bovelo
 
             if (dataGridView1.CurrentCell.Value.ToString() == "Received")
             {
+                List<string> updatedLine = new List<string>();
                 if (dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString() == "Not Received")
                 {
-                    string query = "UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + dataGridView1.Rows[e.RowIndex].Cells[0].Value + " AND idOrder_Detailed_Part=" + dataGridView1.Rows[e.RowIndex].Cells[1].Value + " AND Id_Bike_Parts =" + dataGridView1.Rows[e.RowIndex].Cells[2].Value + " AND Quantity=" + dataGridView1.Rows[e.RowIndex].Cells[4].Value + " ;";
-                    //Console.WriteLine(query);
-                    DataBase.SendToDB(query);
+                    dataGridView1.Rows[e.RowIndex].Cells[7].Value = "Received";
+                    updatedLine.Add(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                    updatedLine.Add(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    updatedLine.Add(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                    updatedLine.Add(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                    updatedSatusts.Add(updatedLine);
                     BikePart.AddReceivedBikePart(Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString()), Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString()));
                     MessageBox.Show(@"Changed State :" +
                         "\nname = " + dataGridView1.Rows[e.RowIndex].Cells[3].Value +
@@ -77,7 +82,7 @@ namespace Bovelo
                         "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
                         "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
                 }
-                orderLoad();
+                
             }
         }
         
@@ -205,8 +210,12 @@ namespace Bovelo
         {
             textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
 
+        }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Manager.updateOrderStatus(updatedSatusts);
+            orderLoad();
         }
     }
 }

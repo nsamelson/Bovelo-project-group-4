@@ -85,6 +85,16 @@ namespace Bovelo
                 Directory.CreateDirectory(path);
             }
         }
+        public static void updateOrderStatus(List<List<string>> orderStatus)
+        {
+            foreach (var elem in orderStatus)
+            {
+                DataBase.SendToDB("UPDATE Order_Detailed_Part SET State='Received' WHERE Id_Order=" + elem[0] + " AND idOrder_Detailed_Part=" + elem[1] + " AND Id_Bike_Parts =" + elem[2] + " AND Quantity=" + elem[3] + " ;");
+                //Console.WriteLine(elem[0] + " " + elem[1] + " " + elem[2] + " " + elem[3]);
+            }
+
+            
+        }
 
         //GET METHODS
         public static List<List<string>> GetAssemblerWork(string assemblerName)//Gets the work of the selected Assembler
