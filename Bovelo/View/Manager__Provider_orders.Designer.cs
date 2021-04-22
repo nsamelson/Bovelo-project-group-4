@@ -308,6 +308,7 @@ namespace Bovelo
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(788, 68);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(149, 27);
             this.textBox1.TabIndex = 22;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);

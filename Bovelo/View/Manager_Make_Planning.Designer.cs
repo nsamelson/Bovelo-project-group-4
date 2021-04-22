@@ -225,17 +225,17 @@ namespace Bovelo
             // newWeekToAssign
             // 
             this.newWeekToAssign.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.newWeekToAssign.Location = new System.Drawing.Point(677, 165);
+            this.newWeekToAssign.Location = new System.Drawing.Point(519, 166);
             this.newWeekToAssign.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.newWeekToAssign.Name = "newWeekToAssign";
-            this.newWeekToAssign.Size = new System.Drawing.Size(154, 27);
+            this.newWeekToAssign.Size = new System.Drawing.Size(107, 27);
             this.newWeekToAssign.TabIndex = 6;
             // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(649, 239);
+            this.button2.Location = new System.Drawing.Point(1131, 565);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(190, 43);
@@ -248,10 +248,10 @@ namespace Bovelo
             // 
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Location = new System.Drawing.Point(660, 165);
+            this.button5.Location = new System.Drawing.Point(644, 159);
             this.button5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(190, 28);
+            this.button5.Size = new System.Drawing.Size(190, 42);
             this.button5.TabIndex = 8;
             this.button5.Text = "Confirm Modification";
             this.button5.UseVisualStyleBackColor = false;
@@ -275,24 +275,24 @@ namespace Bovelo
             this.idBike.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.idBike.Name = "idBike";
             this.idBike.ReadOnly = true;
-            this.idBike.Size = new System.Drawing.Size(168, 27);
+            this.idBike.Size = new System.Drawing.Size(102, 27);
             this.idBike.TabIndex = 10;
             // 
             // weekToModify
             // 
             this.weekToModify.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.weekToModify.Location = new System.Drawing.Point(334, 166);
+            this.weekToModify.Location = new System.Drawing.Point(271, 166);
             this.weekToModify.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.weekToModify.Name = "weekToModify";
             this.weekToModify.ReadOnly = true;
-            this.weekToModify.Size = new System.Drawing.Size(197, 27);
+            this.weekToModify.Size = new System.Drawing.Size(102, 27);
             this.weekToModify.TabIndex = 11;
             // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(265, 168);
+            this.label3.Location = new System.Drawing.Point(202, 168);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 21);
@@ -303,7 +303,7 @@ namespace Bovelo
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(539, 169);
+            this.label4.Location = new System.Drawing.Point(381, 170);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(130, 21);
@@ -316,7 +316,6 @@ namespace Bovelo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.dataGridView2);
             this.groupBox1.Location = new System.Drawing.Point(225, 323);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -331,7 +330,7 @@ namespace Bovelo
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 253);
+            this.label5.Location = new System.Drawing.Point(192, 253);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 21);
@@ -341,7 +340,7 @@ namespace Bovelo
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(169, 248);
+            this.textBox1.Location = new System.Drawing.Point(342, 248);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(197, 27);
@@ -650,6 +649,7 @@ namespace Bovelo
             this.ClientSize = new System.Drawing.Size(1370, 621);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.monthCalendar1);

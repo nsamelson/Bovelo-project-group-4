@@ -86,8 +86,7 @@ namespace Bovelo
                     i++;
                 }                
             }
-            /* Console.WriteLine("index i : " + i);
-             Console.WriteLine("Count  : " + newApp.getNonPlanifiedBikes().Count);*/
+            
             i = 0;
             string clientName = "";
             string previousOrder = "";
