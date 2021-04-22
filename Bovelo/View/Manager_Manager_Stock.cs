@@ -45,18 +45,16 @@ namespace Bovelo
         {
             Console.WriteLine("TRY");
             string name = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            int quantity = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+            
+            Int32.TryParse(dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString(), out int quantity);
             string location = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-            int price = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+            Int32.TryParse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString(), out int price);
             string provider = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-            int time = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString());
+            Int32.TryParse(dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString(), out int time);
+
             if (dataGridView1.CurrentCell.Value.ToString() == "Set")
             {
-                Console.WriteLine("CATCH");
-                string query = "UPDATE Bike_Parts SET Bike_Parts_Name='" + name + "',Quantity=" + quantity + ",Location='" + location + "',Price=" + price + ",Provider='" + provider + "',Time_To_Build=" + time + " WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                DataBase.SendToDB(query);
-            }
-            MessageBox.Show(@"New State :"+ 
+                MessageBox.Show(@"New State :" +
                 "\nName    = " + name +
                 "\nQuantity= " + quantity +
                 "\nLocation= " + location +
@@ -64,6 +62,22 @@ namespace Bovelo
                 "\nProvider= " + provider +
                 "\nTime_To_Build = " + time +
                 "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                Console.WriteLine("CATCH");
+                if (quantity < 0)
+                {
+                    MessageBox.Show("you can not add a negative Value ");
+                    dataGridView1.Rows[e.RowIndex].Cells[2].Value = 0;
+                }
+                else
+                {
+                    string query = "UPDATE Bike_Parts SET Bike_Parts_Name='" + name + "',Quantity=" + quantity + ",Location='" + location + "',Price=" + price + ",Provider='" + provider + "',Time_To_Build=" + time + " WHERE Id_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    DataBase.SendToDB(query);
+                }
+                
+                
+            }
+            
+            
         }
 
         private void button7_Click(object sender, EventArgs e)

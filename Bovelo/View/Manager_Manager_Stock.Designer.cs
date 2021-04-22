@@ -71,6 +71,7 @@ namespace Bovelo
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -167,7 +168,7 @@ namespace Bovelo
             this.label3.Location = new System.Drawing.Point(949, 9);
             this.label3.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(183, 47);
+            this.label3.Size = new System.Drawing.Size(120, 31);
             this.label3.TabIndex = 2;
             this.label3.Text = "Manager";
             // 
@@ -194,7 +195,7 @@ namespace Bovelo
             this.label6.Location = new System.Drawing.Point(232, 7);
             this.label6.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(688, 108);
+            this.label6.Size = new System.Drawing.Size(464, 73);
             this.label6.TabIndex = 1;
             this.label6.Text = "Manager Stock";
             // 
@@ -222,7 +223,7 @@ namespace Bovelo
             this.label5.Location = new System.Drawing.Point(6, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(337, 108);
+            this.label5.Size = new System.Drawing.Size(229, 73);
             this.label5.TabIndex = 0;
             this.label5.Text = "Bovelo";
             // 
@@ -264,13 +265,13 @@ namespace Bovelo
             this.label4.Location = new System.Drawing.Point(34, 1);
             this.label4.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(262, 55);
+            this.label4.Size = new System.Drawing.Size(174, 37);
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
             // Manager_Manager_Stock
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.ClientSize = new System.Drawing.Size(1259, 504);
