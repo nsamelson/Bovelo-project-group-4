@@ -81,6 +81,10 @@ namespace Bovelo
                         "\nId_Order_Detailed_Part = " + dataGridView1.Rows[e.RowIndex].Cells[1].Value +
                         "\nId_Bike_Parts = " + dataGridView1.Rows[e.RowIndex].Cells[2].Value +
                         "\nQuantity = " + dataGridView1.Rows[e.RowIndex].Cells[4].Value);
+                    DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                    dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
+                    cell.ReadOnly = true;
+                    dataGridView1.Refresh();
                 }
                 
             }
@@ -125,7 +129,16 @@ namespace Bovelo
                 dataGridView1.Rows[i].Cells[5].Value = orderPartDetails[i][4];
                 dataGridView1.Rows[i].Cells[6].Value = orderPart[0][3];
                 dataGridView1.Rows[i].Cells[7].Value = orderPartDetails[i][5];
+                if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Received")
+                {
+                    DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+                    dataGridView1.Rows[i].Cells[8] = cell;
+                    cell.ReadOnly = true;
+                }
+                
                 i++;
+                
+                
             }
             /*List <List<string>> result = DataBase.GetFromDB("Order_Detailed_Part");
             List<List<string>> result2 = DataBase.GetFromDB("Order_Part");
@@ -165,6 +178,7 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)
         {
+            currentOrder.Clear();
             if (textBox1.Text == string.Empty)
             {
                 MessageBox.Show("Choose an Order_ID from the table below");
@@ -186,6 +200,8 @@ namespace Bovelo
                 }
                 textBox1.Clear();
             }
+        
+            
             
         }
 
