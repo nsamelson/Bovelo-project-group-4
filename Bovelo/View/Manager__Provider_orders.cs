@@ -224,10 +224,14 @@ namespace Bovelo
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-
+            //textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //MessageBox.Show(textBox1.Text.ToString());
         }
-
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+            //MessageBox.Show(textBox1.Text.ToString());
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Manager.updateOrderStatus(updatedSatusts);

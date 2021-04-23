@@ -140,7 +140,7 @@ namespace Bovelo
             // button6
             // 
             this.button6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.button6.BackColor = System.Drawing.Color.Transparent;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.SystemColors.ControlText;
             this.button6.Location = new System.Drawing.Point(234, 58);
@@ -169,7 +169,7 @@ namespace Bovelo
             // builderPlaning
             // 
             this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.builderPlaning.BackColor = System.Drawing.Color.Transparent;
+            this.builderPlaning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
             this.builderPlaning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.builderPlaning.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -260,7 +260,7 @@ namespace Bovelo
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel4.Controls.Add(this.label4);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 716);
+            this.panel4.Location = new System.Drawing.Point(0, 706);
             this.panel4.Margin = new System.Windows.Forms.Padding(13);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
@@ -277,7 +277,7 @@ namespace Bovelo
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(13);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 759);
+            this.panel2.Size = new System.Drawing.Size(200, 749);
             this.panel2.TabIndex = 20;
             // 
             // button7
@@ -379,9 +379,9 @@ namespace Bovelo
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button6);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.groupBox3.Location = new System.Drawing.Point(292, 330);
+            this.groupBox3.Location = new System.Drawing.Point(292, 317);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(924, 404);
+            this.groupBox3.Size = new System.Drawing.Size(924, 403);
             this.groupBox3.TabIndex = 24;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Manager";
@@ -453,7 +453,7 @@ namespace Bovelo
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1262, 759);
+            this.ClientSize = new System.Drawing.Size(1262, 749);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

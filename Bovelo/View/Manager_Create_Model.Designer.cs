@@ -143,9 +143,9 @@ namespace Bovelo
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(87, 268);
+            this.button2.Location = new System.Drawing.Point(88, 267);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 44);
+            this.button2.Size = new System.Drawing.Size(199, 34);
             this.button2.TabIndex = 6;
             this.button2.Text = "Create a new model";
             this.button2.UseVisualStyleBackColor = true;
@@ -540,7 +540,7 @@ namespace Bovelo
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(1187, 11);
+            this.label1.Location = new System.Drawing.Point(1057, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 31);
@@ -557,7 +557,7 @@ namespace Bovelo
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1300, 90);
+            this.panel1.Size = new System.Drawing.Size(1170, 90);
             this.panel1.TabIndex = 23;
             // 
             // label10
@@ -567,7 +567,7 @@ namespace Bovelo
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label10.Location = new System.Drawing.Point(472, 6);
+            this.label10.Location = new System.Drawing.Point(407, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(417, 73);
@@ -649,7 +649,7 @@ namespace Bovelo
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1500, 735);
+            this.ClientSize = new System.Drawing.Size(1370, 735);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox1);

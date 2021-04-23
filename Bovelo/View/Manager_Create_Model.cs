@@ -36,18 +36,39 @@ namespace Bovelo
             string type = textBox1.Text;
             var colors = checkedListBox1.CheckedItems;
             var sizes = checkedListBox2.CheckedItems;
-            if(colors.Count !=0 && sizes.Count != 0)
+            if (type == string.Empty)
             {
-                foreach(var color in colors)
+                string message = "You need to enter a Type";
+                MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                if (colors.Count != 0 && sizes.Count != 0)
                 {
-                    foreach (var size in sizes)
+                    foreach (var color in colors)
                     {
-                        Manager.SetNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
-                        MessageBox.Show("Model created");
-                        reloadPage();
+                        foreach (var size in sizes)
+                        {
+                            Manager.SetNewBikeModel(type, Int32.Parse(size.ToString()), color.ToString());
+                        }
+                    }
+                    string message = type + " has been created ";
+                    MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    textBox1.Clear();
+                    //checkedListBox1.ClearSelected();
+                    bool state = false;
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    {
+                        checkedListBox1.SetItemCheckState(i, (state ? CheckState.Checked : CheckState.Unchecked));
+                    }
+                    for (int i = 0; i < checkedListBox2.Items.Count; i++)
+                    {
+                        checkedListBox2.SetItemCheckState(i, (state ? CheckState.Checked : CheckState.Unchecked));
                     }
                 }
             }
+            reloadPage();
+
         }
 
         private void button8_Click(object sender, EventArgs e)//create BikePart
