@@ -25,7 +25,11 @@ namespace Bovelo
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string details = dataGridView1.Rows[e.RowIndex].Cells[6].ToolTipText.ToString();
-            MessageBox.Show(this,"BIKES :\n\n"+details,"ORDER DETAILS");
+            var id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            var bikes = newApp.orderBikeList.FirstOrDefault(x => x.orderId == id).bikeList;
+            var popup = new Representative_OrderDetails_Popup(bikes);
+            popup.Show();
+            //MessageBox.Show(this,"BIKES :\n\n"+details,"ORDER DETAILS");
         }
 
         private void Order_Load(object sender, EventArgs e)

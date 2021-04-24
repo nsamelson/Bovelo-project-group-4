@@ -228,6 +228,12 @@
     <Compile Include="View\Manager__Provider_orders.Designer.cs">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Representative_OrderDetails_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Representative_OrderDetails_Popup.Designer.cs">
+      <DependentUpon>Representative_OrderDetails_Popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +293,9 @@
     <EmbeddedResource Include="View\Manager__Provider_catalog.resx">
       <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Representative_OrderDetails_Popup.resx">
+      <DependentUpon>Representative_OrderDetails_Popup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ShowBike.resx">
       <DependentUpon>ShowBike.cs</DependentUpon>
