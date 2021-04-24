@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using System.IO;
 
 namespace Bovelo
 {
@@ -162,7 +163,7 @@ namespace Bovelo
 
                 foreach(DataGridViewRow row in dataGridView2.Rows)
                 {
-                    int qty = Int32.Parse(row.Cells[3].Value.ToString());
+                    int qty = Int32.Parse(row.Cells[4].Value.ToString());
                     if (qty != 0)
                     {
                         for(int j = 0; j<qty; j++)
@@ -170,7 +171,7 @@ namespace Bovelo
                             partsToLink.Add(Int32.Parse(row.Cells[0].Value.ToString()));
                         }
                         
-                        row.Cells[3].Value = "0";
+                        row.Cells[4].Value = "0";
                     }
                 }
                 DialogResult result = MessageBox.Show("Are you sure you want to add this part to this bike?", "Confirmation", MessageBoxButtons.YesNo);
@@ -188,6 +189,15 @@ namespace Bovelo
             app.SetBikePartList();
             var parts = app.bikePartList;
             int i = 0;
+            int idModel;
+            BikeModel model = new BikeModel(null, null, 0);
+            if (comboBox1.Text != "")
+            {
+                idModel = Int32.Parse(comboBox1.Text);
+                model = app.bikeModels.FirstOrDefault(x => x.idBikeModel == idModel);
+            }
+            
+            
             foreach (var part in parts)
             {
                 int id = part.part_Id;
@@ -197,7 +207,15 @@ namespace Bovelo
                 dataGridView2.Rows[i].Cells[0].Value = id;
                 dataGridView2.Rows[i].Cells[1].Value = name;
                 dataGridView2.Rows[i].Cells[2].Value = price;
-                dataGridView2.Rows[i].Cells[3].Value = "0";
+                if (model.bikeParts != null)
+                {
+                    dataGridView2.Rows[i].Cells[3].Value = model.bikeParts.Count(x => x.part_Id == id).ToString();
+                }
+                else
+                {
+                    dataGridView2.Rows[i].Cells[3].Value = "0";
+                }
+                dataGridView2.Rows[i].Cells[4].Value = "0";
 
                 i++;
             }
@@ -215,6 +233,21 @@ namespace Bovelo
             Manager_Create_Model mpc = new Manager_Create_Model(user);
             mpc.FormClosed += (s, args) => this.Close();
             mpc.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string wanted_path = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) + @"\View\Pictures";
+            string new_path = wanted_path + @"\" + textBox1.Text.ToString();
+            if (textBox1.Text.ToString() == string.Empty)
+            {
+                MessageBox.Show("Please insert a name first!");
+            }
+            else
+            {
+                Manager.AddNewFolder(new_path);
+                System.Diagnostics.Process.Start(new_path);
+            }
         }
     }
 }
