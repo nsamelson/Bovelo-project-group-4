@@ -564,7 +564,7 @@ namespace Bovelo
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label1.Location = new System.Drawing.Point(1187, 9);
+            this.label1.Location = new System.Drawing.Point(1038, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 31);
@@ -581,7 +581,7 @@ namespace Bovelo
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1319, 90);
+            this.panel1.Size = new System.Drawing.Size(1170, 90);
             this.panel1.TabIndex = 23;
             // 
             // label10
@@ -591,7 +591,7 @@ namespace Bovelo
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label10.Location = new System.Drawing.Point(481, 6);
+            this.label10.Location = new System.Drawing.Point(407, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(417, 73);
@@ -636,7 +636,7 @@ namespace Bovelo
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 782);
+            this.panel2.Size = new System.Drawing.Size(200, 749);
             this.panel2.TabIndex = 22;
             // 
             // panel4
@@ -648,7 +648,7 @@ namespace Bovelo
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.panel4.Controls.Add(this.label12);
             this.panel4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel4.Location = new System.Drawing.Point(0, 739);
+            this.panel4.Location = new System.Drawing.Point(0, 706);
             this.panel4.Margin = new System.Windows.Forms.Padding(22, 21, 22, 21);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(200, 43);
@@ -673,7 +673,7 @@ namespace Bovelo
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.ClientSize = new System.Drawing.Size(1519, 782);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.groupBox4);
