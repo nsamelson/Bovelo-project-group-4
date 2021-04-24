@@ -138,6 +138,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="View\Assembler_BikeDetails_Popup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Assembler_BikeDetails_Popup.Designer.cs">
+      <DependentUpon>Assembler_BikeDetails_Popup.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Assembler_Planning.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -248,6 +254,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="View\Assembler_BikeDetails_Popup.resx">
+      <DependentUpon>Assembler_BikeDetails_Popup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Assembler_MainHome.resx">
       <DependentUpon>Assembler_MainHome.cs</DependentUpon>
     </EmbeddedResource>

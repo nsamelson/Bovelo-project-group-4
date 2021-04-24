@@ -21,69 +21,92 @@ namespace Bovelo
             InitializeComponent();
             //newApp.planningList = newApp.getPlanningList();
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void setOnActive(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Active";
+            DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+            cell.Value = DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+            dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
+            cell.ReadOnly = true;
+            dataGridView1.Refresh();
+        }
+        private void setOnClose(object sender, DataGridViewCellEventArgs e)
         {
             string builder, status, start, finish;
             int id;
+            dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
+            DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
+            cell.Value = DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
+            dataGridView1.Rows[e.RowIndex].Cells[9] = cell;
+            cell.ReadOnly = true;
+            DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
+            newCell.Value = string.Empty;
+            dataGridView1.Rows[e.RowIndex].Cells[10] = newCell;
+            newCell.ReadOnly = true;
+            BikePart.SubstractClosedBike(dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString());
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                id = Int32.Parse(row.Cells[0].Value.ToString());
+                builder = user.login.ToString();
+                status = row.Cells[5].Value.ToString();
+                start = row.Cells[8].Value.ToString();
+                finish = row.Cells[9].Value.ToString();
+                row.Cells[7].Value = builder;
+                Assembler.UpdateSatus(id, status, builder, start, finish);
+            }
+        }
+        private void setOnNew(object sender, DataGridViewCellEventArgs e)
+        {
+            string builder, status, start, finish;
+            int id;
+            dataGridView1.Rows[e.RowIndex].Cells[5].Value = "New";
+            DataGridViewButtonCell activeCell = new DataGridViewButtonCell();
+            activeCell.UseColumnTextForButtonValue = true;
+            activeCell.ToolTipText = "set on active";
+            dataGridView1.Rows[e.RowIndex].Cells[8] = activeCell;
+
+            foreach (DataGridViewRow row in dataGridView1.SelectedRows)
+            {
+                id = Int32.Parse(row.Cells[0].Value.ToString());
+                builder = string.Empty;
+                status = row.Cells[5].Value.ToString();
+                start = string.Empty;
+                finish = string.Empty;
+                row.Cells[7].Value = builder;
+                Assembler.UpdateSatus(id, status, builder, start, finish);
+            }
+        }
+        private void showDetails(object sender, DataGridViewCellEventArgs e)
+        {
+            int bikeId = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string week = comboBox1.Text;
+            var planningWeek = newApp.planningList.FirstOrDefault(x => x.weekName == week);
+            var bike = planningWeek.bikesToBuild.FirstOrDefault(x => x.bikeId == bikeId);
+            var popup = new Assembler_BikeDetails_Popup(bike);
+            popup.Show();
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
             if (dataGridView1.CurrentCell.Value.ToString() == "set on active")
             {
-                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Active";
-                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = DateTime.Now.Day.ToString()+"/"+DateTime.Now.Month.ToString()+"/"+DateTime.Now.Year.ToString() + " "+ DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
-                dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
-                cell.ReadOnly = true;
-                dataGridView1.Refresh();
+                setOnActive(sender, e);
             }
-
             else if (dataGridView1.CurrentCell.Value.ToString() == "set on close" &&
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString() == "Active")
             {
-                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Closed";
-                DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
-                cell.Value = DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
-                dataGridView1.Rows[e.RowIndex].Cells[9] = cell;
-                cell.ReadOnly = true;
-                DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
-                newCell.Value = string.Empty;
-                dataGridView1.Rows[e.RowIndex].Cells[10] = newCell;
-                newCell.ReadOnly = true;
-                BikePart.SubstractClosedBike(dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString());
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-                    id = Int32.Parse(row.Cells[0].Value.ToString());
-                    builder = user.login.ToString();
-                    status = row.Cells[5].Value.ToString();
-                    start = row.Cells[8].Value.ToString();
-                    finish = row.Cells[9].Value.ToString();
-                    row.Cells[7].Value = builder;
-                    Assembler.UpdateSatus(id, status, builder, start, finish);
-                }
+                setOnClose(sender, e);
             }
             else if (dataGridView1.CurrentCell.Value.ToString() == "Reset on new" &&
                 dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString() == "Active")
             {
-                dataGridView1.Rows[e.RowIndex].Cells[5].Value = "New";
-                DataGridViewButtonCell activeCell = new DataGridViewButtonCell();
-                activeCell.UseColumnTextForButtonValue = true;
-                activeCell.ToolTipText = "set on active";
-                dataGridView1.Rows[e.RowIndex].Cells[8] = activeCell;
-                
-                foreach (DataGridViewRow row in dataGridView1.SelectedRows)
-                {
-                    id = Int32.Parse(row.Cells[0].Value.ToString());
-                    builder = string.Empty;
-                    status = row.Cells[5].Value.ToString();
-                    start = string.Empty;
-                    finish = string.Empty;
-                    row.Cells[7].Value = builder;
-                    Assembler.UpdateSatus(id, status, builder, start, finish);
-                }   
+                setOnNew(sender, e);
             }
             else if(dataGridView1.CurrentCell.Value.ToString() == "Click to see parts")
             {
-                string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
-                MessageBox.Show(partsToShow);
+                //string partsToShow = dataGridView1.Rows[e.RowIndex].Cells[4].ToolTipText.ToString();
+                //MessageBox.Show(partsToShow);
+                showDetails(sender, e);
             }
             newApp.SetPlanningList();
         }

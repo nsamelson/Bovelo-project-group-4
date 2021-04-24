@@ -31,17 +31,6 @@ namespace Bovelo
         {
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bike_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bike_Part = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.timeToBuild = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modified_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Started = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Finsihed = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.set_on_new = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -53,6 +42,17 @@ namespace Bovelo
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bike_Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bike_Part = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.timeToBuild = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modified_by = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Started = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Finsihed = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.set_on_new = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -104,94 +104,6 @@ namespace Bovelo
             this.dataGridView1.Size = new System.Drawing.Size(800, 328);
             this.dataGridView1.TabIndex = 3;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Order Detail Id:";
-            this.Column1.MinimumWidth = 30;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Bike_Type
-            // 
-            this.Bike_Type.FillWeight = 80.54144F;
-            this.Bike_Type.HeaderText = "Bike Type :";
-            this.Bike_Type.MinimumWidth = 6;
-            this.Bike_Type.Name = "Bike_Type";
-            this.Bike_Type.ReadOnly = true;
-            // 
-            // Color
-            // 
-            this.Color.FillWeight = 80.54144F;
-            this.Color.HeaderText = "Bike Size :";
-            this.Color.MinimumWidth = 6;
-            this.Color.Name = "Color";
-            this.Color.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.FillWeight = 80.54144F;
-            this.Column2.HeaderText = "Bike Color :";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Bike_Part
-            // 
-            this.Bike_Part.FillWeight = 80.54144F;
-            this.Bike_Part.HeaderText = "ID | Name | Location | Quantity";
-            this.Bike_Part.MinimumWidth = 6;
-            this.Bike_Part.Name = "Bike_Part";
-            this.Bike_Part.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.FillWeight = 80.54144F;
-            this.Price.HeaderText = "Bike Status :";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // timeToBuild
-            // 
-            this.timeToBuild.FillWeight = 80.54144F;
-            this.timeToBuild.HeaderText = "Week :";
-            this.timeToBuild.MinimumWidth = 6;
-            this.timeToBuild.Name = "timeToBuild";
-            // 
-            // Modified_by
-            // 
-            this.Modified_by.HeaderText = "Assembled by :";
-            this.Modified_by.MinimumWidth = 6;
-            this.Modified_by.Name = "Modified_by";
-            // 
-            // Started
-            // 
-            this.Started.HeaderText = "Started at: ";
-            this.Started.Name = "Started";
-            this.Started.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Started.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Started.Text = "set on active";
-            this.Started.ToolTipText = "set on active";
-            this.Started.UseColumnTextForButtonValue = true;
-            // 
-            // Finsihed
-            // 
-            this.Finsihed.HeaderText = "Finished at:";
-            this.Finsihed.Name = "Finsihed";
-            this.Finsihed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Finsihed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Finsihed.Text = "set on close";
-            this.Finsihed.ToolTipText = "set on close";
-            this.Finsihed.UseColumnTextForButtonValue = true;
-            // 
-            // set_on_new
-            // 
-            this.set_on_new.HeaderText = "Set on new";
-            this.set_on_new.Name = "set_on_new";
-            this.set_on_new.Text = "Reset on new";
-            this.set_on_new.ToolTipText = "Reset on new";
-            this.set_on_new.UseColumnTextForButtonValue = true;
             // 
             // button3
             // 
@@ -339,6 +251,96 @@ namespace Bovelo
             this.label4.TabIndex = 1;
             this.label4.Text = "release 3.0";
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Order Detail Id:";
+            this.Column1.MinimumWidth = 30;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Bike_Type
+            // 
+            this.Bike_Type.FillWeight = 80.54144F;
+            this.Bike_Type.HeaderText = "Bike Type :";
+            this.Bike_Type.MinimumWidth = 6;
+            this.Bike_Type.Name = "Bike_Type";
+            this.Bike_Type.ReadOnly = true;
+            // 
+            // Color
+            // 
+            this.Color.FillWeight = 80.54144F;
+            this.Color.HeaderText = "Bike Size :";
+            this.Color.MinimumWidth = 6;
+            this.Color.Name = "Color";
+            this.Color.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.FillWeight = 80.54144F;
+            this.Column2.HeaderText = "Bike Color :";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Bike_Part
+            // 
+            this.Bike_Part.FillWeight = 80.54144F;
+            this.Bike_Part.HeaderText = "Details";
+            this.Bike_Part.MinimumWidth = 6;
+            this.Bike_Part.Name = "Bike_Part";
+            this.Bike_Part.ReadOnly = true;
+            this.Bike_Part.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Bike_Part.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Price
+            // 
+            this.Price.FillWeight = 80.54144F;
+            this.Price.HeaderText = "Bike Status :";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // timeToBuild
+            // 
+            this.timeToBuild.FillWeight = 80.54144F;
+            this.timeToBuild.HeaderText = "Week :";
+            this.timeToBuild.MinimumWidth = 6;
+            this.timeToBuild.Name = "timeToBuild";
+            // 
+            // Modified_by
+            // 
+            this.Modified_by.HeaderText = "Assembled by :";
+            this.Modified_by.MinimumWidth = 6;
+            this.Modified_by.Name = "Modified_by";
+            // 
+            // Started
+            // 
+            this.Started.HeaderText = "Started at: ";
+            this.Started.Name = "Started";
+            this.Started.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Started.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Started.Text = "set on active";
+            this.Started.ToolTipText = "set on active";
+            this.Started.UseColumnTextForButtonValue = true;
+            // 
+            // Finsihed
+            // 
+            this.Finsihed.HeaderText = "Finished at:";
+            this.Finsihed.Name = "Finsihed";
+            this.Finsihed.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Finsihed.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Finsihed.Text = "set on close";
+            this.Finsihed.ToolTipText = "set on close";
+            this.Finsihed.UseColumnTextForButtonValue = true;
+            // 
+            // set_on_new
+            // 
+            this.set_on_new.HeaderText = "Set on new";
+            this.set_on_new.Name = "set_on_new";
+            this.set_on_new.Text = "Reset on new";
+            this.set_on_new.ToolTipText = "Reset on new";
+            this.set_on_new.UseColumnTextForButtonValue = true;
+            // 
             // Assembler_Planning
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -391,7 +393,7 @@ namespace Bovelo
         private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bike_Part;
+        private System.Windows.Forms.DataGridViewButtonColumn Bike_Part;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn timeToBuild;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modified_by;
