@@ -356,6 +356,17 @@ namespace Bovelo
             return users;
         }
 
+        internal int GetMaxWorkingTimePerWeek()
+        {
+            SetUserList();
+            int hours = 0;
+            foreach(var user in userList.FindAll(x => x.userType["Assembler"] == true))
+            {
+                hours += user.GetMaxHoursPerWeek();
+            }
+            return hours;
+        }
+
 
 
         //OTHER METHODS

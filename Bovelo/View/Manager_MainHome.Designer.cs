@@ -327,7 +327,7 @@ namespace Bovelo
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.SteelBlue;
-            this.label6.Location = new System.Drawing.Point(425, 7);
+            this.label6.Location = new System.Drawing.Point(448, 7);
             this.label6.Margin = new System.Windows.Forms.Padding(13, 0, 13, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(166, 79);
@@ -348,6 +348,7 @@ namespace Bovelo
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -360,6 +361,7 @@ namespace Bovelo
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox2.Location = new System.Drawing.Point(823, 138);
@@ -371,6 +373,7 @@ namespace Bovelo
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox3.Controls.Add(this.button11);
             this.groupBox3.Controls.Add(this.button10);
             this.groupBox3.Controls.Add(this.groupBox6);

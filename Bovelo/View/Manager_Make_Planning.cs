@@ -15,22 +15,27 @@ namespace Bovelo
     {
         private App newApp = new App();
         private User user = new User("Manager", false, false, false);
+        private int maxHoursPerWeek;
         internal Manager_Make_Planning(User currentUser)
         {
             this.user = currentUser;
             InitializeComponent();
             newApp.SetBikePartList();
             newApp.SetBikeModelList();
-            var weekNameChoice= Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
-            comboBox1.DataSource = weekNameChoice;
+            newApp.SetUserList();
+            maxHoursPerWeek = newApp.GetMaxWorkingTimePerWeek();
+            comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {         
             if (dataGridView1.CurrentCell.Value.ToString() == "Modify")
             {
-                MessageBox.Show("Choose a week from the calendar ");
-                
+                if(newWeekToAssign.Text.ToString() == string.Empty)
+                {
+                    MessageBox.Show("Choose a week from the calendar ");
+                }
+
                 //dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Week  " + calendarWeek.ToString();
                 weekToModify.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
                 idBike.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();   
@@ -53,6 +58,7 @@ namespace Bovelo
             int t = 0;
             dataGridView1.Rows.Clear();
             TimeSpan totalTime=new TimeSpan();
+            
             //dataGridView2.Rows.Clear();
             //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
             string clientName1 = "";
@@ -115,12 +121,14 @@ namespace Bovelo
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
 
             double minutes = totalTime.TotalMinutes % 60;
-            double time = (totalTime.TotalMinutes - minutes) / 60;
-            Console.WriteLine(minutes.ToString());
-            label12.Text = time.ToString() + " hours and " + minutes.ToString() + " Minutes" ;
-            //label12.Text = totalTime.TotalHours.ToString();
-            var weekNameChoice = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
-            comboBox1.DataSource = weekNameChoice;
+            var hours =(int)((double)(totalTime.TotalHours));
+            label12.Text = hours.ToString() + " hours and " + minutes.ToString() + " Minutes" ;
+            label14.Text = maxHoursPerWeek.ToString() + " hours ";
+            if (totalTime.TotalMinutes >= maxHoursPerWeek * 60)
+            {
+                MessageBox.Show("You are above the recommended worktime for your number of Assemblers ");
+            }
+
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -146,6 +154,8 @@ namespace Bovelo
             {
                 string weekName = textBox1.Text;
                 Manager.SetNewPlanning(user.planningCart, weekName);
+                comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
+                Manager_Make_Planning_Load( sender, e);
             }
         } 
 
@@ -169,6 +179,7 @@ namespace Bovelo
                 string newWeek = newWeekToAssign.Text.ToString();
                 string currentWeek = weekToModify.Text.ToString();
                 Manager.UpdateSchedule(id, newWeek, currentWeek);
+                comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
                 Manager_Make_Planning_Load(sender, e);
             }
         }
@@ -213,5 +224,6 @@ namespace Bovelo
         {
 
         }
+
     }
 }

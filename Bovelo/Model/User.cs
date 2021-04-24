@@ -15,9 +15,7 @@ namespace Bovelo
         public List<ItemBike> cart = new List<ItemBike>();//cart of bikes used by representative
         public List<ItemPart> cartPart = new List<ItemPart>();
         public List<List<string>> planningCart = new List<List<string>>();
-
-        //public List<BikePart> bikePartCart = new List<BikePart>(); //cart of bikePart used by production manager to order parts
-        //public List<Bike> planningCart = new List<Bike>();//"cart" of Bikes used by production manager to create a planning
+        private int maxHoursPerWeekPer = 40;
 
         public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
@@ -27,8 +25,6 @@ namespace Bovelo
             userType.Add("Assembler", isAssembler);
 
         }
-        //Will generalize the functions : emptyCart();increment;decrement;deleteItem and maybe addtocart and getCart list
-
 
         //REPRESENTATIVE METHODS
         public void AddToCart(Bike bike, int quantity) //adds a bike to cart with the quantity
@@ -97,31 +93,10 @@ namespace Bovelo
         {
             cart.Clear();
         }
-        public void GetTimeBeforeShipping() { }
 
 
         //PRODUCTION MANAGER METHODS
 
-        
-        public List<List<string>> GetPlanningCartList()
-        {
-            /*var planningAsList = new List<List<string>>();
-            int id = 0;
-            foreach(var item in planningCart)
-            {
-                var bikeInfo = new List<string>();
-                bikeInfo.Add(item[0]);  //elem 0
-                bikeInfo.Add(item[1]);  //elem 1
-                bikeInfo.Add(item[2]);  //elem 2
-                bikeInfo.Add(item[3]);  //elem 3
-                //bikeInfo.Add();
-                planningAsList.Add(bikeInfo);
-            }*/
-            var Plan = new List<List<string>>();
-            
-
-            return Plan;
-        }
 
         public void AddToPlanningCart(Bike bike,int id)//adds a bike from an order to the planning of the week
         {
@@ -132,13 +107,16 @@ namespace Bovelo
         {
             planningCart.Clear();
         }
-        public void GetBikePartInvoice() { }//Maybe in app
-        public void AddBikePartToCart() { } //and create a bikePart cart
 
         //ASSEMBLER METHODS
-        public void GetPlanning() { }//already in app
-        public void GetBikeParts() { }//location of the bikeParts
-        public void SetBikeState() { }//Maybe better in the planning class
+        public int GetMaxHoursPerWeek()
+        {
+            return maxHoursPerWeekPer;
+        }
+        public void SetMaxHoursPerWeek(int hoursPerWeek)
+        {
+            maxHoursPerWeekPer = hoursPerWeek;
+        }
 
     }
 }
