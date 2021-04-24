@@ -24,6 +24,7 @@ namespace Bovelo
             maxValue = incomingMaxValue;
             label1.Text = " Please enter number of bike to use from the stock :\n maximum value = " + maxValue;
             window = incomingWindow;
+            textBox1.Text = "0";
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -39,15 +40,16 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(bikeType[0] + " " + bikeType[1] + " " + bikeType[2] + "|" + Int32.Parse(textBox1.Text) + "|"+orderId);
-            if (Int32.Parse(textBox1.Text) > maxValue)
-            {
-                textBox1.Text = maxValue.ToString();
-                MessageBox.Show("Stock quantity must be higher or bike already satisfied");
-            }
-            else
+            if (textBox1.Text != "" && (Int32.Parse(textBox1.Text) > maxValue))
             {
                 Manager.ReplaceBikeFromTheStock(bikeType, Int32.Parse(textBox1.Text), orderId);
                 this.Hide();
+            }
+            else
+            {
+                textBox1.Text = maxValue.ToString();
+                MessageBox.Show("Stock quantity must be higher or bike already satisfied");
+                this.Close();
             }
             window.LoadBikeStock();
             window.LoadBikeOrder();
