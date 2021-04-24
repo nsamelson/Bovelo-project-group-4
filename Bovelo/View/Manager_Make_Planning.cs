@@ -122,7 +122,7 @@ namespace Bovelo
 
             double minutes = totalTime.TotalMinutes % 60;
             var hours =(int)((double)(totalTime.TotalHours));
-            label12.Text = hours.ToString() + " hours and " + minutes.ToString() + " Minutes" ;
+            label12.Text = hours.ToString() + " hours and " + minutes.ToString() + " minutes" ;
             label14.Text = maxHoursPerWeek.ToString() + " hours ";
             if (totalTime.TotalMinutes >= maxHoursPerWeek * 60)
             {

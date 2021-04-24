@@ -81,7 +81,9 @@ namespace Bovelo
                     i++;
                 }
             }
-            label9.Text = Math.Round(result.TotalHours,2).ToString() + " hours";
+            var minutes = result.TotalMinutes % 60;
+            var hours = (int)((double)(result.TotalHours));
+            label9.Text = hours.ToString() + " hours and " + minutes.ToString() + " minutes";
         }
        
         private void button7_Click(object sender, EventArgs e)
