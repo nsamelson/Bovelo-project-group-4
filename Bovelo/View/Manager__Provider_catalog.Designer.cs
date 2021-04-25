@@ -97,7 +97,8 @@ namespace Bovelo
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.Blue;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Location = new System.Drawing.Point(1617, 524);
             this.button2.Margin = new System.Windows.Forms.Padding(8, 6, 8, 6);
             this.button2.Name = "button2";
@@ -109,6 +110,7 @@ namespace Bovelo
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -127,6 +129,7 @@ namespace Bovelo
             this.dataGridView1.Location = new System.Drawing.Point(227, 102);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 10;
             this.dataGridView1.Size = new System.Drawing.Size(729, 541);
             this.dataGridView1.TabIndex = 15;
@@ -139,6 +142,7 @@ namespace Bovelo
             this.Id_order_details.HeaderText = "Id parts";
             this.Id_order_details.MinimumWidth = 50;
             this.Id_order_details.Name = "Id_order_details";
+            this.Id_order_details.ReadOnly = true;
             // 
             // Column2
             // 
@@ -147,6 +151,7 @@ namespace Bovelo
             this.Column2.HeaderText = "Name :";
             this.Column2.MinimumWidth = 60;
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             // 
             // Column3
             // 
@@ -155,6 +160,7 @@ namespace Bovelo
             this.Column3.HeaderText = "Price";
             this.Column3.MinimumWidth = 50;
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             // 
             // Column4
             // 
@@ -163,6 +169,7 @@ namespace Bovelo
             this.Column4.HeaderText = "Provider";
             this.Column4.MinimumWidth = 75;
             this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
             // 
             // Quantity
             // 
@@ -171,6 +178,7 @@ namespace Bovelo
             this.Quantity.HeaderText = "Quantity in stock";
             this.Quantity.MinimumWidth = 85;
             this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
             // 
             // Quantity_in_a_week
             // 
@@ -179,6 +187,7 @@ namespace Bovelo
             this.Quantity_in_a_week.HeaderText = "Quantity in a week";
             this.Quantity_in_a_week.MinimumWidth = 90;
             this.Quantity_in_a_week.Name = "Quantity_in_a_week";
+            this.Quantity_in_a_week.ReadOnly = true;
             // 
             // Add
             // 
@@ -187,6 +196,7 @@ namespace Bovelo
             this.Add.HeaderText = "Add to Cart";
             this.Add.MinimumWidth = 60;
             this.Add.Name = "Add";
+            this.Add.ReadOnly = true;
             this.Add.Text = "Add";
             this.Add.ToolTipText = "Add";
             this.Add.UseColumnTextForButtonValue = true;
@@ -207,6 +217,7 @@ namespace Bovelo
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
@@ -364,19 +375,22 @@ namespace Bovelo
             this.labelPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPrice.AutoSize = true;
             this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrice.Location = new System.Drawing.Point(1725, 287);
+            this.labelPrice.Location = new System.Drawing.Point(1656, 261);
             this.labelPrice.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.labelPrice.MaximumSize = new System.Drawing.Size(100, 90);
+            this.labelPrice.MinimumSize = new System.Drawing.Size(42, 25);
             this.labelPrice.Name = "labelPrice";
             this.labelPrice.Size = new System.Drawing.Size(42, 25);
             this.labelPrice.TabIndex = 34;
             this.labelPrice.Text = "0 €";
+            this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1607, 286);
+            this.label4.Location = new System.Drawing.Point(1640, 236);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(127, 25);
