@@ -11,6 +11,8 @@ using iText.Kernel.Pdf.Canvas.Draw;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.IO;
+
 namespace Bovelo
 {
     public static class ExportData
@@ -21,12 +23,19 @@ namespace Bovelo
             date = date.Replace('/', '_');
             date = date.Replace(' ', '_');
             date = date.Replace(':', '_');
-            string path = Environment.CurrentDirectory;
-            string directory = @"../../facture/bike/" + client + "_" + date + ".pdf";
+            string path = Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())) ;
+            string directory = path;
             if (client == "Manager")
             {
-                directory = @"../../facture/part/" + client + "_" + date + ".pdf";
+                Directory.CreateDirectory(path+ @"\facture\part\");
+                directory += @"\facture\part\" + client + "_" + date + ".pdf";
             }
+            else
+            {
+                Directory.CreateDirectory(path + @"\facture\bike\");
+                directory += @"\facture\bike\" + client + "_" + date + ".pdf";
+            }
+            Directory.CreateDirectory(path);
             PdfWriter writer = new PdfWriter(directory);
             PdfDocument pdf = new PdfDocument(writer);
             Document document = new Document(pdf);
@@ -100,6 +109,7 @@ namespace Bovelo
             }
             // Close document
             document.Close();
+            System.Diagnostics.Process.Start(directory); //open file
         }
         //put DataBaseBackup method here
     }
