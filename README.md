@@ -44,6 +44,7 @@ An interface that updates the classes it's implemented in.
 - *User activity Diagram :* https://drive.google.com/file/d/1Gk_sozGZPf4hDu128_76lsnuZxIa-klZ/view  
 
 ### **2.2. Links :**  
+- *Project report :* https://www.overleaf.com/read/mcfprmtmvqpj
 - *Design brief :* https://claco.ecam.be/apiv2/resource_file79568/raw
 - *Azure Devops :* https://dev.azure.com/ECAM3BE/Groupe4  
 - *Bike Parts List:* https://ecambxl-my.sharepoint.com/:t:/g/personal/17010_ecam_be/EaTMBrHmODJBg-rELj5LX1MB87OP6OkHwTrc_O8-oE5qKg?e=kAzBUZ
