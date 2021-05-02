@@ -150,11 +150,11 @@
     <Compile Include="View\Assembler_Planning.Designer.cs">
       <DependentUpon>Assembler_Planning.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Cart.cs">
+    <Compile Include="View\Representative_Cart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Cart.Designer.cs">
-      <DependentUpon>Cart.cs</DependentUpon>
+    <Compile Include="View\Representative_Cart.Designer.cs">
+      <DependentUpon>Representative_Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Assembler_MainHome.cs">
       <SubType>Form</SubType>
@@ -180,11 +180,11 @@
     <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\MainHome.cs">
+    <Compile Include="View\Representative_MainHome.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\MainHome.Designer.cs">
-      <DependentUpon>MainHome.cs</DependentUpon>
+    <Compile Include="View\Representative_MainHome.Designer.cs">
+      <DependentUpon>Representative_MainHome.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Manager_Create_Model.cs">
       <SubType>Form</SubType>
@@ -216,11 +216,11 @@
     <Compile Include="View\Manager_Replace_bike_from_stock.Designer.cs">
       <DependentUpon>Manager_Replace_bike_from_stock.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Order.cs">
+    <Compile Include="View\Representative_Order.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Order.Designer.cs">
-      <DependentUpon>Order.cs</DependentUpon>
+    <Compile Include="View\Representative_Order.Designer.cs">
+      <DependentUpon>Representative_Order.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Manager__Provider_catalog.cs">
       <SubType>Form</SubType>
@@ -240,11 +240,11 @@
     <Compile Include="View\Representative_OrderDetails_Popup.Designer.cs">
       <DependentUpon>Representative_OrderDetails_Popup.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\ShowBike.cs">
+    <Compile Include="View\Representative_ShowBike.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\ShowBike.Designer.cs">
-      <DependentUpon>ShowBike.cs</DependentUpon>
+    <Compile Include="View\Representative_ShowBike.Designer.cs">
+      <DependentUpon>Representative_ShowBike.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Manager_AssemblerWork.cs">
       <SubType>Form</SubType>
@@ -263,8 +263,8 @@
     <EmbeddedResource Include="View\Assembler_Planning.resx">
       <DependentUpon>Assembler_Planning.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Cart.resx">
-      <DependentUpon>Cart.cs</DependentUpon>
+    <EmbeddedResource Include="View\Representative_Cart.resx">
+      <DependentUpon>Representative_Cart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_Stock_Popup.resx">
       <DependentUpon>Manager_Stock_Popup.cs</DependentUpon>
@@ -275,8 +275,8 @@
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\MainHome.resx">
-      <DependentUpon>MainHome.cs</DependentUpon>
+    <EmbeddedResource Include="View\Representative_MainHome.resx">
+      <DependentUpon>Representative_MainHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_Create_Model.resx">
       <DependentUpon>Manager_Create_Model.cs</DependentUpon>
@@ -296,8 +296,8 @@
     <EmbeddedResource Include="View\Manager__Provider_orders.resx">
       <DependentUpon>Manager__Provider_orders.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Order.resx">
-      <DependentUpon>Order.cs</DependentUpon>
+    <EmbeddedResource Include="View\Representative_Order.resx">
+      <DependentUpon>Representative_Order.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager__Provider_catalog.resx">
       <DependentUpon>Manager__Provider_catalog.cs</DependentUpon>
@@ -306,8 +306,8 @@
     <EmbeddedResource Include="View\Representative_OrderDetails_Popup.resx">
       <DependentUpon>Representative_OrderDetails_Popup.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\ShowBike.resx">
-      <DependentUpon>ShowBike.cs</DependentUpon>
+    <EmbeddedResource Include="View\Representative_ShowBike.resx">
+      <DependentUpon>Representative_ShowBike.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Manager_AssemblerWork.resx">
       <DependentUpon>Manager_AssemblerWork.cs</DependentUpon>

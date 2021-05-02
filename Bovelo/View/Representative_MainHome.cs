@@ -58,7 +58,8 @@ namespace Bovelo
                 button5.Visible = false;
             }
             FlowLayoutPanel buttonPanel = new FlowLayoutPanel();
-            buttonPanel.Size = new Size(this.Size.Width -200, this.Size.Height-100);
+            buttonPanel.AutoScroll = true;
+            buttonPanel.Size = new Size(this.Size.Width -200, this.Size.Height-150);
             buttonPanel.Location = new Point(200, 100);
             foreach(var model in models)
             {
