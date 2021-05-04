@@ -114,6 +114,10 @@ namespace Bovelo
         {
 
         }
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox1.Text = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+        }
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -129,18 +133,29 @@ namespace Bovelo
                 }
                 i++;
             }
-            Form f = Application.OpenForms["Manager_Stock_Popup"];
-            if (f != null)
+            if (textBox1.Text == string.Empty)
             {
-                string message = "You didn't Validate your Changes, validate them or close the window !";
-                var result =  MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                f.Activate();
+                string message = "Choose an order ID please !";
+                var result = MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Manager_Stock_Popup msp = new Manager_Stock_Popup(this, new List<string> { dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() }, Int32.Parse(textBox1.Text), maxValue);
-                msp.Show();// Showing the Login window
+                Form f = Application.OpenForms["Manager_Stock_Popup"];
+                if (f != null)
+                {
+                    string message = "You didn't Validate your Changes, validate them or close the window !";
+                    var result = MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    f.Activate();
+
+                }
+                else
+                {
+                    Manager_Stock_Popup msp = new Manager_Stock_Popup(this, new List<string> { dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() }, Int32.Parse(textBox1.Text), maxValue);
+                    msp.Show();// Showing the Login window
+                }
+
             }
+            
             
         }
 

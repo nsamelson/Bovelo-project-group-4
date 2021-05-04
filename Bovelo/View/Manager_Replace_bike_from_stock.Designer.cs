@@ -48,14 +48,14 @@ namespace Bovelo
             this.quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityDone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.type_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.size_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.color_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.quantity_stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.replace = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -207,9 +207,11 @@ namespace Bovelo
             this.dataGridView1.Location = new System.Drawing.Point(929, 228);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(5);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 5;
             this.dataGridView1.Size = new System.Drawing.Size(238, 297);
             this.dataGridView1.TabIndex = 28;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // Order_view
@@ -299,42 +301,6 @@ namespace Bovelo
             this.dataGridView3.TabIndex = 30;
             this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
             // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button2.Location = new System.Drawing.Point(927, 181);
-            this.button2.Margin = new System.Windows.Forms.Padding(5);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(238, 37);
-            this.button2.TabIndex = 31;
-            this.button2.Text = "Get Details";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(926, 146);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(239, 27);
-            this.textBox1.TabIndex = 32;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(922, 116);
-            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 19);
-            this.label2.TabIndex = 33;
-            this.label2.Text = "Order ID";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
             // type_stock
             // 
             this.type_stock.HeaderText = "Type";
@@ -367,6 +333,43 @@ namespace Bovelo
             this.replace.Text = "Replace";
             this.replace.ToolTipText = "Replace";
             this.replace.UseColumnTextForButtonValue = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button2.Location = new System.Drawing.Point(927, 181);
+            this.button2.Margin = new System.Windows.Forms.Padding(5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(238, 37);
+            this.button2.TabIndex = 31;
+            this.button2.Text = "Get Details";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(926, 146);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(239, 27);
+            this.textBox1.TabIndex = 32;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(922, 116);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 19);
+            this.label2.TabIndex = 33;
+            this.label2.Text = "Order ID";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Manager_Replace_bike_from_stock
             // 

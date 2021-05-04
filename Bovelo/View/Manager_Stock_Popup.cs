@@ -43,7 +43,7 @@ namespace Bovelo
             if (textBox1.Text != "" && (Int32.Parse(textBox1.Text) > maxValue))
             {
                 Manager.ReplaceBikeFromTheStock(bikeType, Int32.Parse(textBox1.Text), orderId);
-                this.Hide();
+                this.Close();
             }
             else
             {
