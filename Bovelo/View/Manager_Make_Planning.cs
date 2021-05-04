@@ -175,7 +175,7 @@ namespace Bovelo
         {
             if(newWeekToAssign.Text.ToString() == string.Empty )
             {
-                string message = "Choose a week id from the calendar !";
+                message = "Choose a week id from the calendar !";
                 MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
@@ -198,7 +198,7 @@ namespace Bovelo
             string weekName = textBox1.Text;
             if (weekName == string.Empty)
             {
-                string message = "Choose the week ID from the calendar ! ";
+                message = "Choose the week ID from the calendar ! ";
                 MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else

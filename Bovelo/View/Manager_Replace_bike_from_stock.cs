@@ -129,8 +129,19 @@ namespace Bovelo
                 }
                 i++;
             }
-            Manager_Stock_Popup msp = new Manager_Stock_Popup(this,new List<string> { dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() }, Int32.Parse(textBox1.Text), maxValue);
-            msp.Show();// Showing the Login window
+            Form f = Application.OpenForms["Manager_Stock_Popup"];
+            if (f != null)
+            {
+                string message = "You didn't Validate your Changes, validate them or close the window !";
+                var result =  MessageBox.Show(message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                f.Activate();
+            }
+            else
+            {
+                Manager_Stock_Popup msp = new Manager_Stock_Popup(this, new List<string> { dataGridView3.Rows[e.RowIndex].Cells[0].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[1].Value.ToString(), dataGridView3.Rows[e.RowIndex].Cells[2].Value.ToString() }, Int32.Parse(textBox1.Text), maxValue);
+                msp.Show();// Showing the Login window
+            }
+            
         }
 
         private void button2_Click(object sender, EventArgs e)
