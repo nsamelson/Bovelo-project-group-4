@@ -40,7 +40,7 @@ namespace Bovelo
         private void button1_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(bikeType[0] + " " + bikeType[1] + " " + bikeType[2] + "|" + Int32.Parse(textBox1.Text) + "|"+orderId);
-            if (textBox1.Text != "" && (Int32.Parse(textBox1.Text) > maxValue))
+            if (textBox1.Text != "" && (Int32.Parse(textBox1.Text) <= maxValue))
             {
                 Manager.ReplaceBikeFromTheStock(bikeType, Int32.Parse(textBox1.Text), orderId);
                 this.Close();
