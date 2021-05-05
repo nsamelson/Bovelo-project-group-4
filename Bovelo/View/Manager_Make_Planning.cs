@@ -82,6 +82,7 @@ namespace Bovelo
                     if (planifiedOrderDetails[7] == newWeekToAssign.Text.ToString() && planifiedOrderDetails[5] != "Closed")
                     {
                         dataGridView1.Rows.Add();
+                        dataGridView1.Rows[j].Cells[0].Value = Manager.GetClientName(Int32.Parse(planifiedOrderDetails[6]));
                         dataGridView1.Rows[j].Cells[1].Value = planifiedOrderDetails[6];//Id Order 
                         dataGridView1.Rows[j].Cells[2].Value = planifiedOrderDetails[0];//id bike 
                         dataGridView1.Rows[j].Cells[3].Value = planifiedOrderDetails[1];//type 
@@ -92,9 +93,8 @@ namespace Bovelo
                         dataGridView1.Rows[j].Cells[8].Value = planifiedOrderDetails[7];//plannified week
                         j++;
                     }
-                    break;
                 }
-                if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
+                else if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
                 {
                     if (planifiedOrderDetails[5] != "Closed")
                     {
@@ -117,8 +117,7 @@ namespace Bovelo
                         TimeSpan toAdd = new TimeSpan(0, newBike.totalTime, 0);
                         totalTime += toAdd;
                         i++;
-                    }
-                    
+                    } 
                 }
             }
             computeTime(totalTime);
