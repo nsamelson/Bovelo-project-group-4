@@ -52,11 +52,12 @@ namespace Bovelo
                 DataBase.SendToDB(query);
             }
         }
-        public static void SetNewPlanning(List<List<string>> planningCartList, string week)//Sets a new planning of the week
+        public static void SetNewPlanning(List<List<string>> planningCartList, int week)//Sets a new planning of the week
         {
             int orderDetailsId;
             foreach (var bikesToBuild in planningCartList)
             {
+                Console.WriteLine("Week: " + week +  "Order Id : " + bikesToBuild[0]  );
                 orderDetailsId = Int32.Parse(bikesToBuild[0]);
                 string queryPD = "INSERT INTO Detailed_Schedules (Week_Name,Id_Order_Details) VALUES('" + week + "' , '" + orderDetailsId + "'); ";
                 DataBase.SendToDB(queryPD);

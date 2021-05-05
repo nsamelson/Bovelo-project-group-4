@@ -17,6 +17,7 @@ namespace Bovelo
         private User user = new User("Manager", false, false, false);
         private int maxHoursPerWeek;
         private string message;
+        private bool updateButton = false;
         internal Manager_Make_Planning(User currentUser)
         {
             this.user = currentUser;
@@ -47,17 +48,28 @@ namespace Bovelo
             }
         }
 
-        private void Manager_Make_Planning_Load(object sender, EventArgs e)
+        private void computeTime(TimeSpan totalTime)
+        {
+            double minutes = totalTime.TotalMinutes % 60;
+            var hours = (int)((double)(totalTime.TotalHours));
+            label12.Text = hours.ToString() + " hours and " + minutes.ToString() + " minutes";
+            label14.Text = maxHoursPerWeek.ToString() + " hours ";
+            if (totalTime.TotalMinutes >= maxHoursPerWeek * 60)
+            {
+                message = "You are above the recommended worktime for your number of Assemblers ";
+                MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+        private void loadPlanifiedBikes()
         {
             int i = 0;
+            int j = 0;
             int t = 0;
             dataGridView1.Rows.Clear();
-            TimeSpan totalTime=new TimeSpan();
-            
-            //dataGridView2.Rows.Clear();
-            //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
+            TimeSpan totalTime = new TimeSpan();
             string clientName1 = "";
             string previousOrder1 = "";
+
             foreach (var planifiedOrderDetails in Manager.GetPlanifiedBikes())
             {
                 //Console.WriteLine("détails in manager plan : " + orderDetails.Count);
@@ -65,9 +77,26 @@ namespace Bovelo
                 BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.color == planifiedOrderDetails[3] && x.size == Int32.Parse(planifiedOrderDetails[2]) && x.type == planifiedOrderDetails[1]);//gets the specific model
                 Bike newBike = new Bike(Int32.Parse(planifiedOrderDetails[0]), model);
                 t += newBike.totalTime;
+                if (updateButton == true && newWeekToAssign.Text != string.Empty)
+                {
+                    if (planifiedOrderDetails[7] == newWeekToAssign.Text.ToString() && planifiedOrderDetails[5] != "Closed")
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[j].Cells[1].Value = planifiedOrderDetails[6];//Id Order 
+                        dataGridView1.Rows[j].Cells[2].Value = planifiedOrderDetails[0];//id bike 
+                        dataGridView1.Rows[j].Cells[3].Value = planifiedOrderDetails[1];//type 
+                        dataGridView1.Rows[j].Cells[4].Value = planifiedOrderDetails[2];//size 
+                        dataGridView1.Rows[j].Cells[5].Value = planifiedOrderDetails[3];//color 
+                        dataGridView1.Rows[j].Cells[6].Value = newBike.totalTime.ToString();
+                        dataGridView1.Rows[j].Cells[7].Value = planifiedOrderDetails[5];//status 
+                        dataGridView1.Rows[j].Cells[8].Value = planifiedOrderDetails[7];//plannified week
+                        j++;
+                    }
+                    break;
+                }
                 if (planifiedOrderDetails[7] == comboBox1.Text.ToString())
                 {
-                    if(planifiedOrderDetails[5] != "Closed")
+                    if (planifiedOrderDetails[5] != "Closed")
                     {
                         dataGridView1.Rows.Add();
                         dataGridView1.Rows[i].Cells[1].Value = planifiedOrderDetails[6];//Id Order 
@@ -83,15 +112,25 @@ namespace Bovelo
                             clientName1 = Manager.GetClientName(Int32.Parse(planifiedOrderDetails[6]));
                             previousOrder1 = planifiedOrderDetails[6];
                         }
+                        
                         dataGridView1.Rows[i].Cells[0].Value = clientName1;//client 
                         TimeSpan toAdd = new TimeSpan(0, newBike.totalTime, 0);
                         totalTime += toAdd;
                         i++;
                     }
-                   
-                }                
-            }          
-            i = 0;
+                    
+                }
+            }
+            computeTime(totalTime);
+        }
+
+        private void Manager_Make_Planning_Load(object sender, EventArgs e)
+        {
+            int i = 0;
+            int t = 0;            
+            dataGridView2.Rows.Clear();
+            //Console.WriteLine("détails in manager plan : " + newApp.getPlanifiedBikes().Count);
+                        
             string clientName = "";
             string previousOrder = "";
             foreach (var nonPlanifiedOrderDetails in Manager.GetNonPlanifiedBikes())
@@ -117,17 +156,6 @@ namespace Bovelo
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
-
-            double minutes = totalTime.TotalMinutes % 60;
-            var hours =(int)((double)(totalTime.TotalHours));
-            label12.Text = hours.ToString() + " hours and " + minutes.ToString() + " minutes" ;
-            label14.Text = maxHoursPerWeek.ToString() + " hours ";
-            if (totalTime.TotalMinutes >= maxHoursPerWeek * 60)
-            {
-                message = "You are above the recommended worktime for your number of Assemblers ";
-                MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -144,13 +172,13 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            dataGridView2.Rows.Clear();
+            //dataGridView2.Rows.Clear();
             message = "Save changes ? ";
             DialogResult dialogResult = MessageBox.Show(message, "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 string weekName = textBox1.Text;
-                Manager.SetNewPlanning(user.planningCart, weekName);
+                Manager.SetNewPlanning(user.planningCart, Int32.Parse(weekName));
                 message = "Your changes has been saved ";
                 MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
@@ -173,6 +201,7 @@ namespace Bovelo
 
         private void button5_Click(object sender, EventArgs e)//update schedule
         {
+            updateButton = true;
             if(newWeekToAssign.Text.ToString() == string.Empty )
             {
                 message = "Choose a week id from the calendar !";
@@ -185,8 +214,9 @@ namespace Bovelo
                 string currentWeek = weekToModify.Text.ToString();
                 Manager.UpdateSchedule(id, newWeek, currentWeek);
                 comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
-                Manager_Make_Planning_Load(sender, e);
+                loadPlanifiedBikes();
             }
+            updateButton = false;
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -223,7 +253,8 @@ namespace Bovelo
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            Manager_Make_Planning_Load(sender,e);
+            loadPlanifiedBikes();
+            //Manager_Make_Planning_Load(sender,e);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
