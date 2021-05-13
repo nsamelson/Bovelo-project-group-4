@@ -143,7 +143,7 @@ namespace Bovelo
             for(int i = 0;i<user.cartPart.Count();i++ )
             {
                 int value = Int32.Parse(dataGridView2.Rows[i].Cells[4].Value.ToString());
-                user.cartPart[i].setQuantity(value);
+                user.cartPart[i].SetQuantity(value);
             }      
             cartLoad();
         }

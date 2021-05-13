@@ -15,7 +15,7 @@ namespace Bovelo
         public List<ItemBike> cart = new List<ItemBike>();//cart of bikes used by representative
         public List<ItemPart> cartPart = new List<ItemPart>();
         public List<List<string>> planningCart = new List<List<string>>();
-        private int maxHoursPerWeekPer = 40;
+        private int maxHoursPerWeek = 40;
 
         public User(string login, bool isRepresentative, bool isProductionManager,bool isAssembler)
         {
@@ -61,29 +61,7 @@ namespace Bovelo
             }
             return price;
         }
-        public void IncrementItem(int idList) //increment the quantity of a bike in cart
-        {
-            if (cart[idList].quantity < 100)
-            {
-                cart[idList].Increment();
-            }
-            else
-            {
-                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.type);
-            }
-        }
-        public void DecrementItem(int idList) //decrement the quantity of a bike in cart
-        {
-            if (cart[idList].quantity > 0)
-            {
-                cart[idList].Decrement();
-            }
-            else
-            {
-                Console.WriteLine("Could not increment 1 Bike of type :" + cart[idList].bike.type);
-            }
-        }
-
+        
         public void DeleteItem(int idList) //deletes an item from the cart
         {
             cart.RemoveAt(idList);
@@ -111,11 +89,11 @@ namespace Bovelo
         //ASSEMBLER METHODS
         public int GetMaxHoursPerWeek()
         {
-            return maxHoursPerWeekPer;
+            return maxHoursPerWeek;
         }
         public void SetMaxHoursPerWeek(int hoursPerWeek)
         {
-            maxHoursPerWeekPer = hoursPerWeek;
+            maxHoursPerWeek = hoursPerWeek;
         }
 
     }

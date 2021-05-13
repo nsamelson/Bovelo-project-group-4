@@ -19,7 +19,7 @@ namespace Bovelo
         {
             return quantity * part.price;
         }
-        public void setQuantity(int quantity)
+        public override void SetQuantity(int quantity)
         {           
             this.quantity = quantity;
             this.price = quantity * this.part.price;

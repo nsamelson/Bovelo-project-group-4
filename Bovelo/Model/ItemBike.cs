@@ -22,7 +22,7 @@ namespace Bovelo
         {
             return quantity * bike.totalTime;
         }
-        public void SetQuantity(int quantity)
+        public override void SetQuantity(int quantity)
         {
             this.quantity = quantity;
             this.price = quantity * this.bike.price;

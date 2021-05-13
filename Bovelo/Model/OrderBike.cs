@@ -66,12 +66,8 @@ namespace Bovelo
         
         public bool GetOrderState()//needs to be tested
         {
-            if (bikeList.TrueForAll(x => x.state["Closed"]))
-            {
-                return true;
-            }
-            else { return false; }
+            return bikeList.TrueForAll(x => x.state["Closed"]);
         }
         
-    }
+    } 
 }

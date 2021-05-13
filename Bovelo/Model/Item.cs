@@ -31,5 +31,9 @@ namespace Bovelo
         {
             return price;
         }
+        public virtual void SetQuantity(int quantity)
+        {
+            this.quantity = quantity;
+        }
     }
 }

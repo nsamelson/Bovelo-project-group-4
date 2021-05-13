@@ -8,7 +8,6 @@ using MySql.Data.MySqlClient;
 
 namespace Bovelo
 {
-    //maybe differenciate into 2 classes (bikeModel which is linked to BikePart(with totaltime,price,type)) and this class which is used only for the orders or be me more logical between app and bike...
     class Bike 
     {
         public Dictionary<string, bool> state = new Dictionary<string, bool>() { { "New",true},{ "Active", false },{ "Closed", false } };
@@ -27,15 +26,6 @@ namespace Bovelo
         {
             this.bikeId = bikeId;
             _model = bikeModel;
-            /*this.Type = Type;
-            this.Size = Size;
-            this.Color = Color;*/
-            //call app to get the model of the bike
-
-
-            /*App newApp = new App();
-            var bikeModels = newApp.getBikeModelList();
-            _model = bikeModels.FirstOrDefault(x => x.Color == Color && x.Size == Size && x.Type == Type);*/
 
             type = _model.type;
             color = _model.color;
