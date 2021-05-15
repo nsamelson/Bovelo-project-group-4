@@ -1,5 +1,5 @@
 -- MySqlBackup.NET 2.0.4
--- Dump Time: 2021-05-15 12:00:10
+-- Dump Time: 2021-05-15 12:14:21
 -- --------------------------------------
 -- Server version 8.0.23 MySQL Community Server - GPL
 
@@ -1703,5 +1703,5 @@ INSERT INTO `Users`(`id_User`,`Login`,`Role`,`Order`) VALUES
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 
--- Dump completed on 2021-05-15 12:00:10
--- Total time: 0:0:0:0:738 (d:h:m:s:ms)
+-- Dump completed on 2021-05-15 12:14:22
+-- Total time: 0:0:0:0:789 (d:h:m:s:ms)
