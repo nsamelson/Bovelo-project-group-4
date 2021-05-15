@@ -235,7 +235,6 @@ namespace Bovelo
             this.Name = "MainHome";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bovelo V2.0";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainHome_Load);
             this.ResizeEnd += new System.EventHandler(this.MainHome_ResizeEnd);

@@ -562,12 +562,12 @@ namespace Bovelo
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Monotype Corsiva", 20.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.SteelBlue;
             this.label1.Location = new System.Drawing.Point(1038, 9);
             this.label1.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 31);
+            this.label1.Size = new System.Drawing.Size(100, 33);
             this.label1.TabIndex = 2;
             this.label1.Text = "Manager";
             // 
@@ -589,12 +589,12 @@ namespace Bovelo
             this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.SteelBlue;
             this.label10.Location = new System.Drawing.Point(407, 6);
             this.label10.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(417, 73);
+            this.label10.Size = new System.Drawing.Size(336, 79);
             this.label10.TabIndex = 1;
             this.label10.Text = "Create Model";
             // 
@@ -617,12 +617,12 @@ namespace Bovelo
             // 
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Monotype Corsiva", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.SteelBlue;
             this.label11.Location = new System.Drawing.Point(6, 6);
             this.label11.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(229, 73);
+            this.label11.Size = new System.Drawing.Size(189, 79);
             this.label11.TabIndex = 0;
             this.label11.Text = "Bovelo";
             // 
@@ -659,12 +659,12 @@ namespace Bovelo
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Monotype Corsiva", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.SteelBlue;
             this.label12.Location = new System.Drawing.Point(33, 2);
             this.label12.Margin = new System.Windows.Forms.Padding(22, 0, 22, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(174, 37);
+            this.label12.Size = new System.Drawing.Size(133, 39);
             this.label12.TabIndex = 1;
             this.label12.Text = "release 3.0";
             // 
