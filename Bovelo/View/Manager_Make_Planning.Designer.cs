@@ -696,7 +696,6 @@ namespace Bovelo
             this.Name = "Manager_Make_Planning";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manager_Make_Planning";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager_Make_Planning_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

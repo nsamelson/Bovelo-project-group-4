@@ -469,7 +469,6 @@ namespace Bovelo
             this.Name = "Manager_MainHome";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manager_MainHome";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager_MainHome_Load);
             this.panel3.ResumeLayout(false);

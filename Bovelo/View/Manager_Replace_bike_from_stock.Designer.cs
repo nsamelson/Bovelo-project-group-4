@@ -219,12 +219,14 @@ namespace Bovelo
             this.Order_view.FillWeight = 60.9137F;
             this.Order_view.HeaderText = "ID Order";
             this.Order_view.Name = "Order_view";
+            this.Order_view.ReadOnly = true;
             // 
             // clientName
             // 
             this.clientName.FillWeight = 139.0863F;
             this.clientName.HeaderText = "Client name";
             this.clientName.Name = "clientName";
+            this.clientName.ReadOnly = true;
             // 
             // dataGridView2
             // 
@@ -391,7 +393,6 @@ namespace Bovelo
             this.Name = "Manager_Replace_bike_from_stock";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Manager_Replace_bike_from_stock";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager_Replace_bike_from_stock_Load);
             this.panel1.ResumeLayout(false);

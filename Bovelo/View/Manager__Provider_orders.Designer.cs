@@ -392,7 +392,6 @@ namespace Bovelo
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager__Provider_orders";
             this.ShowIcon = false;
-            this.Text = "Provider_orders";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Manager__Provider_orders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

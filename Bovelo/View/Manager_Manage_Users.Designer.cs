@@ -280,7 +280,6 @@ namespace Bovelo
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager_Manage_Users";
             this.ShowIcon = false;
-            this.Text = "Manager_Manage_Users";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

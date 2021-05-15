@@ -29,7 +29,7 @@ namespace Bovelo
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button7 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Id_order_details = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,8 +98,8 @@ namespace Bovelo
             // 
             // Id_order_details
             // 
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Id_order_details.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Id_order_details.DefaultCellStyle = dataGridViewCellStyle2;
             this.Id_order_details.FillWeight = 49.79281F;
             this.Id_order_details.HeaderText = "Id parts";
             this.Id_order_details.MinimumWidth = 6;
@@ -282,7 +282,6 @@ namespace Bovelo
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Manager_Manager_Stock";
             this.ShowIcon = false;
-            this.Text = "Manager stock";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
