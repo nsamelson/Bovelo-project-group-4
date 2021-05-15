@@ -249,5 +249,10 @@ namespace Bovelo
                 System.Diagnostics.Process.Start(new_path);
             }
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

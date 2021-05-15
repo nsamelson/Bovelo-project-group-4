@@ -210,7 +210,7 @@ namespace Bovelo
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(99, 221);
+            this.textBox4.Location = new System.Drawing.Point(99, 210);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(172, 26);
             this.textBox4.TabIndex = 8;
@@ -218,7 +218,7 @@ namespace Bovelo
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(7, 207);
+            this.label13.Location = new System.Drawing.Point(7, 195);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(78, 40);
             this.label13.TabIndex = 7;
@@ -234,7 +234,7 @@ namespace Bovelo
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(567, 100);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(296, 670);
+            this.groupBox2.Size = new System.Drawing.Size(296, 644);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Existing models";
@@ -244,7 +244,7 @@ namespace Bovelo
             this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(139, 620);
+            this.button5.Location = new System.Drawing.Point(139, 594);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(151, 44);
             this.button5.TabIndex = 7;
@@ -273,7 +273,7 @@ namespace Bovelo
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 10;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(284, 585);
+            this.dataGridView1.Size = new System.Drawing.Size(284, 560);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -330,7 +330,7 @@ namespace Bovelo
             this.groupBox3.Controls.Add(this.dataGridView2);
             this.groupBox3.Location = new System.Drawing.Point(869, 100);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(638, 670);
+            this.groupBox3.Size = new System.Drawing.Size(469, 644);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Link parts to a model";
@@ -340,9 +340,9 @@ namespace Bovelo
             this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(16, 619);
+            this.button9.Location = new System.Drawing.Point(16, 594);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(169, 44);
+            this.button9.Size = new System.Drawing.Size(129, 44);
             this.button9.TabIndex = 11;
             this.button9.Text = "Load BikeParts";
             this.button9.UseVisualStyleBackColor = true;
@@ -352,7 +352,7 @@ namespace Bovelo
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(399, 631);
+            this.label5.Location = new System.Drawing.Point(322, 568);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 9;
@@ -363,9 +363,9 @@ namespace Bovelo
             this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(214, 619);
+            this.button6.Location = new System.Drawing.Point(151, 594);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(177, 44);
+            this.button6.Size = new System.Drawing.Size(155, 44);
             this.button6.TabIndex = 8;
             this.button6.Text = "Link parts to model";
             this.button6.UseVisualStyleBackColor = true;
@@ -375,10 +375,11 @@ namespace Bovelo
             // 
             this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(481, 623);
+            this.comboBox1.Location = new System.Drawing.Point(312, 606);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(151, 28);
             this.comboBox1.TabIndex = 10;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dataGridView2
             // 
@@ -396,11 +397,11 @@ namespace Bovelo
             this.Price,
             this.Quantities,
             this.Quantity});
-            this.dataGridView2.Location = new System.Drawing.Point(6, 26);
+            this.dataGridView2.Location = new System.Drawing.Point(16, 25);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 10;
             this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(626, 585);
+            this.dataGridView2.Size = new System.Drawing.Size(434, 538);
             this.dataGridView2.TabIndex = 0;
             // 
             // idPart
@@ -466,7 +467,7 @@ namespace Bovelo
             this.groupBox4.Location = new System.Drawing.Point(208, 416);
             this.groupBox4.MaximumSize = new System.Drawing.Size(500, 808);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(353, 354);
+            this.groupBox4.Size = new System.Drawing.Size(353, 328);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Add a new Bike Part to the Database";
@@ -474,7 +475,7 @@ namespace Bovelo
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 268);
+            this.label9.Location = new System.Drawing.Point(6, 253);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 20);
             this.label9.TabIndex = 8;
@@ -482,7 +483,7 @@ namespace Bovelo
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(99, 262);
+            this.textBox3.Location = new System.Drawing.Point(99, 249);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(172, 26);
             this.textBox3.TabIndex = 7;
@@ -492,7 +493,7 @@ namespace Bovelo
             this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button8.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Location = new System.Drawing.Point(88, 304);
+            this.button8.Location = new System.Drawing.Point(88, 278);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(199, 44);
             this.button8.TabIndex = 6;
@@ -533,7 +534,7 @@ namespace Bovelo
             this.checkedListBox3.Items.AddRange(new object[] {
             "26",
             "28"});
-            this.checkedListBox3.Location = new System.Drawing.Point(99, 152);
+            this.checkedListBox3.Location = new System.Drawing.Point(99, 149);
             this.checkedListBox3.Name = "checkedListBox3";
             this.checkedListBox3.Size = new System.Drawing.Size(172, 46);
             this.checkedListBox3.TabIndex = 2;
@@ -683,6 +684,7 @@ namespace Bovelo
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Manager_Create_Model";
             this.ShowIcon = false;
+            this.Text = "Manager_Create_Model";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
