@@ -54,8 +54,8 @@ namespace Bovelo
                     dataGridView2.Rows[i].Cells[0].Value = row[0];
                     dataGridView2.Rows[i].Cells[1].Value = row[1];
                     dataGridView2.Rows[i].Cells[2].Value = row[2];
-                    dataGridView2.Rows[i].Cells[3].Value = row[3];
-                    dataGridView2.Rows[i].Cells[4].Value = Manager.GetQuantityNotClosed(row[0], Int32.Parse(row[2]), row[1],textBox1.Text);
+                    dataGridView2.Rows[i].Cells[3].Value = Manager.GetQuantity(row[0], Int32.Parse(row[2]), row[1], textBox1.Text);
+                    dataGridView2.Rows[i].Cells[4].Value = Manager.GetQuantityClosed(row[0], Int32.Parse(row[2]), row[1],textBox1.Text);
                     i++;
                 }
             }
@@ -131,7 +131,6 @@ namespace Bovelo
                 {
                     maxValue = Math.Min(Int32.Parse(dataGridView3.Rows[e.RowIndex].Cells[3].Value.ToString()),(Int32.Parse(dataGridView2.Rows[i].Cells[3].Value.ToString())-Int32.Parse(dataGridView2.Rows[i].Cells[4].Value.ToString())));
                 }
-                i++;
             }
             if (textBox1.Text == string.Empty)
             {

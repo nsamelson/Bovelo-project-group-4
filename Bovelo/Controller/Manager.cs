@@ -163,7 +163,7 @@ namespace Bovelo
 
         public static List<List<string>> GetOrder(string IDOrder)
         {
-            string sql = "SELECT * FROM  Order_Details WHERE Id_Order=" + IDOrder + ";";
+            string sql = "SELECT * FROM Bovelo.Order_Details WHERE Bike_Status='New' AND Id_Order=" + IDOrder + ";";
             var order = DataBase.ConnectToDB(sql);
             return order;
         }
@@ -198,11 +198,16 @@ namespace Bovelo
             }
             return bikesInStock;
         }
-        internal static int GetQuantityNotClosed(string type,int size,string color,string idOrder)
+        internal static int GetQuantityClosed(string type,int size,string color,string idOrder)
         {
             string sql = "SELECT COUNT(*) FROM Bovelo.Order_Details WHERE Bike_Type='"+type+"' AND Bike_Size="+size+" AND Bike_Color ='"+color+ "' AND (Bike_Status='Closed' OR Bike_Status='Active') AND Id_Order=" + idOrder+";";
             var stockOfBike = DataBase.ConnectToDB(sql);
-            Console.WriteLine(sql+Int32.Parse(stockOfBike[0][0]));
+            return Int32.Parse(stockOfBike[0][0]);
+        }
+        internal static int GetQuantity(string type, int size, string color, string idOrder)
+        {
+            string sql = "SELECT COUNT(*) FROM Bovelo.Order_Details WHERE Bike_Type='" + type + "' AND Bike_Size=" + size + " AND Bike_Color ='" + color + "' AND Id_Order=" + idOrder + ";";
+            var stockOfBike = DataBase.ConnectToDB(sql);
             return Int32.Parse(stockOfBike[0][0]);
         }
         public static void ReplaceBikeFromTheStock(List<string> bikeType, int numberOfBike, int orderId)
@@ -223,8 +228,7 @@ namespace Bovelo
                                 if (!toSwap.ContainsValue(Int32.Parse(bikeOrder[0])))
                                 {
                                     toSwap.Add(bikeInStock.bikeId, Int32.Parse(bikeOrder[0]));
-                                }
-                                
+                                }                               
                             }
                         }
                     }
@@ -235,7 +239,6 @@ namespace Bovelo
             {
                 if (i < numberOfBike)
                 {
-                    Console.WriteLine(elem.Key + " | " + elem.Value);
                     SwapIdBike(elem.Key, elem.Value);
                     i++;
                 }
