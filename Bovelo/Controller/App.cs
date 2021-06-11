@@ -201,7 +201,7 @@ namespace Bovelo
                 {
                     if (Int32.Parse(part[1]) == id)
                     {
-                        bikePartsIds.Add(Int32.Parse(part[0]));
+                        bikePartsIds.Add(Int32.Parse(part[1]));
                     }
                 }
                 bikePartsIds.Sort();
