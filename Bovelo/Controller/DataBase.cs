@@ -22,9 +22,10 @@ namespace Bovelo
             {
                 MySqlDataReader rdr = cmd.ExecuteReader();
             }
-            catch
+            catch (MySqlException ex)
             {
-                MessageBox.Show("An error occured with the following request : \n " + query.ToString() + " \n please contact your administrator to fix it");
+                string str = "Source" + ex.Source;
+                MessageBox.Show(str + "An error occured with the following request  : \n " + query.ToString() + " \n please contact your administrator to fix it");
             }
             cmd.Dispose();
             conn.Close();

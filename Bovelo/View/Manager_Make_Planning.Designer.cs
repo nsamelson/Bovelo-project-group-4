@@ -244,7 +244,7 @@ namespace Bovelo
             this.button2.TabIndex = 7;
             this.button2.Text = "Confirm Planning";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.addPlanifiedBikesToDB);
             // 
             // button5
             // 
@@ -593,6 +593,8 @@ namespace Bovelo
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(130, 29);
             this.comboBox1.TabIndex = 26;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.load);
+            this.comboBox1.Click += new System.EventHandler(this.loadWeeksOfWork);
             // 
             // label10
             // 

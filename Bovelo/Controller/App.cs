@@ -109,7 +109,7 @@ namespace Bovelo
 
         internal List<List<string>> GetLinkingPartList()
         {
-            return DataBase.GetFromDB("Parts");
+            return DataBase.GetFromDB("Wedges");
         }
 
         internal List<BikePart> GetBikePartList()
@@ -201,7 +201,7 @@ namespace Bovelo
                 {
                     if (Int32.Parse(part[1]) == id)
                     {
-                        bikePartsIds.Add(Int32.Parse(part[1]));
+                        bikePartsIds.Add(Int32.Parse(part[2]));
                     }
                 }
                 bikePartsIds.Sort();

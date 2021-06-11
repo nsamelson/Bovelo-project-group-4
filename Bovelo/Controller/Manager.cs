@@ -48,7 +48,7 @@ namespace Bovelo
         {
             foreach (var idPart in idBikeParts)
             {
-                string query = "INSERT INTO Parts (Id_Bike_Parts,Bikes_Id) VALUES ('" + idPart + "',' " + idBikeModel + "')";
+                string query = "INSERT INTO Wedges (id_Bike_Wedges, id_Bike) VALUES ('" + idPart + "',' " + idBikeModel + "')";
                 DataBase.SendToDB(query);
             }
         }
@@ -118,7 +118,7 @@ namespace Bovelo
         }
         public static List<List<string>> GetNonPlanifiedBikes()
         {
-            string sql = "Select * from Order_Details where Id_Order_Details Not In (select Id_Order_Details from Detailed_Schedules);";
+            string sql = "Select * from Order_Details where Id_Order_Details Not In (select Id_Order_Details from Detailed_Schedules ) and Bike_Status != 'Closed';";
             var nonPlanified = DataBase.ConnectToDB(sql);
             return nonPlanified;
         }

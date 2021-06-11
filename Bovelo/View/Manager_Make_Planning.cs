@@ -26,7 +26,6 @@ namespace Bovelo
             newApp.SetBikeModelList();
             newApp.SetUserList();
             maxHoursPerWeek = newApp.GetMaxWorkingTimePerWeek();
-            comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -155,6 +154,7 @@ namespace Bovelo
                 i++;
             }
             labelTime.Text = t.ToString() + " / " + (120 * 60).ToString();
+            
         }
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
@@ -168,8 +168,7 @@ namespace Bovelo
             textBox1.Text =  calendarWeek.ToString();
             newWeekToAssign.Text = calendarWeek.ToString();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void addPlanifiedBikesToDB(object sender, EventArgs e)
         {
             //dataGridView2.Rows.Clear();
             message = "Save changes ? ";
@@ -182,14 +181,15 @@ namespace Bovelo
                 MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
                 Manager_Make_Planning_Load(sender, e);
+                user.planningCart = new List<List<string>>();
             }
             else
             {
                 message = "You have choosed to unsave your changes !";
                 MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        } 
-
+        }
+        
         private void button7_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -213,12 +213,16 @@ namespace Bovelo
                 string currentWeek = weekToModify.Text.ToString();
                 Manager.UpdateSchedule(id, newWeek, currentWeek);
                 comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
-                loadPlanifiedBikes();
+                dataGridView1.Rows.Clear();
+                message = "Bike successfully modified";
+                MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            
+
             updateButton = false;
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void addToPlanifiedBikes(object sender, DataGridViewCellEventArgs e)
         {
             BikeModel model = newApp.bikeModels.FirstOrDefault(x => x.color == dataGridView2.Rows[e.RowIndex].Cells[5].Value.ToString() && x.size == Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[4].Value.ToString()) && x.type == dataGridView2.Rows[e.RowIndex].Cells[3].Value.ToString());//gets the specific model
             Bike bike = new Bike(Int32.Parse(dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString()), model);//Needs to be verified (id)
@@ -248,12 +252,28 @@ namespace Bovelo
                 dataGridView1.Rows[dataGridView1.RowCount - 1].Cells[8].Value = weekName;//plannified week
                 dataGridView2.Rows.RemoveAt(dataGridView2.CurrentRow.Index);
             }
-
+        }
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            addToPlanifiedBikes(sender, e);
+        }
+        private void loadWeeksOfWork(object sender, EventArgs e)
+        {
+            comboBox1.DataSource = Manager.GetPlanifiedWeekName().Select(x => x[0]).ToList();
         }
         private void button3_Click(object sender, EventArgs e)
         {
-            loadPlanifiedBikes();
-            //Manager_Make_Planning_Load(sender,e);
+            if (comboBox1.Text == string.Empty)
+            {
+                message = "Choose a week ID from the list  ";
+                loadWeeksOfWork(sender,e);
+            }
+            else
+            {
+                message = "Planified Bikes loaded successfully";
+                loadPlanifiedBikes();
+            }
+            MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -270,5 +290,15 @@ namespace Bovelo
         {
 
         }
+
+        private void load(object sender, EventArgs e)
+        {
+
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

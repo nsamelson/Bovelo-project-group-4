@@ -29,10 +29,10 @@ namespace Bovelo
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();// Hiding the MainHome Window
+            /*this.Hide();// Hiding the MainHome Window
             Manager_Make_Planning mmp = new Manager_Make_Planning(user);// create new window
             mmp.FormClosed += (s, args) => this.Close();
-            mmp.Show();// Showing the manager make planning window
+            mmp.Show();// Showing the manager make planning window*/
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -115,6 +115,14 @@ namespace Bovelo
         private void Manager_MainHome_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void requestMakePlaning(object sender, EventArgs e)
+        {
+            this.Hide();// Hiding the MainHome Window
+            Manager_Make_Planning mmp = new Manager_Make_Planning(user);// create new window
+            mmp.FormClosed += (s, args) => this.Close();
+            mmp.Show();// Showing the manager make planning window
         }
     }
 }
