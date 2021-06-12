@@ -36,7 +36,6 @@ namespace Bovelo
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.builderPlaning = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -115,7 +114,7 @@ namespace Bovelo
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button2.Location = new System.Drawing.Point(8, 56);
+            this.button2.Location = new System.Drawing.Point(130, 56);
             this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 59);
@@ -165,22 +164,6 @@ namespace Bovelo
             this.button8.Text = "Manage Stock";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
-            // 
-            // builderPlaning
-            // 
-            this.builderPlaning.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.builderPlaning.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(149)))), ((int)(((byte)(199)))));
-            this.builderPlaning.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.builderPlaning.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.builderPlaning.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.builderPlaning.Location = new System.Drawing.Point(218, 56);
-            this.builderPlaning.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.builderPlaning.Name = "builderPlaning";
-            this.builderPlaning.Size = new System.Drawing.Size(202, 59);
-            this.builderPlaning.TabIndex = 10;
-            this.builderPlaning.Text = "Builders Planning";
-            this.builderPlaning.UseVisualStyleBackColor = false;
-            this.builderPlaning.Click += new System.EventHandler(this.button9_Click);
             // 
             // label2
             // 
@@ -442,7 +425,6 @@ namespace Bovelo
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.builderPlaning);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox4.Location = new System.Drawing.Point(16, 209);
             this.groupBox4.Name = "groupBox4";
@@ -497,7 +479,6 @@ namespace Bovelo
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button builderPlaning;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
