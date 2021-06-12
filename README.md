@@ -1,12 +1,18 @@
 # **Bovelo-project-group-4** 
 
-*Mohamed Aousji*
-*Antoine Scaviner* 
-*Nicolas Samelson*
-*Pedro Roquero Da costa Pinto*
-*Matthieu Faget *
+Mohamed Aousji
+
+Antoine Scaviner 
+
+Nicolas Samelson
+
+Pedro Roquero Da costa Pinto
+
+Matthieu Faget
+
 
 #### Software engineering 2 project
+
 ## Introduction
 
 The main goal of this project was to design and develop a software for a bike factory.
