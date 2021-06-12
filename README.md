@@ -16,8 +16,11 @@ Matthieu Faget
 ## Introduction
 
 The main goal of this project was to design and develop a software for a bike factory.
+
 Make the management easier and increase the organisation efficiency into a factory is the most important.
+
 This software was made by a team in "agile" method helped by a versionning software. 
+
 Next you can find the main documents and informations related to this project.
 
 ## **1. Classes :**  
