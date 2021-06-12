@@ -1,8 +1,18 @@
 # **Bovelo-project-group-4** 
-[![Build Status](https://dev.azure.com/ECAM3BE/Groupe4/_apis/build/status/wasanico.Bovelo-project-group-4?branchName=main)](https://dev.azure.com/ECAM3BE/Groupe4/_build/latest?definitionId=1&branchName=main)
 
-Software engineering 2 project
+Mohamed Aousji
+Antoine Scaviner 
+Nicolas Samelson
+Pedro Roquero Da costa Pinto
+Matthieu Faget 
 
+####Software engineering 2 project
+## Introduction
+
+The main goal of this project was to design and develop a software for a bike factory.
+Make the management easier and increase the organisation efficiency into a factory is the most important.
+This software was made by a team in "agile" method helped by a versionning software. 
+Next you can find the main documents and informations related to this project.
 
 ## **1. Classes :**  
 
