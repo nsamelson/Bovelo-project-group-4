@@ -23,11 +23,18 @@ namespace Bovelo
         }
         private void setOnActive(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.Rows[e.RowIndex].Cells[5].Value = "Active";
+            string status = "Active";
+            string builder = user.login.ToString();
+            dataGridView1.Rows[e.RowIndex].Cells[5].Value = status;
             DataGridViewTextBoxCell cell = new DataGridViewTextBoxCell();
             cell.Value = DateTime.Now.Day.ToString() + "/" + DateTime.Now.Month.ToString() + "/" + DateTime.Now.Year.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString();
             dataGridView1.Rows[e.RowIndex].Cells[8] = cell;
+            dataGridView1.Rows[e.RowIndex].Cells[7].Value = builder;
             cell.ReadOnly = true;
+
+            //update
+            int id = Int32.Parse(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());   
+            Assembler.UpdateSatus(id, status, builder, cell.Value.ToString(), string.Empty);
             dataGridView1.Refresh();
         }
         private void setOnClose(object sender, DataGridViewCellEventArgs e)
@@ -156,7 +163,7 @@ namespace Bovelo
                 comp = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 if (comp == "Closed")
                 {
-                    Console.WriteLine("id : " + dataGridView1.Rows[i].Cells[0].Value);
+                    //Console.WriteLine("id : " + dataGridView1.Rows[i].Cells[0].Value);
                     DataGridViewTextBoxCell startCell = new DataGridViewTextBoxCell();
                     DataGridViewTextBoxCell finishCell = new DataGridViewTextBoxCell();
                     DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
@@ -172,6 +179,14 @@ namespace Bovelo
                     dataGridView1.Rows[i].Cells[8] = startCell;
                     dataGridView1.Rows[i].Cells[9] = finishCell;
                     dataGridView1.Rows[i].Cells[10] = newCell;
+                }
+                else if (comp == "Active")
+                {
+                    DataGridViewTextBoxCell startCell = new DataGridViewTextBoxCell();
+                    DataGridViewTextBoxCell newCell = new DataGridViewTextBoxCell();
+                    newCell.Value = string.Empty;
+                    startCell.Value = bike.startBuildTime;
+                    dataGridView1.Rows[i].Cells[8] = startCell;
                 }
                 //dataGridView1.Rows[i].Cells[7].Value = newApp.getPlanifiedBikesByWeekName(week)[i][9];
                 i++;
