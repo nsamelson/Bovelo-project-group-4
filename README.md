@@ -1,5 +1,7 @@
 # **Bovelo-project-group-4** 
 
+#### Software engineering 2 project
+
 Mohamed Aousji
 
 Antoine Scaviner 
@@ -11,17 +13,15 @@ Pedro Roquero Da costa Pinto
 Matthieu Faget
 
 
-#### Software engineering 2 project
+## **Introduction**
 
-## Introduction
+    The main goal of this project was to design and develop a software for a bike factory.
 
-The main goal of this project was to design and develop a software for a bike factory.
+    Make the management easier and increase the organisation efficiency into a factory is the most important.
 
-Make the management easier and increase the organisation efficiency into a factory is the most important.
+    This software was made by a team in "agile" method helped by a versionning software. 
 
-This software was made by a team in "agile" method helped by a versionning software. 
-
-Next you can find the main documents and informations related to this project.
+    Next you can find the main documents and informations related to this project.
 
 ## **1. Classes :**  
 
@@ -29,9 +29,6 @@ The classes in this project are :
 
 - *User :*  
 The user can be a representative or an admin. The representative can see the catalog, configure a bike, add to cart and pass orders. The admin is able to do the same and is able to see its planning, the components needed to assemble a bike (and the location of the parts) and manage orders.
-
-- *Catalog :*  
-The catalog is a class that shows all the different types of bikes (City Bike, Explorer Bike and Adventure Bike).
 
 - *BikePart :*  
 It's regrouping every part needed to build a Bike. It also contains the location of each part, the quantity in stock and the time to assemble it.
@@ -54,6 +51,18 @@ A class that takes all the OrderBike objects every week and will check the stock
 - *IupdatableComponent :*  
 An interface that updates the classes it's implemented in.
 
+- *ItemPart :*  
+The ItemBike is a class for modify quantity of bikeparts .
+  
+- *ItemBike :*  
+The ItemBike is a class for modify quantity of bikes .
+  
+- *Item :*  
+The Item is a class for modify quantity of an item .
+
+- *BikeModel :*  
+The BikeModel is a class that shows all the different bikes by types, colour, size, time to build .
+
 
 ## **2. Diagrams, links and schematics :**  
 
@@ -67,7 +76,8 @@ An interface that updates the classes it's implemented in.
 - *Design brief :* https://claco.ecam.be/apiv2/resource_file79568/raw
 - *Azure Devops :* https://dev.azure.com/ECAM3BE/Groupe4  
 - *Bike Parts List:* https://ecambxl-my.sharepoint.com/:t:/g/personal/17010_ecam_be/EaTMBrHmODJBg-rELj5LX1MB87OP6OkHwTrc_O8-oE5qKg?e=kAzBUZ
-- *PowerPoint:* https://ecambxl-my.sharepoint.com/:p:/g/personal/17338_ecam_be/ET_e1rXheQVIjLAcY5zWgIMBcUq5bcwVUpFtmmSPUWidMQ?rtime=LCVDwNLi2Eg
+- *old PowerPoint:* https://ecambxl-my.sharepoint.com/:p:/g/personal/17338_ecam_be/ET_e1rXheQVIjLAcY5zWgIMBcUq5bcwVUpFtmmSPUWidMQ?rtime=LCVDwNLi2Eg
+- *new PowerPoint:* https://ecambxl-my.sharepoint.com/:p:/r/personal/17288_ecam_be/_layouts/15/Doc.aspx?sourcedoc=%7BD11F69A1-7A7A-43C3-98D8-35060BAB31A7%7D&file=Presentation.pptx&action=edit&mobileredirect=true
 - *Drive:* https://ecambxl-my.sharepoint.com/:f:/g/personal/17288_ecam_be/EnvNpO93UF9GoMOfZWpRylIBqxhiICFPJOAyQJj0v6-fGg?e=l2qxKf
 
 ### - **2.3. Schematics :**  
