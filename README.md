@@ -65,7 +65,7 @@ The BikeModel is a class that shows all the different bikes by types, colour, si
 
 ### - **2.1. Diagrams :**  
 - *Class Diagram :* https://app.creately.com/diagram/ET0DnpMZXqP/edit
-- *Use cases Diagram :* https://lucid.app/lucidchart/a3912014-fae6-4ac3-ad07-5af240573b45/edit?beaconFlowId=0FBAD1001AD03DB9&page=0_0#?folder_id=home&browser=icon
+- *Use cases Diagram :* https://lucid.app/lucidchart/invitations/accept/inv_89bc8021-eeed-43b6-b364-47b6cd65166b?viewport_loc=-1251%2C-2301%2C2305%2C1137%2C0_0
 - *User activity Diagram :* https://drive.google.com/file/d/1Gk_sozGZPf4hDu128_76lsnuZxIa-klZ/view  
 
 ### - **2.2. Links :**  
