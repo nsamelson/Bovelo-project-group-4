@@ -84,10 +84,9 @@ A class that lists the Bike objects to assemble for the week. The object is crea
 
 ### **3.1. Diagrams :**  
 - *User activity Diagram :* https://drive.google.com/file/d/1Gk_sozGZPf4hDu128_76lsnuZxIa-klZ/view  
-- *Sequence Diagram :*
 - *Use cases Diagram :* https://lucid.app/lucidchart/invitations/accept/inv_303171e2-174d-4240-b514-e82913fbebbc?viewport_loc=-1198%2C-177%2C4358%2C2150%2C0_0
 - *Class Diagram :* https://app.creately.com/diagram/ET0DnpMZXqP/edit
-- *Relational Diagram :*
+- *Relational Diagram :* https://github.com/wasanico/Bovelo-project-group-4/blob/main/Documents/Relationnal%20diagram.png
 
 ### **3.2. Links :**  
 - *Design brief :* https://claco.ecam.be/apiv2/resource_file79568/raw
