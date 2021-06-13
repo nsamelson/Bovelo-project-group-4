@@ -82,21 +82,21 @@ A class that lists the Bike objects to assemble for the week. The object is crea
 
 ## **3. Diagrams, links and schematics :**  
 
-### - **3.1. Diagrams :**  
+### **3.1. Diagrams :**  
 - *User activity Diagram :* https://drive.google.com/file/d/1Gk_sozGZPf4hDu128_76lsnuZxIa-klZ/view  
 - *Sequence Diagram :*
 - *Use cases Diagram :* https://lucid.app/lucidchart/invitations/accept/inv_303171e2-174d-4240-b514-e82913fbebbc?viewport_loc=-1198%2C-177%2C4358%2C2150%2C0_0
 - *Class Diagram :* https://app.creately.com/diagram/ET0DnpMZXqP/edit
 - *Relational Diagram :*
 
-### - **3.2. Links :**  
+### **3.2. Links :**  
 - *Design brief :* https://claco.ecam.be/apiv2/resource_file79568/raw
 - *Azure Devops :* https://dev.azure.com/ECAM3BE/Groupe4  
 - *Bike Parts List:* https://ecambxl-my.sharepoint.com/:t:/g/personal/17010_ecam_be/EaTMBrHmODJBg-rELj5LX1MB87OP6OkHwTrc_O8-oE5qKg?e=kAzBUZ
 - *PowerPoint:* https://ecambxl-my.sharepoint.com/:p:/r/personal/17288_ecam_be/_layouts/15/Doc.aspx?sourcedoc=%7BD11F69A1-7A7A-43C3-98D8-35060BAB31A7%7D&file=Presentation.pptx&action=edit&mobileredirect=true
 
 
-### - **3.3. Mock-ups :**  
+### **3.3. Mock-ups :**  
 - *Mockup sprint 1 :* https://drive.google.com/file/d/1E008b_3q2edldHUvpJ3NwuaSqwDhu-G8/view?usp=sharing
 - *Mockup sprint 2 :* https://drive.google.com/file/d/1Z4jrSf73k9zW0ssS0kXVY-IMI5MD1hKv/view?usp=sharing
 - *Mockup sprint 3 :* https://drive.google.com/file/d/1DUMMbBp80TinfHncI6ZJqvvj3tsIi1QV/view?usp=sharing
