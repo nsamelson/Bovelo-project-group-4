@@ -15,13 +15,13 @@ Matthieu Faget
 
 ## **Introduction**
 
-    The main goal of this project was to design and develop a software for a bike company.
+The main goal of this project was to design and develop a software for a bike company.
 
-    Make the management easier and increase the organisation efficiency into a company is the most important.
+Make the management easier and increase the organisation efficiency into a company is the most important.
 
-    This software was made by a team in "agile" method helped by a versionning software. 
+This software was made by a team in "agile" method helped by a versionning software. 
 
-    Next you can find the main documents and informations related to this project.
+Next you can find the main documents and informations related to this project.
 
 ## **1. Classes :**  
 
@@ -112,10 +112,3 @@ The BikeModel is a class that shows all the different bikes by types, colour, si
 -	As a manager, I want to be able to modify the production schedule, in order to manage the orders.
 -	As a manager, I want to know how much bike parts there are in stock, to order the bike parts needed.
 -	As a manager, I want to be able to order new bike parts, in order to have always enough parts available to assemble the bikes.
-
-## **4. Old links :**  
-
-- *First Diagrams [old] :* https://lucid.app/lucidchart/2d7e6938-bb10-4799-b251-3f24b5d9584f/edit?page=0_0#?folder_id=home&browser=icon  
-- *First Class Diagram [old] :* https://app.creately.com/diagram/KlDGg7FOAVr/edit
-- *Second Class Diagram [old] :* https://app.creately.com/diagram/V171HVeEYau/edit
-
