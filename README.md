@@ -48,9 +48,6 @@ A class that takes all the OrderBike objects every week to create a planning, de
 - *StockManagement :*  
 A class that takes all the OrderBike objects every week and will check the stock and order BikeParts if needed. 
 
-- *IupdatableComponent :*  
-An interface that updates the classes it's implemented in.
-
 - *ItemPart :*  
 The ItemBike is a class for modify quantity of bikeparts .
   
